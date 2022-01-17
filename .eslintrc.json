@@ -1,18 +1,22 @@
 {
   "root": true,
   "ignorePatterns": ["**/*"],
-  "plugins": ["@nrwl/nx", "unused-imports", "prettier/prettier", "sonarjs", "prettier"],
+  "extends": ["airbnb", "airbnb-typescript", "airbnb/hooks", "plugin:prettier/recommended"],
+  "plugins": ["@nrwl/nx", "unused-imports"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-      "extends": ["plugin:sonarjs/recommended", "plugin:prettier/recommended", "prettier"],
+      "parserOptions": {
+        "project": "./tsconfig.base.json"
+      },
       "rules": {
         "arrow-body-style": "off",
         "prefer-arrow-callback": "off",
         "prettier/prettier": "error",
-        "semi": "off",
+        "semi": "error",
         "comma-dangle": "off",
-        "no-unused-vars": "off",
+        "import/prefer-default-export": "off",
+        "no-unused-vars": "error",
         "unused-imports/no-unused-imports": "error",
         "unused-imports/no-unused-vars": [
           "warn",
@@ -44,6 +48,12 @@
                 "onlyDependOnLibsWithTags": ["*"]
               }
             ]
+          }
+        ],
+        "react/function-component-definition": [
+          2,
+          {
+            "namedComponents": "arrow-function"
           }
         ]
       }
