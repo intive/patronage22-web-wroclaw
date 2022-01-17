@@ -1,0 +1,23 @@
+{
+  "root": "libs/translations",
+  "sourceRoot": "libs/translations/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/translations/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/translations"],
+      "options": {
+        "jestConfig": "libs/translations/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

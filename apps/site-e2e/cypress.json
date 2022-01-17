@@ -1,0 +1,17 @@
+{
+  "projectId": "site-e2e",
+  "fileServerFolder": ".",
+  "fixturesFolder": "./src/fixtures",
+  "integrationFolder": "./src/integration",
+  "modifyObstructiveCode": false,
+  "supportFile": "./src/support/index.ts",
+  "pluginsFile": "../../tools/cypress/plugins",
+  "video": true,
+  "videosFolder": "../../dist/cypress/apps/site-e2e/videos",
+  "screenshotsFolder": "../../dist/cypress/apps/site-e2e/screenshots",
+  "chromeWebSecurity": true,
+  "retries": 2,
+  "viewportWidth": 1440,
+  "numTestsKeptInMemory": 0,
+  "baseUrl": "http://localhost:4000"
+}
