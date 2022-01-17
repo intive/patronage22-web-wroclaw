@@ -1,0 +1,29 @@
+{
+  "root": "libs/features/feedback",
+  "sourceRoot": "libs/features/feedback/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/features/feedback/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/features/feedback"],
+      "options": {
+        "jestConfig": "libs/features/feedback/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": ["yarn start site --open"]
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "root": "libs/features/feedback-e2e",
+  "sourceRoot": "libs/features/feedback-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "libs/features/feedback-e2e/cypress.json",
+        "devServerTarget": "features-feedback:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "features-feedback:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/features/feedback-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["features-feedback"]
+}

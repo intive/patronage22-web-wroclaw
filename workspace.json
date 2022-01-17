@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "projects": {
+    "features-feedback": "libs/features/feedback",
+    "features-feedback-e2e": "libs/features/feedback-e2e",
+    "shared": "libs/shared",
+    "site": "apps/site",
+    "site-e2e": "apps/site-e2e",
+    "translations": "libs/translations",
+    "ui": "libs/ui",
+    "ui-e2e": "libs/ui-e2e"
+  }
+}
