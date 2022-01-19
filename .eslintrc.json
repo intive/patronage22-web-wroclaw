@@ -10,6 +10,8 @@
         "project": "./tsconfig.base.json"
       },
       "rules": {
+        "react/jsx-uses-react": "off",
+        "react/react-in-jsx-scope": "off",
         "arrow-body-style": "off",
         "prefer-arrow-callback": "off",
         "prettier/prettier": "error",
@@ -30,10 +32,10 @@
         "sort-imports": [
           "error",
           {
-            "ignoreCase": false,
+            "ignoreCase": true,
             "ignoreDeclarationSort": false,
             "ignoreMemberSort": false,
-            "memberSyntaxSortOrder": ["none", "all", "multiple", "single"],
+            "memberSyntaxSortOrder": ["multiple", "single", "all", "none"],
             "allowSeparatedGroups": false
           }
         ],
