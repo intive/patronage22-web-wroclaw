@@ -1,0 +1,72 @@
+{
+  "root": true,
+  "ignorePatterns": ["**/*"],
+  "extends": ["airbnb", "airbnb-typescript", "airbnb/hooks", "plugin:prettier/recommended"],
+  "plugins": ["@nrwl/nx", "unused-imports"],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "parserOptions": {
+        "project": "./tsconfig.base.json"
+      },
+      "rules": {
+        "arrow-body-style": "off",
+        "prefer-arrow-callback": "off",
+        "prettier/prettier": "error",
+        "semi": "error",
+        "comma-dangle": "off",
+        "import/prefer-default-export": "off",
+        "no-unused-vars": "error",
+        "unused-imports/no-unused-imports": "error",
+        "unused-imports/no-unused-vars": [
+          "warn",
+          {
+            "vars": "all",
+            "varsIgnorePattern": "^_",
+            "args": "after-used",
+            "argsIgnorePattern": "^_"
+          }
+        ],
+        "sort-imports": [
+          "error",
+          {
+            "ignoreCase": false,
+            "ignoreDeclarationSort": false,
+            "ignoreMemberSort": false,
+            "memberSyntaxSortOrder": ["none", "all", "multiple", "single"],
+            "allowSeparatedGroups": false
+          }
+        ],
+        "@nrwl/nx/enforce-module-boundaries": [
+          "error",
+          {
+            "enforceBuildableLibDependency": true,
+            "allow": [],
+            "depConstraints": [
+              {
+                "sourceTag": "*",
+                "onlyDependOnLibsWithTags": ["*"]
+              }
+            ]
+          }
+        ],
+        "react/function-component-definition": [
+          2,
+          {
+            "namedComponents": "arrow-function"
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "extends": ["plugin:@nrwl/nx/typescript"],
+      "rules": {}
+    },
+    {
+      "files": ["*.js", "*.jsx"],
+      "extends": ["plugin:@nrwl/nx/javascript"],
+      "rules": {}
+    }
+  ]
+}

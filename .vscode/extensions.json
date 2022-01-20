@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "steoates.autoimport",
+    "esbenp.prettier-vscode",
+    "streetsidesoftware.code-spell-checker",
+    "dbaeumer.vscode-eslint",
+    "drknoxy.eslint-disable-snippets",
+    "ms-azuretools.vscode-docker",
+    "eamodio.gitlens",
+    "christian-kohler.npm-intellisense",
+    "vscode-icons-team.vscode-icons",
+    "ms-azuretools.vscode-docker"
+  ]
+}
