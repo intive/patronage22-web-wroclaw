@@ -1,9 +1,9 @@
 export enum SupportedLanguage {
-  Pl = 'pl',
-  En = 'en',
+  Pl = "pl",
+  En = "en"
 }
 
 export enum TranslationNamespace {
-  Feedback = 'feedback',
-  Common = 'common',
+  Feedback = "feedback",
+  Common = "common"
 }

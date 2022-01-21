@@ -1,1 +1,1 @@
-const dd = () => <SampleButton text="whote" variant="whote" textColor="whote" />
+const dd = () => <SampleButton text='whote' variant='whote' textColor='whote' />;
