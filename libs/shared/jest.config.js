@@ -1,9 +1,9 @@
 module.exports = {
-  displayName: 'shared',
-  preset: '../../jest.preset.js',
+  displayName: "shared",
+  preset: "../../jest.preset.js",
   transform: {
-    '^.+\\.[tj]sx?$': 'babel-jest',
+    "^.+\\.[tj]sx?$": "babel-jest"
   },
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/libs/shared',
-}
+  moduleFileExtensions: ["ts", "tsx", "js", "jsx"],
+  coverageDirectory: "../../coverage/libs/shared"
+};

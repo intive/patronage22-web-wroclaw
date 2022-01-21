@@ -1,13 +1,13 @@
-import { getGreeting } from '../support/app.po'
+import { getGreeting } from "../support/app.po";
 
-describe('features-feedback', () => {
-  beforeEach(() => cy.visit('/'))
+describe("features-feedback", () => {
+  beforeEach(() => cy.visit("/"));
 
-  it('should display welcome message', () => {
+  it("should display welcome message", () => {
     // Custom command example, see `../support/commands.ts` file
-    cy.login('my-email@something.com', 'myPassword')
+    cy.login("my-email@something.com", "myPassword");
 
     // Function helper example, see `../support/app.po.ts` file
-    getGreeting().contains('Welcome features-feedback')
-  })
-})
+    getGreeting().contains("Welcome features-feedback");
+  });
+});
