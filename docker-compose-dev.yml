@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile.dev
     ports:
-      - '4000:4000'
+      - "4000:4000"
     volumes:
       - ./src:/apps/site/src
     environment:
