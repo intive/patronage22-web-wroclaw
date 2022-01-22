@@ -1,8 +1,8 @@
 import { SampleButton } from "@patronage-web/features-feedback";
 import { ComponentMeta } from "@storybook/react";
 
-export const SampleButtonStory = (args: { textColor: string; title: string; variant: string }) => (
-  <SampleButton textColor={args.textColor} text={args.title} variant={args.variant} />
+export const SampleButtonStory = ({ textColor, title, variant }: { textColor: string; title: string; variant: string }) => (
+  <SampleButton textColor={textColor} text={title} variant={variant} />
 );
 
 export default {
