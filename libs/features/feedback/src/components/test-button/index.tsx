@@ -1,7 +1,13 @@
 import { Button } from "@mui/material";
 
+export enum TestButtonVariant {
+  text = "text",
+  outlined = "outlined",
+  contained = "contained"
+}
+
 export interface TestButtonProps {
-  variant: "text" | "outlined" | "contained" | undefined;
+  variant?: TestButtonVariant;
   title: string;
 }
 
