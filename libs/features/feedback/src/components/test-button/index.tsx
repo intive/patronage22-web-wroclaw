@@ -11,8 +11,4 @@ export interface TestButtonProps {
   title: string;
 }
 
-export const TestButton: React.FC<TestButtonProps> = ({ variant, title }) => {
-  return <Button variant={variant}>{title}</Button>;
-};
-
-export default TestButton;
+export const TestButton: React.FC<TestButtonProps> = ({ variant, title }) => <Button variant={variant}>{title}</Button>;
