@@ -12,7 +12,7 @@ export default {
   },
   argTypes: {
     variant: {
-      control: "select",
+      control: { type: 'radio' },
       options: Object.values(TestButtonVariant),
     }
   }
