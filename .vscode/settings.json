@@ -19,10 +19,22 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.sortImports": false,
+      "source.organizeImports": false,
+      "source.sortMembers": true,
+      "source.fixAll": true
+    }
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.sortImports": false,
+      "source.organizeImports": false,
+      "source.sortMembers": true,
+      "source.fixAll": true
+    }
   },
   "eslint.packageManager": "yarn",
   "cSpell.words": ["musn't", "patronage", "intive"]
