@@ -1,8 +1,8 @@
 import { Box } from "@mui/material";
-import { HomepageCard } from "@patronage-web/features-feedback";
+import { HomepageCard } from "../components/homepageCard/index";
 
 export const Homepage: React.FC = () => (
-  <Box>
+  <Box sx={{ display: "flex", justifyContent: "center" }}>
     <HomepageCard />
   </Box>
 );
