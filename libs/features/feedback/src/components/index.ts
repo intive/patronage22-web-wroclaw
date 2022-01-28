@@ -1,3 +1,3 @@
-export * from "./homepageCard";
-export * from "./homepageCard/homepageButton";
+export * from "./homepage-card";
+export * from "./homepage-card/homepage-button";
 export * from "./sample";
