@@ -2,7 +2,7 @@
   "root": true,
   "ignorePatterns": ["**/*"],
   "extends": ["airbnb", "airbnb-typescript", "airbnb/hooks", "plugin:prettier/recommended"],
-  "plugins": ["@nrwl/nx", "unused-imports"],
+  "plugins": ["@nrwl/nx", "unused-imports", "simple-import-sort"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
@@ -19,6 +19,8 @@
         "prefer-arrow-callback": "off",
         "prettier/prettier": "error",
         "semi": "error",
+        "simple-import-sort/exports": "error",
+        "simple-import-sort/imports": "error",
         "comma-dangle": "off",
         "import/prefer-default-export": "off",
         "no-unused-vars": "error",
@@ -30,16 +32,6 @@
             "varsIgnorePattern": "^_",
             "args": "after-used",
             "argsIgnorePattern": "^_"
-          }
-        ],
-        "sort-imports": [
-          "error",
-          {
-            "ignoreCase": true,
-            "ignoreDeclarationSort": false,
-            "ignoreMemberSort": false,
-            "memberSyntaxSortOrder": ["multiple", "single", "all", "none"],
-            "allowSeparatedGroups": false
           }
         ],
         "@nrwl/nx/enforce-module-boundaries": [
