@@ -15,7 +15,7 @@ export const HomepageCard: React.FC = () => (
       <Typography>
         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </Typography>
-      <HomepageButton text='New presentation' />
+      <HomepageButton />
     </StyledCardBox>
   </StyledCard>
 );
