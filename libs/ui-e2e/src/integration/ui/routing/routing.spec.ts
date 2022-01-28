@@ -33,7 +33,7 @@ describe("testing basic routing", () => {
     cy.get("h1").contains("Page for external user");
   });
 
-  it("should display error page", () => {
+  it("should redirect and display error page", () => {
     cy.visit("localhost:4000/dashboard/something");
     cy.get("h1").contains("You should not be here...");
   });
