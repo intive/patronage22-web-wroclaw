@@ -5,7 +5,7 @@ describe("Base routing", () => {
   const Id = uuidv4();
 
   it(`should display <${AppRoute.Home}> page`, () => {
-    cy.visit("");
+    cy.visit("/");
     cy.url().should("include", "/");
   });
 
