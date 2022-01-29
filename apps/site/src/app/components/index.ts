@@ -1,2 +1,2 @@
-export * from "../../utils/routing";
+export * from "../utils/routing";
 export * from ".";
