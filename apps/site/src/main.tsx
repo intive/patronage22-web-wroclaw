@@ -6,8 +6,7 @@ import { StrictMode } from "react";
 import * as ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 
-import { AppLink } from "./app/utils/appLink";
-import { Routing } from "./app/utils/routing";
+import { AppLink, Routing } from "./app/utils";
 
 ReactDOM.render(
   <StrictMode>
