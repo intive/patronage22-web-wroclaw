@@ -11,10 +11,12 @@ export const HomepageCard: React.FC = () => (
       alt='Stars'
       sx={{ maxWidth: "100%", maxHeight: "176px", "@media (min-width: 600px)": { maxWidth: "30%" } }}
     />
+
     <StyledCardBox>
       <StyledTypography>
         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </StyledTypography>
+
       <HomepageButton />
     </StyledCardBox>
   </StyledCard>
