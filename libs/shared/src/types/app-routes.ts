@@ -1,9 +1,9 @@
 export enum AppRoute {
-  HomePage = "/",
+  Home = "/",
   Dashboard = "/dashboard",
   Presentation = "/presentation",
   AddPresentation = "add",
   EditPresentation = "edit/:id",
   PresentationForExternalUser = ":id",
-  PageNotFound = "*"
+  NotFound = "*"
 }
