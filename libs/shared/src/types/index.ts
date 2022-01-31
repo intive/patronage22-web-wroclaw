@@ -1,2 +1,2 @@
-export * from "./appRoutes";
+export * from "./app-routes";
 export * from "./translations";
