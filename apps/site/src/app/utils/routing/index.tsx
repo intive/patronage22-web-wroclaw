@@ -1,18 +1,12 @@
-import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 import { AppRoute } from "@patronage-web/shared";
 import { Suspense } from "react";
 import { Outlet, RouteObject, useRoutes } from "react-router-dom";
 
-const createChildrenRoute = (route: AppRoute, component: ReactJSXElement): RouteObject => {
+const createChildrenRoute = (route: AppRoute, component: JSX.Element): RouteObject => {
   return { path: route, element: component };
 };
 
-const createRoute = (
-  route: AppRoute,
-  component: ReactJSXElement,
-  fallback: ReactJSXElement,
-  children?: RouteObject[]
-): RouteObject => {
+const createRoute = (route: AppRoute, component: JSX.Element, fallback: JSX.Element, children?: RouteObject[]): RouteObject => {
   return {
     path: route,
     element: (
