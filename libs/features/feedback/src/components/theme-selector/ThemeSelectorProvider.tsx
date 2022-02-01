@@ -14,10 +14,12 @@ export const ThemeSelectorProvider = (props: Props) => {
   const colorMode = React.useMemo(
     () => ({
       toggleColorMode: () => {
-        setMode(prevMode => (prevMode === "light" ? "dark" : "light"));
+        const newMode = mode === "light" ? "dark" : "light";
+        window.localStorage.setItem("theme", newMode);
+        setMode(newMode);
       }
     }),
-    []
+    [mode]
   );
 
   const theme = React.useMemo(
@@ -29,6 +31,11 @@ export const ThemeSelectorProvider = (props: Props) => {
       }),
     [mode]
   );
+
+  React.useEffect(() => {
+    const localMode = window.localStorage.getItem("theme");
+    setMode(localMode === "dark" ? "dark" : "light");
+  }, []);
 
   return (
     <ColorModeContext.Provider value={colorMode}>
