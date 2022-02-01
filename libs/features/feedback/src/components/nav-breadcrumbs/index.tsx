@@ -14,7 +14,7 @@ export const NavBreadcrumbs: React.FC<NavBreadcrumbsProps> = ({ presentationName
         <Logo />
       </Link>
 
-      {presentationName ? <Styled.MediumTypography>{presentationName}</Styled.MediumTypography> : ""}
+      {presentationName && <Styled.MediumTypography>{presentationName}</Styled.MediumTypography>}
     </Breadcrumbs>
   );
 };
