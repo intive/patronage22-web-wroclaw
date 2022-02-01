@@ -1,11 +1,11 @@
+import { Box } from "@mui/material";
 import { StrictMode } from "react";
 import * as ReactDOM from "react-dom";
-import { Homepage } from "./app/pages/homepage";
 import "./i18n";
 
 ReactDOM.render(
   <StrictMode>
-    <Homepage />
+    <Box>Patronage App</Box>
   </StrictMode>,
   document.getElementById("root")
 );

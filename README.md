@@ -83,6 +83,7 @@ Project is **_in progress_ **
 - Each component should has own folder, inside should be 'index' with component inside or export if more files than 1
 - If it comes to variables and functions names: https://github.com/airbnb/javascript#naming-conventions
   - Variable names should be descriptive. Reader should know meaning based on read.
+  - For actions that are passed as props use 'onSomeName' and for functions that defines actions inside components use 'handleSomeName'.
   - Methods names - please use verbs - ex. "getAllHeaders"
   - Variables names:
     - For boolean variables please question-like names - ex. "hasProperValue", "shouldContainValue", "isProperElement"
