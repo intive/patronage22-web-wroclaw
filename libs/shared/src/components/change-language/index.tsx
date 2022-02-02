@@ -1,28 +1,28 @@
 import { Button } from "@mui/material";
 import React from "react";
-import "libs/translations/src/i18n.tsx";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
+import { SupportedLanguage } from "@patronage-web/shared";
 
 export function ChangeLanguage() {
   const { t, i18n } = useTranslation();
 
-  const [language, setLanguage] = useState<string>(() => {
+  const checkLocalStorage = () => {
     const lang = localStorage.getItem("language");
-    if (lang === "pl") {
-      return "en";
+    if (lang === SupportedLanguage.Pl) {
+      return SupportedLanguage.En;
     } else {
-      return "pl";
+      return SupportedLanguage.Pl;
     }
-  });
+  };
+
+  const [language, setLanguage] = useState<string>(checkLocalStorage);
 
   const changeLanguage = () => {
     i18n.changeLanguage(language);
-    language === "pl" ? setLanguage("en") : setLanguage("pl");
+    language === SupportedLanguage.Pl ? setLanguage(SupportedLanguage.En) : setLanguage(SupportedLanguage.Pl);
     localStorage.setItem("language", language);
   };
 
   return;
 }
-
-export default ChangeLanguage;
