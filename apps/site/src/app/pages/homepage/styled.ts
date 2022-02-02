@@ -1,8 +1,4 @@
 import { Box as MUIBox } from "@mui/material";
-import styled from "styled-components";
+import { styled } from "@mui/system";
 
-export const Box: React.FC = styled(MUIBox)`
-  display: flex;
-  justify-content: center;
-  background-color: #ffffff;
-`;
+export const Box = styled(MUIBox)({ display: "flex", justifyContent: "center", backgroundColor: "#ffffff" });

@@ -1,5 +1,5 @@
 import { ActionCard } from "@patronage-web/shared";
-import StarsImage from "../../../../../../libs/features/feedback/src/assets/stars-placeholder.png";
+import StarsImage from "libs/features/feedback/src/assets/stars-placeholder.png";
 import * as Styled from "./styled";
 
 export const Homepage: React.FC = () => {
