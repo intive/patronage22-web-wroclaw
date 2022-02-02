@@ -6,7 +6,7 @@ import React from "react";
 export const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
 type Props = {
-  children: React.ReactChild[];
+  children: React.ReactChild[] | React.ReactChild;
 };
 
 export const ThemeSelectorProvider = ({ children }: Props) => {
