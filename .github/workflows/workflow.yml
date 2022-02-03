@@ -7,8 +7,8 @@ on:
     branches: [develop, master]
 
 jobs:
-  build_and_test:
-    name: Build and test
+  build:
+    name: Build project
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -38,19 +38,40 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: Run the tests and generate coverage report
+      - name: Run @nrwl build check
+        run: yarn build
+
+  lint:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    name: Linting
+    steps:
+      - name: Lint
+        run: yarn lint
+
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    name: Testing
+    steps:
+      - name: Unit tests
         run: |
           yarn test site --coverage
           yarn test features-feedback --coverage
           yarn test shared --coverage
 
-      - name: Run the e2e tests and generate coverage report
+  e2e:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    name: E2e testing
+    steps:
+      - name: E2e
         run: |
           yarn e2e site-e2e --coverage
           yarn e2e features-feedback-e2e --coverage
-
-      - name: Run @nrwl lint check
-        run: yarn lint
-
-      - name: Run @nrwl build check
-        run: yarn build
