@@ -2,31 +2,19 @@ import { AppRoute } from "@patronage-web/shared";
 import React, { Suspense, SuspenseProps } from "react";
 import { Outlet, RouteObject, useRoutes } from "react-router-dom";
 
-const createChildrenRoute = (route: AppRoute, component: JSX.Element): RouteObject => {
-  return { path: route, element: component };
-};
-
 const createRoute = (
   route: AppRoute,
   component: JSX.Element,
   fallback: SuspenseProps["fallback"],
-  children?: RouteObject[]
-): RouteObject => {
-  let wrappedChildren: RouteObject[] | undefined;
-  if (children) {
-    wrappedChildren = children.map(child => {
-      return {
-        path: child.path,
-        element: <Suspense fallback={fallback}>{child.element}</Suspense>
-      };
-    });
-  }
-  return {
-    path: route,
-    element: <Suspense fallback={fallback}>{component}</Suspense>,
-    children: wrappedChildren
-  };
-};
+  children?: ((fallback: SuspenseProps["fallback"]) => RouteObject)[]
+): RouteObject => ({
+  path: route,
+  element: <Suspense fallback={fallback}>{component}</Suspense>,
+  children: children?.length ? children.map(itemFn => itemFn(fallback)) : undefined
+});
+
+const createChildrenRoute = (route: AppRoute, component: JSX.Element) => (fallback: SuspenseProps["fallback"]) =>
+  createRoute(route, component, fallback);
 
 export const Routing: React.FC = () => {
   return useRoutes([
