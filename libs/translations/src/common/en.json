@@ -1,3 +1,7 @@
 {
-  "test": "common EN"
+  "test": "common EN",
+  "homepage": {
+    "newPresentationDescription": "Placeholder text for ActionCard to create new presentation on Homepage",
+    "newPresentationButton": "New presentation"
+  }
 }

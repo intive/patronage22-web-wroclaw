@@ -1,3 +1,7 @@
 {
-  "test": "common PL"
+  "test": "common PL",
+  "homepage": {
+    "newPresentationDescription": "Tymczasowy tekst komponentu ActionCard do tworzenia nowych ankiet z poziomu widoku Homepage",
+    "newPresentationButton": "Nowa ankieta"
+  }
 }

@@ -1,15 +1,13 @@
 import {
   Box as MUIBox,
   Button as MUIButton,
-  ButtonProps,
   Card as MUICard,
   CardMedia as MUICardMedia,
-  CardMediaProps,
   Typography as MUITypography
 } from "@mui/material";
 import { styled } from "@mui/system";
 
-export const Card: React.FC = styled(MUICard)(({ theme }) => ({
+export const Card = styled(MUICard)(({ theme }) => ({
   display: "flex",
   flexFlow: "column wrap",
   borderRadius: theme.spacing(1),
@@ -26,7 +24,7 @@ export const Card: React.FC = styled(MUICard)(({ theme }) => ({
   }
 }));
 
-export const Box: React.FC = styled(MUIBox)(({ theme }) => ({
+export const Box = styled(MUIBox)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-between",
@@ -36,7 +34,7 @@ export const Box: React.FC = styled(MUIBox)(({ theme }) => ({
   }
 }));
 
-export const Typography: React.FC = styled(MUITypography)(({ theme }) => ({
+export const Typography = styled(MUITypography)(({ theme }) => ({
   textAlign: "justify",
   [theme.breakpoints.up("sm")]: {
     maxWidth: theme.spacing(50)
@@ -47,7 +45,7 @@ export const Typography: React.FC = styled(MUITypography)(({ theme }) => ({
   }
 }));
 
-export const Button: React.FC<ButtonProps> = styled(MUIButton)(({ theme }) => ({
+export const Button = styled(MUIButton)(({ theme }) => ({
   height: theme.spacing(5),
   padding: theme.spacing(1, 2),
   fontSize: "1rem",
@@ -63,7 +61,7 @@ export const Button: React.FC<ButtonProps> = styled(MUIButton)(({ theme }) => ({
   }
 }));
 
-export const CardMedia: React.FC<CardMediaProps> = styled(MUICardMedia)(({ theme }) => ({
+export const CardMedia = styled(MUICardMedia)(({ theme }) => ({
   width: "100%",
   height: theme.spacing(22),
   [theme.breakpoints.up("sm")]: {

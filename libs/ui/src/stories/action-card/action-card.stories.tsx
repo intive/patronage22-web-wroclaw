@@ -1,6 +1,6 @@
 import { ActionCard, ActionCardProps } from "@patronage-web/shared";
 import { ComponentMeta } from "@storybook/react";
-import { StarsImage } from "libs/features/feedback/src/assets/stars-placeholder.png";
+import StarsImage from "libs/features/feedback/src/assets/stars-placeholder.png";
 
 export const ActionCardStory: React.FC<ActionCardProps> = ({ description, image, button }) => (
   <ActionCard description={description} image={image} button={button} />
