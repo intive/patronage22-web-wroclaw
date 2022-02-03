@@ -1,0 +1,19 @@
+name: CI linting
+
+on:
+  workflow_run:
+    workflows: ["CI build"]
+    types:
+      - completed
+
+jobs:
+  lint:
+    needs: build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    name: Linting
+    steps:
+      - name: Lint
+        run: yarn lint

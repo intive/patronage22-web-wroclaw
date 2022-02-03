@@ -1,0 +1,21 @@
+name: CI e2e testing
+
+on:
+  workflow_run:
+    workflows: ["CI Build"]
+    types:
+      - completed
+
+jobs:
+  test:
+    name: E2e testing
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - name: E2e
+        run: |
+          yarn e2e site-e2e --coverage
+          yarn e2e features-feedback-e2e --coverage
