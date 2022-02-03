@@ -30,7 +30,15 @@ jobs:
           path: node_modules
           key: node_modules-${{ hashFiles('**/yarn.lock') }}
 
+      - name: Cache Cypress Binary
+        id: cache-cypress-binary
+        uses: actions/cache@v2
+        with:
+          path: cypress/cache
+          key: cypress-binary-${{ hashFiles('**/yarn.lock') }}
+
       - name: Install dependencies
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: yarn install
 
   build:
@@ -76,7 +84,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Cache modules
+      - name: Get cached modules
         uses: actions/cache@v2
         id: yarn-cache
         with:
@@ -102,7 +110,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Cache modules
+      - name: Get cached modules
         uses: actions/cache@v2
         id: yarn-cache
         with:
@@ -131,12 +139,19 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Cache modules
+      - name: Get cached modules
         uses: actions/cache@v2
         id: yarn-cache
         with:
           path: node_modules
           key: node_modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Cache Cypress Binary
+        uses: actions/cache@v2
+        id: cache-cypress-binary
+        with:
+          path: cypress/cache
+          key: cypress-binary-${{ hashFiles('**/yarn.lock') }}
 
       - name: E2e
         run: |
