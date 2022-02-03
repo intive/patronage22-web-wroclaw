@@ -49,12 +49,6 @@ jobs:
           yarn e2e site-e2e --coverage
           yarn e2e features-feedback-e2e --coverage
 
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v2
-        with:
-          fail_ci_if_error: true
-          verbose: true
-
       - name: Run @nrwl lint check
         run: yarn lint
 
