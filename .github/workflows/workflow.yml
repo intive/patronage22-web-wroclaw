@@ -7,9 +7,9 @@ on:
     branches: [develop, master]
 
 jobs:
-  build:
+  build_and_test:
+    name: Build and test
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [16.x]
@@ -23,24 +23,26 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-    - name: Cache dependencies
-      uses: actions/cache@v2
-      with:
-        path: |
-          **/node_modules
-        key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            **/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
       - name: Install dependencies
         run: yarn install
 
       - name: Run the tests and generate coverage report
-        run: yarn test site --coverage
-        run: yarn test features-feedback --coverage
-        run: yarn test shared --coverage
+        run: |
+          yarn test site --coverage
+          yarn test features-feedback --coverage
+          yarn test shared --coverage
 
       - name: Run the e2e tests and generate coverage report
-        run: yarn e2e site-e2e --coverage
-        run: yarn e2e features-feedback-e2e --coverage
+        run: |
+          yarn e2e site-e2e --coverage
+          yarn e2e features-feedback-e2e --coverage
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
