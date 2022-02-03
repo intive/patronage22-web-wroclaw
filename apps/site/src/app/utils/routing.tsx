@@ -16,8 +16,8 @@ const createRoute = (
 const createChildrenRoute = (route: AppRoute, component: JSX.Element) => (fallback: SuspenseProps["fallback"]) =>
   createRoute(route, component, fallback);
 
-export const Routing: React.FC = () => {
-  return useRoutes([
+export const Routing: React.FC = () =>
+  useRoutes([
     createRoute(AppRoute.Home, <h1>Home page</h1>, <h1>...loading</h1>),
     createRoute(AppRoute.Dashboard, <h1>Dashboard page</h1>, <h1>...loading</h1>),
     createRoute(
@@ -35,4 +35,3 @@ export const Routing: React.FC = () => {
     ),
     createRoute(AppRoute.NotFound, <h1>You should not be here...</h1>, <h1>...loading</h1>)
   ]);
-};
