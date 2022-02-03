@@ -34,34 +34,31 @@ switch (localStorageLanguage) {
 }
 
 export const loadI18n = ({ env, ns }: I18nOptions) => {
-  i18n
-    //.use(LanguageDetector)
-    .use(initReactI18next)
-    .init({
-      lng: language,
-      fallbackLng: "en",
-      supportedLngs: [SupportedLanguage.En, SupportedLanguage.Pl],
-      load: "currentOnly",
-      debug: env === "development",
+  i18n.use(initReactI18next).init({
+    lng: language,
+    fallbackLng: "en",
+    supportedLngs: [SupportedLanguage.En, SupportedLanguage.Pl],
+    load: "currentOnly",
+    debug: env === "development",
 
-      resources: translationResources,
+    resources: translationResources,
 
-      detection: {
-        order: ["querystring", "sessionStorage", "navigator"],
-        lookupQuerystring: "lang",
-        caches: []
-      },
+    detection: {
+      order: ["querystring", "sessionStorage", "navigator"],
+      lookupQuerystring: "lang",
+      caches: []
+    },
 
-      ns,
-      fallbackNS: TranslationNamespace.Common,
+    ns,
+    fallbackNS: TranslationNamespace.Common,
 
-      react: {
-        bindI18n: "languageChanged loaded",
-        nsMode: "default"
-      },
+    react: {
+      bindI18n: "languageChanged loaded",
+      nsMode: "default"
+    },
 
-      interpolation: {
-        escapeValue: false
-      }
-    });
+    interpolation: {
+      escapeValue: false
+    }
+  });
 };

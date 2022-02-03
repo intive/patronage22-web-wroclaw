@@ -7,7 +7,7 @@ import { SupportedLanguage } from "@patronage-web/shared";
 export function ChangeLanguage() {
   const { t, i18n } = useTranslation();
 
-  const checkLocalStorage = () => {
+  const checkStoredLanguage = () => {
     const lang = localStorage.getItem("language");
     if (lang === SupportedLanguage.Pl) {
       return SupportedLanguage.En;
@@ -16,7 +16,7 @@ export function ChangeLanguage() {
     }
   };
 
-  const [language, setLanguage] = useState<string>(checkLocalStorage);
+  const [language, setLanguage] = useState<string>(checkStoredLanguage);
 
   const changeLanguage = () => {
     i18n.changeLanguage(language);
