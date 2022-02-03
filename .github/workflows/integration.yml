@@ -1,4 +1,4 @@
-name: CI Build
+name: Project Pipeline
 
 on:
   push:
@@ -40,3 +40,41 @@ jobs:
 
       - name: Run @nrwl build check
         run: yarn build
+
+  lint:
+    needs: build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    name: Linting
+    steps:
+      - name: Lint
+        run: yarn lint
+
+  test:
+    needs: lint
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    name: Testing
+    steps:
+      - name: Unit tests
+        run: |
+          yarn test site --coverage
+          yarn test features-feedback --coverage
+          yarn test shared --coverage
+
+  e2e:
+    needs: lint
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    name: E2e testing
+    steps:
+      - name: E2e
+        run: |
+          yarn e2e site-e2e --coverage
+          yarn e2e features-feedback-e2e --coverage
