@@ -1,2 +1,2 @@
-export * from "./ThemeSelectorButton";
-export * from "./ThemeSelectorProvider";
+export * from "./theme-selector";
+export * from "./theme-provider";

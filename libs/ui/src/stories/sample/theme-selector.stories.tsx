@@ -7,7 +7,6 @@ export default {
   component: ThemeSelectorProvider
 } as ComponentMeta<typeof ThemeSelectorProvider>;
 
-// const Template: ComponentStory<typeof ThemeSelectorButton> = () => <ThemeSelectorButton />;
 const ThemeSelectorTemplate = () => {
   return (
     <ThemeSelectorProvider>
