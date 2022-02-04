@@ -1,11 +1,16 @@
-import { Box } from "@mui/material";
+import "./i18n";
+
 import { StrictMode } from "react";
 import * as ReactDOM from "react-dom";
-import "./i18n";
+import { BrowserRouter } from "react-router-dom";
+
+import { Routing } from "./app";
 
 ReactDOM.render(
   <StrictMode>
-    <Box>Patronage App</Box>
+    <BrowserRouter>
+      <Routing />
+    </BrowserRouter>
   </StrictMode>,
   document.getElementById("root")
 );
