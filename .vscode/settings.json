@@ -37,5 +37,5 @@
     }
   },
   "eslint.packageManager": "yarn",
-  "cSpell.words": ["musn't", "patronage", "intive"]
+  "cSpell.words": ["intive", "musn't", "patronage", "vercel"]
 }
