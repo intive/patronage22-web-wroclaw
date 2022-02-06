@@ -1,5 +1,5 @@
 import { StarsImage } from "@patronage-web/features-feedback";
-import { ActionCard, TranslationNamespace } from "@patronage-web/shared";
+import { ActionCard, AppRoute, TranslationNamespace } from "@patronage-web/shared";
 import { useTranslation } from "react-i18next";
 
 import * as Styled from "./styled";
@@ -12,7 +12,7 @@ export const Homepage: React.FC = () => {
       <ActionCard
         description={t("homepage.newPresentationDescription")}
         image={StarsImage}
-        button={{ variant: "contained", text: t("homepage.newPresentationButton") }}
+        button={{ variant: "contained", text: t("homepage.newPresentationButton"), linkTo: AppRoute.AddPresentation }}
       />
     </Styled.Box>
   );
