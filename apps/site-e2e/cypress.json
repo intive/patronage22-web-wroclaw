@@ -1,17 +1,17 @@
 {
-  "projectId": "site-e2e",
+  "baseUrl": "http://localhost:4000",
+  "chromeWebSecurity": true,
   "fileServerFolder": ".",
   "fixturesFolder": "./src/fixtures",
   "integrationFolder": "./src/integration",
   "modifyObstructiveCode": false,
-  "supportFile": "./src/support/index.ts",
+  "numTestsKeptInMemory": 0,
   "pluginsFile": "../../tools/cypress/plugins",
+  "projectId": "site-e2e",
+  "retries": 2,
+  "screenshotsFolder": "../../dist/cypress/apps/site-e2e/screenshots",
+  "supportFile": "./src/support/index.ts",
   "video": true,
   "videosFolder": "../../dist/cypress/apps/site-e2e/videos",
-  "screenshotsFolder": "../../dist/cypress/apps/site-e2e/screenshots",
-  "chromeWebSecurity": true,
-  "retries": 2,
-  "viewportWidth": 1440,
-  "numTestsKeptInMemory": 0,
-  "baseUrl": "http://localhost:4000"
+  "viewportWidth": 1440
 }
