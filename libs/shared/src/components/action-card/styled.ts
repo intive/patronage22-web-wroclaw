@@ -5,7 +5,7 @@ import {
   CardMedia as MUICardMedia,
   Typography as MUITypography
 } from "@mui/material";
-import { styled } from "@mui/system";
+import { styled } from "@mui/material/styles";
 
 export const Card = styled(MUICard)(({ theme }) => ({
   display: "flex",

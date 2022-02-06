@@ -1,5 +1,5 @@
+import { StarsImage } from "@patronage-web/features-feedback";
 import { ActionCard, TranslationNamespace } from "@patronage-web/shared";
-import StarsImage from "libs/features/feedback/src/assets/stars-placeholder.png";
 import { useTranslation } from "react-i18next";
 
 import * as Styled from "./styled";
