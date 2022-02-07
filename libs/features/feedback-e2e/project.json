@@ -1,28 +1,29 @@
 {
+  "implicitDependencies": ["site"],
+  "projectType": "e2e",
   "root": "libs/features/feedback-e2e",
   "sourceRoot": "libs/features/feedback-e2e/src",
-  "projectType": "application",
+  "tags": ["scope:site"],
   "targets": {
     "e2e": {
+      "configurations": {
+        "production": {
+          "devServerTarget": "site:serve:production"
+        }
+      },
       "executor": "@nrwl/cypress:cypress",
       "options": {
         "cypressConfig": "libs/features/feedback-e2e/cypress.json",
-        "devServerTarget": "features-feedback:serve"
+        "devServerTarget": "site:serve"
       },
-      "configurations": {
-        "production": {
-          "devServerTarget": "features-feedback:serve:production"
-        }
-      }
+      "outputs": ["cypress-results/feedback-e2e"]
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["libs/features/feedback-e2e/**/*.{js,ts}"]
-      }
+      },
+      "outputs": ["{options.outputFile}"]
     }
-  },
-  "tags": [],
-  "implicitDependencies": ["features-feedback"]
+  }
 }

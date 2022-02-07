@@ -1,6 +1,6 @@
 {
   "name": "patronage-web",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "author": "Intive",
   "keywords": [
@@ -63,6 +63,7 @@
     "@mui/icons-material": "^5.2.5",
     "@mui/material": "^5.2.6",
     "@storybook/react": "^6.4.14",
+    "@types/uuid": "^8.3.4",
     "axios": "^0.24.0",
     "browserslist": "^4.19.1",
     "commitizen": "^4.2.4",
@@ -78,7 +79,8 @@
     "regenerator-runtime": "0.13.7",
     "standard-version": "^9.3.2",
     "styled-components": "5.3.3",
-    "tslib": "^2.0.0"
+    "tslib": "^2.0.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@babel/core": "7.12.13",
