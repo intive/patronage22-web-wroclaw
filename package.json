@@ -61,7 +61,6 @@
     "@emotion/react": "^11.7.1",
     "@mui/icons-material": "^5.2.5",
     "@mui/material": "^5.2.6",
-    "@mui/system": "^5.4.0",
     "@storybook/react": "^6.4.14",
     "@types/uuid": "^8.3.4",
     "axios": "^0.24.0",

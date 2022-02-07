@@ -1,5 +1,5 @@
 import { AppBar as MUIAppBar, Toolbar as MUIToolbar } from "@mui/material";
-import { styled } from "@mui/system";
+import { styled } from "@mui/material/styles";
 
 export const AppBar = styled(MUIAppBar)({
   flexDirection: "row",
@@ -7,27 +7,26 @@ export const AppBar = styled(MUIAppBar)({
   justifyContent: "center"
 });
 
-export const Toolbar = styled(MUIToolbar)({
+export const Toolbar = styled(MUIToolbar)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   alignContent: "space-evenly",
   flexWrap: "wrap",
   justifyContent: "space-between",
   width: "100%",
-  maxWidth: "1536px",
-  margin: "5px 0"
-});
+  maxWidth: theme.spacing(192),
+  margin: theme.spacing(1, 0)
+}));
 
 export const SectionContainer = styled("div")({
   display: "flex"
 });
 
-export const SectionItem = styled("div")({
+export const SectionItem = styled("div")(({ theme }) => ({
   width: "100%",
-  margin: "0 7px",
+  margin: theme.spacing(0, 1),
 
-  // TODO when theme config will be applied - replace with theme breakpoints
-  "@media (min-width: 900px)": {
-    margin: "0 12px"
+  [theme.breakpoints.up("md")]: {
+    margin: theme.spacing(0, 1.5)
   }
-});
+}));
