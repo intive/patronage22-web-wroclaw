@@ -1,6 +1,6 @@
 export enum SupportedLanguage {
-  Pl = "pl",
-  En = "en"
+  En = "en",
+  Pl = "pl"
 }
 
 export enum TranslationNamespace {
