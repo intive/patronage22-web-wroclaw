@@ -10,17 +10,16 @@ export interface ActionCardProps {
 }
 
 export const ActionCard: React.FC<ActionCardProps> = ({ image, description, button }: ActionCardProps) => (
-  <Styled.Card>
+  <Styled.ActionCard>
     {image && <Styled.CardMedia image={image} />}
-
-    <Styled.Box>
-      <Styled.Typography>{description}</Styled.Typography>
+    <Styled.CardActionBox>
+      <Styled.CardActionDescription>{description}</Styled.CardActionDescription>
       {/* TODO - replace href with Link component after P2022-685 is ready */}
       {button && (
-        <Styled.Button variant={button.variant} href={button.navigateTo}>
+        <Styled.CardActionButton variant={button.variant} href={button.navigateTo}>
           {button.text}
-        </Styled.Button>
+        </Styled.CardActionButton>
       )}
-    </Styled.Box>
-  </Styled.Card>
+    </Styled.CardActionBox>
+  </Styled.ActionCard>
 );
