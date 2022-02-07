@@ -1,12 +1,12 @@
 import { ButtonProps } from "@mui/material";
 
-import { AppRoute } from "../../types";
+import { LocalizedLink, LocalizedLinkProps } from "../localized-link";
 import * as Styled from "./styled";
 
 export interface ActionCardProps {
   image?: string;
   description: string;
-  button?: { variant: ButtonProps["variant"]; text: string; navigateTo: AppRoute };
+  button?: { variant: ButtonProps["variant"]; text: string; navigateTo: LocalizedLinkProps["to"] };
 }
 
 export const ActionCard: React.FC<ActionCardProps> = ({ image, description, button }: ActionCardProps) => (
@@ -14,11 +14,10 @@ export const ActionCard: React.FC<ActionCardProps> = ({ image, description, butt
     {image && <Styled.CardMedia image={image} />}
     <Styled.CardActionBox>
       <Styled.CardActionDescription>{description}</Styled.CardActionDescription>
-      {/* TODO - replace href with Link component after P2022-685 is ready */}
       {button && (
-        <Styled.CardActionButton variant={button.variant} href={button.navigateTo}>
-          {button.text}
-        </Styled.CardActionButton>
+        <LocalizedLink to={button.navigateTo}>
+          <Styled.CardActionButton variant={button.variant}>{button.text}</Styled.CardActionButton>
+        </LocalizedLink>
       )}
     </Styled.CardActionBox>
   </Styled.ActionCard>

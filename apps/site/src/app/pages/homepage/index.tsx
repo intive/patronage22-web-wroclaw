@@ -12,7 +12,11 @@ export const Homepage: React.FC = () => {
       <ActionCard
         description={t("homepage.newPresentationDescription")}
         image={StarsImage}
-        button={{ variant: "contained", text: t("homepage.newPresentationButton"), navigateTo: AppRoute.AddPresentation }}
+        button={{
+          variant: "contained",
+          text: t("homepage.newPresentationButton"),
+          navigateTo: [AppRoute.Presentation, AppRoute.AddPresentation]
+        }}
       />
     </Styled.Box>
   );

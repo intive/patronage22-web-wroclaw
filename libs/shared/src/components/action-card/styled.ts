@@ -32,6 +32,15 @@ export const CardActionBox = styled(MUIBox)(({ theme }) => ({
   justifyContent: "space-between",
   padding: theme.spacing(2, 1),
 
+  a: {
+    alignSelf: "center",
+    textDecoration: "none",
+
+    [theme.breakpoints.up("sm")]: {
+      alignSelf: "flex-end"
+    }
+  },
+
   [theme.breakpoints.up("sm")]: {
     padding: theme.spacing(3, 5)
   }
@@ -63,7 +72,6 @@ export const CardActionButton = styled(MUIButton)(({ theme }) => ({
   "&:hover": { backgroundColor: "black" },
 
   [theme.breakpoints.up("sm")]: {
-    alignSelf: "flex-end",
     marginTop: 0
   }
 }));
