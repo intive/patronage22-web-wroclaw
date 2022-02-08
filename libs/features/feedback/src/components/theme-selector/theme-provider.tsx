@@ -10,7 +10,7 @@ type ThemeProviderProps = {
 };
 
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
-  const [mode, setMode] = useState(ThemeMode.light);
+  const [mode, setMode] = useState<ThemeMode | undefined>();
   const themeMode = useMemo(
     () => ({
       toggleColorMode: () => {
@@ -23,19 +23,17 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   );
 
   const theme = mode === ThemeMode.dark ? dark : light;
-  const [mountedComponent, setMountedComponent] = useState(false);
 
   useEffect(() => {
     const localMode = window.localStorage.getItem("theme");
     setMode(localMode === ThemeMode.dark ? ThemeMode.dark : ThemeMode.light);
-    setMountedComponent(true);
   }, []);
 
   return (
     <ThemeModeContext.Provider value={themeMode}>
       <MuiThemeProvider theme={theme}>
         <CssBaseline />
-        {mountedComponent ? children : <div />}
+        {mode && children}
       </MuiThemeProvider>
     </ThemeModeContext.Provider>
   );
