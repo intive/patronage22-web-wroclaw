@@ -1,21 +1,21 @@
 import { Box, Button, Checkbox } from "@mui/material";
-import { ThemeSelectorButton, ThemeSelectorProvider } from "@patronage-web/features-feedback";
+import { ThemeProvider, ThemeSelector } from "@patronage-web/features-feedback";
 import { ComponentMeta } from "@storybook/react";
 
 export default {
   title: "ThemeSelector",
-  component: ThemeSelectorProvider
-} as ComponentMeta<typeof ThemeSelectorProvider>;
+  component: ThemeProvider
+} as ComponentMeta<typeof ThemeProvider>;
 
 const ThemeSelectorTemplate = () => {
   return (
-    <ThemeSelectorProvider>
+    <ThemeProvider>
       <Box>
-        <ThemeSelectorButton />
+        <ThemeSelector />
         <Checkbox />
         <Button variant='contained'>Demo</Button>
       </Box>
-    </ThemeSelectorProvider>
+    </ThemeProvider>
   );
 };
 
