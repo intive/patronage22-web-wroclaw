@@ -1,5 +1,5 @@
 import { ImageOutlined as MUIImageOutlinedIcon, NavigateNext as MUINavigateNextIcon } from "@mui/icons-material";
-import { Typography as MUITypography } from "@mui/material";
+import { Box as MUIBox, Typography as MUITypography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 // TODO when theme config will be applied - replace with theme color, weight, size
@@ -20,7 +20,7 @@ export const BasicLogo = styled(MUIImageOutlinedIcon)({
   fontSize: "1.875rem"
 });
 
-export const AlignedCenterWrapper = styled("div")({
+export const AlignedCenterWrapper = styled(MUIBox)({
   display: "flex",
   alignItems: "center"
 });
