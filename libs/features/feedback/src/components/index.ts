@@ -1,2 +1,2 @@
 export * from "./sample";
-export * from "./change-language-button";
+export * from "./language-button";
