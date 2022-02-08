@@ -1,5 +1,5 @@
 import { Box, Button, Checkbox } from "@mui/material";
-import { ThemeProvider, ThemeSelector } from "@patronage-web/features-feedback";
+import { ThemeProvider, ThemeSelector } from "@patronage-web/shared";
 import { ComponentMeta } from "@storybook/react";
 
 export default {
