@@ -1,8 +1,9 @@
-import { AppRoute } from "@patronage-web/shared";
 import { useTranslation } from "react-i18next";
 import { generatePath, Link, Params } from "react-router-dom";
 
-interface LocalizedLinkProps {
+import { AppRoute } from "../../types";
+
+export interface LocalizedLinkProps {
   to: AppRoute | AppRoute[];
   routerParams?: Params;
 }
