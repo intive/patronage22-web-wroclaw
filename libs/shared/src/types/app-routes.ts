@@ -7,3 +7,12 @@ export enum AppRoute {
   PresentationForExternalUser = ":id",
   NotFound = "*"
 }
+
+export enum PagePath {
+  Home = "home",
+  Presentation = "presentation",
+  AddPresentation = "add-presentation",
+  EditPresentation = "edit-presentation",
+  PresentationForExternalUser = "external-user-presentation",
+  Dashboard = "dashboard"
+}
