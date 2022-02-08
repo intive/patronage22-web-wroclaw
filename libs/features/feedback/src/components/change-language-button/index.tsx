@@ -1,4 +1,3 @@
-import React from "react";
 import { SupportedLanguage } from "@patronage-web/shared";
 import { changeLanguage } from "@patronage-web/shared";
 import { useState } from "react";
@@ -7,7 +6,7 @@ import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 
 export const ChangeLanguageButton = () => {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
 
   const [selectedLanguage, setSelectedLanguage] = useState<string>(i18n.language);
 
