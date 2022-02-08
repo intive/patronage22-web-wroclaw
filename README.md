@@ -83,6 +83,7 @@ Project is **_in progress_ **
 - Each component should has own folder, inside should be 'index' with component inside or export if more files than 1
 - If it comes to variables and functions names: https://github.com/airbnb/javascript#naming-conventions
   - Variable names should be descriptive. Reader should know meaning based on read.
+  - For actions that are passed as props use 'onSomeName' and for functions that defines actions inside components use 'handleSomeName'.
   - Methods names - please use verbs - ex. "getAllHeaders"
   - Variables names:
     - For boolean variables please question-like names - ex. "hasProperValue", "shouldContainValue", "isProperElement"
@@ -107,6 +108,22 @@ Project is **_in progress_ **
 - We use styled components (https://mui.com/pt/system/styled/)
 - We use [_css-in-js_](https://cssinjs.org/?v=v10.9.0)
 - We keep styles definitions in separate files within component folder
+- Naming convention - styled components should have names relevant to intended use and have prefix which determines type of the styled component.
+
+  Sample:
+
+  - OutlinedButton
+  - ContainedButton
+
+- Importing - import styled components implicitly:
+
+  Sample:
+
+  import \* as Styled from "./style.ts"
+
+  Usage:
+
+  <Styled.OutlinedButton>...</Styled.OutlinedButton>
 
 ======================================================
 
