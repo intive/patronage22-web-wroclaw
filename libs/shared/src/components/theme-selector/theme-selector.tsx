@@ -11,12 +11,15 @@ const THEME_ICONS: Record<ThemeMode, JSX.Element> = {
 };
 
 export const ThemeSelector = () => {
-  const theme = useTheme();
+  const {
+    palette: { mode }
+  } = useTheme();
+
   const { toggleColorMode } = useThemeContext();
 
   return (
     <IconButton onClick={() => toggleColorMode()} color='inherit'>
-      {THEME_ICONS[theme.palette.mode]}
+      {THEME_ICONS[mode]}
     </IconButton>
   );
 };

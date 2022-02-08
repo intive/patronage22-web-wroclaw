@@ -1,6 +1,6 @@
 import "./i18n";
 
-import { ThemeProvider } from "@patronage-web/features-feedback";
+import { ThemeProvider } from "@patronage-web/shared";
 import { StrictMode } from "react";
 import * as ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
