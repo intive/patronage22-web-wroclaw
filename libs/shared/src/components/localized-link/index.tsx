@@ -1,17 +1,20 @@
 import { useTranslation } from "react-i18next";
-import { generatePath, Link, Params } from "react-router-dom";
+import { Link, Params } from "react-router-dom";
 
-import { AppRoute } from "../../types";
+import { PAGE_PATHS } from "../../constants";
+import { PagePath } from "../../types";
+import { createPath } from "../../utils";
 
 export interface LocalizedLinkProps {
-  to: AppRoute | AppRoute[];
+  to: PagePath;
   routerParams?: Params;
 }
 
 export const LocalizedLink: React.FC<LocalizedLinkProps> = ({ to, children, routerParams }) => {
   const { i18n } = useTranslation();
-  const generateLocalizedPath = () =>
-    `${generatePath(`${to instanceof Array ? to.join("/") : to}`, routerParams)}?lang=${i18n.language}`;
 
-  return <Link to={generateLocalizedPath()}>{children}</Link>;
+  const path = PAGE_PATHS[to];
+  const localizedPath = createPath(path, routerParams, i18n.language);
+
+  return <Link to={localizedPath}>{children}</Link>;
 };
