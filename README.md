@@ -104,7 +104,8 @@ Project is **_in progress_ **
 
 ### Styling
 
-- We use styled components
+- We use styled components (https://mui.com/pt/system/styled/)
+- We use [_css-in-js_](https://cssinjs.org/?v=v10.9.0)
 - We keep styles definitions in separate files within component folder
 - Naming convention - styled components should have names relevant to intended use and have prefix which determines type of the styled component.
 
