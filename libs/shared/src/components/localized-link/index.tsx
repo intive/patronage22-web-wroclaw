@@ -1,7 +1,8 @@
 import { useTranslation } from "react-i18next";
 import { Link, Params } from "react-router-dom";
 
-import { PAGE_PATHS, PagePath } from "../../types";
+import { PAGE_PATHS } from "../../constants";
+import { PagePath } from "../../types";
 import { createPath } from "../../utils";
 
 interface LocalizedLinkProps {
