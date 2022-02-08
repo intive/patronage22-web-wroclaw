@@ -5,7 +5,7 @@ import { PAGE_PATHS } from "../../constants";
 import { PagePath } from "../../types";
 import { createPath } from "../../utils";
 
-interface LocalizedLinkProps {
+export interface LocalizedLinkProps {
   to: PagePath;
   routerParams?: Params;
 }
