@@ -18,13 +18,8 @@ const translationResources = {
   }
 };
 
-const localStorageLanguage = localStorage.getItem("language");
-const savedLanguage = Object.values(SupportedLanguage).filter(lang => lang === localStorageLanguage);
-export const language = savedLanguage[0];
-
 export const loadI18n = ({ env, ns }: I18nOptions) => {
   i18n.use(initReactI18next).init({
-    lng: language,
     fallbackLng: "en",
     supportedLngs: [SupportedLanguage.En, SupportedLanguage.Pl],
     load: "currentOnly",
