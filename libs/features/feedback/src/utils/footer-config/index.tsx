@@ -1,10 +1,12 @@
 // TODO elements should be replaced with components (LanguageSelector, CompanyInfo) when will be ready
 
+import { Box } from "@mui/material";
+
 export const footerConfig = {
   start: {
-    elements: [<div>LanguageSelector</div>]
+    elements: [<Box>LanguageSelector</Box>]
   },
   end: {
-    elements: [<div>CompanyInfo</div>]
+    elements: [<Box>CompanyInfo</Box>]
   }
 };

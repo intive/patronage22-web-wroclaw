@@ -1,24 +1,23 @@
 /* eslint-disable react/no-array-index-key */
 
-import { FooterProps, FooterSectionPosition } from "../../types";
 import * as Styled from "./style";
 
-export const Footer: React.FC<FooterProps> = ({ config, color = "primary" }) => {
-  const footerSectionElements = Object.values(FooterSectionPosition).map(section => {
+export const Footer: React.FC<Styled.FooterProps> = ({ config, color = "primary" }) => {
+  const footerSectionElements = Object.values(Styled.FooterSectionPosition).map(section => {
     const sectionItem = config[section];
 
     return (
-      <Styled.SectionContainer key={`section-${section}`} sx={sectionItem?.customStyles}>
+      <Styled.FooterSectionContainer key={`section-${section}`} sx={sectionItem?.customStyles}>
         {sectionItem?.elements.map((element, elementIndex) => (
-          <Styled.SectionItem key={`element-${elementIndex}`}> {element}</Styled.SectionItem>
+          <Styled.FooterSectionItem key={`element-${elementIndex}`}> {element}</Styled.FooterSectionItem>
         ))}
-      </Styled.SectionContainer>
+      </Styled.FooterSectionContainer>
     );
   });
 
   return (
-    <Styled.AppBar color={color}>
-      <Styled.Toolbar>{footerSectionElements}</Styled.Toolbar>
-    </Styled.AppBar>
+    <Styled.FooterAppBar color={color}>
+      <Styled.FooterToolbar>{footerSectionElements}</Styled.FooterToolbar>
+    </Styled.FooterAppBar>
   );
 };

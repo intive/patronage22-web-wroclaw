@@ -1,15 +1,30 @@
-import { AppBar as MUIAppBar, Toolbar as MUIToolbar } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import { AppBar, AppBarTypeMap, Box, Toolbar } from "@mui/material";
+import { styled, SxProps } from "@mui/material/styles";
 
-export const AppBar = styled(MUIAppBar)({
+export interface FooterSection {
+  customStyles?: SxProps;
+  elements: JSX.Element[];
+}
+
+export enum FooterSectionPosition {
+  Start = "start",
+  End = "end"
+}
+
+export interface FooterProps {
+  color?: AppBarTypeMap["props"]["color"];
+  config: Partial<Record<FooterSectionPosition, FooterSection>>;
+}
+
+export const FooterAppBar = styled(AppBar)({
   flexDirection: "column",
-  bottom: "0",
+  bottom: 0,
   top: "auto",
   alignItems: "center",
   justifyContent: "center"
 });
 
-export const Toolbar = styled(MUIToolbar)(({ theme }) => ({
+export const FooterToolbar = styled(Toolbar)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   alignContent: "space-evenly",
@@ -21,11 +36,11 @@ export const Toolbar = styled(MUIToolbar)(({ theme }) => ({
   marginTop: "auto"
 }));
 
-export const SectionContainer = styled("div")({
+export const FooterSectionContainer = styled(Box)({
   display: "flex"
 });
 
-export const SectionItem = styled("div")(({ theme }) => ({
+export const FooterSectionItem = styled(Box)(({ theme }) => ({
   width: "100%",
   margin: theme.spacing(0, 1),
 
