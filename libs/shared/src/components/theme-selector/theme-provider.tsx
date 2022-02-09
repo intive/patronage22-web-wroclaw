@@ -1,6 +1,6 @@
 import { CssBaseline } from "@mui/material";
 import { ThemeProvider as MuiThemeProvider } from "@mui/material/styles";
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, useContext, useMemo, useState } from "react";
 
 import { ThemeMode } from "../../types";
 import { dark, light } from "../../utils";
@@ -10,7 +10,10 @@ const ThemeModeContext = createContext({ toggleColorMode: () => {} });
 export const useThemeContext = () => useContext(ThemeModeContext);
 
 export const ThemeProvider: React.FC = ({ children }) => {
-  const [mode, setMode] = useState<ThemeMode | undefined>();
+  const localStorageThemeValue = window.localStorage.getItem("theme");
+
+  const [mode, setMode] = useState(localStorageThemeValue ?? ThemeMode.Light);
+
   const themeMode = useMemo(
     () => ({
       toggleColorMode: () => {
@@ -24,16 +27,11 @@ export const ThemeProvider: React.FC = ({ children }) => {
 
   const theme = mode === ThemeMode.Dark ? dark : light;
 
-  useEffect(() => {
-    const localMode = window.localStorage.getItem("theme");
-    setMode(localMode === ThemeMode.Dark ? ThemeMode.Dark : ThemeMode.Light);
-  }, []);
-
   return (
     <ThemeModeContext.Provider value={themeMode}>
       <MuiThemeProvider theme={theme}>
         <CssBaseline />
-        {mode && children}
+        {children}
       </MuiThemeProvider>
     </ThemeModeContext.Provider>
   );

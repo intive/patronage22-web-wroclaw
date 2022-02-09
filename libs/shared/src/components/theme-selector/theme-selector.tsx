@@ -18,7 +18,7 @@ export const ThemeSelector = () => {
   const { toggleColorMode } = useThemeContext();
 
   return (
-    <IconButton onClick={() => toggleColorMode()} color='inherit'>
+    <IconButton onClick={toggleColorMode} color='inherit'>
       {THEME_ICONS[mode]}
     </IconButton>
   );
