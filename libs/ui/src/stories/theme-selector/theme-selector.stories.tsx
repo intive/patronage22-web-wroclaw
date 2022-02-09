@@ -1,5 +1,5 @@
-import { Box, Button, Checkbox } from "@mui/material";
-import { ThemeProvider, ThemeSelector } from "@patronage-web/shared";
+import { Box, Button, useTheme } from "@mui/material";
+import { ThemeMode, ThemeProvider, ThemeSelector } from "@patronage-web/shared";
 import { ComponentMeta } from "@storybook/react";
 
 export default {
@@ -8,14 +8,17 @@ export default {
 } as ComponentMeta<typeof ThemeProvider>;
 
 const ThemeSelectorTemplate = () => {
+  const {
+    palette: { mode }
+  } = useTheme();
+
+  const buttonVariant = mode === ThemeMode.Dark ? "contained" : "text";
+
   return (
-    <ThemeProvider>
-      <Box>
-        <ThemeSelector />
-        <Checkbox />
-        <Button variant='contained'>Demo</Button>
-      </Box>
-    </ThemeProvider>
+    <Box>
+      <ThemeSelector />
+      <Button variant={buttonVariant}>Lorem ipsum</Button>
+    </Box>
   );
 };
 
