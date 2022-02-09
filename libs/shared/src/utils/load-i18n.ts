@@ -31,7 +31,7 @@ export const loadI18n = ({ env, ns }: I18nOptions) => {
       resources: translationResources,
 
       detection: {
-        order: ["querystring", "localStorage"],
+        order: ["querystring", "localStorage", "navigator"],
         lookupQuerystring: "lang",
         lookupLocalStorage: "language",
         caches: []
