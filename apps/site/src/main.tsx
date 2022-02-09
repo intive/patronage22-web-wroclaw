@@ -1,5 +1,6 @@
 import "./i18n";
 
+import { ThemeProvider } from "@patronage-web/shared";
 import { StrictMode } from "react";
 import * as ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
@@ -11,6 +12,11 @@ ReactDOM.render(
     <BrowserRouter>
       <Routing />
     </BrowserRouter>
+    <ThemeProvider>
+      <BrowserRouter>
+        <Routing />
+      </BrowserRouter>
+    </ThemeProvider>
   </StrictMode>,
   document.getElementById("root")
 );

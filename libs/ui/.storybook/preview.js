@@ -1,3 +1,4 @@
+import { ThemeProvider } from "@patronage-web/shared";
 import { MemoryRouter } from "react-router-dom";
 
 export const decorators = [
@@ -5,5 +6,10 @@ export const decorators = [
     <MemoryRouter>
       <Story />
     </MemoryRouter>
+  ),
+  Story => (
+    <ThemeProvider>
+      <Story />
+    </ThemeProvider>
   )
 ];
