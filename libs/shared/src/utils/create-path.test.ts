@@ -40,16 +40,15 @@ const routesConfig: RoutesConfigProps[] = [
 
 describe("createPath generation test", () => {
   routesConfig.forEach(config => {
-    Object.values(SupportedLanguage)
-      .filter(lang => lang !== SupportedLanguage.En)
-      .forEach(lang => {
-        it(`should generate proper link for language ${lang}`, () => {
-          expect(createPath(PAGE_PATHS[config.targetPage], config.routeParams, lang)).toBe(`${config.targetPath}?lang=${lang}`);
-        });
-
-        it(`should generate proper link for default language`, () => {
-          expect(createPath(PAGE_PATHS[config.targetPage], config.routeParams)).toBe(`${config.targetPath}`);
-        });
+    Object.values(SupportedLanguage).forEach(lang => {
+      const langPath = lang === SupportedLanguage.En ? "" : `?lang=${lang}`;
+      it(`should generate proper link for language ${lang}`, () => {
+        expect(createPath(PAGE_PATHS[config.targetPage], config.routeParams, lang)).toBe(`${config.targetPath}${langPath}`);
       });
+
+      it(`should generate proper link for default language`, () => {
+        expect(createPath(PAGE_PATHS[config.targetPage], config.routeParams)).toBe(`${config.targetPath}`);
+      });
+    });
   });
 });
