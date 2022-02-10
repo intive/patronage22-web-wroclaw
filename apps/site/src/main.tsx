@@ -9,9 +9,6 @@ import { Routing } from "./app";
 
 ReactDOM.render(
   <StrictMode>
-    <BrowserRouter>
-      <Routing />
-    </BrowserRouter>
     <ThemeProvider>
       <BrowserRouter>
         <Routing />
