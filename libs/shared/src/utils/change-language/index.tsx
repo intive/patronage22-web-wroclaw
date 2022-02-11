@@ -1,7 +1,6 @@
 import { SupportedLanguage } from "@patronage-web/shared";
-import i18next from "i18next";
 
-export const changeLanguage = (lang: SupportedLanguage) => {
-  i18next.changeLanguage(lang);
+export const changeLanguage = (changeLanguageFunc: (lang: SupportedLanguage) => void, lang: SupportedLanguage) => {
+  changeLanguageFunc(lang);
   localStorage.setItem("language", lang);
 };

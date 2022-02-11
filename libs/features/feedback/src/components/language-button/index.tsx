@@ -17,7 +17,7 @@ export const LanguageButton = () => {
   return (
     <ToggleButtonGroup color='primary' size='small' value={i18n.language} exclusive>
       {Object.values(SupportedLanguage).map(language => (
-        <ToggleButton key={language} value={language} onClick={() => changeLanguage(language)}>
+        <ToggleButton key={language} value={language} onClick={() => changeLanguage(i18n.changeLanguage, language)}>
           {language}
         </ToggleButton>
       ))}
