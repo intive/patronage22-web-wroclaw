@@ -1,6 +1,16 @@
 import { AppRoute, Loader } from "@patronage-web/shared";
-import React, { Suspense, SuspenseProps } from "react";
+import { lazy, Suspense, SuspenseProps } from "react";
 import { Outlet, RouteObject, useRoutes } from "react-router-dom";
+
+const Homepage = lazy(() => import("../pages").then(module => ({ default: module.Homepage })));
+const Dashboard = lazy(() => import("../pages").then(module => ({ default: module.Dashboard })));
+const PresentationPage = lazy(() => import("../pages").then(module => ({ default: module.PresentationPage })));
+const AddPresentationPage = lazy(() => import("../pages").then(module => ({ default: module.AddPresentationPage })));
+const EditPresentationPage = lazy(() => import("../pages").then(module => ({ default: module.EditPresentationPage })));
+const PresentationForExternalUserPage = lazy(() =>
+  import("../pages").then(module => ({ default: module.PresentationForExternalUserPage }))
+);
+const NotFoundPage = lazy(() => import("../pages").then(module => ({ default: module.NotFoundPage })));
 
 const createRoute = (
   route: AppRoute,
@@ -18,20 +28,20 @@ const createChildrenRoute = (route: AppRoute, component: JSX.Element) => (fallba
 
 export const Routing: React.FC = () =>
   useRoutes([
-    createRoute(AppRoute.Home, <h1>Home page</h1>, <Loader />),
-    createRoute(AppRoute.Dashboard, <h1>Dashboard page</h1>, <Loader />),
+    createRoute(AppRoute.Home, <Homepage />, <Loader />),
+    createRoute(AppRoute.Dashboard, <Dashboard />, <Loader />),
     createRoute(
       AppRoute.Presentation,
       <>
-        <h1>Presentation page</h1>
+        <PresentationPage />
         <Outlet />
       </>,
       <Loader />,
       [
-        createChildrenRoute(AppRoute.AddPresentation, <h1>Add presentation page</h1>),
-        createChildrenRoute(AppRoute.EditPresentation, <h1>Edit presentation page</h1>),
-        createChildrenRoute(AppRoute.PresentationForExternalUser, <h1>Page for external user</h1>)
+        createChildrenRoute(AppRoute.AddPresentation, <AddPresentationPage />),
+        createChildrenRoute(AppRoute.EditPresentation, <EditPresentationPage />),
+        createChildrenRoute(AppRoute.PresentationForExternalUser, <PresentationForExternalUserPage />)
       ]
     ),
-    createRoute(AppRoute.NotFound, <h1>You should not be here...</h1>, <h1>...loading</h1>)
+    createRoute(AppRoute.NotFound, <NotFoundPage />, <Loader />)
   ]);
