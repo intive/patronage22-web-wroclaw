@@ -1,64 +1,100 @@
+import { ErrorMessage } from "@hookform/error-message";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Button, Input, TextField } from "@mui/material";
-import React, { useState } from "react";
+import { Button, ButtonGroup, Input, TextField } from "@mui/material";
+import { TranslationNamespace } from "@patronage-web/shared";
+import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import * as yup from "yup";
 
 import * as Styled from "./styled";
 
+interface FormValues {
+  title: string;
+  description: string;
+}
+
 export const TitleAndDescriptionForm: React.FC = () => {
-  const [formDisabled, setFormDisabled] = useState<boolean>(true);
+  const { t } = useTranslation(TranslationNamespace.Feedback);
+
+  const [isFormDisabled, setIsFormDisabled] = useState<boolean>(true);
+  const [valuesBeforeChange, setValuesBeforeChange] = useState<FormValues>({ title: t("newPresentation"), description: "" });
 
   const schema = yup
     .object({
-      title: yup.string().required("Required"),
+      title: yup.string().required(`* ${t("missingTitleError")}`),
       description: yup.string()
     })
     .required();
 
-  const { control, formState, handleSubmit } = useForm({ resolver: yupResolver(schema) });
+  const { control, formState, handleSubmit, getValues, reset } = useForm({
+    resolver: yupResolver(schema),
+    mode: "onChange",
+    reValidateMode: "onChange"
+  });
 
-  const handleClick = (): void => {
-    setFormDisabled(!formDisabled);
+  const handleEdit = (): void => {
+    const currentValues = getValues();
+    setValuesBeforeChange({ title: currentValues.title, description: currentValues.description });
+    setIsFormDisabled(false);
   };
 
-  const onSubmit = (data: any): void => {
-    console.log(data);
-    setFormDisabled(true);
+  const handleCancel = (): void => {
+    reset({ title: valuesBeforeChange.title, description: valuesBeforeChange.description });
+    setIsFormDisabled(true);
+  };
+
+  const handleFormSubmit = (): void => {
+    setIsFormDisabled(true);
   };
 
   return (
-    <>
-      <Styled.Form component='form'>
+    <Styled.Form component='form'>
+      <Styled.HelperText>
+        <ErrorMessage errors={formState.errors} name='title' />
+      </Styled.HelperText>
+
+      <Styled.TitleBox>
         <Controller
           name='title'
           control={control}
-          defaultValue='New presentation'
+          defaultValue={t("newPresentation")}
           render={({ field: { onChange, value } }) => (
-            <Input onChange={onChange} value={value} disableUnderline disabled={formDisabled} error={!!formState.errors["title"]} />
+            <Input onChange={onChange} value={value} disableUnderline disabled={isFormDisabled} error={formState.errors?.title} />
           )}
         />
 
-        <Controller
-          name='description'
-          control={control}
-          defaultValue=''
-          render={({ field: { value, onChange } }) => (
-            <TextField
-              value={value}
-              onChange={onChange}
-              multiline
-              rows={4}
-              placeholder='Description'
-              disabled={formDisabled}
-              error={!!formState.errors["description"]}
-            />
+        {/* TODO: replace with proper icon buttons, when branch JI:759433 P2022-465 will be merged */}
+        <ButtonGroup>
+          {isFormDisabled ? (
+            <Button onClick={handleEdit}>Edit</Button>
+          ) : (
+            <>
+              <Button onClick={handleSubmit(handleFormSubmit)} disabled={Object.keys(formState.errors).length > 0}>
+                Submit
+              </Button>
+              <Button onClick={handleCancel}>Cancel</Button>
+            </>
           )}
-        />
-      </Styled.Form>
-      {/* TODO: replace with proper icon button, when branch JI:759433 P2022-465 will be merged */}
-      <Button onClick={handleClick}>Edit</Button>
-      {!formDisabled && <Button onClick={handleSubmit(onSubmit)}>Submit</Button>}
-    </>
+        </ButtonGroup>
+      </Styled.TitleBox>
+
+      <Controller
+        name='description'
+        control={control}
+        defaultValue=''
+        render={({ field: { value, onChange } }) => (
+          <TextField
+            value={value}
+            onChange={onChange}
+            multiline
+            rows={4}
+            placeholder={t("description")}
+            disabled={isFormDisabled}
+            error={formState.errors?.description}
+          />
+        )}
+      />
+    </Styled.Form>
   );
 };

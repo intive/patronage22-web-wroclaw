@@ -60,6 +60,7 @@
     "@emotion/babel-plugin": "^11.7.2",
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
+    "@hookform/error-message": "^2.0.0",
     "@hookform/resolvers": "^2.8.8",
     "@mui/icons-material": "^5.2.5",
     "@mui/material": "^5.2.6",

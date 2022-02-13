@@ -1,3 +1,6 @@
 {
-  "breadcrumb": "breadcrumb"
+  "breadcrumb": "breadcrumb",
+  "missingTitleError": "Title cannot be empty",
+  "newPresentation": "New presentation",
+  "description": "Description"
 }
