@@ -1,4 +1,4 @@
-import { AppRoute } from "@patronage-web/shared";
+import { AppRoute, Loader } from "@patronage-web/shared";
 import React, { Suspense, SuspenseProps } from "react";
 import { Outlet, RouteObject, useRoutes } from "react-router-dom";
 
@@ -18,15 +18,15 @@ const createChildrenRoute = (route: AppRoute, component: JSX.Element) => (fallba
 
 export const Routing: React.FC = () =>
   useRoutes([
-    createRoute(AppRoute.Home, <h1>Home page</h1>, <h1>...loading</h1>),
-    createRoute(AppRoute.Dashboard, <h1>Dashboard page</h1>, <h1>...loading</h1>),
+    createRoute(AppRoute.Home, <h1>Home page</h1>, <Loader />),
+    createRoute(AppRoute.Dashboard, <h1>Dashboard page</h1>, <Loader />),
     createRoute(
       AppRoute.Presentation,
       <>
         <h1>Presentation page</h1>
         <Outlet />
       </>,
-      <h1>...loading</h1>,
+      <Loader />,
       [
         createChildrenRoute(AppRoute.AddPresentation, <h1>Add presentation page</h1>),
         createChildrenRoute(AppRoute.EditPresentation, <h1>Edit presentation page</h1>),
