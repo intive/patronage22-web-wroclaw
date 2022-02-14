@@ -1,4 +1,4 @@
-import { AppBar, AppBarTypeMap, Box, Toolbar } from "@mui/material";
+import { AppBar, AppBarProps, Box, Toolbar } from "@mui/material";
 import { styled, SxProps } from "@mui/material/styles";
 
 export interface FooterSection {
@@ -11,8 +11,7 @@ export enum FooterSectionPosition {
   End = "end"
 }
 
-export interface FooterProps {
-  color?: AppBarTypeMap["props"]["color"];
+export interface FooterProps extends Pick<AppBarProps, "color"> {
   config: Partial<Record<FooterSectionPosition, FooterSection>>;
 }
 

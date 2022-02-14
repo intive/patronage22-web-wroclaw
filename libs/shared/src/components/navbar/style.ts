@@ -1,4 +1,4 @@
-import { AppBar, AppBarTypeMap, Box, Toolbar, ToolbarTypeMap } from "@mui/material";
+import { AppBar, AppBarProps, Box, Toolbar, ToolbarProps } from "@mui/material";
 import { styled, SxProps } from "@mui/material/styles";
 
 export interface NavbarSection {
@@ -12,10 +12,8 @@ export enum NavbarSectionPosition {
   End = "end"
 }
 
-export interface NavbarProps {
-  color?: AppBarTypeMap["props"]["color"];
+export interface NavbarProps extends Pick<AppBarProps, "color">, Pick<ToolbarProps, "variant"> {
   config: Partial<Record<NavbarSectionPosition, NavbarSection>>;
-  variant?: ToolbarTypeMap["props"]["variant"];
 }
 export const NavbarAppBar = styled(AppBar)({
   flexDirection: "row",
