@@ -1,6 +1,6 @@
 import * as Styled from "./styled";
 
-export const Dashboard = () => {
+export const Dashboard: React.FC = () => {
   return (
     // sample data
     <Styled.CenteredWhiteWrapper>

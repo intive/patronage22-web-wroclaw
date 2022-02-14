@@ -3,7 +3,7 @@ import { NotFoundImage } from "@patronage-web/features-feedback";
 
 import * as Styled from "./styled";
 
-export const NotFoundPage = () => {
+export const NotFoundPage: React.FC = () => {
   return (
     // sample data
     <Styled.CenteredWhiteWrapper>

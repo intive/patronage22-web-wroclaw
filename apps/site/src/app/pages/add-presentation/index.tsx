@@ -1,6 +1,6 @@
 import * as Styled from "./styled";
 
-export const AddPresentationPage = () => {
+export const AddPresentationPage: React.FC = () => {
   return (
     // sample data
     <Styled.CenteredWhiteWrapper>
