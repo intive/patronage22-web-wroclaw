@@ -1,7 +1,7 @@
 import { Loader } from "@patronage-web/shared";
 import { ComponentMeta } from "@storybook/react";
 
-export const LoaderStory = () => <Loader />;
+export const LoaderStory: React.FC = () => <Loader />;
 
 export default {
   title: "Loader",

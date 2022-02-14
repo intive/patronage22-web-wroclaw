@@ -1,7 +1,7 @@
-import { NavBreadcrumbs } from "@patronage-web/features-feedback";
+import { NavBreadcrumbs, NavBreadcrumbsProps } from "@patronage-web/features-feedback";
 import { ComponentMeta } from "@storybook/react";
 
-export const NavBreadcrumbsStory = ({ presentationName }: { presentationName: string }) => (
+export const NavBreadcrumbsStory: React.FC<NavBreadcrumbsProps> = ({ presentationName }) => (
   <NavBreadcrumbs presentationName={presentationName} />
 );
 
