@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 
 import * as Styled from "./styled";
 
-export const Homepage: React.FC = () => {
+const Homepage: React.FC = () => {
   const { t } = useTranslation(TranslationNamespace.Common);
 
   return (
@@ -21,3 +21,5 @@ export const Homepage: React.FC = () => {
     </Styled.Box>
   );
 };
+
+export default Homepage;

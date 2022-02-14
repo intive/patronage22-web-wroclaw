@@ -1,17 +1,19 @@
 import { CardMedia } from "@mui/material";
-import { NotFoundImage } from "@patronage-web/features-feedback";
+import { NotFoundImage } from "@patronage-web/shared";
 
 import * as Styled from "./styled";
 
-export const NotFoundPage: React.FC = () => {
+const NotFoundPage: React.FC = () => {
   return (
-    // sample data
-    <Styled.CenteredWhiteWrapper>
+    // TODO - replace when proper data will be delivered
+    <>
       <Styled.MediumImageWrapper>
         <CardMedia component='img' alt='404' src={NotFoundImage} />
       </Styled.MediumImageWrapper>
 
       <h1>Page Not Found</h1>
-    </Styled.CenteredWhiteWrapper>
+    </>
   );
 };
+
+export default NotFoundPage;

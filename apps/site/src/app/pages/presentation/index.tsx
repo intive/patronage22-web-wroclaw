@@ -1,10 +1,8 @@
-import * as Styled from "./styled";
-
-export const PresentationPage: React.FC = () => {
+const PresentationPage: React.FC = () => {
   return (
-    // sample data
-    <Styled.CenteredWhiteWrapper>
-      <h1>Presentation page</h1>
-    </Styled.CenteredWhiteWrapper>
+    // TODO - replace when proper data will be delivered
+    <h1>Presentation page</h1>
   );
 };
+
+export default PresentationPage;

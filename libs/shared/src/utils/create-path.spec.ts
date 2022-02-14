@@ -33,7 +33,7 @@ const routesConfig: RoutesConfigProps[] = [
   },
   {
     routeParams: { id: "qwerty" },
-    targetPage: PagePath.PresentationForExternalUser,
+    targetPage: PagePath.ExternalUserPresentation,
     targetPath: "/presentation/qwerty"
   }
 ];

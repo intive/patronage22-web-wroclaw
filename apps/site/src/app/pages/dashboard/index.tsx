@@ -1,10 +1,8 @@
-import * as Styled from "./styled";
-
-export const Dashboard: React.FC = () => {
+const Dashboard: React.FC = () => {
   return (
-    // sample data
-    <Styled.CenteredWhiteWrapper>
-      <h1>Dashboard</h1>
-    </Styled.CenteredWhiteWrapper>
+    // TODO - replace when proper data will be delivered
+    <h1>Dashboard</h1>
   );
 };
+
+export default Dashboard;
