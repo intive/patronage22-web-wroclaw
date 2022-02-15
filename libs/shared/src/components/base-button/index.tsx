@@ -15,7 +15,7 @@ export const BaseButton: React.FC<BaseButtonProps> = ({ children, onClick, type,
   const { isMobile } = useScreenSize();
   const buttonSize = isMobile ? "small" : "medium";
 
-  const BASE_BUTTON_TYPE = {
+  const types = {
     [ButtonType.Basic]: (
       <Styled.BasicButton size={buttonSize} onClick={onClick} variant={variant}>
         {children}
@@ -28,5 +28,5 @@ export const BaseButton: React.FC<BaseButtonProps> = ({ children, onClick, type,
     )
   };
 
-  return BASE_BUTTON_TYPE[type];
+  return types[type];
 };
