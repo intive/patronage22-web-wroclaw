@@ -3,14 +3,14 @@ import { createTheme } from "@mui/material/styles";
 
 import { ThemeMode } from "../types";
 
-export const generalTheme = createTheme({
+export const commonStyles = createTheme({
   shape: {
     borderRadius: 6
   }
 });
 
 export const dark = createTheme({
-  ...generalTheme,
+  ...commonStyles,
   palette: {
     mode: ThemeMode.Dark,
     primary: { main: grey[100], light: grey[50], dark: grey[300] }
@@ -18,7 +18,7 @@ export const dark = createTheme({
 });
 
 export const light = createTheme({
-  ...generalTheme,
+  ...commonStyles,
   palette: {
     mode: ThemeMode.Light,
     primary: { main: grey[800], light: grey[600], dark: grey[900] }
