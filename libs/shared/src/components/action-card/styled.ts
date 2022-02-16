@@ -1,7 +1,7 @@
-import { Box as MUIBox, Card as MUICard, CardMedia as MUICardMedia, Typography as MUITypography } from "@mui/material";
+import { Box, Card, CardMedia, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
-export const ActionCard = styled(MUICard)(({ theme }) => ({
+export const ActionCard = styled(Card)(({ theme }) => ({
   display: "flex",
   flexFlow: "column wrap",
   justifyContent: "space-between",
@@ -20,7 +20,7 @@ export const ActionCard = styled(MUICard)(({ theme }) => ({
   }
 }));
 
-export const CardActionBox = styled(MUIBox)(({ theme }) => ({
+export const CardActionBox = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-between",
@@ -40,7 +40,7 @@ export const CardActionBox = styled(MUIBox)(({ theme }) => ({
   }
 }));
 
-export const CardActionDescription = styled(MUITypography)(({ theme }) => ({
+export const CardActionDescription = styled(Typography)(({ theme }) => ({
   textAlign: "justify",
 
   [theme.breakpoints.up("sm")]: {
@@ -53,7 +53,7 @@ export const CardActionDescription = styled(MUITypography)(({ theme }) => ({
   }
 }));
 
-export const CardActionButtonBox = styled(MUIBox)(({ theme }) => ({
+export const CardActionButtonBox = styled(Box)(({ theme }) => ({
   marginTop: theme.spacing(2),
 
   [theme.breakpoints.up("sm")]: {
@@ -61,7 +61,7 @@ export const CardActionButtonBox = styled(MUIBox)(({ theme }) => ({
   }
 }));
 
-export const CardMedia = styled(MUICardMedia)(({ theme }) => ({
+export const ActionCardMedia = styled(CardMedia)(({ theme }) => ({
   width: "100%",
   height: theme.spacing(22),
 
