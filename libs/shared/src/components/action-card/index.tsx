@@ -11,7 +11,7 @@ export interface ActionCardProps {
 
 export const ActionCard: React.FC<ActionCardProps> = ({ image, description, button }: ActionCardProps) => (
   <Styled.ActionCard>
-    {image && <Styled.CardMedia image={image} />}
+    {image && <Styled.BasicCardMedia image={image} />}
     <Styled.CardActionBox>
       <Styled.CardActionDescription>{description}</Styled.CardActionDescription>
       {button && (

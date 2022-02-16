@@ -26,20 +26,20 @@ const createChildrenRoute = (route: AppRoute, component: JSX.Element) => (fallba
 
 export const Routing: React.FC = () =>
   useRoutes([
-    createRoute(AppRoute.Home, <Homepage />, <Loader loaderType={LoaderType.Circular} />),
-    createRoute(AppRoute.Dashboard, <Dashboard />, <Loader loaderType={LoaderType.Circular} />),
+    createRoute(AppRoute.Home, <Homepage />, <Loader type={LoaderType.Circular} />),
+    createRoute(AppRoute.Dashboard, <Dashboard />, <Loader type={LoaderType.Circular} />),
     createRoute(
       AppRoute.Presentation,
       <>
         <PresentationPage />
         <Outlet />
       </>,
-      <Loader loaderType={LoaderType.Circular} />,
+      <Loader type={LoaderType.Circular} />,
       [
         createChildrenRoute(AppRoute.AddPresentation, <AddPresentationPage />),
         createChildrenRoute(AppRoute.EditPresentation, <EditPresentationPage />),
         createChildrenRoute(AppRoute.ExternalUserPresentation, <ExternalUserPresentationPage />)
       ]
     ),
-    createRoute(AppRoute.NotFound, <NotFoundPage />, <Loader loaderType={LoaderType.Circular} />)
+    createRoute(AppRoute.NotFound, <NotFoundPage />, <Loader type={LoaderType.Circular} />)
   ]);

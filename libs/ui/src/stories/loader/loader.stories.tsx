@@ -1,16 +1,16 @@
-import { Loader, LoaderProps } from "@patronage-web/shared";
+import { Loader, LoaderProps, LoaderType } from "@patronage-web/shared";
 import { ComponentMeta } from "@storybook/react";
 
-export const LoaderStory: React.FC<LoaderProps> = ({ loaderType }) => <Loader loaderType={loaderType} />;
+export const LoaderStory: React.FC<LoaderProps> = ({ type }) => <Loader type={type} />;
 
 export default {
   title: "Loader",
   component: LoaderStory,
   argTypes: {
-    loaderType: {
+    type: {
       control: { type: "select" },
-      defaultValue: "circular",
-      options: ["circular", "linear"]
+      defaultValue: LoaderType.Circular,
+      options: [LoaderType.Circular, LoaderType.Linear]
     }
   }
 } as ComponentMeta<typeof LoaderStory>;

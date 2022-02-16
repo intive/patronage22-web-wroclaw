@@ -1,17 +1,20 @@
 import { CardMedia } from "@mui/material";
-import { NotFoundImage } from "@patronage-web/shared";
+import { HttpStatus, NotFoundImage } from "@patronage-web/shared";
+import { useTranslation } from "react-i18next";
 
 import * as Styled from "./styled";
 
 const NotFoundPage: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     // TODO - replace when proper data will be delivered
     <>
       <Styled.MediumImageWrapper>
-        <CardMedia component='img' alt='404' src={NotFoundImage} />
+        <CardMedia component='img' alt={`${HttpStatus.NotFound}`} src={NotFoundImage} />
       </Styled.MediumImageWrapper>
 
-      <h1>Page Not Found</h1>
+      <h1>{t("notFoundPage.info")}</h1>
     </>
   );
 };

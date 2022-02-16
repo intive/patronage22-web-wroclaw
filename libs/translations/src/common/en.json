@@ -2,5 +2,8 @@
   "homepage": {
     "newPresentationDescription": "Placeholder text for ActionCard to create new presentation on Homepage",
     "newPresentationButton": "New presentation"
+  },
+  "notFoundPage": {
+    "info": "Page Not Found"
   }
 }

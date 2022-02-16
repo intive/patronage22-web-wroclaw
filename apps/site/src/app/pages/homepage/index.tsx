@@ -1,25 +1,7 @@
-import { StarsImage } from "@patronage-web/features-feedback";
-import { ActionCard, PagePath, TranslationNamespace } from "@patronage-web/shared";
-import { useTranslation } from "react-i18next";
-
-import * as Styled from "./styled";
+import { HomeView as HomeFeedbackView } from "@patronage-web/features-feedback";
 
 const Homepage: React.FC = () => {
-  const { t } = useTranslation(TranslationNamespace.Common);
-
-  return (
-    <Styled.Box>
-      <ActionCard
-        description={t("homepage.newPresentationDescription")}
-        image={StarsImage}
-        button={{
-          variant: "contained",
-          text: t("homepage.newPresentationButton"),
-          navigateTo: PagePath.AddPresentation
-        }}
-      />
-    </Styled.Box>
-  );
+  return <HomeFeedbackView />;
 };
 
 export default Homepage;

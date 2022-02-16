@@ -1,21 +1,24 @@
 import { CircularProgress, LinearProgress } from "@mui/material";
 
-import { LoaderType } from "../../types";
 import * as Styled from "./styled";
 
+export enum LoaderType {
+  Circular = "circular",
+  Linear = "linear"
+}
 export interface LoaderProps {
-  loaderType: LoaderType;
+  type: LoaderType;
 }
 
-export const Loader: React.FC<LoaderProps> = ({ loaderType }) => {
+export const Loader: React.FC<LoaderProps> = ({ type }) => {
   const PROGRESS_TYPE = {
-    circular: <CircularProgress color='inherit' />,
-    linear: (
+    [LoaderType.Circular]: <CircularProgress color='inherit' />,
+    [LoaderType.Linear]: (
       <Styled.LinearLoaderWrapper>
         <LinearProgress color='inherit' />
       </Styled.LinearLoaderWrapper>
     )
   };
 
-  return <Styled.LoaderWrapper>{PROGRESS_TYPE[loaderType]}</Styled.LoaderWrapper>;
+  return <Styled.LoaderWrapper>{PROGRESS_TYPE[type]}</Styled.LoaderWrapper>;
 };
