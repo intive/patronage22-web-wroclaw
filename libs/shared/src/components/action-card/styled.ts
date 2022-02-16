@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardMedia, Typography } from "@mui/material";
+import { Box, Card, CardMedia, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 export const ActionCard = styled(Card)(({ theme }) => ({
@@ -53,24 +53,15 @@ export const CardActionDescription = styled(Typography)(({ theme }) => ({
   }
 }));
 
-export const CardActionButton = styled(Button)(({ theme }) => ({
-  fontSize: "1rem",
-  alignSelf: "center",
-  backgroundColor: "#515151",
-  textTransform: "none",
-  height: theme.spacing(5),
-  padding: theme.spacing(1, 2),
-  borderRadius: theme.spacing(1),
+export const CardActionButtonBox = styled(Box)(({ theme }) => ({
   marginTop: theme.spacing(2),
-
-  "&:hover": { backgroundColor: "black" },
 
   [theme.breakpoints.up("sm")]: {
     marginTop: 0
   }
 }));
 
-export const BasicCardMedia = styled(CardMedia)(({ theme }) => ({
+export const ActionCardMedia = styled(CardMedia)(({ theme }) => ({
   width: "100%",
   height: theme.spacing(22),
 

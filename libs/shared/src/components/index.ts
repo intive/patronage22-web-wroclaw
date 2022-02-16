@@ -1,4 +1,5 @@
 export * from "./action-card";
+export * from "./base-button";
 export * from "./footer";
 export * from "./loader";
 export * from "./localized-link";

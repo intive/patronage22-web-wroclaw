@@ -1,20 +1,6 @@
-import { AppBar, AppBarProps, Box, Toolbar, ToolbarProps } from "@mui/material";
-import { styled, SxProps } from "@mui/material/styles";
+import { AppBar, Box, Toolbar } from "@mui/material";
+import { styled } from "@mui/material/styles";
 
-export interface NavbarSection {
-  customStyles?: SxProps;
-  elements: JSX.Element[];
-}
-
-export enum NavbarSectionPosition {
-  Start = "start",
-  Center = "center",
-  End = "end"
-}
-
-export interface NavbarProps extends Pick<AppBarProps, "color">, Pick<ToolbarProps, "variant"> {
-  config: Partial<Record<NavbarSectionPosition, NavbarSection>>;
-}
 export const NavbarAppBar = styled(AppBar)({
   flexDirection: "row",
   alignItems: "center",
