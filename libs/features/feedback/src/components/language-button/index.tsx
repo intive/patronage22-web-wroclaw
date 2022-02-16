@@ -8,20 +8,20 @@ export const LanguageButton = () => {
   const { i18n } = useTranslation();
   const [, setSearchParams] = useSearchParams();
 
-  const languageQueryString = i18n.language?.length && i18n.language !== SupportedLanguage.En ? `?lang=${i18n.language}` : "";
+  const isDefaultLanguage = i18n.language?.length && i18n.language !== SupportedLanguage.En ? `?lang=${i18n.language}` : "";
 
-  const handleClick = (language: SupportedLanguage) => {
-    changeLanguage(i18n, language);
+  const handleChange = (event: React.MouseEvent<HTMLElement>, value: SupportedLanguage) => {
+    changeLanguage(i18n, value);
   };
 
   useEffect(() => {
-    setSearchParams(languageQueryString);
-  }, [i18n.language, languageQueryString, setSearchParams]);
+    setSearchParams(isDefaultLanguage);
+  }, [i18n.language, isDefaultLanguage, setSearchParams]);
 
   return (
-    <ToggleButtonGroup color='primary' size='small' value={i18n.language} exclusive>
+    <ToggleButtonGroup color='primary' size='small' value={i18n.language} onChange={handleChange} exclusive>
       {Object.values(SupportedLanguage).map(language => (
-        <ToggleButton key={language} value={language} onClick={() => handleClick(language)}>
+        <ToggleButton key={language} value={language}>
           {language}
         </ToggleButton>
       ))}
