@@ -1,8 +1,9 @@
 import DarkModeTwoToneIcon from "@mui/icons-material/DarkModeTwoTone";
 import LightModeTwoToneIcon from "@mui/icons-material/LightModeTwoTone";
-import { IconButton, useTheme } from "@mui/material";
+import { useTheme } from "@mui/material";
 
 import { ThemeMode } from "../../types";
+import { BaseButton, ButtonType } from "../base-button";
 import { useThemeContext } from "./theme-provider";
 
 const THEME_ICONS: Record<ThemeMode, JSX.Element> = {
@@ -18,8 +19,8 @@ export const ThemeSelector = () => {
   const { toggleColorMode } = useThemeContext();
 
   return (
-    <IconButton onClick={toggleColorMode} color='inherit'>
+    <BaseButton type={ButtonType.Icon} onClick={toggleColorMode}>
       {THEME_ICONS[mode]}
-    </IconButton>
+    </BaseButton>
   );
 };
