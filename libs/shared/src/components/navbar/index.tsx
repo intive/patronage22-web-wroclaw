@@ -1,8 +1,26 @@
 /* eslint-disable react/no-array-index-key */
+import { AppBarProps, ToolbarProps } from "@mui/material";
+import { SxProps } from "@mui/material/styles";
+
 import * as Styled from "./style";
 
-export const Navbar: React.FC<Styled.NavbarProps> = ({ config, color = "transparent", variant = "dense" }) => {
-  const navSectionElements = Object.values(Styled.NavbarSectionPosition).map((section, sectionIndex) => {
+export interface NavbarSection {
+  customStyles?: SxProps;
+  elements: JSX.Element[];
+}
+
+export enum NavbarSectionPosition {
+  Start = "start",
+  Center = "center",
+  End = "end"
+}
+
+export interface NavbarProps extends Pick<AppBarProps, "color">, Pick<ToolbarProps, "variant"> {
+  config: Partial<Record<NavbarSectionPosition, NavbarSection>>;
+}
+
+export const Navbar: React.FC<NavbarProps> = ({ config, color = "transparent", variant = "dense" }) => {
+  const navSectionElements = Object.values(NavbarSectionPosition).map((section, sectionIndex) => {
     const sectionItem = config[section];
 
     return (

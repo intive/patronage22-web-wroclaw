@@ -1,10 +1,4 @@
-import {
-  Box as MUIBox,
-  Button as MUIButton,
-  Card as MUICard,
-  CardMedia as MUICardMedia,
-  Typography as MUITypography
-} from "@mui/material";
+import { Box as MUIBox, Card as MUICard, CardMedia as MUICardMedia, Typography as MUITypography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 export const ActionCard = styled(MUICard)(({ theme }) => ({
@@ -59,17 +53,8 @@ export const CardActionDescription = styled(MUITypography)(({ theme }) => ({
   }
 }));
 
-export const CardActionButton = styled(MUIButton)(({ theme }) => ({
-  fontSize: "1rem",
-  alignSelf: "center",
-  backgroundColor: "#515151",
-  textTransform: "none",
-  height: theme.spacing(5),
-  padding: theme.spacing(1, 2),
-  borderRadius: theme.spacing(1),
+export const CardActionButtonBox = styled(MUIBox)(({ theme }) => ({
   marginTop: theme.spacing(2),
-
-  "&:hover": { backgroundColor: "black" },
 
   [theme.breakpoints.up("sm")]: {
     marginTop: 0

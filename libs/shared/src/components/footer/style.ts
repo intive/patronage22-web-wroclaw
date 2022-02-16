@@ -1,19 +1,5 @@
-import { AppBar, AppBarProps, Box, Toolbar } from "@mui/material";
-import { styled, SxProps } from "@mui/material/styles";
-
-export interface FooterSection {
-  customStyles?: SxProps;
-  elements: JSX.Element[];
-}
-
-export enum FooterSectionPosition {
-  Start = "start",
-  End = "end"
-}
-
-export interface FooterProps extends Pick<AppBarProps, "color"> {
-  config: Partial<Record<FooterSectionPosition, FooterSection>>;
-}
+import { AppBar, Box, Toolbar } from "@mui/material";
+import { styled } from "@mui/material/styles";
 
 export const FooterAppBar = styled(AppBar)({
   flexDirection: "column",

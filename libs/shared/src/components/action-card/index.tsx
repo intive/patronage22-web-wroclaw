@@ -1,5 +1,6 @@
 import { ButtonProps } from "@mui/material";
 
+import { BaseButton, ButtonType } from "../base-button";
 import { LocalizedLink, LocalizedLinkProps } from "../localized-link";
 import * as Styled from "./styled";
 
@@ -16,7 +17,11 @@ export const ActionCard: React.FC<ActionCardProps> = ({ image, description, butt
       <Styled.CardActionDescription>{description}</Styled.CardActionDescription>
       {button && (
         <LocalizedLink to={button.navigateTo}>
-          <Styled.CardActionButton variant={button.variant}>{button.text}</Styled.CardActionButton>
+          <Styled.CardActionButtonBox>
+            <BaseButton type={ButtonType.Basic} variant={button.variant}>
+              {button.text}
+            </BaseButton>
+          </Styled.CardActionButtonBox>
         </LocalizedLink>
       )}
     </Styled.CardActionBox>

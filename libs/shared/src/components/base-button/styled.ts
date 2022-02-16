@@ -2,6 +2,7 @@ import { Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 export const BasicButton = styled(Button)(({ theme }) => ({
+  fontSize: "inherit",
   textTransform: "none",
   borderColor: theme.palette.primary.dark,
 
