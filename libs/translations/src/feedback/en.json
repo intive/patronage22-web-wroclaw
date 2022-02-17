@@ -2,5 +2,6 @@
   "breadcrumb": "breadcrumb",
   "missingTitleError": "Title cannot be empty",
   "newPresentation": "New presentation",
-  "description": "Description"
+  "description": "Description",
+  "save": "Save"
 }
