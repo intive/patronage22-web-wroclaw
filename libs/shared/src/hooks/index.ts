@@ -1,1 +1,1 @@
-export * from ".";
+export * from "./use-screen-size";
