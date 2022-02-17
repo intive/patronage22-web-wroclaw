@@ -7,7 +7,6 @@ on:
 
 jobs:
   deploy-preview:
-    needs: [e2e, test]
     runs-on: ubuntu-20.04
     name: Project preview deployment
     if: ${{ github.event.pull_request.merged == true && github.ref == 'refs/heads/develop' }}
@@ -20,7 +19,6 @@ jobs:
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}}
 
   deploy-prod:
-    needs: [e2e, test]
     runs-on: ubuntu-20.04
     name: Project production deployment
     if: ${{ github.event.pull_request.merged == true && github.ref == 'refs/heads/master' }}
