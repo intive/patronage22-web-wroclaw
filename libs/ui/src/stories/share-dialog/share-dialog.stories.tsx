@@ -1,22 +1,38 @@
-import { ShareDialog, ShareDialogProps } from "@patronage-web/features-feedback";
+import { Box, Button } from "@mui/material";
+import { ShareDialog } from "@patronage-web/features-feedback";
 import { ComponentMeta } from "@storybook/react";
-
-export const ShareDialogStory = ({ open, onClose, link, code }: ShareDialogProps) => (
-  <ShareDialog open={open} onClose={onClose} link={link} code={code} />
-);
+import { useState } from "react";
 
 export default {
   title: "ShareDialog",
-  component: ShareDialogStory,
+  component: ShareDialog,
   args: {
-    link: "www.google.com",
+    link: "https://intive.com/",
     code: 123456
-  },
-  argTypes: {
-    open: {
-      control: { type: "select" },
-      defaultValue: true,
-      options: [false, true]
-    }
   }
 } as ComponentMeta<typeof ShareDialog>;
+
+const ShareDialogTemplate = (args: { link: string; code: number }) => {
+  const [open, setOpen] = useState(false);
+
+  const { link, code } = args;
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <Box>
+      <Button variant='outlined' onClick={handleClickOpen}>
+        Open share dialog
+      </Button>
+      <ShareDialog open={open} onClose={handleClose} link={link} code={code} />
+    </Box>
+  );
+};
+
+export const ShareDialogDemo = ShareDialogTemplate.bind({});
