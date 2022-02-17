@@ -1,6 +1,7 @@
 import { ErrorMessage } from "@hookform/error-message";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Button, ButtonGroup, Input, TextField } from "@mui/material";
+import { Cancel, CheckCircle, Edit } from "@mui/icons-material";
+import { ButtonGroup, IconButton, Input, TextField } from "@mui/material";
 import { TranslationNamespace } from "@patronage-web/shared";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
@@ -67,13 +68,18 @@ export const TitleAndDescriptionForm: React.FC = () => {
         {/* TODO: replace with proper icon buttons, when branch JI:759433 P2022-465 will be merged */}
         <ButtonGroup>
           {isFormDisabled ? (
-            <Button onClick={handleEdit}>Edit</Button>
+            <IconButton onClick={handleEdit}>
+              <Edit />
+            </IconButton>
           ) : (
             <>
-              <Button onClick={handleSubmit(handleFormSubmit)} disabled={Object.keys(formState.errors).length > 0}>
-                Submit
-              </Button>
-              <Button onClick={handleCancel}>Cancel</Button>
+              <IconButton onClick={handleSubmit(handleFormSubmit)} disabled={Object.keys(formState.errors).length > 0}>
+                <CheckCircle />
+              </IconButton>
+
+              <IconButton onClick={handleCancel}>
+                <Cancel />
+              </IconButton>
             </>
           )}
         </ButtonGroup>

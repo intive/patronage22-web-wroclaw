@@ -66,6 +66,7 @@
     "@mui/material": "^5.2.6",
     "@storybook/react": "^6.4.14",
     "@types/uuid": "^8.3.4",
+    "@types/yup": "^0.29.13",
     "axios": "^0.24.0",
     "browserslist": "^4.19.1",
     "commitizen": "^4.2.4",

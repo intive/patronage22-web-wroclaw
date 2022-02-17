@@ -5824,6 +5824,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/yup@npm:^0.29.13":
+  version: 0.29.13
+  resolution: "@types/yup@npm:0.29.13"
+  checksum: 042eb51becd38559d0d7c86a40e0118d84d2b071c926999ec7721cbef759673be290d69b35ca7985db1bbb6d97544a2db20bb7cacbdaf827391bdd199e3789f9
+  languageName: node
+  linkType: hard
+
 "@typescript-eslint/eslint-plugin@npm:^5.0.0":
   version: 5.11.0
   resolution: "@typescript-eslint/eslint-plugin@npm:5.11.0"
@@ -17493,6 +17500,7 @@ __metadata:
     "@types/react-is": 17.0.2
     "@types/styled-components": 5.1.15
     "@types/uuid": ^8.3.4
+    "@types/yup": ^0.29.13
     "@typescript-eslint/eslint-plugin": ^5.0.0
     "@typescript-eslint/parser": ^5.0.0
     axios: ^0.24.0
