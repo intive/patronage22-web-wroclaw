@@ -30,7 +30,7 @@ const ShareDialogTemplate = (args: { id: string; presentationName: string }) => 
       <Button variant='outlined' onClick={handleClickOpen}>
         Open share dialog
       </Button>
-      <ShareDialog open={open} onClose={handleClose} id={id} PRESENTATION_NAME={presentationName} />
+      <ShareDialog open={open} onClose={handleClose} id={id} presentationName={presentationName} />
     </Box>
   );
 };

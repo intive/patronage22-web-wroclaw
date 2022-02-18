@@ -1,9 +1,10 @@
-import { ShareTwoTone } from "@mui/icons-material";
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Snackbar } from "@mui/material";
+import { Button, DialogActions, DialogContent, Snackbar } from "@mui/material";
 import { AppRoute, BaseButton, ButtonType, TranslationNamespace } from "@patronage-web/shared";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import QRCode from "react-qr-code";
+
+import * as Styled from "./styled";
 
 export interface ShareDialogProps {
   open: boolean;
@@ -41,15 +42,25 @@ export const ShareDialog: React.FC<ShareDialogProps> = props => {
   };
 
   return (
-    <Dialog open={open} onClose={handleClose}>
-      <Box>
-        <ShareTwoTone fontSize='large' />
-      </Box>
-      <DialogTitle>{t("shareDialog.title")}</DialogTitle>
+    <Styled.Dialog
+      open={open}
+      onClose={handleClose}
+      PaperProps={{
+        sx: {
+          overflow: "visible"
+        }
+      }}
+    >
+      <Styled.IconBox>
+        <Styled.ShareIcon fontSize='large' />
+      </Styled.IconBox>
+      <Styled.DialogTitle>{t("shareDialog.title")}</Styled.DialogTitle>
       <DialogContent>
-        <DialogContentText>{t("shareDialog.message", { PRESENTATION_NAME: presentationName })}</DialogContentText>
-        <DialogContentText>{link}</DialogContentText>
-        <QRCode value={link} size={192} />
+        <Styled.DialogContentText>{t("shareDialog.message", { PRESENTATION_NAME: presentationName })}</Styled.DialogContentText>
+        <Styled.Typography>{link}</Styled.Typography>
+        <Styled.QRCodeBox>
+          <QRCode value={link} size={180} />
+        </Styled.QRCodeBox>
       </DialogContent>
       <DialogActions>
         <BaseButton type={ButtonType.Basic} onClick={handleClose}>
@@ -66,7 +77,7 @@ export const ShareDialog: React.FC<ShareDialogProps> = props => {
         autoHideDuration={1500}
         message={message}
       />
-    </Dialog>
+    </Styled.Dialog>
   );
 };
 
@@ -82,14 +93,14 @@ export const SimpleDialogDemo = () => {
   };
 
   const id = "23456";
-  const PRESENTATION_NAME = "PRESENTATION_NAME";
+  const presentationName = "PRESENTATION_NAME";
 
   return (
     <div>
       <Button variant='outlined' onClick={handleClickOpen}>
         Open a dialog
       </Button>
-      <ShareDialog open={open} onClose={handleClose} id={id} presentationName={PRESENTATION_NAME} />
+      <ShareDialog open={open} onClose={handleClose} id={id} presentationName={presentationName} />
     </div>
   );
 };
