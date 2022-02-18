@@ -1,5 +1,6 @@
 import "./i18n";
 
+import { Layout as FeedbackLayout } from "@patronage-web/features-feedback";
 import { ThemeProvider } from "@patronage-web/shared";
 import { StrictMode } from "react";
 import * as ReactDOM from "react-dom";
@@ -11,7 +12,9 @@ ReactDOM.render(
   <StrictMode>
     <ThemeProvider>
       <BrowserRouter>
-        <Routing />
+        <FeedbackLayout>
+          <Routing />
+        </FeedbackLayout>
       </BrowserRouter>
     </ThemeProvider>
   </StrictMode>,

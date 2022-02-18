@@ -1,13 +1,16 @@
 import { AppBar, Box, Toolbar } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
-export const FooterAppBar = styled(AppBar)({
+export const FooterAppBar = styled(AppBar)(({ theme }) => ({
   flexDirection: "column",
   bottom: 0,
   top: "auto",
   alignItems: "center",
-  justifyContent: "center"
-});
+  justifyContent: "center",
+  boxShadow: "unset",
+  borderTop: `${theme.spacing(0.125)} solid ${theme.palette.grey[300]}`,
+  backgroundImage: "unset"
+}));
 
 export const FooterToolbar = styled(Toolbar)(({ theme }) => ({
   display: "flex",

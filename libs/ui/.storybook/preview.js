@@ -9,7 +9,8 @@ export const parameters = {
       { name: "light", value: light.palette.background.default },
       { name: "dark", value: dark.palette.background.default }
     ]
-  }
+  },
+  layout: "fullscreen"
 };
 
 export const decorators = [

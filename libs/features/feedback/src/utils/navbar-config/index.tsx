@@ -1,8 +1,9 @@
-import { NavBreadcrumbs } from "@patronage-web/features-feedback";
+import { ThemeSelector } from "@patronage-web/shared";
 
+import { NavBreadcrumbs } from "../../components/nav-breadcrumbs";
 import { centerSectionStyles } from "./style";
 
-// TODO elements should be replaced with components (Breadcrumbs, SearchBar, ThemeSelector) when will be ready
+// TODO center element should be replaced with SearchBar when will be ready
 export const navbarConfig = {
   start: {
     elements: [<NavBreadcrumbs />]
@@ -12,6 +13,6 @@ export const navbarConfig = {
     customStyles: centerSectionStyles
   },
   end: {
-    elements: [<div>ThemeSelector</div>]
+    elements: [<ThemeSelector />]
   }
 };

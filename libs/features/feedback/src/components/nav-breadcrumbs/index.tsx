@@ -15,7 +15,7 @@ export const NavBreadcrumbs: React.FC<NavBreadcrumbsProps> = ({ presentationName
     <Breadcrumbs aria-label={t("breadcrumb")} separator={<Styled.ArrowSeparator />}>
       <LocalizedLink to={PagePath.Home}>
         <Styled.AlignedCenterWrapper>
-          <Styled.BasicLogo />
+          <Styled.BasicLogo color='primary' />
         </Styled.AlignedCenterWrapper>
       </LocalizedLink>
 

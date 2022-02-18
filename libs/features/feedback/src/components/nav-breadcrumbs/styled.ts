@@ -16,7 +16,6 @@ export const ArrowSeparator = styled(MUINavigateNextIcon)({
 
 // TODO when theme config will be applied - replace with theme color
 export const BasicLogo = styled(MUIImageOutlinedIcon)({
-  color: "rgb(59, 59, 59)",
   fontSize: "1.875rem"
 });
 

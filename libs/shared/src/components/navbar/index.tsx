@@ -15,11 +15,11 @@ export enum NavbarSectionPosition {
   End = "end"
 }
 
-export interface NavbarProps extends Pick<AppBarProps, "color">, Pick<ToolbarProps, "variant"> {
+export interface NavbarProps extends Pick<AppBarProps, "color" | "position">, Pick<ToolbarProps, "variant"> {
   config: Partial<Record<NavbarSectionPosition, NavbarSection>>;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ config, color = "transparent", variant = "dense" }) => {
+export const Navbar: React.FC<NavbarProps> = ({ config, color, position, variant = "dense" }) => {
   const navSectionElements = Object.values(NavbarSectionPosition).map((section, sectionIndex) => {
     const sectionItem = config[section];
 
@@ -33,7 +33,7 @@ export const Navbar: React.FC<NavbarProps> = ({ config, color = "transparent", v
   });
 
   return (
-    <Styled.NavbarAppBar color={color}>
+    <Styled.NavbarAppBar position={position} color={color}>
       <Styled.NavbarToolbar variant={variant}>{navSectionElements}</Styled.NavbarToolbar>
     </Styled.NavbarAppBar>
   );
