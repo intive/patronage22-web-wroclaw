@@ -12,11 +12,13 @@ interface I18nOptions {
 const translationResources = {
   en: {
     [TranslationNamespace.Common]: require("../../../translations/src/common/en.json"),
-    [TranslationNamespace.Feedback]: require("../../../translations/src/feedback/en.json")
+    [TranslationNamespace.Feedback]: require("../../../translations/src/feedback/en.json"),
+    [TranslationNamespace.Ui]: require("../../../translations/src/ui/en.json")
   },
   pl: {
     [TranslationNamespace.Common]: require("../../../translations/src/common/pl.json"),
-    [TranslationNamespace.Feedback]: require("../../../translations/src/feedback/pl.json")
+    [TranslationNamespace.Feedback]: require("../../../translations/src/feedback/pl.json"),
+    [TranslationNamespace.Ui]: require("../../../translations/src/ui/pl.json")
   }
 };
 

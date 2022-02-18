@@ -4,7 +4,7 @@ import { ComponentMeta } from "@storybook/react";
 import { useTranslation } from "react-i18next";
 
 const LanguageButtonTemplate = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation("ui");
 
   return (
     <Box>

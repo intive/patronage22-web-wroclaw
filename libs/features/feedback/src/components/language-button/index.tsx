@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { useSearchParams } from "react-router-dom";
 
 export const LanguageButton = () => {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const [, setSearchParams] = useSearchParams();
 
   const isOtherLang = i18n.language?.length && i18n.language !== SupportedLanguage.En;
