@@ -14,12 +14,12 @@ export const SearchService = (text: string) => {
     keys: ["title"]
   });
 
-  const correctlyShapedArray = presentations.map((val, inx) => ({
-    item: val,
-    matches: [],
-    score: 1,
-    refIndex: inx
-  }));
-
-  return text === "" ? correctlyShapedArray : fuse.search(text);
+  return text === ""
+    ? presentations.map((val, inx) => ({
+        item: val,
+        matches: [],
+        score: 1,
+        refIndex: inx
+      }))
+    : fuse.search(text);
 };

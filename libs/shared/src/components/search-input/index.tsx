@@ -1,5 +1,6 @@
 import SearchIcon from "@mui/icons-material/Search";
 import { ChangeEvent, MouseEvent } from "react";
+import { useTranslation } from "react-i18next";
 
 import * as Styled from "./styled";
 
@@ -11,14 +12,15 @@ interface SearchInputProps {
 }
 
 export const SearchInput: React.FC<SearchInputProps> = ({ onChange, onClick, readOnly, autoFocus }) => {
+  const { t } = useTranslation();
   return (
     <Styled.Search>
       <Styled.SearchIconWrapper>
         <SearchIcon />
       </Styled.SearchIconWrapper>
       <Styled.BaseInput
-        placeholder='Search presentations'
-        inputProps={{ "aria-label": "search" }}
+        placeholder={t("dashboard.searchbarPlaceholder")}
+        inputProps={{ "aria-label": t("dashboard.ariaLabel") }}
         onChange={onChange}
         onClick={onClick}
         readOnly={readOnly}

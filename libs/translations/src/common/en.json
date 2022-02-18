@@ -2,5 +2,10 @@
   "homepage": {
     "newPresentationDescription": "Placeholder text for ActionCard to create new presentation on Homepage",
     "newPresentationButton": "New presentation"
+  },
+  "dashboard": {
+    "searchbarPlaceholder": "search presentations",
+    "showResultsButton": "show all results...",
+    "ariaLabel": "search"
   }
 }

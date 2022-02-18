@@ -2,5 +2,10 @@
   "homepage": {
     "newPresentationDescription": "Tymczasowy tekst komponentu ActionCard do tworzenia nowych ankiet z poziomu widoku Homepage",
     "newPresentationButton": "Nowa ankieta"
+  },
+  "dashboard": {
+    "searchbarPlaceholder": "szukaj prezentacji",
+    "showResultsButton": "pokaż wszystkie wyniki...",
+    "ariaLabel": "szukaj"
   }
 }
