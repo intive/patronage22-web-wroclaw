@@ -4,7 +4,12 @@
     "sourceMap": false,
     "outDir": "../../../dist/out-tsc",
     "allowJs": true,
-    "types": ["cypress", "node"]
+    "types": ["cypress", "node"],
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "module": "commonjs"
   },
+  "files": ["../../tools/globals/typings/image.d.ts"],
   "include": ["src/**/*.ts", "src/**/*.js"]
 }
