@@ -11,10 +11,10 @@ const NotFoundPage: React.FC = () => {
     // TODO - replace when proper data will be delivered
     <>
       <Styled.MediumImageWrapper>
-        <CardMedia component='img' alt={`${HttpStatus.NotFound}`} src={NotFoundImage} />
+        <CardMedia component='img' alt={HttpStatus.NotFound} src={NotFoundImage} />
       </Styled.MediumImageWrapper>
 
-      <h1>{t("notFoundPage.info")}</h1>
+      <h1>{t("notFoundPage.title")}</h1>
     </>
   );
 };

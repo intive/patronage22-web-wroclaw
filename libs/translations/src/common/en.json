@@ -4,6 +4,6 @@
     "newPresentationButton": "New presentation"
   },
   "notFoundPage": {
-    "info": "Page Not Found"
+    "title": "We are sorry, the page you're looking for doesn't exist"
   }
 }

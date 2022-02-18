@@ -4,6 +4,6 @@
     "newPresentationButton": "Nowa ankieta"
   },
   "notFoundPage": {
-    "info": "Nie znaleziono strony"
+    "title": "Przepraszamy, strona, której szukasz nie istnieje"
   }
 }
