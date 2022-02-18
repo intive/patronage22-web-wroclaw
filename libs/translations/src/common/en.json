@@ -2,5 +2,14 @@
   "homepage": {
     "newPresentationDescription": "Placeholder text for ActionCard to create new presentation on Homepage",
     "newPresentationButton": "New presentation"
+  },
+
+  "shareDialog": {
+    "title": "Share presentation",
+    "message": "Congratulations, you presentation: {{PRESENTATION_NAME}}  just started, use the link below to share it!",
+    "cancelButton": "Cancel",
+    "copyButton": "Copy link",
+    "successSnackbar": "Link copied",
+    "failedSnackbar": "Link copying failed!"
   }
 }

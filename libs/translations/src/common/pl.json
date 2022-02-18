@@ -2,5 +2,14 @@
   "homepage": {
     "newPresentationDescription": "Tymczasowy tekst komponentu ActionCard do tworzenia nowych ankiet z poziomu widoku Homepage",
     "newPresentationButton": "Nowa ankieta"
+  },
+
+  "shareDialog": {
+    "title": "Udostępnij prezentację",
+    "message": "Gratulacje, Twoja prezentacja: {{PRESENTATION_NAME}} właśnie się rozpoczęła, użyj poniższego linku, aby ją udostępnić!",
+    "cancelButton": "Anuluj",
+    "copyButton": "Kopiuj link",
+    "successSnackbar": "Skopiowano link",
+    "failedSnackbar": "Kopiowanie linku nie powiodło się!"
   }
 }

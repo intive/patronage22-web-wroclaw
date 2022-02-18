@@ -7,15 +7,15 @@ export default {
   title: "ShareDialog",
   component: ShareDialog,
   args: {
-    link: "https://intive.com/",
-    code: 123456
+    id: "12345",
+    presentationName: "Moja Prezentacja"
   }
 } as ComponentMeta<typeof ShareDialog>;
 
-const ShareDialogTemplate = (args: { link: string; code: number }) => {
+const ShareDialogTemplate = (args: { id: string; presentationName: string }) => {
   const [open, setOpen] = useState(false);
 
-  const { link, code } = args;
+  const { id, presentationName } = args;
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -30,7 +30,7 @@ const ShareDialogTemplate = (args: { link: string; code: number }) => {
       <Button variant='outlined' onClick={handleClickOpen}>
         Open share dialog
       </Button>
-      <ShareDialog open={open} onClose={handleClose} link={link} code={code} />
+      <ShareDialog open={open} onClose={handleClose} id={id} PRESENTATION_NAME={presentationName} />
     </Box>
   );
 };
