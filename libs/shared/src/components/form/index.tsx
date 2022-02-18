@@ -1,11 +1,11 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Button, Typography } from "@mui/material";
 import React from "react";
 import { FieldValues, FormProvider, SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
 import { TFunction } from "react-i18next";
 import * as yup from "yup";
 import { ObjectShape } from "yup/lib/object";
 
+import { BaseButton, ButtonType } from "../base-button";
 import * as Styled from "./styled";
 
 interface FormProps {
@@ -14,29 +14,31 @@ interface FormProps {
   formFields: JSX.Element[];
   onSubmit: SubmitHandler<FieldValues>;
   onError: SubmitErrorHandler<FieldValues>;
-  isEditButtonVisible: boolean;
+  submitButtonText: string | TFunction;
 }
 
-export const Form: React.FC<FormProps> = ({ formTitle, validationSchema, formFields, onSubmit, onError, isEditButtonVisible }) => {
+export interface FormValues {
+  firstName: string;
+}
+
+export const Form: React.FC<FormProps> = ({ formTitle, validationSchema, formFields, onSubmit, onError, submitButtonText }) => {
   const schema = yup.object(validationSchema).required();
 
-  const methods = useForm({
+  const { ...methods } = useForm<FieldValues>({
     resolver: yupResolver(schema),
     mode: "onChange",
     reValidateMode: "onChange"
   });
 
-  const handleSubmit = (): void => {
-    methods.handleSubmit(onSubmit, onError);
-  };
-
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
     <FormProvider {...methods}>
-      <Styled.Form onSubmit={handleSubmit}>
-        <Typography>{formTitle}</Typography>
+      <Styled.Form>
+        <Styled.FormTitle>{formTitle}</Styled.FormTitle>
         {formFields}
-        {isEditButtonVisible && <Button />}
+        <BaseButton type={ButtonType.Basic} onClick={methods.handleSubmit(onSubmit, onError)} variant='contained'>
+          {submitButtonText}
+        </BaseButton>
       </Styled.Form>
     </FormProvider>
   );
