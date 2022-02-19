@@ -1,27 +1,25 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import React from "react";
-import { FieldValues, FormProvider, SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
+import { Controller, FieldValues, FormProvider, SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
 import { TFunction } from "react-i18next";
 import * as yup from "yup";
 import { ObjectShape } from "yup/lib/object";
 
+import { FieldTypes } from "../../types";
 import { BaseButton, ButtonType } from "../base-button";
+import { FormField, renderTextField } from "../form-field";
 import * as Styled from "./styled";
 
-interface FormProps {
-  formTitle: string | TFunction;
+interface Props {
+  formTitle: TFunction;
   validationSchema: ObjectShape;
-  formFields: JSX.Element[];
+  formFields: FormField[];
   onSubmit: SubmitHandler<FieldValues>;
   onError: SubmitErrorHandler<FieldValues>;
-  submitButtonText: string | TFunction;
+  submitButtonText: TFunction;
 }
 
-export interface FormValues {
-  firstName: string;
-}
-
-export const Form: React.FC<FormProps> = ({ formTitle, validationSchema, formFields, onSubmit, onError, submitButtonText }) => {
+export const Form: React.FC<Props> = ({ formTitle, validationSchema, formFields, onSubmit, onError, submitButtonText }) => {
   const schema = yup.object(validationSchema).required();
 
   const { ...methods } = useForm<FieldValues>({
@@ -30,12 +28,29 @@ export const Form: React.FC<FormProps> = ({ formTitle, validationSchema, formFie
     reValidateMode: "onChange"
   });
 
+  const renderFields = (input: FormField[]): JSX.Element[] =>
+    input.map(formField => {
+      const render = {
+        [FieldTypes.FormTextField]: renderTextField(formField, methods.formState.errors)
+      };
+
+      return (
+        <Controller
+          key={formField.fieldName}
+          name={formField.fieldName}
+          control={methods.control}
+          defaultValue={formField.defaultValue}
+          render={render[formField.fieldType]}
+        />
+      );
+    });
+
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
     <FormProvider {...methods}>
       <Styled.Form>
         <Styled.FormTitle>{formTitle}</Styled.FormTitle>
-        {formFields}
+        {renderFields(formFields)}
         <BaseButton type={ButtonType.Basic} onClick={methods.handleSubmit(onSubmit, onError)} variant='contained'>
           {submitButtonText}
         </BaseButton>

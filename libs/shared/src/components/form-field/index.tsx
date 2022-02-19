@@ -1,29 +1,24 @@
 import { TextField } from "@mui/material";
-import { Controller, ControllerProps, useFormContext } from "react-hook-form";
+import { ControllerProps, FieldValues, FormState } from "react-hook-form";
 import { TFunction } from "react-i18next";
 
-export enum FieldTypes {
-  FormTextField = "textfield"
-}
+import { FieldTypes } from "../../types";
 
-export type FormFieldProps = {
+export interface FormField {
   fieldName: string;
   defaultValue: string | TFunction;
   fieldType: FieldTypes;
   label: string | TFunction;
   helperText: string | TFunction;
-};
+}
 
-export const FormField: React.FC<FormFieldProps> = ({ fieldName, defaultValue, fieldType, label, helperText }) => {
-  const { control, formState } = useFormContext();
-
-  const renderTextField: ControllerProps["render"] = ({ field: { onChange, value } }) => (
-    <TextField onChange={onChange} value={value} error={formState.errors?.fieldName} label={label} helperText={helperText} />
+export const renderTextField = (
+  { label, helperText }: FormField,
+  errors: FormState<FieldValues>["errors"]
+): ControllerProps["render"] => {
+  const renderFormTextField: ControllerProps["render"] = ({ field: { onChange, value } }) => (
+    <TextField onChange={onChange} value={value} error={errors?.fieldName} label={label} helperText={helperText} />
   );
 
-  const types = {
-    [FieldTypes.FormTextField]: renderTextField
-  };
-
-  return <Controller name={fieldName} control={control} defaultValue={defaultValue} render={types[fieldType]} />;
+  return renderFormTextField;
 };
