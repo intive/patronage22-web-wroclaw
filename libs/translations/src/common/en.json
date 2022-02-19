@@ -6,7 +6,7 @@
 
   "shareDialog": {
     "title": "Share presentation",
-    "message": "Congratulations, you presentation: {{PRESENTATION_NAME}}  just started, use the link below to share it!",
+    "message": "Congratulations, your presentation: {{PRESENTATION_NAME}}  just started, use the link below to share it!",
     "cancelButton": "Cancel",
     "copyButton": "Copy link",
     "successSnackbar": "Link copied",

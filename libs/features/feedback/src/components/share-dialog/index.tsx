@@ -1,4 +1,4 @@
-import { Button, DialogActions, DialogContent, Snackbar } from "@mui/material";
+import { DialogActions, DialogContent, Snackbar } from "@mui/material";
 import { AppRoute, BaseButton, ButtonType, TranslationNamespace } from "@patronage-web/shared";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -59,7 +59,7 @@ export const ShareDialog: React.FC<ShareDialogProps> = props => {
         <Styled.DialogContentText>{t("shareDialog.message", { PRESENTATION_NAME: presentationName })}</Styled.DialogContentText>
         <Styled.Typography>{link}</Styled.Typography>
         <Styled.QRCodeBox>
-          <QRCode value={link} size={180} />
+          <QRCode value={link} size={160} />
         </Styled.QRCodeBox>
       </DialogContent>
       <DialogActions>
@@ -78,29 +78,5 @@ export const ShareDialog: React.FC<ShareDialogProps> = props => {
         message={message}
       />
     </Styled.Dialog>
-  );
-};
-
-export const SimpleDialogDemo = () => {
-  const [open, setOpen] = useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const id = "23456";
-  const presentationName = "PRESENTATION_NAME";
-
-  return (
-    <div>
-      <Button variant='outlined' onClick={handleClickOpen}>
-        Open a dialog
-      </Button>
-      <ShareDialog open={open} onClose={handleClose} id={id} presentationName={presentationName} />
-    </div>
   );
 };

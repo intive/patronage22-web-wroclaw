@@ -31,8 +31,10 @@ export const DialogContentText = styled(MUIDialogContentText)(({ theme }) => ({
 export const Typography = styled(MUITypography)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
+  textAlign: "center",
   backgroundColor: theme.palette.action.hover,
-  padding: theme.spacing(1)
+  padding: theme.spacing(1),
+  wordBreak: "break-word"
 }));
 
 export const ShareIcon = styled(ShareTwoTone)(({ theme }) => ({
