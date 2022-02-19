@@ -1,6 +1,6 @@
 import { ThemeSelector } from "@patronage-web/shared";
 
-import { NavBreadcrumbs } from "../../components/nav-breadcrumbs";
+import { NavBreadcrumbs } from "../../components";
 import { centerSectionStyles } from "./style";
 
 // TODO center element should be replaced with SearchBar when will be ready

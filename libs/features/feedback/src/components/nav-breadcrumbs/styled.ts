@@ -1,25 +1,23 @@
-import { ImageOutlined as MUIImageOutlinedIcon, NavigateNext as MUINavigateNextIcon } from "@mui/icons-material";
-import { Box as MUIBox, Typography as MUITypography } from "@mui/material";
+import { ImageOutlined, NavigateNext } from "@mui/icons-material";
+import { Box, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
-// TODO when theme config will be applied - replace with theme color, weight, size
-export const MediumTypography = styled(MUITypography)({
-  color: "rgb(126, 126, 126)",
-  fontWeight: 500,
+export const MediumTypography = styled(Typography)(({ theme }) => ({
+  color: theme.palette.primary.light,
+  fontWeight: theme.typography.fontWeightMedium,
   fontSize: "0.875rem"
-});
+}));
 
-// TODO when theme config will be applied - replace with theme color
-export const ArrowSeparator = styled(MUINavigateNextIcon)({
-  color: "rgb(158, 158, 158)"
-});
+export const ArrowSeparator = styled(NavigateNext)(({ theme }) => ({
+  color: theme.palette.primary.light
+}));
 
-// TODO when theme config will be applied - replace with theme color
-export const BasicLogo = styled(MUIImageOutlinedIcon)({
+export const BasicLogo = styled(ImageOutlined)(({ theme }) => ({
+  color: theme.palette.primary.dark,
   fontSize: "1.875rem"
-});
+}));
 
-export const AlignedCenterWrapper = styled(MUIBox)({
+export const AlignedCenterWrapper = styled(Box)({
   display: "flex",
   alignItems: "center"
 });
