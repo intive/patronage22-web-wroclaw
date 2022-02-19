@@ -1,4 +1,12 @@
 {
-  "breadcrumb": "nawigacja",
-  "save": "Zapisz"
+  "breadcrumb": {
+    "breadcrumb": "nawigacja",
+    "save": "Zapisz"
+  },
+
+  "search": {
+    "searchbarPlaceholder": "Szukaj prezentacji",
+    "showResultsButton": "Pokaż wszystkie wyniki...",
+    "searchAriaLabel": "Szukaj"
+  }
 }

@@ -13,14 +13,15 @@ interface SearchInputProps {
 
 export const SearchInput: React.FC<SearchInputProps> = ({ onChange, onClick, readOnly, autoFocus }) => {
   const { t } = useTranslation();
+
   return (
     <Styled.Search>
       <Styled.SearchIconWrapper>
         <SearchIcon />
       </Styled.SearchIconWrapper>
       <Styled.BaseInput
-        placeholder={t("dashboard.searchbarPlaceholder")}
-        inputProps={{ "aria-label": t("dashboard.ariaLabel") }}
+        placeholder={t("search.searchbarPlaceholder")}
+        inputProps={{ "aria-label": t("search.searchAriaLabel") }}
         onChange={onChange}
         onClick={onClick}
         readOnly={readOnly}

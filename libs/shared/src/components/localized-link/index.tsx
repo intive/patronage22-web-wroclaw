@@ -11,14 +11,14 @@ export interface LocalizedLinkProps extends Pick<LinkProps, "style"> {
   searchPhrase?: string;
 }
 
-export const LocalizedLink: React.FC<LocalizedLinkProps> = ({ to, children, routerParams, searchPhrase, style }) => {
+export const LocalizedLink: React.FC<LocalizedLinkProps> = ({ to, children, routerParams, searchPhrase }) => {
   const { i18n } = useTranslation();
 
   const path = PAGE_PATHS[to];
   const localizedPath = createPath(path, routerParams, i18n.language, searchPhrase);
 
   return (
-    <Link to={localizedPath} style={style}>
+    <Link to={localizedPath} style={{ textDecoration: "none" }}>
       {children}
     </Link>
   );
