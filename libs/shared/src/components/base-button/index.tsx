@@ -7,7 +7,7 @@ export enum ButtonType {
   Basic = "basic",
   Icon = "icon"
 }
-export interface BaseButtonProps extends Pick<ButtonProps, "children" | "onClick" | "variant"> {
+export interface BaseButtonProps extends Pick<ButtonProps, "children" | "onClick" | "variant" | "disabled"> {
   type: ButtonType;
 }
 
