@@ -4,7 +4,7 @@ export enum AppRoute {
   Presentation = "/presentation",
   AddPresentation = "add",
   EditPresentation = "edit/:id",
-  PresentationForExternalUser = ":id",
+  ExternalUserPresentation = ":id",
   NotFound = "*"
 }
 
@@ -13,6 +13,6 @@ export enum PagePath {
   Presentation = "presentation",
   AddPresentation = "add-presentation",
   EditPresentation = "edit-presentation",
-  PresentationForExternalUser = "external-user-presentation",
+  ExternalUserPresentation = "external-user-presentation",
   Dashboard = "dashboard"
 }
