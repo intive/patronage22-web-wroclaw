@@ -3,5 +3,6 @@
   "missingTitleError": "Title cannot be empty",
   "newPresentation": "New presentation",
   "description": "Description",
-  "save": "Save"
+  "save": "Save",
+  "submit": "Submit"
 }

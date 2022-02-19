@@ -1,6 +1,8 @@
-import { FieldTypes, Form, FormField, TranslationNamespace } from "@patronage-web/shared";
+import { FieldTypes, FormField, TranslationNamespace } from "@patronage-web/shared";
 import { useTranslation } from "react-i18next";
 import { string } from "yup";
+
+import * as Styled from "./styled";
 
 export const TitleAndDescription: React.FC = () => {
   const { t } = useTranslation(TranslationNamespace.Feedback);
@@ -11,25 +13,25 @@ export const TitleAndDescription: React.FC = () => {
       variant: "standard",
       isMultiline: false,
       fieldName: "title",
-      defaultValue: t("New presentation")
+      defaultValue: t("newPresentation")
     },
     {
       fieldType: FieldTypes.FormTextField,
       fieldName: "description",
       isMultiline: true,
       defaultValue: t(" "),
-      label: t("Description")
+      label: t("description")
     }
   ];
 
   return (
-    <Form
+    <Styled.TitleAndDescription
       onSubmit={data => console.log(data)}
-      onError={() => console.log("Error")}
+      onError={formState => console.log(formState.errors)}
       isDisabled
       hasSubmitButton={false}
       formFields={formFields}
-      validationSchema={{ title: string().required(t("Title is mandatory")), description: string() }}
+      validationSchema={{ title: string().required(t("missingTitleError")), description: string() }}
       hasEditButton
     />
   );

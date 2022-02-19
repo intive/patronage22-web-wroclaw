@@ -15,11 +15,19 @@ export interface FormField {
   label?: TFunction;
 }
 
-export const renderTextField = (
-  { variant, isMultiline, rows, label }: FormField,
-  errors: FormState<FieldValues>["errors"],
-  isFormDisabled: boolean
-): ControllerProps["render"] => {
+interface RenderTextFieldProps extends Pick<FormField, "variant" | "isMultiline" | "rows" | "label"> {
+  errors: FormState<FieldValues>["errors"];
+  isFormDisabled: boolean;
+}
+
+export const renderTextField = ({
+  variant,
+  isMultiline,
+  rows,
+  label,
+  errors,
+  isFormDisabled
+}: RenderTextFieldProps): ControllerProps["render"] => {
   const renderFormTextField: ControllerProps["render"] = ({ field: { name, onChange, value } }) => (
     <TextField
       variant={variant || "outlined"}

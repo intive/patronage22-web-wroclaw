@@ -1,7 +1,7 @@
-import { TitleAndDescriptionForm } from "@patronage-web/features-feedback";
+import { TitleAndDescription } from "@patronage-web/features-feedback";
 import { ComponentMeta } from "@storybook/react";
 
-export const TitleAndDescriptionStory: React.FC = () => <TitleAndDescriptionForm />;
+export const TitleAndDescriptionStory: React.FC = () => <TitleAndDescription />;
 
 export default {
   title: "Title and description",

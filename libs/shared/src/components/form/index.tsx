@@ -1,6 +1,6 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Cancel, Check, Edit } from "@mui/icons-material";
-import { ButtonGroup } from "@mui/material";
+import { Box, ButtonGroup, Typography } from "@mui/material";
 import { t } from "i18next";
 import { useState } from "react";
 import { Controller, FieldValues, FormProvider, SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
@@ -11,7 +11,6 @@ import { ObjectShape } from "yup/lib/object";
 import { FieldTypes } from "../../types";
 import { BaseButton, ButtonType } from "../base-button";
 import { FormField, renderTextField } from "../form-field";
-import * as Styled from "./styled";
 
 export interface Props {
   formTitle?: TFunction;
@@ -65,8 +64,10 @@ export const Form: React.FC<Props> = ({
 
   const renderFields = (input: FormField[]): JSX.Element[] =>
     input.map(formField => {
+      const { variant, isMultiline, rows, label } = formField;
+      const { errors } = methods.formState;
       const render = {
-        [FieldTypes.FormTextField]: renderTextField(formField, methods.formState.errors, isFormDisabled)
+        [FieldTypes.FormTextField]: renderTextField({ variant, isMultiline, rows, label, errors, isFormDisabled })
       };
 
       return (
@@ -83,8 +84,8 @@ export const Form: React.FC<Props> = ({
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
     <FormProvider {...methods}>
-      <Styled.Form>
-        {formTitle && <Styled.FormTitle>{formTitle}</Styled.FormTitle>}
+      <Box>
+        {formTitle && <Typography>{formTitle}</Typography>}
         {renderFields(formFields)}
         {hasSubmitButton && (
           <BaseButton type={ButtonType.Basic} onClick={methods.handleSubmit(onSubmit, onError)} variant='contained'>
@@ -116,7 +117,7 @@ export const Form: React.FC<Props> = ({
             )}
           </ButtonGroup>
         )}
-      </Styled.Form>
+      </Box>
     </FormProvider>
   );
 };
