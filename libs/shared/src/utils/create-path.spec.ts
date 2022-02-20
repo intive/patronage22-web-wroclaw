@@ -13,7 +13,7 @@ const routesConfig: RoutesConfigProps[] = [
   {
     routeParams: { id: "qwerty" },
     targetPage: FeedbackRoute.EditPresentation,
-    targetPath: "/presentation/edit/qwerty"
+    targetPath: "/feedback/presentation/edit/qwerty"
   },
   {
     targetPage: BaseRoute.Home,
@@ -21,20 +21,20 @@ const routesConfig: RoutesConfigProps[] = [
   },
   {
     targetPage: FeedbackRoute.Dashboard,
-    targetPath: "/dashboard"
+    targetPath: "/feedback/dashboard"
   },
   {
     targetPage: FeedbackRoute.Presentation,
-    targetPath: "/presentation"
+    targetPath: "/feedback/presentation"
   },
   {
     targetPage: FeedbackRoute.AddPresentation,
-    targetPath: "/presentation/add"
+    targetPath: "/feedback/presentation/add"
   },
   {
     routeParams: { id: "qwerty" },
     targetPage: FeedbackRoute.ExternalUserPresentation,
-    targetPath: "/presentation/qwerty"
+    targetPath: "/feedback/presentation/qwerty"
   }
 ];
 
