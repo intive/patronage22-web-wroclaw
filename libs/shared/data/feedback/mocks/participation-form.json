@@ -3,21 +3,21 @@
   "questions": [
     {
       "id": 0,
-      "content": "How many apples?",
+      "title": "How many apples?",
       "type": 0,
-      "answer": ["1", "2", "3"],
+      "answers": ["1", "2", "3"],
       "created": 1645132670,
       "current": 1645132671,
-      "maxAnswerTime": 432000000
+      "maxAnswerTime": 60
     },
     {
       "id": 1,
-      "content": "How many doggos?",
+      "title": "How many doggos?",
       "type": 0,
-      "answer": ["11", "24", "37"],
+      "answers": ["11", "24", "37"],
       "created": 1645132670,
       "current": 1645132671,
-      "maxAnswerTime": 432000000
+      "maxAnswerTime": 60
     }
   ]
 }
