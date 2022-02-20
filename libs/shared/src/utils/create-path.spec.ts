@@ -1,39 +1,39 @@
 import { Params } from "react-router-dom";
 
 import { PAGE_PATHS } from "../constants";
-import { PagePath, SupportedLanguage } from "../types";
+import { AppRoute, BaseRoute, FeedbackRoute, SupportedLanguage } from "../types";
 import { createPath } from "./create-path";
 
 interface RoutesConfigProps {
   routeParams?: Params;
-  targetPage: PagePath;
+  targetPage: AppRoute;
   targetPath: string;
 }
 const routesConfig: RoutesConfigProps[] = [
   {
     routeParams: { id: "qwerty" },
-    targetPage: PagePath.EditPresentation,
+    targetPage: FeedbackRoute.EditPresentation,
     targetPath: "/presentation/edit/qwerty"
   },
   {
-    targetPage: PagePath.Home,
+    targetPage: BaseRoute.Home,
     targetPath: "/"
   },
   {
-    targetPage: PagePath.Dashboard,
+    targetPage: FeedbackRoute.Dashboard,
     targetPath: "/dashboard"
   },
   {
-    targetPage: PagePath.Presentation,
+    targetPage: FeedbackRoute.Presentation,
     targetPath: "/presentation"
   },
   {
-    targetPage: PagePath.AddPresentation,
+    targetPage: FeedbackRoute.AddPresentation,
     targetPath: "/presentation/add"
   },
   {
     routeParams: { id: "qwerty" },
-    targetPage: PagePath.ExternalUserPresentation,
+    targetPage: FeedbackRoute.ExternalUserPresentation,
     targetPath: "/presentation/qwerty"
   }
 ];

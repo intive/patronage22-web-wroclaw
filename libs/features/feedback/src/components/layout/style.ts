@@ -1,4 +1,4 @@
-export const centerSectionStyles = {
+export const navbarCenterSectionStyles = {
   order: 1,
   width: "100%",
 

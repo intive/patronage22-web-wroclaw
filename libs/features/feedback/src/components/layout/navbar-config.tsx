@@ -1,7 +1,7 @@
 import { ThemeSelector } from "@patronage-web/shared";
 
-import { NavBreadcrumbs } from "../../components";
-import { centerSectionStyles } from "./style";
+import { NavBreadcrumbs } from "../nav-breadcrumbs";
+import { navbarCenterSectionStyles } from "./style";
 
 // TODO center element should be replaced with SearchBar when will be ready
 export const navbarConfig = {
@@ -10,7 +10,7 @@ export const navbarConfig = {
   },
   center: {
     elements: [<div>SearchBar</div>],
-    customStyles: centerSectionStyles
+    customStyles: navbarCenterSectionStyles
   },
   end: {
     elements: [<ThemeSelector />]

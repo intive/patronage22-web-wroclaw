@@ -1,18 +1,30 @@
-export enum AppRoute {
-  Home = "/",
-  Dashboard = "/dashboard",
-  Presentation = "/presentation",
-  AddPresentation = "add",
-  EditPresentation = "edit/:id",
-  ExternalUserPresentation = ":id",
-  NotFound = "*"
+export enum FeatureName {
+  Feedback = "feedback"
 }
 
-export enum PagePath {
-  Home = "home",
+export enum FeedbackRoute {
+  Dashboard = "dashboard",
   Presentation = "presentation",
   AddPresentation = "add-presentation",
   EditPresentation = "edit-presentation",
-  ExternalUserPresentation = "external-user-presentation",
-  Dashboard = "dashboard"
+  ExternalUserPresentation = "external-user-presentation"
 }
+
+export enum BaseRoute {
+  Home = "home",
+  NotFound = "not-found"
+}
+
+export type AppRoute = BaseRoute | FeedbackRoute;
+
+export const ROUTES = {
+  [BaseRoute.Home]: "/",
+  [BaseRoute.NotFound]: "*",
+  [FeedbackRoute.Dashboard]: `/${FeatureName.Feedback}/dashboard`,
+  [FeedbackRoute.Presentation]: `/${FeatureName.Feedback}/presentation`,
+  [FeedbackRoute.AddPresentation]: "add",
+  [FeedbackRoute.EditPresentation]: "edit/:id",
+  [FeedbackRoute.ExternalUserPresentation]: ":id"
+} as const;
+
+export type Route = typeof ROUTES[AppRoute];

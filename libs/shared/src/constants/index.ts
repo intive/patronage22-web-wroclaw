@@ -1,10 +1,8 @@
-import { AppRoute, PagePath } from "../types";
+import { AppRoute, FeedbackRoute, Route, ROUTES } from "../types";
 
-export const PAGE_PATHS: Record<PagePath, AppRoute | AppRoute[]> = {
-  [PagePath.Dashboard]: AppRoute.Dashboard,
-  [PagePath.Home]: AppRoute.Home,
-  [PagePath.Presentation]: AppRoute.Presentation,
-  [PagePath.AddPresentation]: [AppRoute.Presentation, AppRoute.AddPresentation],
-  [PagePath.EditPresentation]: [AppRoute.Presentation, AppRoute.EditPresentation],
-  [PagePath.ExternalUserPresentation]: [AppRoute.Presentation, AppRoute.ExternalUserPresentation]
+export const PAGE_PATHS: Record<AppRoute, Route | Route[]> = {
+  ...ROUTES,
+  [FeedbackRoute.AddPresentation]: [ROUTES[FeedbackRoute.Presentation], ROUTES[FeedbackRoute.AddPresentation]],
+  [FeedbackRoute.EditPresentation]: [ROUTES[FeedbackRoute.Presentation], ROUTES[FeedbackRoute.EditPresentation]],
+  [FeedbackRoute.ExternalUserPresentation]: [ROUTES[FeedbackRoute.Presentation], ROUTES[FeedbackRoute.EditPresentation]]
 };

@@ -2,11 +2,11 @@ import { useTranslation } from "react-i18next";
 import { Link, Params } from "react-router-dom";
 
 import { PAGE_PATHS } from "../../constants";
-import { PagePath } from "../../types";
+import { AppRoute } from "../../types";
 import { createPath } from "../../utils";
 
 export interface LocalizedLinkProps {
-  to: PagePath;
+  to: AppRoute;
   routerParams?: Params;
 }
 

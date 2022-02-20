@@ -1,6 +1,7 @@
 import { BasicLayout, BasicLayoutProps } from "@patronage-web/shared";
 
-import { footerConfig, navbarConfig } from "../../utils";
+import { footerConfig } from "./footer-config";
+import { navbarConfig } from "./navbar-config";
 
 export interface LayoutProps {
   children: BasicLayoutProps["children"];
