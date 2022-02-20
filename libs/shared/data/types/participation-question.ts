@@ -1,7 +1,8 @@
 import { ParticipationQuestionType } from "./participation-question-type";
 
 export interface ParticipationQuestion {
-  id: number;
+  id: string;
+  questionNumber: number;
   title: string;
   type: ParticipationQuestionType;
   answers?: string[];
