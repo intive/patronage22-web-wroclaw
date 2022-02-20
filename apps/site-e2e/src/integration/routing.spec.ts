@@ -1,9 +1,9 @@
-import { Route, ROUTES } from "@patronage-web/shared";
+import { AppRoute, ROUTES } from "@patronage-web/shared";
 import { generatePath } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 
 describe("Base routing", () => {
-  const buildPath = (to: Route, id?: string) => {
+  const buildPath = (to: AppRoute, id?: string) => {
     return generatePath(`${ROUTES.presentation}/${to}`, { id });
   };
   it(`should display <${ROUTES.home}> page`, () => {

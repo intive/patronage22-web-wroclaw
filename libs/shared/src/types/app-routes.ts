@@ -2,7 +2,7 @@ export enum FeatureName {
   Feedback = "feedback"
 }
 
-export enum FeedbackRoute {
+export enum FeedbackPath {
   Dashboard = "dashboard",
   Presentation = "presentation",
   AddPresentation = "add-presentation",
@@ -10,21 +10,21 @@ export enum FeedbackRoute {
   ExternalUserPresentation = "external-user-presentation"
 }
 
-export enum BaseRoute {
+export enum BasePath {
   Home = "home",
   NotFound = "not-found"
 }
 
-export type AppRoute = BaseRoute | FeedbackRoute;
+export type PagePath = BasePath | FeedbackPath;
 
 export const ROUTES = {
-  [BaseRoute.Home]: "/",
-  [BaseRoute.NotFound]: "*",
-  [FeedbackRoute.Dashboard]: `/${FeatureName.Feedback}/dashboard`,
-  [FeedbackRoute.Presentation]: `/${FeatureName.Feedback}/presentation`,
-  [FeedbackRoute.AddPresentation]: "add",
-  [FeedbackRoute.EditPresentation]: "edit/:id",
-  [FeedbackRoute.ExternalUserPresentation]: ":id"
+  [BasePath.Home]: "/",
+  [BasePath.NotFound]: "*",
+  [FeedbackPath.Dashboard]: `/${FeatureName.Feedback}/dashboard`,
+  [FeedbackPath.Presentation]: `/${FeatureName.Feedback}/presentation`,
+  [FeedbackPath.AddPresentation]: "add",
+  [FeedbackPath.EditPresentation]: "edit/:id",
+  [FeedbackPath.ExternalUserPresentation]: ":id"
 } as const;
 
-export type Route = typeof ROUTES[AppRoute];
+export type AppRoute = typeof ROUTES[PagePath];
