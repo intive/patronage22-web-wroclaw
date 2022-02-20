@@ -11,13 +11,13 @@ export const commonStyles = createTheme({
 
 declare module "@mui/material/styles" {
   interface Theme {
-    shareDialog: {
+    dialog: {
       iconBackgroundColor: string;
       iconColor: string;
     };
   }
   interface ThemeOptions {
-    shareDialog?: {
+    dialog?: {
       iconBackgroundColor?: string;
       iconColor?: string;
     };
@@ -30,7 +30,7 @@ export const dark = createTheme({
     mode: ThemeMode.Dark,
     primary: { main: grey[100], light: grey[50], dark: grey[300] }
   },
-  shareDialog: {
+  dialog: {
     iconBackgroundColor: grey[600],
     iconColor: grey[200]
   }
@@ -42,7 +42,7 @@ export const light = createTheme({
     mode: ThemeMode.Light,
     primary: { main: grey[800], light: grey[600], dark: grey[900] }
   },
-  shareDialog: {
+  dialog: {
     iconBackgroundColor: grey[300],
     iconColor: grey[700]
   }

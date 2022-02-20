@@ -1,5 +1,5 @@
-import { DialogActions, DialogContent, Snackbar } from "@mui/material";
-import { AppRoute, BaseButton, ButtonType, TranslationNamespace } from "@patronage-web/shared";
+import { DialogActions, DialogContent } from "@mui/material";
+import { AppRoute, BaseButton, BaseSnackbar, ButtonType, createPath, TranslationNamespace } from "@patronage-web/shared";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import QRCode from "react-qr-code";
@@ -8,25 +8,21 @@ import * as Styled from "./styled";
 
 export interface ShareDialogProps {
   open: boolean;
-  onClose(): void;
+  onClose: () => void;
   id: string;
-  presentationName: string;
+  title: string;
 }
 
-export const ShareDialog: React.FC<ShareDialogProps> = props => {
+export const ShareDialog: React.FC<ShareDialogProps> = ({ open, onClose, id, title }) => {
   const { t } = useTranslation(TranslationNamespace.Common);
-  const { open, onClose, id, presentationName } = props;
-  const link = `${window.location.origin}${AppRoute.Presentation}/${id}`;
+  const path = createPath([AppRoute.Presentation, AppRoute.PresentationForExternalUser], { id });
+  const link = `${window.location.origin}${path}`;
 
-  const handleClose = () => {
-    onClose();
-  };
-
-  const [message, setMessage] = useState<string>("");
-  const [snackOpen, setSnackOpen] = useState(false);
+  const [message, setMessage] = useState("");
+  const [isSnackOpen, setIsSnackOpen] = useState(false);
 
   const handleSnackClose = () => {
-    setSnackOpen(false);
+    setIsSnackOpen(false);
   };
 
   const onSuccess = () => {
@@ -38,13 +34,13 @@ export const ShareDialog: React.FC<ShareDialogProps> = props => {
 
   const handleCopy = () => {
     navigator.clipboard.writeText(link).then(onSuccess, onFail);
-    setSnackOpen(true);
+    setIsSnackOpen(true);
   };
 
   return (
-    <Styled.Dialog
+    <Styled.BasicShareDialog
       open={open}
-      onClose={handleClose}
+      onClose={onClose}
       PaperProps={{
         sx: {
           overflow: "visible"
@@ -52,31 +48,38 @@ export const ShareDialog: React.FC<ShareDialogProps> = props => {
       }}
     >
       <Styled.IconBox>
-        <Styled.ShareIcon fontSize='large' />
+        <Styled.ShareIcon />
       </Styled.IconBox>
-      <Styled.DialogTitle>{t("shareDialog.title")}</Styled.DialogTitle>
+
+      <Styled.ShareDialogTitle>{t("shareDialog.title")}</Styled.ShareDialogTitle>
+
       <DialogContent>
-        <Styled.DialogContentText>{t("shareDialog.message", { PRESENTATION_NAME: presentationName })}</Styled.DialogContentText>
-        <Styled.Typography>{link}</Styled.Typography>
+        <Styled.ShareDialogContentText>{t("shareDialog.message", { PRESENTATION_NAME: title })}</Styled.ShareDialogContentText>
+
+        <Styled.LinkTypography>{link}</Styled.LinkTypography>
+
         <Styled.QRCodeBox>
           <QRCode value={link} size={160} />
         </Styled.QRCodeBox>
       </DialogContent>
+
       <DialogActions>
-        <BaseButton type={ButtonType.Basic} onClick={handleClose}>
+        <BaseButton type={ButtonType.Basic} onClick={onClose}>
           {t("shareDialog.cancelButton")}
         </BaseButton>
+
         <BaseButton type={ButtonType.Basic} variant='contained' onClick={handleCopy}>
           {t("shareDialog.copyButton")}
         </BaseButton>
       </DialogActions>
-      <Snackbar
-        open={snackOpen}
+
+      <BaseSnackbar
+        open={isSnackOpen}
         onClose={handleSnackClose}
         anchorOrigin={{ horizontal: "center", vertical: "bottom" }}
         autoHideDuration={1500}
         message={message}
       />
-    </Styled.Dialog>
+    </Styled.BasicShareDialog>
   );
 };
