@@ -22,6 +22,7 @@ export interface Props {
   hasSubmitButton: boolean;
   submitButtonText?: TFunction;
   hasEditButton: boolean;
+  className?: string;
 }
 
 export const Form: React.FC<Props> = ({
@@ -33,7 +34,8 @@ export const Form: React.FC<Props> = ({
   isDisabled,
   hasSubmitButton,
   submitButtonText,
-  hasEditButton
+  hasEditButton,
+  className
 }) => {
   const [isFormDisabled, setIsFormDisabled] = useState(isDisabled);
   const [valuesBeforeChange, setValuesBeforeChange] = useState<FieldValues>();
@@ -84,7 +86,7 @@ export const Form: React.FC<Props> = ({
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
     <FormProvider {...methods}>
-      <Box>
+      <Box className={className}>
         {formTitle && <Typography>{formTitle}</Typography>}
         {renderFields(formFields)}
         {hasSubmitButton && (

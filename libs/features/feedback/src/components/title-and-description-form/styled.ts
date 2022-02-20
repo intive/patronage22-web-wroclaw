@@ -1,22 +1,26 @@
 import { styled } from "@mui/material/styles";
 import { Form } from "@patronage-web/shared";
 
-export const TitleAndDescription = styled(Form)({
+export const TitleAndDescription = styled(Form)(({ theme }) => ({
   display: "grid",
-  gridTemplateColumns: "1fr 1fr",
-  gridTemplateRows: "auto",
+  gridTemplateColumns: "3fr 1fr",
+  gridTemplateRows: "auto auto",
+  columnGap: theme.spacing(1),
+  rowGap: theme.spacing(2),
   gridTemplateAreas: `"title buttons"
       "desc desc"`,
+  maxWidth: theme.spacing(92),
+  margin: theme.spacing(2),
 
-  "&:nth-child(1)": {
+  "& .MuiFormControl-root:first-of-type": {
     gridArea: "title"
   },
 
-  "&:nth-child(2)": {
+  "& .MuiFormControl-root:last-of-type": {
     gridArea: "desc"
   },
 
-  "&:nth-child(3)": {
+  "& .MuiButtonGroup-root": {
     gridArea: "buttons"
   }
-});
+}));
