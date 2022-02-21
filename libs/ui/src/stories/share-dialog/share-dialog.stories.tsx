@@ -8,16 +8,16 @@ export default {
   component: ShareDialog,
   args: {
     id: "12345",
-    presentationName: "Moja Prezentacja"
+    title: "Moja Prezentacja"
   }
 } as ComponentMeta<typeof ShareDialog>;
 
-const ShareDialogTemplate = (args: { id: string; presentationName: string }) => {
+const ShareDialogTemplate = (args: { id: string; title: string }) => {
   const [open, setOpen] = useState(false);
 
-  const { id, presentationName } = args;
+  const { id, title } = args;
 
-  const handleClickOpen = () => {
+  const handleButtonClick = () => {
     setOpen(true);
   };
 
@@ -27,10 +27,10 @@ const ShareDialogTemplate = (args: { id: string; presentationName: string }) => 
 
   return (
     <Box>
-      <Button variant='outlined' onClick={handleClickOpen}>
+      <Button variant='outlined' onClick={handleButtonClick}>
         Open share dialog
       </Button>
-      <ShareDialog open={open} onClose={handleClose} id={id} title={presentationName} />
+      <ShareDialog open={open} onClose={handleClose} id={id} title={title} />
     </Box>
   );
 };

@@ -12,7 +12,7 @@ export const QRCodeBox = styled(Box)(({ theme }) => ({
 export const ShareDialogTitle = styled(DialogTitle)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
-  padding: theme.spacing(0),
+  padding: 0,
   marginTop: theme.spacing(3)
 }));
 
@@ -48,5 +48,6 @@ export const IconBox = styled(Box)(({ theme }) => ({
 }));
 
 export const BasicShareDialog = styled(Dialog)(({ theme }) => ({
-  marginTop: theme.spacing(5)
+  marginTop: theme.spacing(5),
+  "& .MuiDialog-paper": { overflow: "visible" }
 }));

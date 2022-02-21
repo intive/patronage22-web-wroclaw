@@ -8,7 +8,7 @@ module.exports = {
   core: { ...rootMain.core, builder: "webpack5" },
 
   stories: [...rootMain.stories, "../src/stories/**/*.stories.mdx", "../src/stories/**/*.stories.@(js|jsx|ts|tsx)"],
-  addons: [...rootMain.addons, "@nrwl/react/plugins/storybook", 'storybook-react-i18next'],
+  addons: [...rootMain.addons, "@nrwl/react/plugins/storybook"],
   webpackFinal: async (config, { configType }) => {
     // apply any global webpack configs that might have been specified in .storybook/main.js
     if (rootMain.webpackFinal) {
@@ -16,7 +16,6 @@ module.exports = {
     }
 
     // add your own webpack tweaks if needed
-    // https://mui.com/guides/migration-v4/#storybook-emotion-with-v5
     return {
       ...config,
       resolve: {

@@ -1,4 +1,13 @@
 {
   "breadcrumb": "breadcrumb",
-  "save": "Save"
+  "save": "Save",
+  "shareDialog": {
+    "title": "Share presentation",
+    "message": "Congratulations, your presentation: {{name}}  just started, use the link below to share it!",
+    "cancelButton": "Cancel",
+    "copyButton": "Copy link",
+    "successSnackbar": "Link copied",
+    "failedSnackbar": "Link copying failed!"
+  }
 }
+
