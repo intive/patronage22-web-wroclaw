@@ -1,6 +1,6 @@
 import { ParticipationQuestion } from "./participation-question";
 
 export interface ParticipationForm {
-  question: ParticipationQuestion;
+  questions: ParticipationQuestion[];
   id: string;
 }

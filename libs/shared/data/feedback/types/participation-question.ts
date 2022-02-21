@@ -1,10 +1,8 @@
-import { ParticipationQuestionType } from "./participation-question-type";
-
 export interface ParticipationQuestion {
   id: string;
   questionNumber: number;
   title: string;
-  type: ParticipationQuestionType;
+  type: string; // ParticipationQuestionType;
   answers?: string[];
   created: number;
   current: number;

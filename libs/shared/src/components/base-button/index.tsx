@@ -7,22 +7,22 @@ export enum ButtonType {
   Basic = "basic",
   Icon = "icon"
 }
-export interface BaseButtonProps extends Pick<ButtonProps, "children" | "onClick" | "variant"> {
+export interface BaseButtonProps extends Pick<ButtonProps, "children" | "onClick" | "variant" | "disabled"> {
   type: ButtonType;
 }
 
-export const BaseButton: React.FC<BaseButtonProps> = ({ children, onClick, type, variant }) => {
+export const BaseButton: React.FC<BaseButtonProps> = ({ children, onClick, type, variant, disabled }) => {
   const { isMobile } = useScreenSize();
   const buttonSize = isMobile ? "small" : "medium";
 
   const types = {
     [ButtonType.Basic]: (
-      <Styled.BasicButton size={buttonSize} onClick={onClick} variant={variant}>
+      <Styled.BasicButton size={buttonSize} onClick={onClick} variant={variant} disabled={disabled}>
         {children}
       </Styled.BasicButton>
     ),
     [ButtonType.Icon]: (
-      <IconButton size={buttonSize} onClick={onClick}>
+      <IconButton size={buttonSize} onClick={onClick} disabled={disabled}>
         {children}
       </IconButton>
     )
