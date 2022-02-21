@@ -1,4 +1,4 @@
-import { FieldTypes, FormField, TranslationNamespace } from "@patronage-web/shared";
+import { FieldTypes, FormFieldType, TranslationNamespace } from "@patronage-web/shared";
 import { useTranslation } from "react-i18next";
 import { string } from "yup";
 
@@ -7,20 +7,22 @@ import * as Styled from "./styled";
 export const TitleAndDescription: React.FC = () => {
   const { t } = useTranslation(TranslationNamespace.Feedback);
 
-  const formFields: FormField[] = [
+  const formFields: FormFieldType[] = [
     {
       fieldType: FieldTypes.FormTextField,
       variant: "standard",
       isMultiline: false,
-      fieldName: "title",
-      defaultValue: t("newPresentation")
+      name: "title",
+      defaultValue: t("newPresentation"),
+      hasEditIcon: true
     },
     {
       fieldType: FieldTypes.FormTextField,
-      fieldName: "description",
+      name: "description",
       isMultiline: true,
       defaultValue: t(" "),
-      label: t("description")
+      label: t("description"),
+      hasEditIcon: true
     }
   ];
 
@@ -28,11 +30,9 @@ export const TitleAndDescription: React.FC = () => {
     <Styled.TitleAndDescription
       onSubmit={data => console.log(data)}
       onError={formState => console.log(formState.errors)}
-      isDisabled
       hasSubmitButton={false}
-      formFields={formFields}
+      fields={formFields}
       validationSchema={{ title: string().required(t("missingTitleError")), description: string() }}
-      hasEditButton
     />
   );
 };

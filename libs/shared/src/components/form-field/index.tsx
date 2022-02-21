@@ -1,46 +1,58 @@
 /* eslint-disable react/jsx-props-no-spreading */
+import { Edit } from "@mui/icons-material";
 import { TextField } from "@mui/material";
-import { ControllerProps, FieldValues, FormState } from "react-hook-form";
+import { useController, UseControllerProps } from "react-hook-form";
 import { TFunction } from "react-i18next";
 
 import { FieldTypes } from "../../types";
+import * as Styled from "./styled";
 
-export interface FormField {
+export interface FormFieldType extends Pick<UseControllerProps, "name" | "defaultValue" | "control"> {
   fieldType: FieldTypes;
   variant?: "standard" | "filled" | "outlined";
   isMultiline: boolean;
   rows?: number;
-  fieldName: string;
-  defaultValue: string | TFunction;
   label?: TFunction;
+  hasEditIcon: boolean;
 }
 
-interface RenderTextFieldProps extends Pick<FormField, "variant" | "isMultiline" | "rows" | "label"> {
-  errors: FormState<FieldValues>["errors"];
-  isFormDisabled: boolean;
-}
-
-export const renderTextField = ({
+export const FormField: React.FC<FormFieldType> = ({
+  fieldType,
+  name,
+  defaultValue,
+  control,
   variant,
   isMultiline,
   rows,
   label,
-  errors,
-  isFormDisabled
-}: RenderTextFieldProps): ControllerProps["render"] => {
-  const renderFormTextField: ControllerProps["render"] = ({ field: { name, onChange, value } }) => (
-    <TextField
-      variant={variant || "outlined"}
-      disabled={isFormDisabled}
-      multiline={isMultiline}
-      onChange={onChange}
-      value={value}
-      error={errors[`${name}`]}
-      label={label}
-      {...(errors[`${name}`] && { helperText: errors[`${name}`].message })}
-      {...(isMultiline && { rows: rows || 4 })}
-    />
-  );
+  hasEditIcon
+}: FormFieldType) => {
+  const {
+    field,
+    formState: { errors }
+  } = useController({ name, defaultValue, control });
 
-  return renderFormTextField;
+  const formField: Record<FieldTypes, JSX.Element> = {
+    [FieldTypes.FormTextField]: (
+      <TextField
+        name={field.name}
+        value={field.value}
+        defaultValue={defaultValue}
+        onChange={field.onChange}
+        variant={variant || "outlined"}
+        multiline={isMultiline}
+        error={errors[`${name}`]}
+        label={label}
+        {...(errors[`${name}`] && { helperText: errors[`${name}`].message })}
+        {...(isMultiline && { rows: rows || 4 })}
+      />
+    )
+  };
+
+  return (
+    <Styled.Field>
+      {formField[fieldType]}
+      {hasEditIcon && <Edit />}
+    </Styled.Field>
+  );
 };
