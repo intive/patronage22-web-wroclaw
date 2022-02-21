@@ -15,7 +15,7 @@ export interface ShareDialogProps {
 
 export const ShareDialog: React.FC<ShareDialogProps> = ({ open, onClose, id, title }) => {
   const { t } = useTranslation(TranslationNamespace.Common);
-  const path = createPath([AppRoute.Presentation, AppRoute.PresentationForExternalUser], { id });
+  const path = createPath([AppRoute.Presentation, AppRoute.ExternalUserPresentation], { id });
   const link = `${window.location.origin}${path}`;
 
   const [message, setMessage] = useState("");

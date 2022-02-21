@@ -11,5 +11,8 @@
     "copyButton": "Kopiuj link",
     "successSnackbar": "Skopiowano link",
     "failedSnackbar": "Kopiowanie linku nie powiodło się!"
+  },
+  "notFoundPage": {
+    "title": "Przepraszamy, strona, której szukasz nie istnieje"
   }
 }

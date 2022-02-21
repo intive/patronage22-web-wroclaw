@@ -11,5 +11,9 @@
     "copyButton": "Copy link",
     "successSnackbar": "Link copied",
     "failedSnackbar": "Link copying failed!"
+  },
+
+  "notFoundPage": {
+    "title": "We are sorry, the page you're looking for doesn't exist"
   }
 }

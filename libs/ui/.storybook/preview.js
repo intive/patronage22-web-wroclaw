@@ -1,11 +1,11 @@
 import { CssBaseline } from "@mui/material";
 import { ThemeProvider as MuiThemeProvider } from "@mui/material/styles";
-import { dark, light, loadI18n, TranslationNamespace } from "@patronage-web/shared";
+import { dark, light } from "@patronage-web/shared";
 import { ThemeProvider as EmotionThemeProvider } from "emotion-theming";
 import i18n from 'i18next';
 import { MemoryRouter } from "react-router-dom";
+import { I18nWrapper } from "./i18n-wrapper";
 
-loadI18n({ env: "storybook", ns: [TranslationNamespace.Feedback, TranslationNamespace.Common] });
 
 export const parameters = {
   backgrounds: {
@@ -39,5 +39,10 @@ export const decorators = [
         </MuiThemeProvider>
       </EmotionThemeProvider>
     );
-  }
+  },
+  Story => (
+    <I18nWrapper>
+      {Story()}
+    </I18nWrapper>
+  )
 ];

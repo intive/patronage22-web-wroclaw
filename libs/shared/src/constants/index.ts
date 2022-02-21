@@ -6,5 +6,5 @@ export const PAGE_PATHS: Record<PagePath, AppRoute | AppRoute[]> = {
   [PagePath.Presentation]: AppRoute.Presentation,
   [PagePath.AddPresentation]: [AppRoute.Presentation, AppRoute.AddPresentation],
   [PagePath.EditPresentation]: [AppRoute.Presentation, AppRoute.EditPresentation],
-  [PagePath.PresentationForExternalUser]: [AppRoute.Presentation, AppRoute.PresentationForExternalUser]
+  [PagePath.ExternalUserPresentation]: [AppRoute.Presentation, AppRoute.ExternalUserPresentation]
 };

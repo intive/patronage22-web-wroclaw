@@ -26,9 +26,9 @@ describe("Base routing", () => {
     cy.visit(path).url().should("include", path);
   });
 
-  it(`should display <${AppRoute.PresentationForExternalUser}> page`, () => {
+  it(`should display <${AppRoute.ExternalUserPresentation}> page`, () => {
     const Id = uuidv4();
-    const path = buildPath(AppRoute.PresentationForExternalUser, Id);
+    const path = buildPath(AppRoute.ExternalUserPresentation, Id);
     cy.visit(path).url().should("include", path);
   });
 });
