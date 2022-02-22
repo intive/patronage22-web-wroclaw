@@ -1,11 +1,17 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from "@reduxjs/toolkit";
 
+export interface SampleStateInterface {
+  text: string;
+}
+
+const initialState: SampleStateInterface = {
+  text: "Hello!"
+};
+
 export const sampleSlice = createSlice({
   name: "sample",
-  initialState: {
-    text: "Hello!"
-  },
+  initialState,
   reducers: {
     greetings: state => {
       state.text = "Hello!";
