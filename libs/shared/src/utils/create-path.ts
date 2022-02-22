@@ -1,17 +1,12 @@
 import { generatePath, Params } from "react-router-dom";
 
-import { AppRoute, SupportedLanguage } from "../types";
-
-export const setSearchQuery = (lang: string, search?: string) => {
-  const searchPhrase = lang.length ? `&q=${search}` : `?q=${search}`;
-
-  return search ? searchPhrase : "";
-};
+import { AppRoute } from "../types";
+import { buildQueryString } from "./build-query-string";
 
 export const createPath = (path: AppRoute | AppRoute[], params?: Params, language?: string, search?: string) => {
-  const lang = language?.length && language !== SupportedLanguage.En ? `?lang=${language}` : "";
-  const searchQuery = setSearchQuery(lang, search);
+  const builtQueryString = buildQueryString(language, search);
+  const queryParams = builtQueryString ? `?${builtQueryString}` : "";
   const basePath = path instanceof Array ? path.join("/") : path;
 
-  return `${generatePath(`${basePath}`, params)}${lang}${searchQuery}`;
+  return `${generatePath(`${basePath}`, params)}${queryParams}`;
 };

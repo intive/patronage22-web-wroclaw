@@ -38,6 +38,8 @@ const routesConfig: RoutesConfigProps[] = [
   }
 ];
 
+const searchQueries = ["react", "adv%an=", "j$a#v&a"];
+
 describe("createPath generation test", () => {
   routesConfig.forEach(config => {
     Object.values(SupportedLanguage).forEach(lang => {
@@ -48,6 +50,21 @@ describe("createPath generation test", () => {
 
       it(`should generate proper link for default language`, () => {
         expect(createPath(PAGE_PATHS[config.targetPage], config.routeParams)).toBe(`${config.targetPath}`);
+      });
+    });
+
+    searchQueries.forEach(querystring => {
+      const espectedQueryString = encodeURIComponent(querystring);
+      it(`should generate proper link for searched phrase ${querystring} with "en" language`, () => {
+        expect(createPath(PAGE_PATHS[config.targetPage], config.routeParams, "en", querystring)).toBe(
+          `${config.targetPath}?search=${espectedQueryString}`
+        );
+      });
+
+      it(`should generate proper link for searched phrase ${querystring} with "pl" language`, () => {
+        expect(createPath(PAGE_PATHS[config.targetPage], config.routeParams, "pl", querystring)).toBe(
+          `${config.targetPath}?lang=pl&search=${espectedQueryString}`
+        );
       });
     });
   });
