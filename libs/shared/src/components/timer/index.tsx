@@ -1,30 +1,21 @@
-import { Stack } from "@mui/material";
+import { CircularProgress, Typography } from "@mui/material";
+import { formatDuration, intervalToDuration } from "date-fns";
+import plLocale from "date-fns/locale/pl";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export interface TimerProps {
-  startRemainingTime: number;
+  initialTime: number;
   label: string;
   onTimeElapsed: () => void;
 }
 
-export const Timer: React.FC<TimerProps> = ({ startRemainingTime, label, onTimeElapsed }) => {
-  const [remainingTime, setRemainingTime] = useState<number>(startRemainingTime);
+export const Timer: React.FC<TimerProps> = ({ initialTime, label, onTimeElapsed }) => {
+  const { t } = useTranslation();
 
-  // I wish to replace that with moment.js duration and it's humanize function
-  const convertToHumanReadableString = (seconds: number) => {
-    const formatSegment = (segment: number, sufix: string) => (segment > 0 ? `${segment} ${sufix} ` : "");
-    const numYears = Math.floor(seconds / 31536000);
-    const numDays = Math.floor((seconds % 31536000) / 86400);
-    const numHours = Math.floor(((seconds % 31536000) % 86400) / 3600);
-    const numMinutes = Math.floor((((seconds % 31536000) % 86400) % 3600) / 60);
-    const numSeconds = (((seconds % 31536000) % 86400) % 3600) % 60;
+  const [remainingTime, setRemainingTime] = useState(initialTime);
 
-    return `${formatSegment(numYears, "y")} 
-    ${formatSegment(numDays, "d")} 
-    ${formatSegment(numHours, "h")} 
-    ${formatSegment(numMinutes, "m")} 
-    ${numSeconds} s`;
-  };
+  const normalise = (value: number) => (value * 100) / initialTime;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -39,9 +30,16 @@ export const Timer: React.FC<TimerProps> = ({ startRemainingTime, label, onTimeE
   });
 
   return (
-    <Stack direction='row'>
-      {label}
-      {convertToHumanReadableString(remainingTime)}
-    </Stack>
+    <>
+      <CircularProgress variant='determinate' value={normalise(remainingTime)} />
+      {remainingTime ? (
+        <Typography>
+          {label}
+          {formatDuration(intervalToDuration({ start: 0, end: remainingTime * 1000 }), { locale: plLocale })}
+        </Typography>
+      ) : (
+        <Typography>{t("timesUp")}</Typography>
+      )}
+    </>
   );
 };

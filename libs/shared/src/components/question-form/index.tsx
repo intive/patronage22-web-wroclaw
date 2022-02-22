@@ -1,56 +1,63 @@
 import { Box, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, Stack, TextField } from "@mui/material";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
-import { ParticipationQuestion } from "../../../data/feedback/types/participation-question";
-import { ParticipationQuestionType } from "../../../data/feedback/types/participation-question-type";
+import { ParticipationQuestion, ParticipationQuestionType } from "../../../data/feedback/types";
 import { BaseButton, ButtonType } from "../base-button";
 
 export interface QuestionFormProps {
-  participationQuestion: ParticipationQuestion;
-  submitHandle: (providedAnswer: string) => void;
+  data: ParticipationQuestion;
+  onSubmit: (answer?: string) => void;
 }
 
-export const QuestionForm: React.FC<QuestionFormProps> = ({ participationQuestion, submitHandle }) => {
-  const [providedAnswer, setProvidedAnswer] = useState<string>("");
+export const QuestionForm: React.FC<QuestionFormProps> = ({
+  data: { defaultAnswer, type, questionNumber, title, answers },
+  onSubmit
+}) => {
+  const { t } = useTranslation();
+
+  const [answer, setAnswer] = useState(defaultAnswer);
+
+  const avaliableAnswers = answers?.map(a => <FormControlLabel key={a} value={a} control={<Radio />} label={a} />);
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => setAnswer((event.target as HTMLInputElement).value);
+  const TypeOfQuestion: Record<ParticipationQuestionType, JSX.Element> = {
+    [ParticipationQuestionType.Open]: <TextField defaultValue={defaultAnswer} onChange={handleChange} label={t("yourAnswer")} />,
+    [ParticipationQuestionType.Closed]: (
+      <FormControl>
+        <FormLabel>
+          <Stack direction='row' alignItems='center'>
+            <Box
+              sx={{
+                padding: 0.5,
+                marginRight: 2,
+                backgroundColor: "blue",
+                borderRadius: 1
+              }}
+            >
+              {questionNumber}
+            </Box>
+            {title}
+          </Stack>
+        </FormLabel>
+
+        <RadioGroup name='participation-question-radio-group' defaultValue={defaultAnswer} onChange={handleChange}>
+          {avaliableAnswers}
+        </RadioGroup>
+      </FormControl>
+    )
+  };
+
   return (
     <Stack>
-      {participationQuestion.type === ParticipationQuestionType.Open ? (
-        <TextField onChange={e => setProvidedAnswer((e.target as HTMLInputElement).value)} label='Your answer' />
-      ) : (
-        <FormControl>
-          <FormLabel>
-            <Stack direction='row' alignItems='center'>
-              <Box
-                sx={{
-                  padding: 0.5,
-                  marginRight: 2,
-                  backgroundColor: "blue",
-                  borderRadius: 1
-                }}
-              >
-                {participationQuestion.questionNumber}
-              </Box>
-              {participationQuestion.title}
-            </Stack>
-          </FormLabel>
-          <RadioGroup
-            name='participation-question-radio-group'
-            onChange={e => setProvidedAnswer((e.target as HTMLInputElement).value)}
-          >
-            {participationQuestion.answers?.map(answer => (
-              <FormControlLabel key={answer} value={answer} control={<Radio />} label={answer} />
-            ))}
-          </RadioGroup>
-        </FormControl>
-      )}
+      {TypeOfQuestion[type]}
       <BaseButton
         type={ButtonType.Basic}
         onClick={() => {
-          submitHandle(providedAnswer);
+          onSubmit(answer);
         }}
-        disabled={!providedAnswer}
+        disabled={!answer}
       >
-        Submit poll
+        {t("submitPoll")}
       </BaseButton>
     </Stack>
   );

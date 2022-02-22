@@ -1,4 +1,4 @@
 export enum ParticipationQuestionType {
-  Open = "OPEN",
-  Closed = "CLOSED"
+  Open = "Open",
+  Closed = "Closed"
 }

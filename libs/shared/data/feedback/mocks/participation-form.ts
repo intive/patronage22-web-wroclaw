@@ -1,0 +1,37 @@
+import { ParticipationForm, ParticipationQuestionType } from "../types";
+
+export const ParticipationFormMock: ParticipationForm = {
+  id: "91151a02-8e93-11ec-b909-0242ac120002",
+  questions: [
+    {
+      id: "0",
+      questionNumber: 1,
+      title: "How many apples?",
+      type: ParticipationQuestionType.Closed,
+      answers: ["Test 1", " Test 2", "Test 3"],
+      defaultAnswer: "Test 1",
+      created: 1645132670,
+      current: 1645132675,
+      maxAnswerTime: 10
+    },
+    {
+      id: "1",
+      questionNumber: 2,
+      title: "How many doggos?",
+      type: ParticipationQuestionType.Closed,
+      answers: ["11", "24", "37"],
+      created: 1645132670,
+      current: 1645132671,
+      maxAnswerTime: 60
+    },
+    {
+      id: "2",
+      questionNumber: 3,
+      title: "How many doggos?",
+      type: ParticipationQuestionType.Open,
+      created: 1645132670,
+      current: 1645132671,
+      maxAnswerTime: 60
+    }
+  ]
+};

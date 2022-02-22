@@ -1,4 +1,7 @@
 {
   "breadcrumb": "nawigacja",
-  "save": "Zapisz"
+  "save": "Zapisz",
+  "yourAnswer": "Twoja odpowiedź: ",
+  "submitPoll": "Wyślij odpowiedź",
+  "timesUp": "Koniec czasu!"
 }

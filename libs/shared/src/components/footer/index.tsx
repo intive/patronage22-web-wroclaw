@@ -2,7 +2,7 @@
 import { AppBarProps } from "@mui/material";
 import { SxProps } from "@mui/material/styles";
 
-import * as Styled from "./style";
+import * as Styled from "./styled";
 
 export interface FooterSection {
   customStyles?: SxProps;

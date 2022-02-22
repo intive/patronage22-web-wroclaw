@@ -1,4 +1,7 @@
 {
   "breadcrumb": "breadcrumb",
-  "save": "Save"
+  "save": "Save",
+  "yourAnswer": "Your answer: ",
+  "submitPoll": "Submit poll",
+  "timesUp": "Time's up!"
 }
