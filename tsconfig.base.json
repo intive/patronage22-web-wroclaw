@@ -25,6 +25,7 @@
       "@patronage-web/shared": ["libs/shared/src/index.ts"],
       "@patronage-web/translations": ["libs/translations/src/index.ts"],
       "@patronage-web/ui": ["libs/ui/src/index.ts"],
+      "@patronage-web/shared-data": ["libs/shared/data/index.ts"],
       "path": ["./node_modules/path-browserify"]
     }
   },
