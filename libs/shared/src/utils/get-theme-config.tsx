@@ -9,21 +9,6 @@ export const commonStyles = createTheme({
   }
 });
 
-declare module "@mui/material/styles" {
-  interface Theme {
-    dialog: {
-      iconBackgroundColor: string;
-      iconColor: string;
-    };
-  }
-  interface ThemeOptions {
-    dialog?: {
-      iconBackgroundColor?: string;
-      iconColor?: string;
-    };
-  }
-}
-
 export const dark = createTheme({
   ...commonStyles,
   palette: {
