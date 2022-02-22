@@ -6,6 +6,7 @@ import {
   ButtonType,
   copyToClipboard,
   createPath,
+  SNACKBAR_AUTO_HIDE_DURATION,
   TranslationNamespace
 } from "@patronage-web/shared";
 import { useState } from "react";
@@ -13,6 +14,8 @@ import { useTranslation } from "react-i18next";
 import QRCode from "react-qr-code";
 
 import * as Styled from "./styled";
+
+const qrCodeSize = 160;
 
 export interface ShareDialogProps {
   open: boolean;
@@ -34,10 +37,10 @@ export const ShareDialog: React.FC<ShareDialogProps> = ({ open, onClose, id, tit
   };
 
   const handleCopySuccess = () => {
-    setMessage(t("shareDialog.successSnackbar"));
+    setMessage(t("linkCopied"));
   };
   const handleCopyFail = () => {
-    setMessage(t("shareDialog.failedSnackbar"));
+    setMessage(t("linkCopyingFailed"));
   };
 
   const handleCopyBtnClick = () => {
@@ -51,25 +54,25 @@ export const ShareDialog: React.FC<ShareDialogProps> = ({ open, onClose, id, tit
         <Styled.ShareIcon />
       </Styled.IconBox>
 
-      <Styled.ShareDialogTitle>{t("shareDialog.title")}</Styled.ShareDialogTitle>
+      <Styled.ShareDialogTitle>{t("sharePresentation")}</Styled.ShareDialogTitle>
 
       <DialogContent>
-        <Styled.ShareDialogContentText>{t("shareDialog.message", { name: title })}</Styled.ShareDialogContentText>
+        <Styled.ShareDialogContentText>{t("shareDialogMessage", { name: title })}</Styled.ShareDialogContentText>
 
         <Styled.LinkTypography>{link}</Styled.LinkTypography>
 
         <Styled.QRCodeBox>
-          <QRCode value={link} size={160} />
+          <QRCode value={link} size={qrCodeSize} />
         </Styled.QRCodeBox>
       </DialogContent>
 
       <DialogActions>
         <BaseButton type={ButtonType.Basic} onClick={onClose}>
-          {t("shareDialog.cancelButton")}
+          {t("cancel")}
         </BaseButton>
 
         <BaseButton type={ButtonType.Basic} variant='contained' onClick={handleCopyBtnClick}>
-          {t("shareDialog.copyButton")}
+          {t("copyLink")}
         </BaseButton>
       </DialogActions>
 
@@ -77,7 +80,7 @@ export const ShareDialog: React.FC<ShareDialogProps> = ({ open, onClose, id, tit
         open={isSnackbarOpen}
         onClose={handleSnackbarClose}
         anchorOrigin={{ horizontal: "center", vertical: "bottom" }}
-        autoHideDuration={1500}
+        autoHideDuration={SNACKBAR_AUTO_HIDE_DURATION}
         message={message}
       />
     </Styled.BasicShareDialog>

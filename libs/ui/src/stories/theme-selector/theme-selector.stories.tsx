@@ -1,24 +1,20 @@
-import { Box, Button, useTheme } from "@mui/material";
-import { ThemeMode, ThemeProvider, ThemeSelector } from "@patronage-web/shared";
+import { Box, Button } from "@mui/material";
+import { ThemeProvider, ThemeSelector } from "@patronage-web/shared";
 import { ComponentMeta } from "@storybook/react";
 
 export default {
   title: "ThemeSelector",
-  component: ThemeProvider
-} as ComponentMeta<typeof ThemeProvider>;
+  component: ThemeSelector
+} as ComponentMeta<typeof ThemeSelector>;
 
 const ThemeSelectorTemplate = () => {
-  const {
-    palette: { mode }
-  } = useTheme();
-
-  const buttonVariant = mode === ThemeMode.Dark ? "contained" : "text";
-
   return (
-    <Box>
-      <ThemeSelector />
-      <Button variant={buttonVariant}>Lorem ipsum</Button>
-    </Box>
+    <ThemeProvider>
+      <Box>
+        <ThemeSelector />
+        <Button variant='contained'>Lorem ipsum</Button>
+      </Box>
+    </ThemeProvider>
   );
 };
 

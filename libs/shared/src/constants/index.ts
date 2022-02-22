@@ -8,3 +8,5 @@ export const PAGE_PATHS: Record<PagePath, AppRoute | AppRoute[]> = {
   [PagePath.EditPresentation]: [AppRoute.Presentation, AppRoute.EditPresentation],
   [PagePath.ExternalUserPresentation]: [AppRoute.Presentation, AppRoute.ExternalUserPresentation]
 };
+
+export const SNACKBAR_AUTO_HIDE_DURATION = 1500;

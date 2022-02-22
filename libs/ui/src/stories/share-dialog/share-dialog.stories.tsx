@@ -1,7 +1,9 @@
 import { Box, Button } from "@mui/material";
 import { ShareDialog } from "@patronage-web/features-feedback";
+import { TranslationNamespace } from "@patronage-web/shared";
 import { ComponentMeta } from "@storybook/react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default {
   title: "ShareDialog",
@@ -14,6 +16,7 @@ export default {
 
 const ShareDialogTemplate = (args: { id: string; title: string }) => {
   const [open, setOpen] = useState(false);
+  const { t } = useTranslation(TranslationNamespace.Ui);
 
   const { id, title } = args;
 
@@ -28,7 +31,7 @@ const ShareDialogTemplate = (args: { id: string; title: string }) => {
   return (
     <Box>
       <Button variant='outlined' onClick={handleButtonClick}>
-        Open share dialog
+        {t("sharePresentation")}
       </Button>
       <ShareDialog open={open} onClose={handleClose} id={id} title={title} />
     </Box>

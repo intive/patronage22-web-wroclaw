@@ -1,12 +1,10 @@
 {
   "breadcrumb": "nawigacja",
+  "cancel": "Anuluj",
+  "copyLink": "Kopiuj link",
+  "linkCopied": "Skopiowano link",
+  "linkCopyingFailed": "Kopiowanie linku nie powiodło się!",
   "save": "Zapisz",
-  "shareDialog": {
-    "title": "Udostępnij prezentację",
-    "message": "Gratulacje, Twoja prezentacja: {{name}} właśnie się rozpoczęła, użyj poniższego linku, aby ją udostępnić!",
-    "cancelButton": "Anuluj",
-    "copyButton": "Kopiuj link",
-    "successSnackbar": "Skopiowano link",
-    "failedSnackbar": "Kopiowanie linku nie powiodło się!"
-  }
+  "shareDialogMessage": "Gratulacje, Twoja prezentacja: {{name}} właśnie się rozpoczęła, użyj poniższego linku, aby ją udostępnić!",
+  "sharePresentation": "Udostępnij prezentację"
 }
