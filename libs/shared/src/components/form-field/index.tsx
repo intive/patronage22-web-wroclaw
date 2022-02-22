@@ -37,7 +37,7 @@ export const FormField: React.FC<FormFieldType> = ({
       <TextField
         name={field.name}
         value={field.value}
-        defaultValue={defaultValue}
+        {...(!field.value && { defaultValue })}
         onChange={field.onChange}
         variant={variant || "outlined"}
         multiline={isMultiline}

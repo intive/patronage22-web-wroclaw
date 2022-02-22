@@ -44,7 +44,7 @@ export const Form: React.FC<Props> = ({
       <form className={className}>
         {formTitle && <Typography>{formTitle}</Typography>}
         {fields.map(field => (
-          <FormField {...field} />
+          <FormField key={field.name} {...field} />
         ))}
         {hasSubmitButton && (
           <BaseButton type={ButtonType.Basic} onClick={methods.handleSubmit(onSubmit, onError)} variant='contained'>

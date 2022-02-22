@@ -4,10 +4,10 @@ import { string } from "yup";
 
 import * as Styled from "./styled";
 
-export const TitleAndDescription: React.FC = () => {
+export const BasicPresentationInfo: React.FC = () => {
   const { t } = useTranslation(TranslationNamespace.Feedback);
 
-  const formFields: FormFieldType[] = [
+  const fields: FormFieldType[] = [
     {
       fieldType: FieldTypes.FormTextField,
       variant: "standard",
@@ -27,12 +27,12 @@ export const TitleAndDescription: React.FC = () => {
   ];
 
   return (
-    <Styled.TitleAndDescription
+    <Styled.BasicPresentationInfo
       onSubmit={data => console.log(data)}
-      onError={formState => console.log(formState.errors)}
+      onError={errors => console.log(errors)}
       hasSubmitButton={false}
-      fields={formFields}
-      validationSchema={{ title: string().required(t("missingTitleError")), description: string() }}
+      fields={fields}
+      validationSchema={{ title: string().trim().required(t("missingTitleError")), description: string() }}
     />
   );
 };

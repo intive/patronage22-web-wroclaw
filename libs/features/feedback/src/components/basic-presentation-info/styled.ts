@@ -1,7 +1,7 @@
 import { styled } from "@mui/material/styles";
 import { Form } from "@patronage-web/shared";
 
-export const TitleAndDescription = styled(Form)(({ theme }) => ({
+export const BasicPresentationInfo = styled(Form)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   maxWidth: theme.spacing(92),
