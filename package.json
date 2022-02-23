@@ -63,6 +63,7 @@
     "@emotion/styled": "^11.6.0",
     "@mui/icons-material": "^5.2.5",
     "@mui/material": "^5.2.6",
+    "@reduxjs/toolkit": "^1.7.2",
     "@storybook/react": "^6.4.14",
     "@types/uuid": "^8.3.4",
     "axios": "^0.24.0",
