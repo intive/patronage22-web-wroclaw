@@ -1,10 +1,5 @@
 {
   "breadcrumb": "nawigacja",
-  "cancel": "Anuluj",
-  "copyLink": "Kopiuj link",
-  "linkCopied": "Skopiowano link",
-  "linkCopyingFailed": "Kopiowanie linku nie powiodło się!",
-  "save": "Zapisz",
   "shareDialogMessage": "Gratulacje, Twoja prezentacja: {{name}} właśnie się rozpoczęła, użyj poniższego linku, aby ją udostępnić!",
   "sharePresentation": "Udostępnij prezentację"
 }

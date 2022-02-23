@@ -1,9 +1,14 @@
 {
+  "cancel": "Anuluj",
+  "copyLink": "Kopiuj link",
   "homepage": {
     "newPresentationDescription": "Tymczasowy tekst komponentu ActionCard do tworzenia nowych ankiet z poziomu widoku Homepage",
     "newPresentationButton": "Nowa ankieta"
   },
+  "linkCopied": "Skopiowano link",
+  "linkCopyingFailed": "Kopiowanie linku nie powiodło się!",
   "notFoundPage": {
     "title": "Przepraszamy, strona, której szukasz nie istnieje"
-  }
+  },
+  "save": "Zapisz"
 }

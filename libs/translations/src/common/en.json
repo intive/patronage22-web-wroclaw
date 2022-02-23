@@ -1,9 +1,14 @@
 {
+  "cancel": "Cancel",
+  "copyLink": "Copy link",
   "homepage": {
     "newPresentationDescription": "Placeholder text for ActionCard to create new presentation on Homepage",
     "newPresentationButton": "New presentation"
   },
+  "linkCopied": "Link copied",
+  "linkCopyingFailed": "Link copying failed!",
   "notFoundPage": {
     "title": "We are sorry, the page you're looking for doesn't exist"
-  }
+  },
+  "save": "Save"
 }

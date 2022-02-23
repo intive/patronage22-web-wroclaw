@@ -1,10 +1,5 @@
 {
   "breadcrumb": "breadcrumb",
-  "cancel": "Cancel",
-  "copyLink": "Copy link",
-  "linkCopied": "Link copied",
-  "linkCopyingFailed": "Link copying failed!",
-  "save": "Save",
   "shareDialogMessage": "Congratulations, your presentation: {{name}}  just started, use the link below to share it!",
   "sharePresentation": "Share presentation"
 }

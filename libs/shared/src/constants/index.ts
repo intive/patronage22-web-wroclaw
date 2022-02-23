@@ -10,3 +10,5 @@ export const PAGE_PATHS: Record<PagePath, AppRoute | AppRoute[]> = {
 };
 
 export const SNACKBAR_AUTO_HIDE_DURATION = 1500;
+
+export const QR_CODE_SIZE = 160;

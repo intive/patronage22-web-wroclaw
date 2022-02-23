@@ -6,7 +6,7 @@ import {
   ButtonType,
   copyToClipboard,
   createPath,
-  SNACKBAR_AUTO_HIDE_DURATION,
+  QR_CODE_SIZE,
   TranslationNamespace
 } from "@patronage-web/shared";
 import { useState } from "react";
@@ -14,8 +14,6 @@ import { useTranslation } from "react-i18next";
 import QRCode from "react-qr-code";
 
 import * as Styled from "./styled";
-
-const qrCodeSize = 160;
 
 export interface ShareDialogProps {
   open: boolean;
@@ -25,7 +23,7 @@ export interface ShareDialogProps {
 }
 
 export const ShareDialog: React.FC<ShareDialogProps> = ({ open, onClose, id, title }) => {
-  const { t } = useTranslation(TranslationNamespace.Feedback);
+  const { t } = useTranslation([TranslationNamespace.Feedback, TranslationNamespace.Common]);
   const path = createPath([AppRoute.Presentation, AppRoute.ExternalUserPresentation], { id });
   const link = `${window.location.origin}${path}`;
 
@@ -37,10 +35,10 @@ export const ShareDialog: React.FC<ShareDialogProps> = ({ open, onClose, id, tit
   };
 
   const handleCopySuccess = () => {
-    setMessage(t("linkCopied"));
+    setMessage(t("linkCopied", { ns: TranslationNamespace.Common }));
   };
   const handleCopyFail = () => {
-    setMessage(t("linkCopyingFailed"));
+    setMessage(t("linkCopyingFailed", { ns: TranslationNamespace.Common }));
   };
 
   const handleCopyBtnClick = () => {
@@ -53,36 +51,25 @@ export const ShareDialog: React.FC<ShareDialogProps> = ({ open, onClose, id, tit
       <Styled.IconBox>
         <Styled.ShareIcon />
       </Styled.IconBox>
-
-      <Styled.ShareDialogTitle>{t("sharePresentation")}</Styled.ShareDialogTitle>
-
+      <Styled.ShareDialogTitle>{t("sharePresentation", { ns: TranslationNamespace.Feedback })}</Styled.ShareDialogTitle>
       <DialogContent>
-        <Styled.ShareDialogContentText>{t("shareDialogMessage", { name: title })}</Styled.ShareDialogContentText>
-
+        <Styled.ShareDialogContentText>
+          {t("shareDialogMessage", { name: title, ns: TranslationNamespace.Feedback })}
+        </Styled.ShareDialogContentText>
         <Styled.LinkTypography>{link}</Styled.LinkTypography>
-
         <Styled.QRCodeBox>
-          <QRCode value={link} size={qrCodeSize} />
+          <QRCode value={link} size={QR_CODE_SIZE} />
         </Styled.QRCodeBox>
       </DialogContent>
-
       <DialogActions>
         <BaseButton type={ButtonType.Basic} onClick={onClose}>
-          {t("cancel")}
+          {t("cancel", { ns: TranslationNamespace.Common })}
         </BaseButton>
-
         <BaseButton type={ButtonType.Basic} variant='contained' onClick={handleCopyBtnClick}>
-          {t("copyLink")}
+          {t("copyLink", { ns: TranslationNamespace.Common })}
         </BaseButton>
       </DialogActions>
-
-      <BaseSnackbar
-        open={isSnackbarOpen}
-        onClose={handleSnackbarClose}
-        anchorOrigin={{ horizontal: "center", vertical: "bottom" }}
-        autoHideDuration={SNACKBAR_AUTO_HIDE_DURATION}
-        message={message}
-      />
+      <BaseSnackbar open={isSnackbarOpen} onClose={handleSnackbarClose} message={message} />
     </Styled.BasicShareDialog>
   );
 };

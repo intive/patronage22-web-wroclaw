@@ -49,5 +49,6 @@ export const IconBox = styled(Box)(({ theme }) => ({
 
 export const BasicShareDialog = styled(Dialog)(({ theme }) => ({
   marginTop: theme.spacing(5),
+
   "& .MuiDialog-paper": { overflow: "visible" }
 }));
