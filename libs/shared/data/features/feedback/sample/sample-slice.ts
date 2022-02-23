@@ -1,6 +1,8 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from "@reduxjs/toolkit";
 
+import { FeedbackSliceName } from "../types";
+
 export interface SampleStateInterface {
   text: string;
 }
@@ -10,7 +12,7 @@ const initialState: SampleStateInterface = {
 };
 
 export const sampleSlice = createSlice({
-  name: "sample",
+  name: FeedbackSliceName.Sample,
   initialState,
   reducers: {
     greetings: state => {
