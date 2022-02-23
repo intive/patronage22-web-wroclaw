@@ -5,16 +5,15 @@ import { StrictMode } from "react";
 import * as ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 
-import { Routing } from "./app";
-import { LayoutProvider } from "./app/utils/layout-provider";
+import { Layout, Routing } from "./app";
 
 ReactDOM.render(
   <StrictMode>
     <ThemeProvider>
       <BrowserRouter>
-        <LayoutProvider>
+        <Layout>
           <Routing />
-        </LayoutProvider>
+        </Layout>
       </BrowserRouter>
     </ThemeProvider>
   </StrictMode>,

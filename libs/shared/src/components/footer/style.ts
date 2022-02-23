@@ -20,8 +20,7 @@ export const FooterToolbar = styled(Toolbar)(({ theme }) => ({
   justifyContent: "space-between",
   width: "100%",
   maxWidth: theme.spacing(192),
-  margin: theme.spacing(1, 0),
-  marginTop: "auto"
+  margin: theme.spacing(1, 0)
 }));
 
 export const FooterSectionContainer = styled(Box)({

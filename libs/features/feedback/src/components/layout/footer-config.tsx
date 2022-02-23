@@ -1,14 +1,14 @@
-// TODO end element should be replaced with CompanyInfo component when will be ready
-
-import { Box } from "@mui/material";
+import { BasicInfo } from "@patronage-web/shared";
 
 import { LanguageButton } from "../language-button";
+import { footerStartSectionStyles } from "./style";
 
 export const footerConfig = {
   start: {
-    elements: [<LanguageButton />]
+    elements: [<LanguageButton />],
+    customStyles: footerStartSectionStyles
   },
   end: {
-    elements: [<Box>CompanyInfo</Box>]
+    elements: [<BasicInfo />]
   }
 };

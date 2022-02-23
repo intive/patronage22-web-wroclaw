@@ -33,8 +33,8 @@ export const Navbar: React.FC<NavbarProps> = ({ config, color, position, variant
   });
 
   return (
-    <Styled.NavbarAppBar position={position} color={color}>
+    <Styled.AppNavbar position={position} color={color}>
       <Styled.NavbarToolbar variant={variant}>{navSectionElements}</Styled.NavbarToolbar>
-    </Styled.NavbarAppBar>
+    </Styled.AppNavbar>
   );
 };

@@ -1,13 +1,9 @@
-import { BasicLayout, BasicLayoutProps } from "@patronage-web/shared";
+import { BasicLayout } from "@patronage-web/shared";
 
 import { footerConfig } from "./footer-config";
 import { navbarConfig } from "./navbar-config";
 
-export interface LayoutProps {
-  children: BasicLayoutProps["children"];
-}
-
-export const Layout: React.FC<LayoutProps> = ({ children }) => {
+export const Layout: React.FC = ({ children }) => {
   return (
     <BasicLayout navbarConfig={navbarConfig} footerConfig={footerConfig}>
       {children}

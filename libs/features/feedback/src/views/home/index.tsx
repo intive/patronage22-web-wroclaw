@@ -1,4 +1,4 @@
-import { ActionCard, FeedbackPath } from "@patronage-web/shared";
+import { ActionCard, FeedbackRoute } from "@patronage-web/shared";
 import { useTranslation } from "react-i18next";
 
 import { StarsImage } from "../../assets";
@@ -14,7 +14,7 @@ export const HomeView: React.FC = () => {
       button={{
         variant: "contained",
         text: t("homepage.newPresentationButton"),
-        navigateTo: FeedbackPath.AddPresentation
+        navigateTo: FeedbackRoute.AddPresentation
       }}
     />
   );

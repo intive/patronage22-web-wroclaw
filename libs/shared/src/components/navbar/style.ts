@@ -1,7 +1,7 @@
 import { AppBar, Box, Toolbar } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
-export const NavbarAppBar = styled(AppBar)(({ theme }) => ({
+export const AppNavbar = styled(AppBar)(({ theme }) => ({
   flexDirection: "row",
   alignItems: "center",
   justifyContent: "center",

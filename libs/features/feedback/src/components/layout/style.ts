@@ -8,3 +8,12 @@ export const navbarCenterSectionStyles = {
     width: "auto"
   }
 };
+
+export const footerStartSectionStyles = {
+  marginBottom: "8px",
+  width: "100%",
+
+  "@media (min-width: 600px)": {
+    width: "auto"
+  }
+};

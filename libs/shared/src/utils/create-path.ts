@@ -1,10 +1,10 @@
 import { generatePath, Params } from "react-router-dom";
 
-import { AppRoute, SupportedLanguage } from "../types";
+import { AppRouteType, SupportedLanguage } from "../types";
+import { getAppRoute } from "./get-app-route";
 
-export const createPath = (path: AppRoute | AppRoute[], params?: Params, language?: string) => {
+export const createPath = (route: AppRouteType, params?: Params, language?: string) => {
   const lang = language?.length && language !== SupportedLanguage.En ? `?lang=${language}` : "";
-  const basePath = path instanceof Array ? path.join("/") : path;
 
-  return `${generatePath(`${basePath}`, params)}${lang}`;
+  return `${generatePath(`${getAppRoute(route)}`, params)}${lang}`;
 };

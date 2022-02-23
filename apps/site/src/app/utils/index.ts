@@ -1,2 +1,2 @@
-export * from "./layout-provider";
+export * from "./layout";
 export * from "./routing";

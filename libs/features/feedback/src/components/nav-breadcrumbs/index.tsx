@@ -1,5 +1,5 @@
 import { Breadcrumbs } from "@mui/material";
-import { BasePath, LocalizedLink } from "@patronage-web/shared";
+import { BaseRoute, LocalizedLink } from "@patronage-web/shared";
 import { useTranslation } from "react-i18next";
 
 import * as Styled from "./styled";
@@ -13,7 +13,7 @@ export const NavBreadcrumbs: React.FC<NavBreadcrumbsProps> = ({ presentationName
 
   return (
     <Breadcrumbs aria-label={t("breadcrumb")} separator={<Styled.ArrowSeparator />}>
-      <LocalizedLink to={BasePath.Home}>
+      <LocalizedLink to={BaseRoute.Home}>
         <Styled.AlignedCenterWrapper>
           <Styled.BasicLogo color='primary' />
         </Styled.AlignedCenterWrapper>

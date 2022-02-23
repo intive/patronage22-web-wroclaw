@@ -5,5 +5,9 @@
   },
   "notFoundPage": {
     "title": "Przepraszamy, strona, której szukasz nie istnieje"
+  },
+  "intive": {
+    "wroclaw": "Wrocław",
+    "address": "Piłsudskiego 69, 50-019 Wrocław"
   }
 }

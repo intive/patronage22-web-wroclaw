@@ -1,4 +1,4 @@
-import { BasePath, FeedbackPath, getAppRoute, Loader, LoaderType, PagePath } from "@patronage-web/shared";
+import { AppRouteType, BaseRoute, FeedbackRoute, getAppRoute, Loader, LoaderType } from "@patronage-web/shared";
 import { lazy, Suspense, SuspenseProps } from "react";
 import { Outlet, RouteObject, useRoutes } from "react-router-dom";
 
@@ -11,35 +11,37 @@ const ExternalUserPresentationPage = lazy(() => import("../pages/external-user-p
 const NotFoundPage = lazy(() => import("../pages/not-found"));
 
 const createRoute = (
-  route: PagePath,
+  route: AppRouteType,
   component: JSX.Element,
   fallback: SuspenseProps["fallback"],
+  childOnly?: boolean,
   children?: ((fallback: SuspenseProps["fallback"]) => RouteObject)[]
 ): RouteObject => ({
-  path: getAppRoute(route),
+  path: getAppRoute(route, childOnly),
   element: <Suspense fallback={fallback}>{component}</Suspense>,
   children: children?.length ? children.map(itemFn => itemFn(fallback)) : undefined
 });
 
-const createChildrenRoute = (route: PagePath, component: JSX.Element) => (fallback: SuspenseProps["fallback"]) =>
-  createRoute(route, component, fallback);
+const createChildrenRoute = (route: AppRouteType, component: JSX.Element) => (fallback: SuspenseProps["fallback"]) =>
+  createRoute(route, component, fallback, true);
 
 export const Routing: React.FC = () =>
   useRoutes([
-    createRoute(BasePath.Home, <Homepage />, <Loader type={LoaderType.Circular} />),
-    createRoute(FeedbackPath.Dashboard, <Dashboard />, <Loader type={LoaderType.Circular} />),
+    createRoute(BaseRoute.Home, <Homepage />, <Loader type={LoaderType.Circular} />),
+    createRoute(FeedbackRoute.Dashboard, <Dashboard />, <Loader type={LoaderType.Circular} />),
     createRoute(
-      FeedbackPath.Presentation,
+      FeedbackRoute.Presentation,
       <>
         <PresentationPage />
         <Outlet />
       </>,
       <Loader type={LoaderType.Circular} />,
+      false,
       [
-        createChildrenRoute(FeedbackPath.AddPresentation, <AddPresentationPage />),
-        createChildrenRoute(FeedbackPath.EditPresentation, <EditPresentationPage />),
-        createChildrenRoute(FeedbackPath.ExternalUserPresentation, <ExternalUserPresentationPage />)
+        createChildrenRoute(FeedbackRoute.AddPresentation, <AddPresentationPage />),
+        createChildrenRoute(FeedbackRoute.EditPresentation, <EditPresentationPage />),
+        createChildrenRoute(FeedbackRoute.ExternalUserPresentation, <ExternalUserPresentationPage />)
       ]
     ),
-    createRoute(BasePath.NotFound, <NotFoundPage />, <Loader type={LoaderType.Circular} />)
+    createRoute(BaseRoute.NotFound, <NotFoundPage />, <Loader type={LoaderType.Circular} />)
   ]);

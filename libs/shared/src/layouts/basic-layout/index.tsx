@@ -3,7 +3,6 @@ import { Navbar, NavbarProps } from "../../components/navbar";
 import * as Styled from "./style";
 
 export interface BasicLayoutProps {
-  children: JSX.Element;
   navbarConfig: NavbarProps["config"];
   footerConfig: FooterProps["config"];
 }
