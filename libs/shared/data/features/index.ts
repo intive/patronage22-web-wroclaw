@@ -1,1 +1,1 @@
-export * from "./sample-reducer";
+export * from "./feedback";
