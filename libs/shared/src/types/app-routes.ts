@@ -21,9 +21,9 @@ export type AppRouteType = BaseRoute | FeedbackRoute;
 export const ROUTES: Record<AppRouteType, string | string[]> = {
   [BaseRoute.Home]: "/",
   [BaseRoute.NotFound]: "*",
-  [FeedbackRoute.Dashboard]: [FeatureName.Feedback, "/dashboard"],
-  [FeedbackRoute.Presentation]: [FeatureName.Feedback, "/presentation"],
-  [FeedbackRoute.AddPresentation]: [FeatureName.Feedback, "/presentation", "/add"],
-  [FeedbackRoute.ExternalUserPresentation]: [FeatureName.ExternalFeedback, "/presentation", "/:id"],
-  [FeedbackRoute.EditPresentation]: [FeatureName.Feedback, "/presentation", "/edit/:id"]
+  [FeedbackRoute.Dashboard]: [`/${FeatureName.Feedback}`, "/dashboard"],
+  [FeedbackRoute.Presentation]: [`/${FeatureName.Feedback}`, "/presentation"],
+  [FeedbackRoute.AddPresentation]: [`/${FeatureName.Feedback}`, "/presentation", "/add"],
+  [FeedbackRoute.ExternalUserPresentation]: [`/${FeatureName.ExternalFeedback}`, "/presentation", "/:id"],
+  [FeedbackRoute.EditPresentation]: [`/${FeatureName.Feedback}`, "/presentation", "/edit/:id"]
 };

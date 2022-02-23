@@ -1,40 +1,39 @@
 import { Params } from "react-router-dom";
 
-import { PAGE_PATHS } from "../constants";
-import { BasePath, FeedbackPath, PagePath, SupportedLanguage } from "../types";
+import { AppRouteType, BaseRoute, FeedbackRoute, SupportedLanguage } from "../types";
 import { createPath } from "./create-path";
 
 interface RoutesConfigProps {
   routeParams?: Params;
-  targetPage: PagePath;
+  targetPage: AppRouteType;
   targetPath: string;
 }
 const routesConfig: RoutesConfigProps[] = [
   {
     routeParams: { id: "qwerty" },
-    targetPage: FeedbackPath.EditPresentation,
+    targetPage: FeedbackRoute.EditPresentation,
     targetPath: "/feedback/presentation/edit/qwerty"
   },
   {
-    targetPage: BasePath.Home,
+    targetPage: BaseRoute.Home,
     targetPath: "/"
   },
   {
-    targetPage: FeedbackPath.Dashboard,
+    targetPage: FeedbackRoute.Dashboard,
     targetPath: "/feedback/dashboard"
   },
   {
-    targetPage: FeedbackPath.Presentation,
+    targetPage: FeedbackRoute.Presentation,
     targetPath: "/feedback/presentation"
   },
   {
-    targetPage: FeedbackPath.AddPresentation,
+    targetPage: FeedbackRoute.AddPresentation,
     targetPath: "/feedback/presentation/add"
   },
   {
     routeParams: { id: "qwerty" },
-    targetPage: FeedbackPath.ExternalUserPresentation,
-    targetPath: "/feedback/presentation/qwerty"
+    targetPage: FeedbackRoute.ExternalUserPresentation,
+    targetPath: "/feedback-external/presentation/qwerty"
   }
 ];
 
@@ -43,11 +42,11 @@ describe("createPath generation test", () => {
     Object.values(SupportedLanguage).forEach(lang => {
       const langPath = lang === SupportedLanguage.En ? "" : `?lang=${lang}`;
       it(`should generate proper link for language ${lang}`, () => {
-        expect(createPath(PAGE_PATHS[config.targetPage], config.routeParams, lang)).toBe(`${config.targetPath}${langPath}`);
+        expect(createPath(config.targetPage, config.routeParams, lang)).toBe(`${config.targetPath}${langPath}`);
       });
 
       it(`should generate proper link for default language`, () => {
-        expect(createPath(PAGE_PATHS[config.targetPage], config.routeParams)).toBe(`${config.targetPath}`);
+        expect(createPath(config.targetPage, config.routeParams)).toBe(`${config.targetPath}`);
       });
     });
   });
