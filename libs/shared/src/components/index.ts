@@ -5,4 +5,5 @@ export * from "./language-button";
 export * from "./loader";
 export * from "./localized-link";
 export * from "./navbar";
+export * from "./search-bar";
 export * from "./theme-selector";
