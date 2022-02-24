@@ -6,6 +6,7 @@
   "search": {
     "searchbarPlaceholder": "Search presentations",
     "showResultsButton": "Show all results...",
-    "serachAriaLabel": "Search"
+    "searchAriaLabel": "Search",
+    "noResultsInfo": "No results found..."
   }
 }

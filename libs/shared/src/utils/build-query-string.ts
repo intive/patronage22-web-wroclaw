@@ -16,5 +16,5 @@ export const buildQueryString = (language?: string, searchPrase?: string) => {
     params.set(QueryParam.Search, searchPrase);
   }
 
-  return params.toString();
+  return params.toString() ? `?${params.toString()}` : "";
 };

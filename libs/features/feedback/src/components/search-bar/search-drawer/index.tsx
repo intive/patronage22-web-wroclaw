@@ -20,10 +20,10 @@ export const SearchDrawer: React.FC<SearchDrawerProps> = ({ open, onClose, searc
   const { t } = useTranslation();
   const items = searchHandler(searchKey);
   const [currentItems, setCurrentItems] = useState(items);
-  const [searchPhrase, setSearchingPhrase] = useState("");
+  const [searchPhrase, setSearchPhrase] = useState("");
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSearchingPhrase(event.target.value);
+    setSearchPhrase(event.target.value);
   };
 
   useEffect(() => {
@@ -45,7 +45,7 @@ export const SearchDrawer: React.FC<SearchDrawerProps> = ({ open, onClose, searc
         {currentItems.map(item => {
           return <SearchItem onClose={onClose} item={item.item} key={item.item.id} toResult={toItem} />;
         })}
-        {currentItems.length === 0 && <p>no results found...</p>}
+        {!currentItems.length && <p>{t("search.noResultsInfo")}</p>}
         <LocalizedLink to={toResult} searchPhrase={searchPhrase}>
           <Styled.SearchResultsBtnBox>
             <BaseButton type={ButtonType.Basic} onClick={onClose}>
