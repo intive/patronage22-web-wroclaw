@@ -12,7 +12,7 @@ export const NavBreadcrumbs: React.FC<NavBreadcrumbsProps> = ({ presentationName
   const { t } = useTranslation();
 
   return (
-    <Breadcrumbs aria-label={t("breadcrumb")} separator={<Styled.ArrowSeparator />}>
+    <Breadcrumbs aria-label={t("breadcrumb.breadcrumb")} separator={<Styled.ArrowSeparator />}>
       <LocalizedLink to={PagePath.Home}>
         <Styled.AlignedCenterWrapper>
           <Styled.BasicLogo />

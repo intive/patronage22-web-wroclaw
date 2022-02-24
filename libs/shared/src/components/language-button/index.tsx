@@ -1,14 +1,16 @@
 import { ToggleButton, ToggleButtonGroup } from "@mui/material";
-import { changeLanguage, SupportedLanguage } from "@patronage-web/shared";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useSearchParams } from "react-router-dom";
+
+import { SupportedLanguage } from "../../types";
+import { changeLanguage, isOtherLanguage } from "../../utils";
 
 export const LanguageButton = () => {
   const { i18n } = useTranslation();
   const [, setSearchParams] = useSearchParams();
 
-  const isOtherLang = i18n.language?.length && i18n.language !== SupportedLanguage.En;
+  const isOtherLang = i18n.language?.length && isOtherLanguage(i18n.language);
   const langQueryString = isOtherLang ? `?lang=${i18n.language}` : "";
 
   const handleChange = (event: React.MouseEvent<HTMLElement>, value: SupportedLanguage) => {

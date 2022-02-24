@@ -1,4 +1,12 @@
 {
-  "breadcrumb": "breadcrumb",
-  "save": "Save"
+  "breadcrumb": {
+    "breadcrumb": "breadcrumb",
+    "save": "Save"
+  },
+  "search": {
+    "searchbarPlaceholder": "Search presentations",
+    "showResultsButton": "Show all results...",
+    "searchAriaLabel": "Search",
+    "noResultsInfo": "No results found..."
+  }
 }
