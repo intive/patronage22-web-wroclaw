@@ -15,11 +15,12 @@ export const SearchInput: React.FC<SearchInputProps> = ({ onChange, onClick, rea
   const { t } = useTranslation();
 
   return (
-    <Styled.Search>
+    <Styled.SearchInputBox>
       <Styled.SearchIconWrapper>
         <SearchIcon />
       </Styled.SearchIconWrapper>
-      <Styled.BaseInput
+
+      <Styled.SearchInputBase
         placeholder={t("search.searchbarPlaceholder")}
         inputProps={{ "aria-label": t("search.searchAriaLabel") }}
         onChange={onChange}
@@ -27,6 +28,6 @@ export const SearchInput: React.FC<SearchInputProps> = ({ onChange, onClick, rea
         readOnly={readOnly}
         autoFocus={autoFocus}
       />
-    </Styled.Search>
+    </Styled.SearchInputBox>
   );
 };

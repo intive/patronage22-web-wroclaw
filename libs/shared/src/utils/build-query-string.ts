@@ -1,12 +1,19 @@
-import { SupportedLanguage } from "../types";
+import { isOtherLanguage } from "./lang-fns";
+
+enum QueryParam {
+  Lang = "lang",
+  Search = "search"
+}
 
 export const buildQueryString = (language?: string, searchPrase?: string) => {
   const params = new URLSearchParams();
-  if (language && language !== SupportedLanguage.En) {
-    params.set("lang", language);
+
+  if (language && isOtherLanguage(language)) {
+    params.set(QueryParam.Lang, language);
   }
+
   if (searchPrase) {
-    params.set("search", searchPrase);
+    params.set(QueryParam.Search, searchPrase);
   }
 
   return params.toString();

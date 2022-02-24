@@ -9,48 +9,51 @@ import { SearchItem } from "../search-item";
 import * as Styled from "./styled";
 
 interface SearchDrawerProps {
-  isOpen: boolean;
+  open: boolean;
   onClose: () => void;
+  searchKey: string;
+  toResult: PagePath;
+  toItem: PagePath;
 }
 
-export const SearchDrawer: React.FC<SearchDrawerProps> = ({ isOpen, onClose }) => {
+export const SearchDrawer: React.FC<SearchDrawerProps> = ({ open, onClose, searchKey, toResult, toItem }) => {
   const { t } = useTranslation();
-  const items = searchHandler("title");
+  const items = searchHandler(searchKey);
   const [currentItems, setCurrentItems] = useState(items);
-  const [searchingPhrase, setSearchingPhrase] = useState("");
+  const [searchPhrase, setSearchingPhrase] = useState("");
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchingPhrase(event.target.value);
   };
 
   useEffect(() => {
-    setCurrentItems(searchHandler("title", searchingPhrase));
-  }, [searchingPhrase]);
+    setCurrentItems(searchHandler(searchKey, searchPhrase));
+  }, [searchPhrase, searchKey]);
 
   return (
-    <Drawer anchor='top' open={isOpen} onClose={onClose} variant='temporary'>
-      <Styled.DrawerHeader>
+    <Drawer anchor='top' open={open} onClose={onClose} variant='temporary'>
+      <Styled.SearchDrawerHeader>
         <SearchInput onChange={handleInputChange} autoFocus />
-        <Styled.ClosingButtonWrapper>
+        <Styled.CloseSearchBtnWrapper>
           <BaseButton type={ButtonType.Icon} onClick={onClose}>
             <CloseIcon />
           </BaseButton>
-        </Styled.ClosingButtonWrapper>
-      </Styled.DrawerHeader>
+        </Styled.CloseSearchBtnWrapper>
+      </Styled.SearchDrawerHeader>
 
-      <Styled.MenuItemBox>
+      <Styled.SearchDrawerContentBox>
         {currentItems.map(item => {
-          const { id, title } = item.item;
-          return <SearchItem onClose={onClose} id={id} title={title} key={id} />;
+          return <SearchItem onClose={onClose} item={item.item} key={item.item.id} toResult={toItem} />;
         })}
-        <LocalizedLink to={PagePath.Dashboard} searchPhrase={searchingPhrase}>
-          <Styled.ShowResultsButtonBox>
+        {currentItems.length === 0 && <p>no results found...</p>}
+        <LocalizedLink to={toResult} searchPhrase={searchPhrase}>
+          <Styled.SearchResultsBtnBox>
             <BaseButton type={ButtonType.Basic} onClick={onClose}>
               {t("search.showResultsButton")}
             </BaseButton>
-          </Styled.ShowResultsButtonBox>
+          </Styled.SearchResultsBtnBox>
         </LocalizedLink>
-      </Styled.MenuItemBox>
+      </Styled.SearchDrawerContentBox>
     </Drawer>
   );
 };

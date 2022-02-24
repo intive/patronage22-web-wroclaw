@@ -2,7 +2,7 @@ import Fuse from "fuse.js";
 
 import { items, ItemsType, searchHandler } from "./search-handler";
 
-const mockedSearchResults: Record<string, Fuse.FuseResult<ItemsType>[]> = {
+const testData: Record<string, Fuse.FuseResult<ItemsType>[]> = {
   java: [
     { item: { title: "Javascript for begginers", id: "3d7812ee-43b5-43f3-8a3e-ea8938cbf8c1" }, refIndex: 1 },
     { item: { title: "Advanced Javascript", id: "1523a989-ceee-422a-b460-d5e2b842f742" }, refIndex: 3 },
@@ -15,34 +15,37 @@ const mockedSearchResults: Record<string, Fuse.FuseResult<ItemsType>[]> = {
   ]
 };
 
-const expectedItemsIfNoPhrase = items.map((item, index) => ({
+const noPhraseData = items.map((item, index) => ({
   item,
   matches: [],
   score: 1,
   refIndex: index
 }));
 
-const mockedSearch = jest.fn().mockImplementation((mockedPhrase: string) => mockedSearchResults[mockedPhrase]);
+const mockedSearch = jest.fn().mockImplementation((mockedPhrase: string) => testData[mockedPhrase]);
 
 jest.mock("fuse.js", () => {
   return jest.fn().mockImplementation(() => ({ search: mockedSearch }));
 });
 
 describe("search-handler", () => {
-  const searchingPhrase = ["java", "react"];
+  const searchPhrase = ["java", "react"];
 
   it("'should return proper table of filtered items", () => {
-    searchingPhrase.forEach(phrase => {
+    searchPhrase.forEach(phrase => {
       jest.clearAllMocks();
 
-      expect(searchHandler("title", phrase)).toEqual(mockedSearchResults[phrase]);
+      expect(searchHandler("title", phrase)).toEqual(testData[phrase]);
       expect(mockedSearch).toHaveBeenCalledWith(phrase);
     });
   });
 
   it("should return all data", () => {
     jest.clearAllMocks();
+
+    const searchedData = searchHandler("title");
+
     expect(mockedSearch).not.toHaveBeenCalled();
-    expect(searchHandler("title")).toEqual(expectedItemsIfNoPhrase);
+    expect(searchedData).toEqual(noPhraseData);
   });
 });

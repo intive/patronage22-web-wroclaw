@@ -1,7 +1,7 @@
 import { Box, InputBase } from "@mui/material";
 import { alpha, styled } from "@mui/material/styles";
 
-export const Search = styled(Box)(({ theme }) => ({
+export const SearchInputBox = styled(Box)(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
   backgroundColor: alpha(theme.palette.common.black, 0.05),
@@ -28,7 +28,7 @@ export const SearchIconWrapper = styled(Box)(({ theme }) => ({
   color: alpha(theme.palette.common.black, 0.5)
 }));
 
-export const BaseInput = styled(InputBase)(({ theme }) => ({
+export const SearchInputBase = styled(InputBase)(({ theme }) => ({
   color: "inherit",
 
   "& .MuiInputBase-input": {

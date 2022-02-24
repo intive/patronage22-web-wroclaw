@@ -1,19 +1,20 @@
-import { useState } from "react";
+import { PagePath } from "@patronage-web/shared";
 
 import { SearchDrawer } from "./search-drawer";
 import { SearchInput } from "./search-input";
 
-export const SearchBar: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleInputClick = () => {
-    setIsOpen(prevState => !prevState);
-  };
-
+interface SearchBarProps {
+  open: boolean;
+  onClose: () => void;
+  searchKey: string;
+  allResultsPage: PagePath;
+  singleResultPage: PagePath;
+}
+export const SearchBar: React.FC<SearchBarProps> = ({ open, onClose, searchKey, allResultsPage, singleResultPage }) => {
   return (
     <>
-      <SearchInput onClick={handleInputClick} readOnly />
-      <SearchDrawer isOpen={isOpen} onClose={handleInputClick} />
+      <SearchInput onClick={onClose} readOnly />
+      <SearchDrawer open={open} onClose={onClose} searchKey={searchKey} toResult={allResultsPage} toItem={singleResultPage} />
     </>
   );
 };

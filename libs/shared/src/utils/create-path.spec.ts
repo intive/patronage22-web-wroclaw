@@ -3,6 +3,7 @@ import { Params } from "react-router-dom";
 import { PAGE_PATHS } from "../constants";
 import { PagePath, SupportedLanguage } from "../types";
 import { createPath } from "./create-path";
+import { isDefaultLanguage } from "./lang-fns";
 
 interface RoutesConfigProps {
   routeParams?: Params;
@@ -38,12 +39,17 @@ const routesConfig: RoutesConfigProps[] = [
   }
 ];
 
-const searchQueries = ["react", "adv%an=", "j$a#v&a"];
+const searchQueries: Record<string, string> = {
+  react: "react",
+  "adv%an=": "adv%25an%3D",
+  "j$a#v&a": "j%24a%23v%26a",
+  "re act": "re+act"
+};
 
 describe("createPath generation test", () => {
   routesConfig.forEach(config => {
     Object.values(SupportedLanguage).forEach(lang => {
-      const langPath = lang === SupportedLanguage.En ? "" : `?lang=${lang}`;
+      const langPath = isDefaultLanguage(lang) ? "" : `?lang=${lang}`;
       it(`should generate proper link for language ${lang}`, () => {
         expect(createPath(PAGE_PATHS[config.targetPage], config.routeParams, lang)).toBe(`${config.targetPath}${langPath}`);
       });
@@ -53,17 +59,16 @@ describe("createPath generation test", () => {
       });
     });
 
-    searchQueries.forEach(querystring => {
-      const espectedQueryString = encodeURIComponent(querystring);
-      it(`should generate proper link for searched phrase ${querystring} with "en" language`, () => {
-        expect(createPath(PAGE_PATHS[config.targetPage], config.routeParams, "en", querystring)).toBe(
-          `${config.targetPath}?search=${espectedQueryString}`
+    Object.keys(searchQueries).forEach(key => {
+      it(`should generate proper link for searched phrase ${key} with ${SupportedLanguage.En} language`, () => {
+        expect(createPath(PAGE_PATHS[config.targetPage], config.routeParams, SupportedLanguage.En, key)).toBe(
+          `${config.targetPath}?search=${searchQueries[key]}`
         );
       });
 
-      it(`should generate proper link for searched phrase ${querystring} with "pl" language`, () => {
-        expect(createPath(PAGE_PATHS[config.targetPage], config.routeParams, "pl", querystring)).toBe(
-          `${config.targetPath}?lang=pl&search=${espectedQueryString}`
+      it(`should generate proper link for searched phrase ${key} with ${SupportedLanguage.Pl} language`, () => {
+        expect(createPath(PAGE_PATHS[config.targetPage], config.routeParams, SupportedLanguage.Pl, key)).toBe(
+          `${config.targetPath}?lang=pl&search=${searchQueries[key]}`
         );
       });
     });
