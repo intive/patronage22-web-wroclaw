@@ -60,13 +60,13 @@ describe("createPath generation test", () => {
 
     Object.keys(searchQueries).forEach(key => {
       it(`should generate proper link for searched phrase ${key} with ${SupportedLanguage.En} language`, () => {
-        expect(createPath(PAGE_PATHS[config.targetPage], config.routeParams, SupportedLanguage.En, key)).toBe(
+        expect(createPath(config.targetPage, config.routeParams, SupportedLanguage.En, key)).toBe(
           `${config.targetPath}?search=${searchQueries[key]}`
         );
       });
 
       it(`should generate proper link for searched phrase ${key} with ${SupportedLanguage.Pl} language`, () => {
-        expect(createPath(PAGE_PATHS[config.targetPage], config.routeParams, SupportedLanguage.Pl, key)).toBe(
+        expect(createPath(config.targetPage, config.routeParams, SupportedLanguage.Pl, key)).toBe(
           `${config.targetPath}?lang=pl&search=${searchQueries[key]}`
         );
       });

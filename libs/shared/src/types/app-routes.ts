@@ -1,4 +1,5 @@
 export enum FeatureName {
+  Default = "default",
   Feedback = "feedback",
   ExternalFeedback = "feedback-external"
 }

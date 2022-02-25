@@ -4,9 +4,11 @@ import { FeatureName } from "../types";
 
 const FEATURE_POSITION = 1;
 
-export const useFeatureName = (): FeatureName | "default" => {
+export const useFeatureName = (): FeatureName => {
   const { pathname } = useLocation();
-  const featureName = pathname.split("/")[FEATURE_POSITION] as FeatureName;
+  const featureFromPath = pathname.split("/")[FEATURE_POSITION] as FeatureName;
+  const isFeature = Object.values(FeatureName).includes(featureFromPath);
+  const featureName = isFeature ? featureFromPath : FeatureName.Default;
 
-  return featureName || "default";
+  return featureName;
 };

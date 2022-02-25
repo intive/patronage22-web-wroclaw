@@ -1,13 +1,13 @@
-import { PagePath } from "@patronage-web/shared";
 import { useState } from "react";
 
+import { AppRouteType } from "../../types/app-routes";
 import { SearchDrawer } from "./search-drawer";
 import { SearchInput } from "./search-input";
 
 interface SearchBarProps {
   searchKey: string;
-  allResultsPage: PagePath;
-  singleResultPage: PagePath;
+  allResultsPage: AppRouteType;
+  singleResultPage: AppRouteType;
 }
 
 export const SearchBar: React.FC<SearchBarProps> = ({ searchKey, allResultsPage, singleResultPage }) => {

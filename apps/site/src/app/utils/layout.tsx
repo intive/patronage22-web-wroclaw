@@ -8,7 +8,7 @@ export const Layout: React.FC = ({ children }) => {
     [FeatureName.Feedback]: <FeedbackLayout>{children}</FeedbackLayout>,
     // TODO replace with proper external layout when will be ready
     [FeatureName.ExternalFeedback]: <FeedbackLayout>{children}</FeedbackLayout>,
-    default: <DefaultLayout>{children}</DefaultLayout>
+    [FeatureName.Default]: <DefaultLayout>{children}</DefaultLayout>
   };
 
   return layouts[useFeatureName()];
