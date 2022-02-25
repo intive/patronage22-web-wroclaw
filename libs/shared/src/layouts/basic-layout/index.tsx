@@ -7,12 +7,10 @@ export interface BasicLayoutProps {
   footerConfig: FooterProps["config"];
 }
 
-export const BasicLayout: React.FC<BasicLayoutProps> = ({ children, navbarConfig, footerConfig }) => {
-  return (
-    <Styled.LayoutBox>
-      <Navbar color='inherit' position='sticky' config={navbarConfig} />
-      <Styled.ContentBox>{children}</Styled.ContentBox>
-      <Footer color='inherit' position='static' config={footerConfig} />
-    </Styled.LayoutBox>
-  );
-};
+export const BasicLayout: React.FC<BasicLayoutProps> = ({ children, navbarConfig, footerConfig }) => (
+  <Styled.LayoutBox>
+    <Navbar color='inherit' position='sticky' config={navbarConfig} />
+    <Styled.ContentBox>{children}</Styled.ContentBox>
+    <Footer color='inherit' position='static' config={footerConfig} />
+  </Styled.LayoutBox>
+);

@@ -1,8 +1,8 @@
 import { footerConfig as feedbackFooterConfig, navbarConfig as feedbackNavbarConfig } from "@patronage-web/features-feedback";
-import { BasicLayout, BasicLayoutProps } from "@patronage-web/shared";
+import { BasicLayout } from "@patronage-web/shared";
 import { ComponentMeta } from "@storybook/react";
 
-export const BasicLayoutStory = ({ children, navbarConfig, footerConfig }: BasicLayoutProps) => (
+export const BasicLayoutStory: typeof BasicLayout = ({ children, navbarConfig, footerConfig }) => (
   <BasicLayout navbarConfig={navbarConfig} footerConfig={footerConfig}>
     {children}
   </BasicLayout>

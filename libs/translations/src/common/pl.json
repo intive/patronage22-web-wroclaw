@@ -7,7 +7,14 @@
     "title": "Przepraszamy, strona, której szukasz nie istnieje"
   },
   "intive": {
+    "name": "Intive",
     "wroclaw": "Wrocław",
-    "address": "Piłsudskiego 69, 50-019 Wrocław"
+    "address": "Piłsudskiego 69, 50-019 Wrocław",
+    "phone": "+48 71 769 59 00"
+  },
+  "featureNames": {
+    "default": "",
+    "feedback": "Kreator Ankiety",
+    "feedback-external": "Uczestnik Ankiety"
   }
 }

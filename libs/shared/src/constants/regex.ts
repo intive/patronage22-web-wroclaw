@@ -1,1 +1,1 @@
-export const FIRST_CHARACTER_FRONT_SLASH = /^\//g;
+export const REGEX_URL_FIRST_SLASH = /^\//g;

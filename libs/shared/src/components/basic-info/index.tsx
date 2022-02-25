@@ -1,6 +1,5 @@
 import { useTranslation } from "react-i18next";
 
-import { COMPANY_NAME, COMPANY_PHONE } from "../../constants";
 import { useFeatureName } from "../../hooks";
 import * as Styled from "./styled";
 
@@ -8,9 +7,13 @@ export const BasicInfo: React.FC = () => {
   const featureName = useFeatureName();
   const { t } = useTranslation();
 
+  const companyInfo = `${t("intive.name")} ${
+    featureName === "default" ? t(`featureNames.default`) : `(${t(`featureNames.${featureName}`)})`
+  }`;
+
   return (
     <Styled.InfoContainer>
-      <Styled.NameBox>{`${COMPANY_NAME} ${featureName === "default" ? "" : `(${featureName})`}`}</Styled.NameBox>
+      <Styled.NameBox>{companyInfo}</Styled.NameBox>
 
       <Styled.InfoBox>
         <Styled.InfoAddressIcon />
@@ -19,7 +22,7 @@ export const BasicInfo: React.FC = () => {
 
       <Styled.InfoBox>
         <Styled.InfoPhoneIcon />
-        <Styled.TypographyBox>{COMPANY_PHONE}</Styled.TypographyBox>
+        <Styled.TypographyBox>{t("intive.phone")}</Styled.TypographyBox>
       </Styled.InfoBox>
     </Styled.InfoContainer>
   );

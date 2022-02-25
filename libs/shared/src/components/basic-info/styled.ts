@@ -22,9 +22,9 @@ export const TypographyBox = styled(Typography)(({ theme }) => ({
   marginLeft: theme.spacing(0.5)
 }));
 
-export const InfoAddressIcon = styled(BusinessIcon)({
-  fontSize: "1.3rem"
-});
-export const InfoPhoneIcon = styled(LocalPhoneIcon)({
-  fontSize: "1.3rem"
-});
+export const InfoAddressIcon = styled(BusinessIcon)(({ theme }) => ({
+  fontSize: theme.typography.h6.fontSize
+}));
+export const InfoPhoneIcon = styled(LocalPhoneIcon)(({ theme }) => ({
+  fontSize: theme.typography.h6.fontSize
+}));
