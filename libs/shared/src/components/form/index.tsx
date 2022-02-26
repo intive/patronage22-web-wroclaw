@@ -1,53 +1,58 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Typography } from "@mui/material";
-import { t } from "i18next";
 import { FieldValues, FormProvider, SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
-import { TFunction } from "react-i18next";
+import { TFunction, useTranslation } from "react-i18next";
 import * as yup from "yup";
 import { ObjectShape } from "yup/lib/object";
 
+import { TranslationNamespace } from "../../types";
 import { BaseButton, ButtonType } from "../base-button";
 import { FormField, FormFieldType } from "../form-field";
 
-export interface Props {
-  formTitle?: TFunction;
+export interface FormProps {
+  title?: TFunction;
   validationSchema: ObjectShape;
   fields: FormFieldType[];
   onSubmit: SubmitHandler<FieldValues>;
   onError: SubmitErrorHandler<FieldValues>;
-  hasSubmitButton: boolean;
+  showSubmitButton?: boolean;
   submitButtonText?: TFunction;
   className?: string;
 }
 
-export const Form: React.FC<Props> = ({
-  formTitle,
+export const Form: React.FC<FormProps> = ({
+  title,
   validationSchema,
   fields,
   onSubmit,
   onError,
-  hasSubmitButton,
+  showSubmitButton,
   submitButtonText,
   className
 }) => {
+  const { t } = useTranslation(TranslationNamespace.Common);
   const schema = yup.object(validationSchema).required();
 
-  const { ...methods } = useForm<FieldValues>({
+  const methods = useForm<FieldValues>({
     resolver: yupResolver(schema),
     mode: "onChange",
     reValidateMode: "onChange"
   });
 
+  const handleSubmit = (): void => {
+    methods.handleSubmit(onSubmit, onError)();
+  };
+
   return (
     <FormProvider {...methods}>
       <form className={className}>
-        {formTitle && <Typography>{formTitle}</Typography>}
+        {title && <Typography>{title}</Typography>}
         {fields.map(field => (
           <FormField key={field.name} {...field} />
         ))}
-        {hasSubmitButton && (
-          <BaseButton type={ButtonType.Basic} onClick={methods.handleSubmit(onSubmit, onError)} variant='contained'>
+        {showSubmitButton && (
+          <BaseButton type={ButtonType.Basic} onClick={handleSubmit} variant='contained'>
             {submitButtonText || t("submit")}
           </BaseButton>
         )}

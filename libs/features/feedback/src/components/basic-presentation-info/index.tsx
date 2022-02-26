@@ -9,20 +9,17 @@ export const BasicPresentationInfo: React.FC = () => {
 
   const fields: FormFieldType[] = [
     {
-      fieldType: FieldTypes.FormTextField,
-      variant: "standard",
-      isMultiline: false,
+      fieldType: FieldTypes.Text,
       name: "title",
+      isMultiline: false,
+      variant: "standard",
       defaultValue: t("newPresentation"),
-      hasEditIcon: true
+      helperText: "helper"
     },
     {
-      fieldType: FieldTypes.FormTextField,
+      fieldType: FieldTypes.Textarea,
       name: "description",
-      isMultiline: true,
-      defaultValue: t(" "),
-      label: t("description"),
-      hasEditIcon: true
+      label: t("description")
     }
   ];
 
@@ -30,7 +27,7 @@ export const BasicPresentationInfo: React.FC = () => {
     <Styled.BasicPresentationInfo
       onSubmit={data => console.log(data)}
       onError={errors => console.log(errors)}
-      hasSubmitButton={false}
+      showSubmitButton={false}
       fields={fields}
       validationSchema={{ title: string().trim().required(t("missingTitleError")), description: string() }}
     />
