@@ -1,19 +1,10 @@
 import { FieldTypes, Form, FormFieldType, FormProps } from "@patronage-web/shared";
 import { ComponentMeta } from "@storybook/react";
-import { t } from "i18next";
 import { string } from "yup";
 import { ObjectShape } from "yup/lib/object";
 
-export const FormStory: React.FC<FormProps> = ({
-  title,
-  validationSchema,
-  fields,
-  onSubmit,
-  onError,
-  showSubmitButton
-}: FormProps) => (
+export const FormStory: React.FC<FormProps> = ({ validationSchema, fields, onSubmit, onError, showSubmitButton }: FormProps) => (
   <Form
-    title={title}
     validationSchema={validationSchema}
     fields={fields}
     onSubmit={onSubmit}
@@ -41,7 +32,6 @@ export default {
   title: "Form",
   component: FormStory,
   args: {
-    title: t("title"),
     validationSchema,
     fields
   },

@@ -13,8 +13,7 @@ export const BasicPresentationInfo: React.FC = () => {
       name: "title",
       isMultiline: false,
       variant: "standard",
-      defaultValue: t("newPresentation"),
-      helperText: "helper"
+      defaultValue: t("newPresentation")
     },
     {
       fieldType: FieldTypes.Textarea,
