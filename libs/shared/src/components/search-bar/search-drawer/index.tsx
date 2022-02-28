@@ -1,9 +1,12 @@
 import CloseIcon from "@mui/icons-material/Close";
 import { Drawer } from "@mui/material";
-import { BaseButton, ButtonType, LocalizedLink, PagePath, searchHandler } from "@patronage-web/shared";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { AppRouteType } from "../../../types/app-routes";
+import { searchHandler } from "../../../utils/search-handler";
+import { BaseButton, ButtonType } from "../../base-button";
+import { LocalizedLink } from "../../localized-link";
 import { SearchInput } from "../search-input";
 import { SearchItem } from "../search-item";
 import * as Styled from "./styled";
@@ -12,8 +15,8 @@ interface SearchDrawerProps {
   open: boolean;
   onClose: () => void;
   searchKey: string;
-  toResult: PagePath;
-  toItem: PagePath;
+  toResult: AppRouteType;
+  toItem: AppRouteType;
 }
 
 export const SearchDrawer: React.FC<SearchDrawerProps> = ({ open, onClose, searchKey, toResult, toItem }) => {

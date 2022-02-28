@@ -1,5 +1,6 @@
 export * from "./action-card";
 export * from "./base-button";
+export * from "./basic-info";
 export * from "./footer";
 export * from "./form";
 export * from "./form-field";

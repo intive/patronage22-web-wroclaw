@@ -14,11 +14,11 @@ export enum FooterSectionPosition {
   End = "end"
 }
 
-export interface FooterProps extends Pick<AppBarProps, "color"> {
+export interface FooterProps extends Pick<AppBarProps, "color" | "position"> {
   config: Partial<Record<FooterSectionPosition, FooterSection>>;
 }
 
-export const Footer: React.FC<FooterProps> = ({ config, color = "primary" }) => {
+export const Footer: React.FC<FooterProps> = ({ config, color, position }) => {
   const footerSectionElements = Object.values(FooterSectionPosition).map(section => {
     const sectionItem = config[section];
 
@@ -32,7 +32,7 @@ export const Footer: React.FC<FooterProps> = ({ config, color = "primary" }) => 
   });
 
   return (
-    <Styled.FooterAppBar color={color}>
+    <Styled.FooterAppBar position={position} color={color}>
       <Styled.FooterToolbar>{footerSectionElements}</Styled.FooterToolbar>
     </Styled.FooterAppBar>
   );

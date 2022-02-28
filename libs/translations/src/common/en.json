@@ -7,5 +7,15 @@
   "submit": "Submit",
   "notFoundPage": {
     "title": "We are sorry, the page you're looking for doesn't exist"
+  },
+  "intive": {
+    "name": "Intive",
+    "wroclaw": "Wroclaw",
+    "address": "Pilsudskiego 69, 50-019 Wroclaw",
+    "phone": "+48 71 769 59 00"
+  },
+  "featureNames": {
+    "feedback": "Survey Maker",
+    "feedback-external": "Survey Participant"
   }
 }
