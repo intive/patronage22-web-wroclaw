@@ -1,5 +1,14 @@
 {
-  "breadcrumb": "nawigacja",
+  "breadcrumb": {
+    "breadcrumb": "nawigacja",
+    "save": "Zapisz"
+  },
   "shareDialogMessage": "Gratulacje, Twoja prezentacja: {{name}} właśnie się rozpoczęła, użyj poniższego linku, aby ją udostępnić!",
-  "sharePresentation": "Udostępnij prezentację"
+  "sharePresentation": "Udostępnij prezentację",
+  "search": {
+    "searchbarPlaceholder": "Szukaj prezentacji",
+    "showResultsButton": "Pokaż wszystkie wyniki...",
+    "searchAriaLabel": "Szukaj",
+    "noResultsInfo": "Brak wyników..."
+  }
 }
