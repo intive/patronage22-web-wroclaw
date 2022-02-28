@@ -1,5 +1,5 @@
+import { ItemsType } from "../../../../data/features/feedback/mocks/items";
 import { AppRouteType } from "../../../types/app-routes";
-import { ItemsType } from "../../../utils/search-handler";
 import { LocalizedLink } from "../../localized-link";
 import * as Styled from "./styled";
 

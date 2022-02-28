@@ -27,7 +27,9 @@ export const SearchDrawer: React.FC<SearchDrawerProps> = ({ open, onClose, searc
   const [searchPhrase, setSearchPhrase] = useState("");
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSearchPhrase(event.target.value);
+    if (event.target.value.length > RESULTS_LIMITS.minMatch) {
+      setSearchPhrase(event.target.value);
+    }
   };
 
   const handleCloseDrawer = () => {

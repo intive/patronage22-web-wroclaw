@@ -1,7 +1,8 @@
 import Fuse from "fuse.js";
 
+import { items, ItemsType } from "../../data/features/feedback/mocks/items";
 import { RESULTS_LIMITS } from "../constants";
-import { items, ItemsType, searchHandler } from "./search-handler";
+import { searchHandler } from "./search-handler";
 
 const testData: Record<string, Fuse.FuseResult<ItemsType>[]> = {
   java: [
@@ -19,7 +20,6 @@ const testData: Record<string, Fuse.FuseResult<ItemsType>[]> = {
 const noPhraseData = items.map((item, index) => ({
   item,
   matches: [],
-  minMatchCharLength: RESULTS_LIMITS.minMatch,
   refIndex: index
 }));
 
