@@ -1,11 +1,12 @@
-import { ItemsType, LocalizedLink, PagePath } from "@patronage-web/shared";
-
+import { AppRouteType } from "../../../types/app-routes";
+import { ItemsType } from "../../../utils/search-handler";
+import { LocalizedLink } from "../../localized-link";
 import * as Styled from "./styled";
 
 interface SearchItemProps {
   onClose: () => void;
   item: ItemsType;
-  toResult: PagePath;
+  toResult: AppRouteType;
 }
 
 export const SearchItem: React.FC<SearchItemProps> = ({ onClose, item, toResult }) => (
