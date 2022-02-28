@@ -1,12 +1,12 @@
-import { PagePath } from "../../../types";
-import { ItemsType } from "../../../utils";
+import { AppRouteType } from "../../../types/app-routes";
+import { ItemsType } from "../../../utils/search-handler";
 import { LocalizedLink } from "../../localized-link";
 import * as Styled from "./styled";
 
 interface SearchItemProps {
   onClose: () => void;
   item: ItemsType;
-  toResult: PagePath;
+  toResult: AppRouteType;
 }
 
 export const SearchItem: React.FC<SearchItemProps> = ({ onClose, item, toResult }) => (

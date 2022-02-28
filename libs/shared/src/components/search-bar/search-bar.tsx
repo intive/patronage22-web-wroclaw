@@ -1,14 +1,13 @@
 import { useState } from "react";
 
-import { PagePath } from "../../types";
-import { LocalizedLink } from "../localized-link";
+import { AppRouteType } from "../../types/app-routes";
 import { SearchDrawer } from "./search-drawer";
 import { SearchInput } from "./search-input";
 
 interface SearchBarProps {
   searchKey: string;
-  allResultsPage: PagePath;
-  singleResultPage: PagePath;
+  allResultsPage: AppRouteType;
+  singleResultPage: AppRouteType;
 }
 
 export const SearchBar: React.FC<SearchBarProps> = ({ searchKey, allResultsPage, singleResultPage }) => {
@@ -20,9 +19,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({ searchKey, allResultsPage,
 
   return (
     <>
-      <LocalizedLink to={PagePath.Dashboard}>
-        <SearchInput onClick={handleClick} readOnly />
-      </LocalizedLink>
+      <SearchInput onClick={handleClick} readOnly />
       <SearchDrawer open={isOpen} onClose={handleClick} searchKey={searchKey} toResult={allResultsPage} toItem={singleResultPage} />
     </>
   );

@@ -3,8 +3,8 @@ import { Drawer } from "@mui/material";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { PagePath } from "../../../types";
-import { searchHandler } from "../../../utils";
+import { AppRouteType } from "../../../types/app-routes";
+import { searchHandler } from "../../../utils/search-handler";
 import { BaseButton, ButtonType } from "../../base-button";
 import { LocalizedLink } from "../../localized-link";
 import { SearchInput } from "../search-input";
@@ -15,8 +15,8 @@ interface SearchDrawerProps {
   open: boolean;
   onClose: () => void;
   searchKey: string;
-  toResult: PagePath;
-  toItem: PagePath;
+  toResult: AppRouteType;
+  toItem: AppRouteType;
 }
 
 export const SearchDrawer: React.FC<SearchDrawerProps> = ({ open, onClose, searchKey, toResult, toItem }) => {
