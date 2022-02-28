@@ -4,6 +4,7 @@ export interface ItemsType {
   title: string;
   id: string;
 }
+
 export const items: ItemsType[] = [
   { title: "Advanced typescript", id: "8ef796d1-b39d-4c4b-91a4-689534944d66" },
   { title: "Javascript for begginers", id: "3d7812ee-43b5-43f3-8a3e-ea8938cbf8c1" },
@@ -20,9 +21,8 @@ interface SearchHandlerConfig {
   limit: number;
 }
 
-export const sliceHandler = (array: Fuse.FuseResult<ItemsType>[], offset: number, limit: number) => {
-  return array.slice(offset, offset + limit);
-};
+export const sliceHandler = (array: Fuse.FuseResult<ItemsType>[], offset: number, limit: number) =>
+  array.slice(offset, offset + limit);
 
 export const searchHandler: (args: SearchHandlerConfig) => Fuse.FuseResult<ItemsType>[] = ({ key, text, offset, limit }) => {
   const fuse = new Fuse(items, {
