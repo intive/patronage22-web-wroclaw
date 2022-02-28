@@ -9,6 +9,7 @@ import { ObjectShape } from "yup/lib/object";
 import { TranslationNamespace } from "../../types";
 import { BaseButton, ButtonType } from "../base-button";
 import { FormField, FormFieldType } from "../form-field";
+import * as Styled from "./styled";
 
 export interface FormProps {
   title?: TFunction;
@@ -46,7 +47,7 @@ export const Form: React.FC<FormProps> = ({
 
   return (
     <FormProvider {...methods}>
-      <form className={className}>
+      <Styled.Form className={className}>
         {title && <Typography>{title}</Typography>}
         {fields.map(field => (
           <FormField key={field.name} {...field} />
@@ -56,7 +57,7 @@ export const Form: React.FC<FormProps> = ({
             {submitButtonText || t("submit")}
           </BaseButton>
         )}
-      </form>
+      </Styled.Form>
     </FormProvider>
   );
 };
