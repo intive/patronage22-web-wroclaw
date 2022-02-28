@@ -13,19 +13,34 @@ export const items: ItemsType[] = [
   { title: "React for begginers", id: "73bae9d6-3af9-4927-998b-605fc215dfac" }
 ];
 
-export const searchHandler = (key: string, text?: string) => {
+interface SearchHandlerConfig {
+  key: string;
+  text?: string;
+  offset: number;
+  limit: number;
+}
+
+export const sliceHandler = (array: Fuse.FuseResult<ItemsType>[], offset: number, limit: number) => {
+  return array.slice(offset, offset + limit);
+};
+
+export const searchHandler: (args: SearchHandlerConfig) => Fuse.FuseResult<ItemsType>[] = ({ key, text, offset, limit }) => {
   const fuse = new Fuse(items, {
     keys: [key]
   });
 
   if (text) {
-    return fuse.search(text);
+    return sliceHandler(fuse.search(text), offset, limit);
   }
 
-  return items.map((item, index) => ({
-    item,
-    matches: [],
-    score: 1,
-    refIndex: index
-  }));
+  return sliceHandler(
+    items.map((item, index) => ({
+      item,
+      matches: [],
+      score: 1,
+      refIndex: index
+    })),
+    offset,
+    limit
+  );
 };

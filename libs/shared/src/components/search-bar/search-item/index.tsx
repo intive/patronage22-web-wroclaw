@@ -1,5 +1,6 @@
-import { ItemsType, LocalizedLink, PagePath } from "@patronage-web/shared";
-
+import { PagePath } from "../../../types";
+import { ItemsType } from "../../../utils";
+import { LocalizedLink } from "../../localized-link";
 import * as Styled from "./styled";
 
 interface SearchItemProps {

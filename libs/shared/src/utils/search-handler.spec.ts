@@ -35,17 +35,17 @@ describe("search-handler", () => {
     searchPhrase.forEach(phrase => {
       jest.clearAllMocks();
 
-      expect(searchHandler("title", phrase)).toEqual(testData[phrase]);
-      expect(mockedSearch).toHaveBeenCalledWith(phrase);
+      expect(searchHandler({ key: "title", text: phrase, offset: 0, limit: 5 })).toEqual(testData[phrase]);
+      expect(mockedSearch).toHaveBeenCalledWith(phrase.slice(0, 5));
     });
   });
 
   it("should return all data", () => {
     jest.clearAllMocks();
 
-    const searchedData = searchHandler("title");
+    const searchedData = searchHandler({ key: "title", offset: 0, limit: 5 });
 
     expect(mockedSearch).not.toHaveBeenCalled();
-    expect(searchedData).toEqual(noPhraseData);
+    expect(searchedData).toEqual(noPhraseData.slice(0, 5));
   });
 });
