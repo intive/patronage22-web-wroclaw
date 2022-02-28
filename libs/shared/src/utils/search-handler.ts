@@ -1,5 +1,7 @@
 import Fuse from "fuse.js";
 
+import { RESULTS_LIMITS } from "../constants";
+
 export interface ItemsType {
   title: string;
   id: string;
@@ -21,10 +23,12 @@ interface SearchHandlerConfig {
   limit: number;
 }
 
+type SearchHandlerType = (args: SearchHandlerConfig) => Fuse.FuseResult<ItemsType>[];
+
 export const sliceHandler = (array: Fuse.FuseResult<ItemsType>[], offset: number, limit: number) =>
   array.slice(offset, offset + limit);
 
-export const searchHandler: (args: SearchHandlerConfig) => Fuse.FuseResult<ItemsType>[] = ({ key, text, offset, limit }) => {
+export const searchHandler: SearchHandlerType = ({ key, text, offset, limit }) => {
   const fuse = new Fuse(items, {
     keys: [key]
   });
@@ -37,7 +41,7 @@ export const searchHandler: (args: SearchHandlerConfig) => Fuse.FuseResult<Items
     items.map((item, index) => ({
       item,
       matches: [],
-      score: 1,
+      minMatchCharLength: RESULTS_LIMITS.minMatch,
       refIndex: index
     })),
     offset,

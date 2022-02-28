@@ -1,6 +1,8 @@
 import { useState } from "react";
 
+import { FeedbackRoute } from "../../types";
 import { AppRouteType } from "../../types/app-routes";
+import { LocalizedLink } from "../localized-link";
 import { SearchDrawer } from "./search-drawer";
 import { SearchInput } from "./search-input";
 
@@ -19,7 +21,9 @@ export const SearchBar: React.FC<SearchBarProps> = ({ searchKey, allResultsPage,
 
   return (
     <>
-      <SearchInput onClick={handleClick} readOnly />
+      <LocalizedLink to={FeedbackRoute.Dashboard}>
+        <SearchInput onClick={handleClick} readOnly />
+      </LocalizedLink>
       <SearchDrawer open={isOpen} onClose={handleClick} searchKey={searchKey} toResult={allResultsPage} toItem={singleResultPage} />
     </>
   );

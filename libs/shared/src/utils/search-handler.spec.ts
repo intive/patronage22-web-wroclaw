@@ -1,5 +1,6 @@
 import Fuse from "fuse.js";
 
+import { RESULTS_LIMITS } from "../constants";
 import { items, ItemsType, searchHandler } from "./search-handler";
 
 const testData: Record<string, Fuse.FuseResult<ItemsType>[]> = {
@@ -18,7 +19,7 @@ const testData: Record<string, Fuse.FuseResult<ItemsType>[]> = {
 const noPhraseData = items.map((item, index) => ({
   item,
   matches: [],
-  score: 1,
+  minMatchCharLength: RESULTS_LIMITS.minMatch,
   refIndex: index
 }));
 
@@ -31,21 +32,23 @@ jest.mock("fuse.js", () => {
 describe("search-handler", () => {
   const searchPhrase = ["java", "react"];
 
-  it("'should return proper table of filtered items", () => {
+  it("should return proper table of filtered items", () => {
     searchPhrase.forEach(phrase => {
       jest.clearAllMocks();
 
-      expect(searchHandler({ key: "title", text: phrase, offset: 0, limit: 5 })).toEqual(testData[phrase]);
-      expect(mockedSearch).toHaveBeenCalledWith(phrase.slice(0, 5));
+      expect(searchHandler({ key: "title", text: phrase, offset: RESULTS_LIMITS.offset, limit: RESULTS_LIMITS.limit })).toEqual(
+        testData[phrase]
+      );
+      expect(mockedSearch).toHaveBeenCalledWith(phrase.slice(RESULTS_LIMITS.offset, RESULTS_LIMITS.limit));
     });
   });
 
   it("should return all data", () => {
     jest.clearAllMocks();
 
-    const searchedData = searchHandler({ key: "title", offset: 0, limit: 5 });
+    const searchedData = searchHandler({ key: "title", offset: RESULTS_LIMITS.offset, limit: RESULTS_LIMITS.limit });
 
     expect(mockedSearch).not.toHaveBeenCalled();
-    expect(searchedData).toEqual(noPhraseData.slice(0, 5));
+    expect(searchedData).toEqual(noPhraseData.slice(RESULTS_LIMITS.offset, RESULTS_LIMITS.limit));
   });
 });
