@@ -18,7 +18,7 @@ export const InfoBox = styled(Box)(({ theme }) => ({
   margin: `${theme.spacing(0.5)} 0`
 }));
 
-export const TypographyBox = styled(Typography)(({ theme }) => ({
+export const DetailsBox = styled(Typography)(({ theme }) => ({
   marginLeft: theme.spacing(0.5)
 }));
 

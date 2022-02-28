@@ -9,14 +9,12 @@ export const BasicInfo: React.FC = () => {
   const { t } = useTranslation();
 
   const customNames = {
-    [FeatureName.Feedback]: t(`featureNames.feedback`),
-    [FeatureName.ExternalFeedback]: t(`featureNames.feedback-external`),
+    [FeatureName.Feedback]: `(${t("featureNames.feedback")})`,
+    [FeatureName.ExternalFeedback]: `(${t("featureNames.feedback-external")})`,
     [FeatureName.Default]: ""
   };
 
-  const companyInfo = `${t("intive.name")} ${
-    featureName === FeatureName.Default ? customNames[FeatureName.Default] : `(${customNames[featureName]})`
-  }`;
+  const companyInfo = `${t("intive.name")} ${customNames[featureName]}`;
 
   return (
     <Styled.InfoContainer>
@@ -24,12 +22,12 @@ export const BasicInfo: React.FC = () => {
 
       <Styled.InfoBox>
         <Styled.InfoAddressIcon />
-        <Styled.TypographyBox>{t("intive.address")}</Styled.TypographyBox>
+        <Styled.DetailsBox>{t("intive.address")}</Styled.DetailsBox>
       </Styled.InfoBox>
 
       <Styled.InfoBox>
         <Styled.InfoPhoneIcon />
-        <Styled.TypographyBox>{t("intive.phone")}</Styled.TypographyBox>
+        <Styled.DetailsBox>{t("intive.phone")}</Styled.DetailsBox>
       </Styled.InfoBox>
     </Styled.InfoContainer>
   );
