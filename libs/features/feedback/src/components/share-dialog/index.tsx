@@ -1,11 +1,11 @@
 import { DialogActions, DialogContent } from "@mui/material";
 import {
-  AppRoute,
   BaseButton,
   BaseSnackbar,
   ButtonType,
   copyToClipboard,
   createPath,
+  FeedbackRoute,
   QR_CODE_SIZE,
   TranslationNamespace
 } from "@patronage-web/shared";
@@ -24,7 +24,8 @@ export interface ShareDialogProps {
 
 export const ShareDialog: React.FC<ShareDialogProps> = ({ open, onClose, id, title }) => {
   const { t } = useTranslation([TranslationNamespace.Feedback, TranslationNamespace.Common]);
-  const path = createPath([AppRoute.Presentation, AppRoute.ExternalUserPresentation], { id });
+  const { i18n } = useTranslation();
+  const path = createPath(FeedbackRoute.ExternalUserPresentation, { id }, i18n.language);
   const link = `${window.location.origin}${path}`;
 
   const [message, setMessage] = useState("");
