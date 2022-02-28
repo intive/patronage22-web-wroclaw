@@ -1,10 +1,10 @@
 import { Box } from "@mui/material";
-import { LanguageButton } from "@patronage-web/features-feedback";
+import { LanguageButton } from "@patronage-web/shared";
 import { ComponentMeta } from "@storybook/react";
 import { useTranslation } from "react-i18next";
 
 const LanguageButtonTemplate = () => {
-  const { t } = useTranslation("ui");
+  const { t } = useTranslation();
 
   return (
     <Box>
