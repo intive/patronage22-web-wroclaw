@@ -4,5 +4,8 @@
     "newPresentationButton": "Nowa ankieta"
   },
   "save": "Zapisz",
-  "submit": "Zatwierdź"
+  "submit": "Zatwierdź",
+  "notFoundPage": {
+    "title": "Przepraszamy, strona, której szukasz nie istnieje"
+  }
 }

@@ -1,6 +1,15 @@
 {
-  "breadcrumb": "breadcrumb",
   "missingTitleError": "Title cannot be empty",
   "newPresentation": "New presentation",
-  "description": "Description"
+  "description": "Description",
+  "breadcrumb": {
+    "breadcrumb": "breadcrumb",
+    "save": "Save"
+  },
+  "search": {
+    "searchbarPlaceholder": "Search presentations",
+    "showResultsButton": "Show all results...",
+    "searchAriaLabel": "Search",
+    "noResultsInfo": "No results found..."
+  }
 }

@@ -4,5 +4,8 @@
     "newPresentationButton": "New presentation"
   },
   "save": "Save",
-  "submit": "Submit"
+  "submit": "Submit",
+  "notFoundPage": {
+    "title": "We are sorry, the page you're looking for doesn't exist"
+  }
 }

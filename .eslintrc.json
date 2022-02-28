@@ -11,6 +11,7 @@
       },
       "rules": {
         "import/export": 0,
+        "import/no-cycle": "off",
         "import/no-self-import": 0,
         "react/prop-types": 0,
         "react/jsx-uses-react": "off",
