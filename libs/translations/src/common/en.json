@@ -5,6 +5,8 @@
   },
   "save": "Save",
   "submit": "Submit",
+  "cancel": "Cancel",
+  "noData": "No data available",
   "notFoundPage": {
     "title": "We are sorry, the page you're looking for doesn't exist"
   },

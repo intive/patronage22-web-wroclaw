@@ -15,17 +15,22 @@ export const FormStory: React.FC<FormProps> = ({ validationSchema, fields, onSub
 
 const fields: FormFieldType[] = [
   { fieldType: FieldTypes.Text, name: "field1", variant: "filled" },
-  { fieldType: FieldTypes.Textarea, name: "field2", variant: "outlined" }
+  { fieldType: FieldTypes.Textarea, name: "field2", variant: "outlined" },
+  { fieldType: FieldTypes.Text, name: "e-mail", variant: "standard", label: "E-mail" }
 ];
 
-const validationSchema: ObjectShape = { field1: string().trim().required("Field required"), field2: string().trim() };
+const validationSchema: ObjectShape = {
+  field1: string().trim().required("Field required"),
+  field2: string().trim(),
+  field3: string().trim().email("Provide valid e-mail").required("Field required")
+};
 
 const onSubmit = (): void => {
   console.log("submit");
 };
 
 const onError = (): void => {
-  console.log("submit");
+  console.log("error");
 };
 
 export default {

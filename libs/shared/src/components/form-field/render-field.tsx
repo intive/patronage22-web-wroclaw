@@ -4,35 +4,43 @@ import { FieldValues, UseFormStateReturn } from "react-hook-form";
 import { FieldTypes } from "../../types";
 
 const DEFAULT_ROWS_NUMBER = 4;
-interface Props {
-  fieldType: FieldTypes;
-  fieldName: string;
-  value: any;
-  onChange: (...event: any[]) => void;
-  variant: "standard" | "filled" | "outlined" | undefined;
-  error: UseFormStateReturn<FieldValues>["errors"];
-  label: string | undefined;
-  rows: number | undefined;
+
+interface RenderFieldProps {
+  type: FieldTypes;
+  name: string;
+  value: unknown;
+  onChange: () => void;
+  variant?: "standard" | "filled" | "outlined";
+  errors: UseFormStateReturn<FieldValues>["errors"];
+  label?: string;
+  rows?: number;
 }
 
-export const renderField = ({ fieldType, fieldName, value, onChange, variant, error, label, rows }: Props): JSX.Element => {
+export const renderField = ({
+  type,
+  name,
+  value,
+  onChange,
+  variant = "outlined",
+  errors,
+  label,
+  rows = DEFAULT_ROWS_NUMBER
+}: RenderFieldProps) => {
   const field: Record<FieldTypes, JSX.Element> = {
-    [FieldTypes.Text]: (
-      <TextField name={fieldName} value={value} onChange={onChange} variant={variant || "outlined"} error={!!error} label={label} />
-    ),
+    [FieldTypes.Text]: <TextField name={name} value={value} onChange={onChange} variant={variant} error={!!errors} label={label} />,
     [FieldTypes.Textarea]: (
       <TextField
-        name={fieldName}
+        name={name}
         value={value}
         onChange={onChange}
-        variant={variant || "outlined"}
+        variant={variant}
         multiline
-        error={!!error}
+        error={!!errors}
         label={label}
-        rows={rows || DEFAULT_ROWS_NUMBER}
+        rows={rows}
       />
     )
   };
 
-  return field[fieldType];
+  return field[type];
 };

@@ -8,5 +8,9 @@ export const Form = styled("form")(({ theme }) => ({
 
   "& .MuiFormControl-root": {
     margin: theme.spacing(1, 0)
+  },
+
+  "& #placeholder": {
+    alignSelf: "center"
   }
 }));

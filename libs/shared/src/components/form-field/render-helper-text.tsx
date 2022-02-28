@@ -1,10 +1,8 @@
 import { FormHelperText } from "@mui/material";
 import { FieldValues, UseFormStateReturn } from "react-hook-form";
 
-interface Props {
-  helperText: string | undefined;
-  error: UseFormStateReturn<FieldValues>["errors"];
-}
+export const renderHelperText = (errors: UseFormStateReturn<FieldValues>["errors"], helperText?: string) => {
+  if (errors) return <FormHelperText error={!!errors}>{errors.message}</FormHelperText>;
 
-export const renderHelperText = ({ helperText, error }: Props): JSX.Element | null =>
-  helperText || error ? <FormHelperText error={!!error}>{(error && error.message) || helperText}</FormHelperText> : null;
+  return helperText && <FormHelperText>{helperText}</FormHelperText>;
+};

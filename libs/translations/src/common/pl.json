@@ -5,6 +5,8 @@
   },
   "save": "Zapisz",
   "submit": "Zatwierdź",
+  "cancel": "Anuluj",
+  "noData": "Brak danych",
   "notFoundPage": {
     "title": "Przepraszamy, strona, której szukasz nie istnieje"
   },
