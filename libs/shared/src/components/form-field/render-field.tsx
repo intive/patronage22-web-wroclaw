@@ -1,11 +1,9 @@
 import { TextField } from "@mui/material";
 import { FieldValues, UseFormStateReturn } from "react-hook-form";
 
-export enum FieldTypes {
-  Text = "text",
-  Textarea = "textarea"
-}
+import { FieldTypes } from "../../types";
 
+const DEFAULT_ROWS_NUMBER = 4;
 interface Props {
   fieldType: FieldTypes;
   fieldName: string;
@@ -31,7 +29,7 @@ export const renderField = ({ fieldType, fieldName, value, onChange, variant, er
         multiline
         error={!!error}
         label={label}
-        rows={rows || 4}
+        rows={rows || DEFAULT_ROWS_NUMBER}
       />
     )
   };

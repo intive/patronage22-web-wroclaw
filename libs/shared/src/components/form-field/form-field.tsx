@@ -1,8 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { FieldValues, useController, UseControllerProps, UseFormStateReturn } from "react-hook-form";
 
+import { FieldTypes } from "../../types";
 import { renderEditIcon } from "./render-edit-icon";
-import { FieldTypes, renderField } from "./render-field";
+import { renderField } from "./render-field";
 import { renderHelperText } from "./render-helper-text";
 import * as Styled from "./styled";
 
