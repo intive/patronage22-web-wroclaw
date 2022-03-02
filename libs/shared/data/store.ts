@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import logger from "redux-logger";
 
 import { sampleReducer } from "./features";
 import { FeedbackSliceName } from "./features/feedback/types";
+import { logger } from "./middlewares/logger";
 
 export const store = configureStore({
   reducer: {
