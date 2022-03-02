@@ -30,7 +30,7 @@ describe("search-handler", () => {
     searchPhrase.forEach(phrase => {
       jest.clearAllMocks();
 
-      expect(searchHandler({ key: "title", text: phrase, offset: SEARCH_CONFIG.offset, limit: SEARCH_CONFIG.limit })).toEqual(
+      expect(searchHandler({ keys: ["title"], text: phrase, offset: SEARCH_CONFIG.offset, limit: SEARCH_CONFIG.limit })).toEqual(
         testData[phrase]
       );
       expect(mockedSearch).toHaveBeenCalledWith(phrase.slice(SEARCH_CONFIG.offset, SEARCH_CONFIG.limit));

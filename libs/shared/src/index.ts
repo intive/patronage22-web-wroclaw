@@ -3,7 +3,6 @@ export * from "./components";
 export * from "./constants";
 export * from "./hooks";
 export * from "./layouts";
-export * from "./mocks";
 export * from "./types";
 export * from "./utils";
 export * from "./views";

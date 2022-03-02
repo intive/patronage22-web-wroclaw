@@ -1,27 +1,28 @@
 import Fuse from "fuse.js";
 
-import { PresentationSearchItem } from "../components/search-bar/types";
-import { items } from "../mocks";
+import { items } from "../../mocks";
+import { PresentationSearchItem } from "../components/search-bar";
+import { SEARCH_CONFIG } from "../constants";
 
 interface SearchHandlerConfig {
-  key: string;
+  keys: string[];
   text?: string;
   offset: number;
   limit: number;
 }
 
-type SearchHandlerType = (args: SearchHandlerConfig) => Fuse.FuseResult<PresentationSearchItem>[];
+type SearchHandlerType = (config: SearchHandlerConfig) => Fuse.FuseResult<PresentationSearchItem>[];
 
-export const chunkSearchResults = (array: Fuse.FuseResult<PresentationSearchItem>[], offset: number, limit: number) =>
-  array.slice(offset, offset + limit);
+export const chunkSearchResults = (elements: Fuse.FuseResult<PresentationSearchItem>[], offset: number, limit: number) =>
+  elements.slice(offset, offset + limit);
 
-export const searchHandler: SearchHandlerType = ({ key, text, offset, limit }) => {
+export const searchHandler: SearchHandlerType = ({ keys, text, offset, limit }) => {
   const fuse = new Fuse(items, {
-    keys: [key],
-    minMatchCharLength: 3
+    keys: [keys],
+    minMatchCharLength: SEARCH_CONFIG.minMatch
   });
 
-  const searchText = text == null ? "" : text.trim();
+  const trimText = text?.trim() ?? "";
 
-  return chunkSearchResults(fuse.search(searchText), offset, limit);
+  return chunkSearchResults(fuse.search(trimText), offset, limit);
 };

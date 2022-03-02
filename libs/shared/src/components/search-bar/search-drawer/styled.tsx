@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { alpha, styled } from "@mui/material/styles";
 
 export const SearchDrawerHeader = styled(Box)(({ theme }) => ({
@@ -34,4 +34,9 @@ export const InputBoxWrapper = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up("sm")]: {
     width: "30%"
   }
+}));
+
+export const Paragraph = styled(Typography)(({ theme }) => ({
+  marginTop: theme.spacing(2),
+  marginBottom: theme.spacing(2)
 }));

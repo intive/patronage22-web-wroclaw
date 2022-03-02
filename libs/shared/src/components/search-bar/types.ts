@@ -1,7 +1,7 @@
-export interface SearchItemId<T> {
-  id: T;
+export interface SearchItemId {
+  id: string;
 }
 
-export interface PresentationSearchItem extends SearchItemId<string> {
+export interface PresentationSearchItem extends SearchItemId {
   title: string;
 }

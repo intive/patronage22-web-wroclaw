@@ -7,8 +7,6 @@
   "search": {
     "searchbarPlaceholder": "Szukaj prezentacji",
     "showResultsButton": "Pokaż wszystkie wyniki...",
-    "searchAriaLabel": "Szukaj",
-    "noResultsInfo": "Brak wyników...",
-    "tooShortPhrase": "Proszę wprowadzić przynajmniej trzy znaki"
+    "searchAriaLabel": "Szukaj"
   }
 }
