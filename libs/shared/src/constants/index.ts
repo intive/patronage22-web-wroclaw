@@ -1,2 +1,2 @@
 export * from "./regex";
-export * from "./results-limits";
+export * from "./search-config";

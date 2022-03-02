@@ -1,10 +1,10 @@
 import Fuse from "fuse.js";
 
-import { items, ItemsType } from "../../data/features/feedback/mocks/items";
-import { RESULTS_LIMITS } from "../constants";
+import { PresentationSearchItem } from "../components/search-bar/types";
+import { SEARCH_CONFIG } from "../constants";
 import { searchHandler } from "./search-handler";
 
-const testData: Record<string, Fuse.FuseResult<ItemsType>[]> = {
+const testData: Record<string, Fuse.FuseResult<PresentationSearchItem>[]> = {
   java: [
     { item: { title: "Javascript for begginers", id: "3d7812ee-43b5-43f3-8a3e-ea8938cbf8c1" }, refIndex: 1 },
     { item: { title: "Advanced Javascript", id: "1523a989-ceee-422a-b460-d5e2b842f742" }, refIndex: 3 },
@@ -16,12 +16,6 @@ const testData: Record<string, Fuse.FuseResult<ItemsType>[]> = {
     { item: { title: "Advanced React", id: "db5d7672-b143-4fa4-941c-5aa71e0eb575" }, refIndex: 2 }
   ]
 };
-
-const noPhraseData = items.map((item, index) => ({
-  item,
-  matches: [],
-  refIndex: index
-}));
 
 const mockedSearch = jest.fn().mockImplementation((mockedPhrase: string) => testData[mockedPhrase]);
 
@@ -36,19 +30,10 @@ describe("search-handler", () => {
     searchPhrase.forEach(phrase => {
       jest.clearAllMocks();
 
-      expect(searchHandler({ key: "title", text: phrase, offset: RESULTS_LIMITS.offset, limit: RESULTS_LIMITS.limit })).toEqual(
+      expect(searchHandler({ key: "title", text: phrase, offset: SEARCH_CONFIG.offset, limit: SEARCH_CONFIG.limit })).toEqual(
         testData[phrase]
       );
-      expect(mockedSearch).toHaveBeenCalledWith(phrase.slice(RESULTS_LIMITS.offset, RESULTS_LIMITS.limit));
+      expect(mockedSearch).toHaveBeenCalledWith(phrase.slice(SEARCH_CONFIG.offset, SEARCH_CONFIG.limit));
     });
-  });
-
-  it("should return all data", () => {
-    jest.clearAllMocks();
-
-    const searchedData = searchHandler({ key: "title", offset: RESULTS_LIMITS.offset, limit: RESULTS_LIMITS.limit });
-
-    expect(mockedSearch).not.toHaveBeenCalled();
-    expect(searchedData).toEqual(noPhraseData.slice(RESULTS_LIMITS.offset, RESULTS_LIMITS.limit));
   });
 });

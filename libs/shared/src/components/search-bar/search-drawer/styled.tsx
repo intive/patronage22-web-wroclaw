@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import { alpha, styled } from "@mui/material/styles";
 
 export const SearchDrawerHeader = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -24,8 +24,14 @@ export const SearchDrawerContentBox = styled(Box)(({ theme }) => ({
 
 export const SearchResultsBtnBox = styled(Box)(({ theme }) => ({
   width: "100vw",
-  background: theme.palette.grey[300],
+  background: alpha(theme.palette.primary.dark, 0.1),
   marginTop: theme.spacing(1),
   display: "flex",
   justifyContent: "center"
+}));
+
+export const InputBoxWrapper = styled(Box)(({ theme }) => ({
+  [theme.breakpoints.up("sm")]: {
+    width: "30%"
+  }
 }));

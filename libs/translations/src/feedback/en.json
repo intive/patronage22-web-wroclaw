@@ -7,6 +7,7 @@
     "searchbarPlaceholder": "Search presentations",
     "showResultsButton": "Show all results...",
     "searchAriaLabel": "Search",
-    "noResultsInfo": "No results found..."
+    "noResultsInfo": "No results found...",
+    "tooShortPhrase": "Please enter at least three characters"
   }
 }

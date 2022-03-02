@@ -1,6 +1,7 @@
 import Fuse from "fuse.js";
 
-import { items, ItemsType } from "../../data/features/feedback/mocks/items";
+import { PresentationSearchItem } from "../components/search-bar/types";
+import { items } from "../mocks";
 
 interface SearchHandlerConfig {
   key: string;
@@ -9,27 +10,18 @@ interface SearchHandlerConfig {
   limit: number;
 }
 
-type SearchHandlerType = (args: SearchHandlerConfig) => Fuse.FuseResult<ItemsType>[];
+type SearchHandlerType = (args: SearchHandlerConfig) => Fuse.FuseResult<PresentationSearchItem>[];
 
-export const sliceHandler = (array: Fuse.FuseResult<ItemsType>[], offset: number, limit: number) =>
+export const chunkSearchResults = (array: Fuse.FuseResult<PresentationSearchItem>[], offset: number, limit: number) =>
   array.slice(offset, offset + limit);
 
 export const searchHandler: SearchHandlerType = ({ key, text, offset, limit }) => {
   const fuse = new Fuse(items, {
-    keys: [key]
+    keys: [key],
+    minMatchCharLength: 3
   });
 
-  if (text) {
-    return sliceHandler(fuse.search(text), offset, limit);
-  }
+  const searchText = text == null ? "" : text.trim();
 
-  return sliceHandler(
-    items.map((item, index) => ({
-      item,
-      matches: [],
-      refIndex: index
-    })),
-    offset,
-    limit
-  );
+  return chunkSearchResults(fuse.search(searchText), offset, limit);
 };
