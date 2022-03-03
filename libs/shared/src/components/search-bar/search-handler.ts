@@ -1,9 +1,9 @@
 import Fuse from "fuse.js";
 
-import { PresentationSearchItem } from "../components/search-bar";
-import { SEARCH_CONFIG } from "../constants";
-import { items } from "../data";
-import { trimString } from "./trim-string";
+import { items } from "../../data";
+import { trimString } from "../../utils";
+import { SEARCH_CONFIG } from "./constants";
+import { PresentationSearchItem } from "./types";
 
 interface SearchHandlerConfig {
   keys: string[];

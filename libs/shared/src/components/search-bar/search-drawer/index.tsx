@@ -4,11 +4,11 @@ import Fuse from "fuse.js";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { SEARCH_CONFIG } from "../../../constants";
-import { AppRouteType } from "../../../types/app-routes";
-import { searchHandler } from "../../../utils/search-handler";
+import { AppRouteType } from "../../../types";
 import { BaseButton, ButtonType } from "../../base-button";
 import { LocalizedLink } from "../../localized-link";
+import { SEARCH_CONFIG } from "../constants";
+import { searchHandler } from "../search-handler";
 import { SearchInput } from "../search-input";
 import { SearchItem } from "../search-item";
 import { PresentationSearchItem } from "../types";

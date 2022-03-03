@@ -1,8 +1,8 @@
 import Fuse from "fuse.js";
 
-import { PresentationSearchItem } from "../components/search-bar/types";
-import { SEARCH_CONFIG } from "../constants";
+import { SEARCH_CONFIG } from "./constants";
 import { searchHandler } from "./search-handler";
+import { PresentationSearchItem } from "./types";
 
 const testData: Record<string, Fuse.FuseResult<PresentationSearchItem>[]> = {
   java: [
@@ -33,6 +33,7 @@ describe("search-handler", () => {
       expect(searchHandler({ keys: ["title"], text: phrase, offset: SEARCH_CONFIG.offset, limit: SEARCH_CONFIG.limit })).toEqual(
         testData[phrase]
       );
+
       expect(mockedSearch).toHaveBeenCalledWith(phrase.slice(SEARCH_CONFIG.offset, SEARCH_CONFIG.limit));
     });
   });
