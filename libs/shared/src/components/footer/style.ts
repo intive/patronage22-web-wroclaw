@@ -9,6 +9,7 @@ export const FooterAppBar = styled(AppBar)(({ theme }) => ({
   justifyContent: "center",
   boxShadow: "unset",
   borderTop: `${theme.spacing(0.125)} solid ${theme.palette.grey[300]}`,
+  backgroundColor: theme.palette.background.default,
   backgroundImage: "unset"
 }));
 

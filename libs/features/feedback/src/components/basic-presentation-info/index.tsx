@@ -11,18 +11,18 @@ export const BasicPresentationInfo: React.FC = () => {
     <Styled.BasicPresentationInfo
       onSubmit={data => console.log(data)}
       onError={errors => console.log(errors)}
-      showSubmitButton
       fields={[
         {
           fieldType: FormFieldType.Text,
           name: "title",
-          isMultiline: false,
           variant: "standard",
           defaultValue: t("newPresentation")
         },
         {
-          fieldType: FormFieldType.Textarea,
+          fieldType: FormFieldType.Text,
           name: "description",
+          variant: "standard",
+          defaultValue: "",
           label: t("description")
         }
       ]}

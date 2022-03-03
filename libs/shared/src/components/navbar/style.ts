@@ -7,6 +7,7 @@ export const AppNavbar = styled(AppBar)(({ theme }) => ({
   justifyContent: "center",
   boxShadow: "unset",
   borderBottom: `${theme.spacing(0.125)} solid ${theme.palette.grey[300]}`,
+  backgroundColor: theme.palette.background.default,
   backgroundImage: "unset"
 }));
 

@@ -69,6 +69,11 @@ export const Form: React.FC<FormProps> = ({
     if (onCancel) onCancel();
   };
 
+  const formButtons = [
+    { condition: showSubmitButton, text: submitButtonText || t("submit"), action: handleSubmit },
+    { condition: showCancelButton, text: cancelButtonText || t("cancel"), action: handleCancel }
+  ];
+
   return (
     <FormProvider {...methods}>
       <Styled.Form className={className}>
@@ -76,15 +81,13 @@ export const Form: React.FC<FormProps> = ({
 
         {renderFields()}
 
-        {showSubmitButton && (
-          <BaseButton type={ButtonType.Basic} onClick={handleSubmit} variant='contained'>
-            {submitButtonText || t("submit")}
-          </BaseButton>
-        )}
-        {showCancelButton && (
-          <BaseButton type={ButtonType.Basic} onClick={handleCancel} variant='contained'>
-            {cancelButtonText || t("cancel")}
-          </BaseButton>
+        {formButtons.map(
+          ({ condition, text, action }) =>
+            condition && (
+              <BaseButton type={ButtonType.Basic} onClick={action} variant='contained'>
+                {text}
+              </BaseButton>
+            )
         )}
       </Styled.Form>
     </FormProvider>
