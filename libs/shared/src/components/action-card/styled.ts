@@ -5,7 +5,6 @@ export const ActionCard = styled(Card)(({ theme }) => ({
   display: "flex",
   flexFlow: "column wrap",
   justifyContent: "space-between",
-  backgroundColor: "#f7f7f7",
   margin: theme.spacing(2),
   borderRadius: theme.spacing(1),
 

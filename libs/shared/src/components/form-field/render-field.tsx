@@ -6,12 +6,14 @@ import { FormFieldType } from "../../types";
 
 const DEFAULT_ROWS_NUMBER = 4;
 
+export type FormTextFieldVariant = "standard" | "filled" | "outlined";
+
 interface RenderFieldProps {
   type: FormFieldType;
   name: string;
   value: unknown;
   onChange: (event: ChangeEvent) => void;
-  variant?: "standard" | "filled" | "outlined";
+  variant?: FormTextFieldVariant;
   errors: UseFormStateReturn<FieldValues>["errors"];
   label?: string;
   rows?: number;

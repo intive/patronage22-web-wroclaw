@@ -1,15 +1,15 @@
 /* eslint-disable react/jsx-props-no-spreading */
+import { Edit } from "@mui/icons-material";
 import { FieldValues, useController, UseControllerProps, UseFormStateReturn } from "react-hook-form";
 
 import { FormFieldType } from "../../types";
-import { renderEditIcon } from "./render-edit-icon";
-import { renderField } from "./render-field";
+import { FormTextFieldVariant, renderField } from "./render-field";
 import { renderHelperText } from "./render-helper-text";
 import * as Styled from "./styled";
 
 export interface FormFieldProps extends Pick<UseControllerProps, "name" | "defaultValue" | "control"> {
   fieldType: FormFieldType;
-  variant?: "standard" | "filled" | "outlined";
+  variant?: FormTextFieldVariant;
   isMultiline?: boolean;
   rows?: number;
   label?: string;
@@ -33,12 +33,12 @@ export const FormField: React.FC<FormFieldProps> = ({
     formState: { errors }
   } = useController({ name, defaultValue, control });
 
-  const fieldErrors: UseFormStateReturn<FieldValues>["errors"] = errors[`${name}`];
+  const fieldErrors: UseFormStateReturn<FieldValues>["errors"] = errors[name];
 
   return (
     <Styled.Field>
       {renderField({ type: fieldType, name: fieldName, value, onChange, variant, errors: fieldErrors, label, rows })}
-      {renderEditIcon(hideEditIcon)}
+      {hideEditIcon && <Edit />}
       {renderHelperText(fieldErrors, helperText)}
     </Styled.Field>
   );

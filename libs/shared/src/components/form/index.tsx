@@ -54,13 +54,9 @@ export const Form: React.FC<FormProps> = ({
       return fields.map(field => <FormField key={field.name} {...field} />);
     }
 
-    return placeholder ? (
+    return (
       <Typography id='placeholder' variant='h4'>
-        {placeholder}
-      </Typography>
-    ) : (
-      <Typography id='placeholder' variant='h4'>
-        {t("NoData")}
+        {placeholder || t("NoData")}
       </Typography>
     );
   };
@@ -85,7 +81,6 @@ export const Form: React.FC<FormProps> = ({
             {submitButtonText || t("submit")}
           </BaseButton>
         )}
-
         {showCancelButton && (
           <BaseButton type={ButtonType.Basic} onClick={handleCancel} variant='contained'>
             {cancelButtonText || t("cancel")}
