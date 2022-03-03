@@ -1,9 +1,9 @@
-import { FieldTypes, Form, FormFieldType, FormProps } from "@patronage-web/shared";
+import { Form, FormFieldProps, FormFieldType, FormProps } from "@patronage-web/shared";
 import { ComponentMeta } from "@storybook/react";
 import { string } from "yup";
 import { ObjectShape } from "yup/lib/object";
 
-export const FormStory: React.FC<FormProps> = ({ validationSchema, fields, onSubmit, onError, showSubmitButton }: FormProps) => (
+export const FormStory: React.FC<FormProps> = ({ validationSchema, fields, onSubmit, onError, showSubmitButton }) => (
   <Form
     validationSchema={validationSchema}
     fields={fields}
@@ -13,16 +13,16 @@ export const FormStory: React.FC<FormProps> = ({ validationSchema, fields, onSub
   />
 );
 
-const fields: FormFieldType[] = [
-  { fieldType: FieldTypes.Text, name: "field1", variant: "filled" },
-  { fieldType: FieldTypes.Textarea, name: "field2", variant: "outlined" },
-  { fieldType: FieldTypes.Text, name: "e-mail", variant: "standard", label: "E-mail" }
+const fields: FormFieldProps[] = [
+  { fieldType: FormFieldType.Text, name: "field1", variant: "filled" },
+  { fieldType: FormFieldType.Textarea, name: "field2", variant: "outlined" },
+  { fieldType: FormFieldType.Text, name: "email", variant: "standard", label: "E-mail" }
 ];
 
 const validationSchema: ObjectShape = {
   field1: string().trim().required("Field required"),
   field2: string().trim(),
-  field3: string().trim().email("Provide valid e-mail").required("Field required")
+  email: string().trim().required("Field required").email("Provide valid e-mail")
 };
 
 const onSubmit = (): void => {

@@ -1,14 +1,14 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { FieldValues, useController, UseControllerProps, UseFormStateReturn } from "react-hook-form";
 
-import { FieldTypes } from "../../types";
+import { FormFieldType } from "../../types";
 import { renderEditIcon } from "./render-edit-icon";
 import { renderField } from "./render-field";
 import { renderHelperText } from "./render-helper-text";
 import * as Styled from "./styled";
 
-export interface FormFieldType extends Pick<UseControllerProps, "name" | "defaultValue" | "control"> {
-  fieldType: FieldTypes;
+export interface FormFieldProps extends Pick<UseControllerProps, "name" | "defaultValue" | "control"> {
+  fieldType: FormFieldType;
   variant?: "standard" | "filled" | "outlined";
   isMultiline?: boolean;
   rows?: number;
@@ -17,7 +17,7 @@ export interface FormFieldType extends Pick<UseControllerProps, "name" | "defaul
   hideEditIcon?: boolean;
 }
 
-export const FormField: React.FC<FormFieldType> = ({
+export const FormField: React.FC<FormFieldProps> = ({
   fieldType,
   name,
   defaultValue,
@@ -27,7 +27,7 @@ export const FormField: React.FC<FormFieldType> = ({
   label,
   helperText,
   hideEditIcon
-}: FormFieldType) => {
+}: FormFieldProps) => {
   const {
     field: { name: fieldName, value, onChange },
     formState: { errors }

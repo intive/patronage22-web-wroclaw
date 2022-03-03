@@ -8,13 +8,13 @@ import { ObjectShape } from "yup/lib/object";
 
 import { TranslationNamespace } from "../../types";
 import { BaseButton, ButtonType } from "../base-button";
-import { FormField, FormFieldType } from "../form-field";
+import { FormField, FormFieldProps } from "../form-field";
 import * as Styled from "./styled";
 
 export interface FormProps {
   title?: string;
   validationSchema: ObjectShape;
-  fields?: FormFieldType[];
+  fields?: FormFieldProps[];
   placeholder?: string;
   onSubmit: SubmitHandler<FieldValues>;
   onError: SubmitErrorHandler<FieldValues>;

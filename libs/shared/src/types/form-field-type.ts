@@ -1,4 +1,4 @@
-export enum FieldTypes {
+export enum FormFieldType {
   Text = "text",
   Textarea = "textarea"
 }

@@ -10,11 +10,15 @@ export const Field = styled(FormControl)(({ theme }) => ({
   },
 
   "& .MuiFilledInput-input": {
-    paddingTop: theme.spacing(1)
+    paddingTop: theme.spacing(2)
   },
 
   "& .MuiFormLabel-root": {
-    top: theme.spacing(-1.5)
+    top: theme.spacing(-0.75)
+  },
+
+  "& .MuiInputLabel-standard": {
+    top: theme.spacing(-1)
   },
 
   "& .MuiSvgIcon-root": {
@@ -23,6 +27,10 @@ export const Field = styled(FormControl)(({ theme }) => ({
     right: 0,
     top: theme.spacing(1.5),
     visibility: "hidden"
+  },
+
+  "& .MuiOutlinedInput-input": {
+    padding: theme.spacing(1)
   },
 
   "&:hover": {
