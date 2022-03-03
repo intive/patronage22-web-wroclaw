@@ -4,3 +4,4 @@ export * from "./get-theme-config";
 export * from "./lang-fns";
 export * from "./load-i18n";
 export * from "./search-handler";
+export * from "./trim-string";

@@ -1,8 +1,9 @@
 import Fuse from "fuse.js";
 
-import { items } from "../../mocks";
+import { items } from "../../data";
 import { PresentationSearchItem } from "../components/search-bar";
 import { SEARCH_CONFIG } from "../constants";
+import { trimString } from "./trim-string";
 
 interface SearchHandlerConfig {
   keys: string[];
@@ -22,7 +23,7 @@ export const searchHandler: SearchHandlerType = ({ keys, text, offset, limit }) 
     minMatchCharLength: SEARCH_CONFIG.minMatch
   });
 
-  const trimText = text?.trim() ?? "";
+  const trimText = trimString(text);
 
   return chunkSearchResults(fuse.search(trimText), offset, limit);
 };

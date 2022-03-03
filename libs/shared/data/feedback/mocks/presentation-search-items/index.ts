@@ -1,4 +1,4 @@
-import { PresentationSearchItem } from "@patronage-web/shared";
+import { PresentationSearchItem } from "../../../../src";
 
 export const items: PresentationSearchItem[] = [
   { title: "Advanced typescript", id: "8ef796d1-b39d-4c4b-91a4-689534944d66" },

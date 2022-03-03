@@ -18,6 +18,6 @@
   },
   "search": {
     "noResultsInfo": "No results found...",
-    "tooShortPhrase": "Please enter at least three characters"
+    "tooShortPhrase": "Please enter at least {{charAmount}} characters"
   }
 }

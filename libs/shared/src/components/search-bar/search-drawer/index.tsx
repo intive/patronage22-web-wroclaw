@@ -31,6 +31,7 @@ export const SearchDrawer: React.FC<SearchDrawerProps> = ({ open, onClose, searc
 
   const tooShortPhrase = searchPhrase.length < SEARCH_CONFIG.minMatch;
   const searchResultsInformation = tooShortPhrase ? "tooShortPhrase" : "noResultsInfo";
+  const charAmount = SEARCH_CONFIG.minMatch;
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchPhrase(event.target.value);
@@ -64,7 +65,7 @@ export const SearchDrawer: React.FC<SearchDrawerProps> = ({ open, onClose, searc
         {currentItems.map(item => (
           <SearchItem onClose={handleCloseDrawer} item={item.item} key={item.item.id} toResult={toItem} />
         ))}
-        {!currentItems.length && <Styled.Paragraph>{t(`search.${searchResultsInformation}`)}</Styled.Paragraph>}
+        {!currentItems.length && <Styled.Paragraph>{t(`search.${searchResultsInformation}`, { charAmount })}</Styled.Paragraph>}
         <LocalizedLink to={toResult} searchPhrase={searchPhrase}>
           <Styled.SearchResultsBtnBox>
             <BaseButton type={ButtonType.Basic} onClick={handleCloseDrawer}>
