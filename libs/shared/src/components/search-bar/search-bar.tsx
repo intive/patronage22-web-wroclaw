@@ -1,17 +1,12 @@
 import { useState } from "react";
 
-import { AppRouteType } from "../../types/app-routes";
+import { useSearchConfig } from "../../hooks/use-search-config";
 import { LocalizedLink } from "../localized-link";
 import { SearchDrawer } from "./search-drawer";
 import { SearchInput } from "./search-input";
 
-interface SearchBarProps {
-  searchKey: string;
-  allResultsPage: AppRouteType;
-  singleResultPage: AppRouteType;
-}
-
-export const SearchBar: React.FC<SearchBarProps> = ({ searchKey, allResultsPage, singleResultPage }) => {
+export const SearchBar: React.FC = () => {
+  const { searchKey, allResultsPage, singleResultPage } = useSearchConfig();
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {

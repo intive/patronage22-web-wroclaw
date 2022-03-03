@@ -1,4 +1,4 @@
-import { FeedbackRoute, SearchBar, ThemeSelector } from "@patronage-web/shared";
+import { SearchBar, ThemeSelector } from "@patronage-web/shared";
 
 import { NavBreadcrumbs } from "../nav-breadcrumbs";
 import { navbarCenterSectionStyles } from "./style";
@@ -8,9 +8,7 @@ export const navbarConfig = {
     elements: [<NavBreadcrumbs />]
   },
   center: {
-    elements: [
-      <SearchBar searchKey='title' allResultsPage={FeedbackRoute.Dashboard} singleResultPage={FeedbackRoute.EditPresentation} />
-    ],
+    elements: [<SearchBar />],
     customStyles: navbarCenterSectionStyles
   },
   end: {
