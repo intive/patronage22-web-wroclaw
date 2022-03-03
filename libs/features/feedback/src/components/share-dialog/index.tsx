@@ -1,15 +1,15 @@
 import { DialogActions, DialogContent } from "@mui/material";
 import {
   BaseButton,
-  BaseSnackbar,
   ButtonType,
   copyToClipboard,
   createPath,
   FeedbackRoute,
+  NotificationSnackbar,
   QR_CODE_SIZE,
   TranslationNamespace
 } from "@patronage-web/shared";
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import QRCode from "react-qr-code";
 
@@ -37,11 +37,11 @@ export const ShareDialog: React.FC<ShareDialogProps> = ({ open, onClose, id, tit
     setMessage(t("linkCopyingFailed", { ns: TranslationNamespace.Common }));
   };
 
-  const baseSnackbarRef = useRef<any>(null);
+  // const baseSnackbarRef = useRef<any>(null);
 
   const handleCopyBtnClick = () => {
     copyToClipboard(link, handleCopySuccess, handleCopyFail);
-    baseSnackbarRef.current.show();
+    // baseSnackbarRef.current.show();
   };
 
   return (
@@ -69,7 +69,7 @@ export const ShareDialog: React.FC<ShareDialogProps> = ({ open, onClose, id, tit
           </BaseButton>
         </DialogActions>
       </Styled.BasicShareDialog>
-      <BaseSnackbar ref={baseSnackbarRef} message={message} />
+      <NotificationSnackbar />
     </>
   );
 };

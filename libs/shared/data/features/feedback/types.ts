@@ -1,3 +1,4 @@
 export enum FeedbackSliceName {
-  Sample = "sample"
+  Sample = "sample",
+  Notification = "notification"
 }
