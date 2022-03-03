@@ -20,5 +20,5 @@ const SEARCH_BAR_CONFIG: Record<FeatureName, ConfigSearchBar> = {
 export const useSearchConfig = () => {
   const featureName = useFeatureName();
 
-  return SEARCH_BAR_CONFIG[featureName];
+  return featureName !== "feedback" && SEARCH_BAR_CONFIG[featureName];
 };
