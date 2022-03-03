@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-import { useSearchConfig } from "../../hooks/use-search-config";
 import { LocalizedLink } from "../localized-link";
 import { SearchDrawer } from "./search-drawer";
 import { SearchInput } from "./search-input";
+import { useSearchConfig } from "./use-search-config";
 
 export const SearchBar: React.FC = () => {
   const { searchKey, allResultsPage, singleResultPage } = useSearchConfig();

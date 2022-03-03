@@ -38,8 +38,8 @@ export const SearchDrawer: React.FC<SearchDrawerProps> = ({ open, onClose, searc
   };
 
   const handleCloseDrawer = () => {
-    onClose();
     setSearchPhrase("");
+    onClose();
   };
 
   useEffect(() => {
