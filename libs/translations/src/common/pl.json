@@ -15,5 +15,9 @@
   "featureNames": {
     "feedback": "Kreator Ankiety",
     "feedback-external": "Uczestnik Ankiety"
+  },
+  "search": {
+    "noResultsInfo": "Brak wyników...",
+    "tooShortPhrase": "Proszę wprowadzić przynajmniej {{charAmount}} znaki"
   }
 }

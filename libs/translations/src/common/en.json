@@ -15,5 +15,9 @@
   "featureNames": {
     "feedback": "Survey Maker",
     "feedback-external": "Survey Participant"
+  },
+  "search": {
+    "noResultsInfo": "No results found...",
+    "tooShortPhrase": "Please enter at least {{charAmount}} characters"
   }
 }
