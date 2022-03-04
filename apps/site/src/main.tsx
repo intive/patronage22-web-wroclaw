@@ -1,19 +1,25 @@
 import "./i18n";
 
 import { ThemeProvider } from "@patronage-web/shared";
+import { store } from "@patronage-web/shared-data";
 import { StrictMode } from "react";
 import * as ReactDOM from "react-dom";
+import { Provider as StoreProvider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 
-import { Routing } from "./app";
+import { Layout, Routing } from "./app";
 
 ReactDOM.render(
   <StrictMode>
-    <ThemeProvider>
-      <BrowserRouter>
-        <Routing />
-      </BrowserRouter>
-    </ThemeProvider>
+    <StoreProvider store={store}>
+      <ThemeProvider>
+        <BrowserRouter>
+          <Layout>
+            <Routing />
+          </Layout>
+        </BrowserRouter>
+      </ThemeProvider>
+    </StoreProvider>
   </StrictMode>,
   document.getElementById("root")
 );

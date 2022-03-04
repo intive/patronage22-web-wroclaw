@@ -1,53 +1,74 @@
 import { Params } from "react-router-dom";
 
-import { PAGE_PATHS } from "../constants";
-import { PagePath, SupportedLanguage } from "../types";
+import { AppRouteType, BaseRoute, FeedbackRoute, SupportedLanguage } from "../types";
 import { createPath } from "./create-path";
+import { isDefaultLanguage } from "./lang-fns";
 
 interface RoutesConfigProps {
   routeParams?: Params;
-  targetPage: PagePath;
+  targetPage: AppRouteType;
   targetPath: string;
 }
 const routesConfig: RoutesConfigProps[] = [
   {
     routeParams: { id: "qwerty" },
-    targetPage: PagePath.EditPresentation,
-    targetPath: "/presentation/edit/qwerty"
+    targetPage: FeedbackRoute.EditPresentation,
+    targetPath: "/feedback/presentation/edit/qwerty"
   },
   {
-    targetPage: PagePath.Home,
+    targetPage: BaseRoute.Home,
     targetPath: "/"
   },
   {
-    targetPage: PagePath.Dashboard,
-    targetPath: "/dashboard"
+    targetPage: FeedbackRoute.Dashboard,
+    targetPath: "/feedback/dashboard"
   },
   {
-    targetPage: PagePath.Presentation,
-    targetPath: "/presentation"
+    targetPage: FeedbackRoute.Presentation,
+    targetPath: "/feedback/presentation"
   },
   {
-    targetPage: PagePath.AddPresentation,
-    targetPath: "/presentation/add"
+    targetPage: FeedbackRoute.AddPresentation,
+    targetPath: "/feedback/presentation/add"
   },
   {
     routeParams: { id: "qwerty" },
-    targetPage: PagePath.PresentationForExternalUser,
-    targetPath: "/presentation/qwerty"
+    targetPage: FeedbackRoute.ExternalUserPresentation,
+    targetPath: "/feedback-external/presentation/qwerty"
   }
 ];
+
+const searchQueries: Record<string, string> = {
+  react: "react",
+  "adv%an=": "adv%25an%3D",
+  "j$a#v&a": "j%24a%23v%26a",
+  "re act": "re+act"
+};
 
 describe("createPath generation test", () => {
   routesConfig.forEach(config => {
     Object.values(SupportedLanguage).forEach(lang => {
-      const langPath = lang === SupportedLanguage.En ? "" : `?lang=${lang}`;
+      const langPath = isDefaultLanguage(lang) ? "" : `?lang=${lang}`;
       it(`should generate proper link for language ${lang}`, () => {
-        expect(createPath(PAGE_PATHS[config.targetPage], config.routeParams, lang)).toBe(`${config.targetPath}${langPath}`);
+        expect(createPath(config.targetPage, config.routeParams, lang)).toBe(`${config.targetPath}${langPath}`);
       });
 
       it(`should generate proper link for default language`, () => {
-        expect(createPath(PAGE_PATHS[config.targetPage], config.routeParams)).toBe(`${config.targetPath}`);
+        expect(createPath(config.targetPage, config.routeParams)).toBe(`${config.targetPath}`);
+      });
+    });
+
+    Object.keys(searchQueries).forEach(key => {
+      it(`should generate proper link for searched phrase ${key} with ${SupportedLanguage.En} language`, () => {
+        expect(createPath(config.targetPage, config.routeParams, SupportedLanguage.En, key)).toBe(
+          `${config.targetPath}?search=${searchQueries[key]}`
+        );
+      });
+
+      it(`should generate proper link for searched phrase ${key} with ${SupportedLanguage.Pl} language`, () => {
+        expect(createPath(config.targetPage, config.routeParams, SupportedLanguage.Pl, key)).toBe(
+          `${config.targetPath}?lang=pl&search=${searchQueries[key]}`
+        );
       });
     });
   });

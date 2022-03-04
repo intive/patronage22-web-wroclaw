@@ -5,13 +5,13 @@ export const ActionCard = styled(Card)(({ theme }) => ({
   display: "flex",
   flexFlow: "column wrap",
   justifyContent: "space-between",
-  backgroundColor: "#f7f7f7",
+  margin: theme.spacing(2),
   borderRadius: theme.spacing(1),
 
   [theme.breakpoints.up("sm")]: {
     flexDirection: "row",
     flexWrap: "nowrap",
-    margin: theme.spacing(11, 0)
+    margin: theme.spacing(11, 2)
   },
 
   [theme.breakpoints.up("md")]: {
