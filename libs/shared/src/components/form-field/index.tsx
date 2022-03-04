@@ -31,14 +31,14 @@ export const FormField: React.FC<FormFieldProps> = ({
   onChange
 }: FormFieldProps) => {
   const {
-    field: { name: fieldName, value, onChange: OnFieldChange },
+    field: { value, onChange: onFieldChange },
     formState: { errors }
   } = useController({ name, defaultValue, control });
 
   const fieldErrors: UseFormStateReturn<FieldValues>["errors"] = errors[name];
 
   const handleChange = (event: ChangeEvent) => {
-    OnFieldChange(event);
+    onFieldChange(event);
 
     if (onChange) {
       onChange();
@@ -47,7 +47,7 @@ export const FormField: React.FC<FormFieldProps> = ({
 
   return (
     <Styled.Field>
-      {renderField({ type, name: fieldName, value, handleChange, variant, errors: fieldErrors, label, rows })}
+      {renderField({ type, name, value, handleChange, variant, errors: fieldErrors, label, rows })}
       {!hideEditIcon && <Edit />}
       {renderHelperText(fieldErrors, helperText)}
     </Styled.Field>

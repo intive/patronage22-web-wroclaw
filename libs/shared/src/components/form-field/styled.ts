@@ -18,7 +18,7 @@ export const Field = styled(FormControl)(({ theme }) => ({
   },
 
   "& .MuiInputLabel-standard": {
-    top: theme.spacing(-1)
+    top: theme.spacing(-1.25)
   },
 
   "& .MuiSvgIcon-root": {
