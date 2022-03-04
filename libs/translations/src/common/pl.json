@@ -3,6 +3,10 @@
     "newPresentationDescription": "Tymczasowy tekst komponentu ActionCard do tworzenia nowych ankiet z poziomu widoku Homepage",
     "newPresentationButton": "Nowa ankieta"
   },
+  "save": "Zapisz",
+  "submit": "Zatwierdź",
+  "cancel": "Anuluj",
+  "noData": "Brak danych",
   "notFoundPage": {
     "title": "Przepraszamy, strona, której szukasz nie istnieje"
   },

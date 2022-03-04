@@ -1,4 +1,7 @@
 {
+  "missingTitleError": "Title cannot be empty",
+  "newPresentation": "New presentation",
+  "description": "Description",
   "breadcrumb": {
     "breadcrumb": "breadcrumb",
     "save": "Save"

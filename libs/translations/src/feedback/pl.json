@@ -1,4 +1,7 @@
 {
+  "missingTitleError": "Tytuł nie może być pusty",
+  "newPresentation": "Nowa prezentacja",
+  "description": "Opis",
   "breadcrumb": {
     "breadcrumb": "nawigacja",
     "save": "Zapisz"

@@ -2,7 +2,7 @@
 import { AppBarProps, ToolbarProps } from "@mui/material";
 import { SxProps } from "@mui/material/styles";
 
-import * as Styled from "./style";
+import * as Styled from "./styled";
 
 export interface NavbarSection {
   customStyles?: SxProps;

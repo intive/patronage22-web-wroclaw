@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "noImplicitAny": true,
     "noImplicitThis": true,
+    "noPropertyAccessFromIndexSignature": false,
     "strictNullChecks": true,
     "resolveJsonModule": true,
     "allowJs": true,
