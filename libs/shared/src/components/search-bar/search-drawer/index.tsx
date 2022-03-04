@@ -25,12 +25,11 @@ interface SearchDrawerProps {
 export const SearchDrawer: React.FC<SearchDrawerProps> = ({ open, onClose, searchKey, toResult, toItem }) => {
   const { t } = useTranslation();
 
-  const [currentItems, setCurrentItems] = useState([] as Fuse.FuseResult<PresentationSearchItem>[]);
+  const [currentItems, setCurrentItems] = useState<Fuse.FuseResult<PresentationSearchItem>[]>([]);
 
   const [searchPhrase, setSearchPhrase] = useState("");
 
-  const tooShortPhrase = searchPhrase.length < SEARCH_CONFIG.minMatch;
-  const searchResultsInformation = tooShortPhrase ? "tooShortPhrase" : "noResultsInfo";
+  const searchResultsInformation = searchPhrase.length < SEARCH_CONFIG.minMatch ? "tooShortPhrase" : "noResultsInfo";
   const charAmount = SEARCH_CONFIG.minMatch;
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
