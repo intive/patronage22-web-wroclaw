@@ -17,7 +17,6 @@ interface RenderFieldProps {
   errors: UseFormStateReturn<FieldValues>["errors"];
   label?: string;
   rows?: number;
-  disableUnderline?: boolean;
 }
 
 export const renderField = ({

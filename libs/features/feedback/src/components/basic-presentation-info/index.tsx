@@ -13,13 +13,13 @@ export const BasicPresentationInfo: React.FC = () => {
       onError={errors => console.log(errors)}
       fields={[
         {
-          fieldType: FormFieldType.Text,
+          type: FormFieldType.Text,
           name: "title",
           variant: "standard",
           defaultValue: t("newPresentation")
         },
         {
-          fieldType: FormFieldType.Text,
+          type: FormFieldType.Text,
           name: "description",
           variant: "standard",
           defaultValue: "",
