@@ -4,18 +4,25 @@ import plLocale from "date-fns/locale/pl";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { TranslationNamespace } from "../../types";
+
 export interface TimerProps {
-  initialTime: number;
+  initialTimeMsec: number;
   label: string;
   onTimeElapsed: () => void;
 }
 
-export const Timer: React.FC<TimerProps> = ({ initialTime, label, onTimeElapsed }) => {
-  const { t } = useTranslation();
+export const Timer: React.FC<TimerProps> = ({ initialTimeMsec, label, onTimeElapsed }) => {
+  const timeToRefresh = 1000;
 
-  const [remainingTime, setRemainingTime] = useState(initialTime);
+  const { t } = useTranslation(TranslationNamespace.Shared);
 
-  const normalise = (value: number) => (value * 100) / initialTime;
+  const [remainingTime, setRemainingTime] = useState(initialTimeMsec);
+
+  const normalise = (value: number) => {
+    const oneHundredPercent = 100;
+    return (value * oneHundredPercent) / initialTimeMsec;
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -23,9 +30,9 @@ export const Timer: React.FC<TimerProps> = ({ initialTime, label, onTimeElapsed 
         clearInterval(interval);
         onTimeElapsed();
       } else {
-        setRemainingTime(remainingTime - 1);
+        setRemainingTime(remainingTime - timeToRefresh);
       }
-    }, 1000);
+    }, timeToRefresh);
     return () => clearInterval(interval);
   });
 
@@ -35,10 +42,10 @@ export const Timer: React.FC<TimerProps> = ({ initialTime, label, onTimeElapsed 
       {remainingTime ? (
         <Typography>
           {label}
-          {formatDuration(intervalToDuration({ start: 0, end: remainingTime * 1000 }), { locale: plLocale })}
+          {formatDuration(intervalToDuration({ start: 0, end: remainingTime }), { locale: plLocale })}
         </Typography>
       ) : (
-        <Typography>{t("timesUp")}</Typography>
+        <Typography>{t("endTimeLabel")}</Typography>
       )}
     </>
   );

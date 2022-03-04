@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { ParticipationQuestion, ParticipationQuestionType } from "../../../data/feedback/types";
+import { TranslationNamespace } from "../../types";
 import { BaseButton, ButtonType } from "../base-button";
 
 export interface QuestionFormProps {
@@ -11,17 +12,29 @@ export interface QuestionFormProps {
 }
 
 export const QuestionForm: React.FC<QuestionFormProps> = ({
-  data: { defaultAnswer, type, questionNumber, title, answers },
+  data: { defaultAnswer, type, number: questionNumber, title, answers },
   onSubmit
 }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(TranslationNamespace.Shared);
 
-  const [answer, setAnswer] = useState(defaultAnswer);
+  const [currentAnswer, setCurrentAnswer] = useState(defaultAnswer);
 
-  const avaliableAnswers = answers?.map(a => <FormControlLabel key={a} value={a} control={<Radio />} label={a} />);
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => setAnswer((event.target as HTMLInputElement).value);
-  const TypeOfQuestion: Record<ParticipationQuestionType, JSX.Element> = {
-    [ParticipationQuestionType.Open]: <TextField defaultValue={defaultAnswer} onChange={handleChange} label={t("yourAnswer")} />,
+  const availableAnswers = answers?.map(answer => (
+    <FormControlLabel key={answer} value={answer} control={<Radio />} label={answer} />
+  ));
+
+  type ChangeEvent = React.ChangeEvent<HTMLInputElement>;
+
+  const handleChange = (event: ChangeEvent) => setCurrentAnswer(event.target.value);
+
+  const handleSubmit = () => {
+    onSubmit(currentAnswer);
+  };
+
+  const questionFields: Record<ParticipationQuestionType, JSX.Element> = {
+    [ParticipationQuestionType.Open]: (
+      <TextField defaultValue={defaultAnswer} onChange={handleChange} label={t("questionAnswerTitle")} />
+    ),
     [ParticipationQuestionType.Closed]: (
       <FormControl>
         <FormLabel>
@@ -29,8 +42,6 @@ export const QuestionForm: React.FC<QuestionFormProps> = ({
             <Box
               sx={{
                 padding: 0.5,
-                marginRight: 2,
-                backgroundColor: "blue",
                 borderRadius: 1
               }}
             >
@@ -41,7 +52,7 @@ export const QuestionForm: React.FC<QuestionFormProps> = ({
         </FormLabel>
 
         <RadioGroup name='participation-question-radio-group' defaultValue={defaultAnswer} onChange={handleChange}>
-          {avaliableAnswers}
+          {availableAnswers}
         </RadioGroup>
       </FormControl>
     )
@@ -49,14 +60,8 @@ export const QuestionForm: React.FC<QuestionFormProps> = ({
 
   return (
     <Stack>
-      {TypeOfQuestion[type]}
-      <BaseButton
-        type={ButtonType.Basic}
-        onClick={() => {
-          onSubmit(answer);
-        }}
-        disabled={!answer}
-      >
+      {questionFields[type]}
+      <BaseButton type={ButtonType.Basic} onClick={handleSubmit} disabled={!currentAnswer}>
         {t("submitPoll")}
       </BaseButton>
     </Stack>

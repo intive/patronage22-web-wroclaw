@@ -1,4 +1,4 @@
-import { FeedbackResults } from "../types/feedback-results";
+import { FeedbackResults } from "../types/external-feedback";
 
 export const FeedbackResultsMock: FeedbackResults = {
   questionResults: [

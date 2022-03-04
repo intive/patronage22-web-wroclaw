@@ -5,18 +5,18 @@ export const ParticipationFormMock: ParticipationForm = {
   questions: [
     {
       id: "0",
-      questionNumber: 1,
+      number: 1,
       title: "How many apples?",
       type: ParticipationQuestionType.Closed,
       answers: ["Test 1", " Test 2", "Test 3"],
       defaultAnswer: "Test 1",
       created: 1645132670,
       current: 1645132675,
-      maxAnswerTime: 10
+      maxAnswerTime: 15
     },
     {
       id: "1",
-      questionNumber: 2,
+      number: 2,
       title: "How many doggos?",
       type: ParticipationQuestionType.Closed,
       answers: ["11", "24", "37"],
@@ -26,7 +26,7 @@ export const ParticipationFormMock: ParticipationForm = {
     },
     {
       id: "2",
-      questionNumber: 3,
+      number: 3,
       title: "How many doggos?",
       type: ParticipationQuestionType.Open,
       created: 1645132670,
