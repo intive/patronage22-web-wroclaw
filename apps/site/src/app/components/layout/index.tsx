@@ -1,7 +1,7 @@
 import { Layout as FeedbackLayout } from "@patronage-web/features-feedback";
 import { FeatureName, useFeatureName } from "@patronage-web/shared";
 
-import { DefaultLayout } from "../components/default-layout";
+import { Layout as DefaultLayout } from "./default-layout";
 
 export const Layout: React.FC = ({ children }) => {
   const layouts = {
