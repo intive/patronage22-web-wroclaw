@@ -2,13 +2,12 @@ import { useFeatureName } from "../../hooks";
 import { FeatureName, FeedbackRoute } from "../../types";
 import { ConfigSearchBar } from "./types";
 
-const SEARCH_BAR_CONFIG: Record<FeatureName, ConfigSearchBar> = {
+const SEARCH_BAR_CONFIG: Record<Exclude<FeatureName, FeatureName.ExternalFeedback>, ConfigSearchBar> = {
   [FeatureName.Feedback]: {
     searchKey: "title",
     allResultsPage: FeedbackRoute.Dashboard,
     singleResultPage: FeedbackRoute.EditPresentation
   },
-  [FeatureName.ExternalFeedback]: null as never as ConfigSearchBar,
   // TODO replace by proper values when available
   [FeatureName.Default]: {
     searchKey: "title",
@@ -20,5 +19,5 @@ const SEARCH_BAR_CONFIG: Record<FeatureName, ConfigSearchBar> = {
 export const useSearchConfig = () => {
   const featureName = useFeatureName();
 
-  return featureName !== "feedback" ? SEARCH_BAR_CONFIG[featureName] : SEARCH_BAR_CONFIG.default;
+  return featureName !== FeatureName.ExternalFeedback ? SEARCH_BAR_CONFIG[featureName] : SEARCH_BAR_CONFIG[FeatureName.Default];
 };

@@ -19,7 +19,7 @@ export const chunkSearchResults = (elements: Fuse.FuseResult<PresentationSearchI
 
 export const searchHandler: SearchHandlerType = ({ keys, text, offset, limit }) => {
   const fuse = new Fuse(items, {
-    keys: [keys],
+    keys,
     minMatchCharLength: SEARCH_CONFIG.minMatch
   });
 
