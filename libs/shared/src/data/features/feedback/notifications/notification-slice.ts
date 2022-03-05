@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { FeedbackSliceName } from "../types";
 
 export interface Notification {
+  id: string;
   // type: NotificationType;
   message: string;
 }
@@ -23,10 +24,9 @@ export const notificationSlice = createSlice({
       // eslint-disable-next-line no-param-reassign
       state.items = [...state.items, ...action.payload];
     },
-    // poprawić z id jak w wersji Kacpra??
     removeNotification: (state, action: PayloadAction<Notification[]>) => {
       // eslint-disable-next-line no-param-reassign
-      state.items = state.items.filter(item => !action.payload.some(element => element === item));
+      state.items = state.items.filter(item => !action.payload.some(element => element.id === item.id));
     }
   }
 });

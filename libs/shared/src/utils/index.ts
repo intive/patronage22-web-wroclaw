@@ -1,4 +1,3 @@
-export * from "./copy-to-clipboard";
 export * from "./create-path";
 export * from "./get-app-route";
 export * from "./get-theme-config";
