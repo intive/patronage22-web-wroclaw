@@ -31,6 +31,8 @@
 /libpeerconnection.log
 npm-debug.log
 yarn-error.log
+.yarn
+.yarnrc.yml
 testem.log
 /typings
 
@@ -38,3 +40,5 @@ testem.log
 .DS_Store
 Thumbs.db
 *.env
+
+.vercel

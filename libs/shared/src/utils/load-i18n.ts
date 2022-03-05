@@ -1,6 +1,7 @@
 import i18n from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import { initReactI18next } from "react-i18next";
+
 import { SupportedLanguage, TranslationNamespace } from "../types/translations";
 
 interface I18nOptions {
@@ -11,11 +12,13 @@ interface I18nOptions {
 const translationResources = {
   en: {
     [TranslationNamespace.Common]: require("../../../translations/src/common/en.json"),
-    [TranslationNamespace.Feedback]: require("../../../translations/src/feedback/en.json")
+    [TranslationNamespace.Feedback]: require("../../../translations/src/feedback/en.json"),
+    [TranslationNamespace.Ui]: require("../../../translations/src/ui/en.json")
   },
   pl: {
     [TranslationNamespace.Common]: require("../../../translations/src/common/pl.json"),
-    [TranslationNamespace.Feedback]: require("../../../translations/src/feedback/pl.json")
+    [TranslationNamespace.Feedback]: require("../../../translations/src/feedback/pl.json"),
+    [TranslationNamespace.Ui]: require("../../../translations/src/ui/pl.json")
   }
 };
 
@@ -32,8 +35,9 @@ export const loadI18n = ({ env, ns }: I18nOptions) => {
       resources: translationResources,
 
       detection: {
-        order: ["querystring", "sessionStorage", "navigator"],
+        order: ["querystring", "localStorage", "navigator"],
         lookupQuerystring: "lang",
+        lookupLocalStorage: "language",
         caches: []
       },
 

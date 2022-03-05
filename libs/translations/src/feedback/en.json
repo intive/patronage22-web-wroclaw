@@ -1,3 +1,14 @@
 {
-  "test": "feedback EN"
+  "missingTitleError": "Title cannot be empty",
+  "newPresentation": "New presentation",
+  "description": "Description",
+  "breadcrumb": {
+    "breadcrumb": "breadcrumb",
+    "save": "Save"
+  },
+  "search": {
+    "searchbarPlaceholder": "Search presentations",
+    "showResultsButton": "Show all results...",
+    "searchAriaLabel": "Search"
+  }
 }

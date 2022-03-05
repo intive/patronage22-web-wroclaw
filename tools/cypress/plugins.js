@@ -1,3 +1,5 @@
+const preprocessor = require("./preprocessor");
+
 module.exports = (on, config) => {
   on("before:browser:launch", (browser, launchOptions) => {
     if (browser.family === "chromium" && browser.name !== "electron") {
@@ -12,4 +14,6 @@ module.exports = (on, config) => {
       return launchOptions;
     }
   });
+
+  on("file:preprocessor", preprocessor(config));
 };

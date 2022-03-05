@@ -1,12 +1,25 @@
 import "./i18n";
 
-import { Box } from "@mui/material";
+import { ThemeProvider } from "@patronage-web/shared";
+import { store } from "@patronage-web/shared-data";
 import { StrictMode } from "react";
 import * as ReactDOM from "react-dom";
+import { Provider as StoreProvider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
+
+import { Layout, Routing } from "./app";
 
 ReactDOM.render(
   <StrictMode>
-    <Box>Patronage App</Box>
+    <StoreProvider store={store}>
+      <ThemeProvider>
+        <BrowserRouter>
+          <Layout>
+            <Routing />
+          </Layout>
+        </BrowserRouter>
+      </ThemeProvider>
+    </StoreProvider>
   </StrictMode>,
   document.getElementById("root")
 );
