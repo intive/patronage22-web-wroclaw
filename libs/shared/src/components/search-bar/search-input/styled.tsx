@@ -4,17 +4,14 @@ import { alpha, styled } from "@mui/material/styles";
 export const SearchInputBox = styled(Box)(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.primary.dark, 0.05),
+  backgroundColor: alpha(theme.palette.primary.light, 0.1),
 
   "&:hover": {
     backgroundColor: alpha(theme.palette.primary.light, 0.25)
   },
 
-  marginRight: theme.spacing(2),
-  marginLeft: 0,
-
-  [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(3)
+  [theme.breakpoints.down("sm")]: {
+    borderRadius: "0"
   }
 }));
 
@@ -31,11 +28,9 @@ export const SearchIconWrapper = styled(Box)(({ theme }) => ({
 
 export const SearchInputBase = styled(InputBase)(({ theme }) => ({
   color: theme.palette.primary.dark,
+  width: "100%",
 
   "& .MuiInputBase-input": {
-    padding: theme.spacing(1, 1, 1, 0),
-    paddingLeft: theme.spacing(6),
-    transition: theme.transitions.create("width"),
-    width: "100%"
+    padding: theme.spacing(1, 1, 1, 6)
   }
 }));
