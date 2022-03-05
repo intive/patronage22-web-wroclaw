@@ -1,24 +1,30 @@
 {
   "cancel": "Anuluj",
   "copyLink": "Kopiuj link",
+  "featureNames": {
+    "feedback": "Kreator Ankiety",
+    "feedback-external": "Uczestnik Ankiety"
+  },
   "homepage": {
     "newPresentationDescription": "Tymczasowy tekst komponentu ActionCard do tworzenia nowych ankiet z poziomu widoku Homepage",
     "newPresentationButton": "Nowa ankieta"
   },
-  "linkCopied": "Skopiowano link",
-  "linkCopyingFailed": "Kopiowanie linku nie powiodło się!",
-  "notFoundPage": {
-    "title": "Przepraszamy, strona, której szukasz nie istnieje"
-  },
-  "save": "Zapisz",
   "intive": {
     "name": "Intive",
     "wroclaw": "Wrocław",
     "address": "Piłsudskiego 69, 50-019 Wrocław",
     "phone": "+48 71 769 59 00"
   },
-  "featureNames": {
-    "feedback": "Kreator Ankiety",
-    "feedback-external": "Uczestnik Ankiety"
-  }
+  "linkCopied": "Skopiowano link",
+  "linkCopyingFailed": "Kopiowanie linku nie powiodło się!",
+  "noData": "Brak danych",
+  "notFoundPage": {
+    "title": "Przepraszamy, strona, której szukasz nie istnieje"
+  },
+  "save": "Zapisz",
+  "search": {
+    "noResultsInfo": "Brak wyników...",
+    "tooShortPhrase": "Proszę wprowadzić przynajmniej {{charAmount}} znaki"
+  },
+  "submit": "Zatwierdź"
 }
