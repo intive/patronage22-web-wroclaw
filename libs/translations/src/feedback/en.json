@@ -8,5 +8,10 @@
     "showResultsButton": "Show all results...",
     "searchAriaLabel": "Search",
     "noResultsInfo": "No results found..."
+  },
+  "dashboard": {
+    "share": "Share",
+    "end": "End",
+    "edit": "Edit"
   }
 }

@@ -9,5 +9,10 @@
     "showResultsButton": "Pokaż wszystkie wyniki...",
     "searchAriaLabel": "Szukaj",
     "noResultsInfo": "Brak wyników..."
+  },
+  "dashboard": {
+    "share": "Udostępnij",
+    "end": "Zakończ",
+    "edit": "Edytuj"
   }
 }
