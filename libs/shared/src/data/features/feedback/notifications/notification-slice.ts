@@ -1,10 +1,11 @@
+import { NotificationType } from "@patronage-web/shared";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { FeedbackSliceName } from "../types";
 
 export interface Notification {
   id: string;
-  // type: NotificationType;
+  type: NotificationType;
   message: string;
 }
 
