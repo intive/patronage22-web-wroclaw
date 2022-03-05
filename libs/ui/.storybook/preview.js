@@ -1,7 +1,9 @@
 import { CssBaseline } from "@mui/material";
 import { ThemeProvider as MuiThemeProvider } from "@mui/material/styles";
 import { dark, light } from "@patronage-web/shared";
+import { store } from "@patronage-web/shared-data";
 import { ThemeProvider as EmotionThemeProvider } from "emotion-theming";
+import { Provider as StoreProvider } from "react-redux";
 import { MemoryRouter } from "react-router-dom";
 import { I18nWrapper } from "./i18n-wrapper";
 
@@ -36,5 +38,10 @@ export const decorators = [
     <I18nWrapper>
       {Story()}
     </I18nWrapper>
+  ),
+  Story => (
+    <StoreProvider store={store}>
+      {Story()}
+    </StoreProvider>
   )
 ];

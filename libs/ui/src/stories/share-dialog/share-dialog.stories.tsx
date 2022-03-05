@@ -1,6 +1,6 @@
 import { Box, Button } from "@mui/material";
 import { ShareDialog } from "@patronage-web/features-feedback";
-import { TranslationNamespace } from "@patronage-web/shared";
+import { Notifications, TranslationNamespace } from "@patronage-web/shared";
 import { ComponentMeta } from "@storybook/react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -34,6 +34,7 @@ const ShareDialogTemplate = (args: { id: string; title: string }) => {
         {t("sharePresentation")}
       </Button>
       <ShareDialog open={open} onClose={handleClose} id={id} title={title} />
+      <Notifications />
     </Box>
   );
 };
