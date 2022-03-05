@@ -8,6 +8,7 @@ export * from "./language-button";
 export * from "./layout";
 export * from "./loader";
 export * from "./localized-link";
+export * from "./login";
 export * from "./navbar";
 export * from "./search-bar";
 export * from "./theme-selector";

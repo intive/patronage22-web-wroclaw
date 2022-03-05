@@ -17,6 +17,7 @@ interface RenderFieldProps {
   errors: UseFormStateReturn<FieldValues>["errors"];
   label?: string;
   rows?: number;
+  disabled?: boolean;
 }
 
 export const renderField = ({
@@ -27,11 +28,20 @@ export const renderField = ({
   variant = "outlined",
   errors,
   label,
-  rows = DEFAULT_ROWS_NUMBER
+  rows = DEFAULT_ROWS_NUMBER,
+  disabled
 }: RenderFieldProps) => {
   const field: Record<FormFieldType, JSX.Element> = {
     [FormFieldType.Text]: (
-      <TextField name={name} value={value} onChange={handleChange} variant={variant} error={!!errors} label={label} />
+      <TextField
+        name={name}
+        value={value}
+        onChange={handleChange}
+        variant={variant}
+        error={!!errors}
+        label={label}
+        disabled={disabled}
+      />
     ),
     [FormFieldType.Textarea]: (
       <TextField
@@ -43,6 +53,7 @@ export const renderField = ({
         error={!!errors}
         label={label}
         rows={rows}
+        disabled={disabled}
       />
     )
   };

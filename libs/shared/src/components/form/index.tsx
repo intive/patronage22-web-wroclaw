@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Typography } from "@mui/material";
+import { ReactNode } from "react";
 import { FieldValues, FormProvider, SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import * as yup from "yup";
@@ -12,6 +13,8 @@ import { FormField, FormFieldProps } from "../form-field";
 import * as Styled from "./styled";
 
 export interface FormProps {
+  children?: ReactNode;
+  customField?: ReactNode;
   title?: string;
   validationSchema: ObjectShape;
   fields?: FormFieldProps[];
@@ -23,10 +26,14 @@ export interface FormProps {
   showCancelButton?: boolean;
   submitButtonText?: string;
   cancelButtonText?: string;
+  submitButtonIcon?: ReactNode;
+  cancelButtonIcon?: ReactNode;
   className?: string;
 }
 
 export const Form: React.FC<FormProps> = ({
+  children,
+  customField,
   title,
   validationSchema,
   fields,
@@ -38,6 +45,8 @@ export const Form: React.FC<FormProps> = ({
   showCancelButton,
   submitButtonText,
   cancelButtonText,
+  submitButtonIcon,
+  cancelButtonIcon,
   className
 }) => {
   const { t } = useTranslation(TranslationNamespace.Common);
@@ -70,8 +79,8 @@ export const Form: React.FC<FormProps> = ({
   };
 
   const formButtons = [
-    { condition: showSubmitButton, text: submitButtonText || t("submit"), action: handleSubmit },
-    { condition: showCancelButton, text: cancelButtonText || t("cancel"), action: handleCancel }
+    { condition: showSubmitButton, text: submitButtonText || t("submit"), action: handleSubmit, icon: submitButtonIcon },
+    { condition: showCancelButton, text: cancelButtonText || t("cancel"), action: handleCancel, icon: cancelButtonIcon }
   ];
 
   return (
@@ -79,12 +88,16 @@ export const Form: React.FC<FormProps> = ({
       <Styled.Form className={className}>
         {title && <Typography variant='h3'>{title}</Typography>}
 
+        {customField}
+
         {renderFields()}
 
+        {children}
+
         {formButtons.map(
-          ({ condition, text, action }) =>
+          ({ condition, text, action, icon }) =>
             condition && (
-              <BaseButton type={ButtonType.Basic} onClick={action} variant='contained'>
+              <BaseButton key={text} type={ButtonType.Basic} onClick={action} variant='contained' endIcon={icon}>
                 {text}
               </BaseButton>
             )

@@ -3,6 +3,15 @@
     "newPresentationDescription": "Placeholder text for ActionCard to create new presentation on Homepage",
     "newPresentationButton": "New presentation"
   },
+  "login": {
+    "title": "Welcome in Patronage App",
+    "subtitle": "Login to your account",
+    "forgotPassword": "Forgot a password?",
+    "emailRequired": "Please provide your e-mail",
+    "emailInvalid": "Invalid e-mail address",
+    "notGmail": "E-mail address must be in Google domain 'example@gmail.com'"
+  },
+  "password": "Password",
   "save": "Save",
   "submit": "Submit",
   "cancel": "Cancel",
