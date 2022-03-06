@@ -14,9 +14,9 @@ export const FormStory: React.FC<FormProps> = ({ validationSchema, fields, onSub
 );
 
 const fields: FormFieldProps[] = [
-  { fieldType: FormFieldType.Text, name: "field1", variant: "filled" },
-  { fieldType: FormFieldType.Textarea, name: "field2", variant: "outlined" },
-  { fieldType: FormFieldType.Text, name: "email", variant: "standard", label: "E-mail" }
+  { type: FormFieldType.Text, name: "field1", variant: "filled" },
+  { type: FormFieldType.Textarea, name: "field2", variant: "outlined" },
+  { type: FormFieldType.Text, name: "email", variant: "standard", label: "E-mail" }
 ];
 
 const validationSchema: ObjectShape = {

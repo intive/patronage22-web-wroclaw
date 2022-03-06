@@ -6,15 +6,16 @@ import { string } from "yup";
 
 import { REGEX_GMAIL_VALIDATION } from "../../constants";
 import { BaseRoute, FormFieldType, TranslationNamespace } from "../../types";
+import { createPath } from "../../utils";
 import { LocalizedLink } from "../localized-link";
 import * as Styled from "./styled";
 
 export const Login: React.FC = () => {
-  const { t } = useTranslation(TranslationNamespace.Common);
+  const { i18n, t } = useTranslation(TranslationNamespace.Common);
   const navigate = useNavigate();
 
   const handleSubmit = (data: unknown) => {
-    navigate(BaseRoute.Home, { replace: true });
+    navigate(createPath({ route: BaseRoute.Home, language: i18n.language }));
 
     return console.log(data);
   };
