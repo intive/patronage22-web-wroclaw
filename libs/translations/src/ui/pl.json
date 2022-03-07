@@ -1,3 +1,8 @@
 {
-  "hello": "Witaj"
+  "hello": "Witaj",
+  "dashboard": {
+    "share": "Udostępnij",
+    "end": "Zakończ",
+    "edit": "Edytuj"
+  }
 }
