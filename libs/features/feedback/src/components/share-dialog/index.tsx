@@ -22,7 +22,7 @@ export interface ShareDialogProps {
 }
 
 export const ShareDialog: React.FC<ShareDialogProps> = ({ open, onClose, id, title }) => {
-  const { t } = useTranslation([TranslationNamespace.Feedback, TranslationNamespace.Common]);
+  const { t } = useTranslation();
   const { i18n } = useTranslation();
   const path = createPath(FeedbackRoute.ExternalUserPresentation, { id }, i18n.language);
   const link = `${window.location.origin}${path}`;

@@ -1,6 +1,5 @@
 export * from "./action-card";
 export * from "./base-button";
-export * from "./base-notification";
 export * from "./basic-info";
 export * from "./footer";
 export * from "./form";
@@ -10,6 +9,7 @@ export * from "./layout";
 export * from "./loader";
 export * from "./localized-link";
 export * from "./navbar";
+export * from "./notification";
 export * from "./notifications";
 export * from "./search-bar";
 export * from "./theme-selector";
