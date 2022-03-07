@@ -9,7 +9,6 @@ export * from "./layout";
 export * from "./loader";
 export * from "./localized-link";
 export * from "./navbar";
-export * from "./notification";
 export * from "./notifications";
 export * from "./search-bar";
 export * from "./theme-selector";

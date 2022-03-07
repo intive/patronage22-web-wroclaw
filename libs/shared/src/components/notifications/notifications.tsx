@@ -3,7 +3,7 @@ import { Box } from "@mui/material";
 import { useSelector } from "react-redux";
 
 import { selectNotifications } from "../../data";
-import { Notification } from "../notification";
+import { Notification } from ".";
 
 export const Notifications: React.FC = () => {
   const notifications = useSelector(selectNotifications);
