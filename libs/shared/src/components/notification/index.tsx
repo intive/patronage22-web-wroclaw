@@ -5,10 +5,6 @@ import { SNACKBAR_AUTO_HIDE_DURATION } from "../../constants";
 import { NotificationProps, removeNotification } from "../../data";
 import { NotificationType } from "../../types";
 
-// export interface BaseNotificationProps {
-//   notification: Notification;
-// }
-
 export const Notification: React.FC<NotificationProps> = ({ id, type, message }) => {
   const dispatch = useDispatch();
   const handleClose = (event: Event | React.SyntheticEvent<any, Event>, reason: SnackbarCloseReason) => {
