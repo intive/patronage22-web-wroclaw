@@ -1,2 +1,2 @@
 export * from "./app-name";
-export * from "./default-layout";
+export * from "./layout";

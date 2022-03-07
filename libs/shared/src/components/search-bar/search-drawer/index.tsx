@@ -1,14 +1,17 @@
 import CloseIcon from "@mui/icons-material/Close";
 import { Drawer } from "@mui/material";
+import Fuse from "fuse.js";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { AppRouteType } from "../../../types/app-routes";
-import { searchHandler } from "../../../utils/search-handler";
+import { AppRouteType } from "../../../types";
 import { BaseButton, ButtonType } from "../../base-button";
 import { LocalizedLink } from "../../localized-link";
+import { SEARCH_CONFIG } from "../constants";
+import { searchHandler } from "../search-handler";
 import { SearchInput } from "../search-input";
 import { SearchItem } from "../search-item";
+import { PresentationSearchItem } from "../types";
 import * as Styled from "./styled";
 
 interface SearchDrawerProps {
@@ -21,37 +24,50 @@ interface SearchDrawerProps {
 
 export const SearchDrawer: React.FC<SearchDrawerProps> = ({ open, onClose, searchKey, toResult, toItem }) => {
   const { t } = useTranslation();
-  const items = searchHandler(searchKey);
-  const [currentItems, setCurrentItems] = useState(items);
+
+  const [currentItems, setCurrentItems] = useState<Fuse.FuseResult<PresentationSearchItem>[]>([]);
+
   const [searchPhrase, setSearchPhrase] = useState("");
+
+  const searchResultsInformation = searchPhrase.length < SEARCH_CONFIG.minMatch ? "tooShortPhrase" : "noResultsInfo";
+  const charAmount = SEARCH_CONFIG.minMatch;
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchPhrase(event.target.value);
   };
 
+  const handleCloseDrawer = () => {
+    setSearchPhrase("");
+    onClose();
+  };
+
   useEffect(() => {
-    setCurrentItems(searchHandler(searchKey, searchPhrase));
+    setCurrentItems(
+      searchHandler({ keys: [searchKey], text: searchPhrase, offset: SEARCH_CONFIG.offset, limit: SEARCH_CONFIG.limit })
+    );
   }, [searchPhrase, searchKey]);
 
   return (
-    <Drawer anchor='top' open={open} onClose={onClose} variant='temporary'>
+    <Drawer anchor='top' open={open} onClose={handleCloseDrawer} variant='temporary'>
       <Styled.SearchDrawerHeader>
-        <SearchInput onChange={handleInputChange} autoFocus />
+        <Styled.InputBoxWrapper>
+          <SearchInput onChange={handleInputChange} autoFocus />
+        </Styled.InputBoxWrapper>
         <Styled.CloseSearchBtnWrapper>
-          <BaseButton type={ButtonType.Icon} onClick={onClose}>
+          <BaseButton type={ButtonType.Icon} onClick={handleCloseDrawer}>
             <CloseIcon />
           </BaseButton>
         </Styled.CloseSearchBtnWrapper>
       </Styled.SearchDrawerHeader>
 
       <Styled.SearchDrawerContentBox>
-        {currentItems.map(item => {
-          return <SearchItem onClose={onClose} item={item.item} key={item.item.id} toResult={toItem} />;
-        })}
-        {!currentItems.length && <p>{t("search.noResultsInfo")}</p>}
+        {currentItems.map(item => (
+          <SearchItem onClose={handleCloseDrawer} item={item.item} key={item.item.id} toResult={toItem} />
+        ))}
+        {!currentItems.length && <Styled.Paragraph>{t(`search.${searchResultsInformation}`, { charAmount })}</Styled.Paragraph>}
         <LocalizedLink to={toResult} searchPhrase={searchPhrase}>
           <Styled.SearchResultsBtnBox>
-            <BaseButton type={ButtonType.Basic} onClick={onClose}>
+            <BaseButton type={ButtonType.Basic} onClick={handleCloseDrawer}>
               {t("search.showResultsButton")}
             </BaseButton>
           </Styled.SearchResultsBtnBox>

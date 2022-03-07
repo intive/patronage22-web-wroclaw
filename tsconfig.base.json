@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "noImplicitAny": true,
     "noImplicitThis": true,
+    "noPropertyAccessFromIndexSignature": false,
     "strictNullChecks": true,
     "resolveJsonModule": true,
     "allowJs": true,
@@ -23,7 +24,7 @@
     "paths": {
       "@patronage-web/features-feedback": ["libs/features/feedback/src/index.ts"],
       "@patronage-web/shared": ["libs/shared/src/index.ts"],
-      "@patronage-web/shared-data": ["libs/shared/data/index.ts"],
+      "@patronage-web/shared-data": ["libs/shared/src/data/index.ts"],
       "@patronage-web/translations": ["libs/translations/src/index.ts"],
       "@patronage-web/ui": ["libs/ui/src/index.ts"],
       "path": ["./node_modules/path-browserify"]

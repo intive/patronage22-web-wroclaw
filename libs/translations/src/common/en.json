@@ -3,6 +3,10 @@
     "newPresentationDescription": "Placeholder text for ActionCard to create new presentation on Homepage",
     "newPresentationButton": "New presentation"
   },
+  "save": "Save",
+  "submit": "Submit",
+  "cancel": "Cancel",
+  "noData": "No data available",
   "notFoundPage": {
     "title": "We are sorry, the page you're looking for doesn't exist"
   },
@@ -15,5 +19,9 @@
   "featureNames": {
     "feedback": "Survey Maker",
     "feedback-external": "Survey Participant"
+  },
+  "search": {
+    "noResultsInfo": "No results found...",
+    "tooShortPhrase": "Please enter at least {{charAmount}} characters"
   }
 }

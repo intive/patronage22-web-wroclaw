@@ -1,11 +1,11 @@
 import { AppRouteType } from "../../../types/app-routes";
-import { ItemsType } from "../../../utils/search-handler";
 import { LocalizedLink } from "../../localized-link";
+import { PresentationSearchItem } from "../types";
 import * as Styled from "./styled";
 
 interface SearchItemProps {
   onClose: () => void;
-  item: ItemsType;
+  item: PresentationSearchItem;
   toResult: AppRouteType;
 }
 
