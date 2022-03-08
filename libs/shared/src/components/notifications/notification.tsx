@@ -7,6 +7,7 @@ import { NotificationType } from "../../types";
 
 export const Notification: React.FC<NotificationProps> = ({ id, type, message }) => {
   const dispatch = useDispatch();
+
   const handleClose = (event: Event | React.SyntheticEvent<any, Event>, reason: SnackbarCloseReason) => {
     if (reason === "timeout") {
       dispatch(removeNotification([{ id, type, message }]));
