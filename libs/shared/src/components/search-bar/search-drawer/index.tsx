@@ -1,7 +1,6 @@
 import CloseIcon from "@mui/icons-material/Close";
-import { FormControl } from "@mui/material";
 import Fuse from "fuse.js";
-import { ChangeEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { AppRouteType } from "../../../types";
@@ -29,8 +28,9 @@ export const SearchDrawer: React.FC<SearchDrawerProps> = ({ open, onClose, searc
 
   const [searchPhrase, setSearchPhrase] = useState("");
 
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSearchPhrase(event.target.value);
+  const handleInputChange = (value?: string) => {
+    setSearchPhrase(value ?? "");
+    console.log(value);
   };
 
   const handleCloseDrawer = () => {
@@ -67,13 +67,11 @@ export const SearchDrawer: React.FC<SearchDrawerProps> = ({ open, onClose, searc
     <Styled.MUISearchDrawer anchor='top' open={open} onClose={handleCloseDrawer} variant='temporary'>
       <Styled.SearchDrawerHeader>
         <Styled.InputBoxWrapper>
-          <FormControl sx={{ width: "100%" }}>
-            <SearchInput
-              onChange={handleInputChange}
-              autoFocus
-              customStyle={theme => ({ [theme.breakpoints.down("sm")]: { backgroundColor: "inherit" } })}
-            />
-          </FormControl>
+          <SearchInput
+            onChange={handleInputChange}
+            autoFocus
+            customStyle={theme => ({ [theme.breakpoints.down("sm")]: { backgroundColor: "inherit" } })}
+          />
         </Styled.InputBoxWrapper>
 
         <Styled.CloseSearchBtnWrapper>

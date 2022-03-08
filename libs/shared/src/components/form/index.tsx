@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Typography } from "@mui/material";
+import { useEffect } from "react";
 import { FieldValues, FormProvider, SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import * as yup from "yup";
@@ -17,6 +18,7 @@ export interface FormProps {
   fields?: FormFieldProps[];
   placeholder?: string;
   onSubmit: SubmitHandler<FieldValues>;
+  onChange?: (values: FieldValues) => void;
   onError: SubmitErrorHandler<FieldValues>;
   onCancel?: () => void;
   showSubmitButton?: boolean;
@@ -34,6 +36,7 @@ export const Form: React.FC<FormProps> = ({
   onSubmit,
   onError,
   onCancel,
+  onChange,
   showSubmitButton,
   showCancelButton,
   submitButtonText,
@@ -74,9 +77,20 @@ export const Form: React.FC<FormProps> = ({
     { condition: showCancelButton, text: cancelButtonText || t("cancel"), action: handleCancel }
   ];
 
+  const formValues = methods.getValues();
+
+  useEffect(() => {
+    console.log("Form values before if", formValues);
+    if (onChange) {
+      onChange(formValues);
+      console.log(formValues, "form - formvalues");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [formValues]);
+
   return (
     <FormProvider {...methods}>
-      <Styled.Form className={className}>
+      <Styled.Form className={className} onChange={onChange}>
         {title && <Typography variant='h3'>{title}</Typography>}
 
         {renderFields()}

@@ -1,5 +1,7 @@
-import { Box, InputBase } from "@mui/material";
+import { Box } from "@mui/material";
 import { alpha, styled } from "@mui/material/styles";
+
+import { Form } from "../../form";
 
 export const SearchInputBox = styled(Box)(({ theme }) => ({
   position: "relative",
@@ -26,11 +28,15 @@ export const SearchIconWrapper = styled(Box)(({ theme }) => ({
   color: alpha(theme.palette.primary.dark, 0.5)
 }));
 
-export const SearchInputBase = styled(InputBase)(({ theme }) => ({
+export const SearchInputBase = styled(Form)(({ theme }) => ({
   color: theme.palette.primary.dark,
-  width: "100%",
-
+  maxWidth: "100%",
+  margin: 0,
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 6)
+  },
+
+  "& .MuiFormControl-root": {
+    margin: "0"
   }
 }));

@@ -1,4 +1,5 @@
 export enum FormFieldType {
   Text = "text",
-  Textarea = "textarea"
+  Textarea = "textarea",
+  SearchInput = "searchInput"
 }

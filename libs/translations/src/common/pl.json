@@ -22,6 +22,7 @@
   },
   "search": {
     "noResultsInfo": "Brak wyników...",
-    "tooShortPhrase": "Proszę wprowadzić przynajmniej {{charAmount}} znaki"
+    "tooShortPhrase": "Proszę wprowadzić przynajmniej {{charAmount}} znaki",
+    "maxCharLenght": "Przekroczono maksymalną ilość znaków ({{charAmount}})"
   }
 }
