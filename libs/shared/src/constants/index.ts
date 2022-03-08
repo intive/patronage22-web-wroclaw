@@ -1,3 +1,2 @@
-export * from "./qr-code-size";
+export * from "./common";
 export * from "./regex";
-export * from "./snackbar-auto-hide-duration";
