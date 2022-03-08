@@ -4,6 +4,7 @@ import {
   ButtonType,
   createPath,
   FeedbackRoute,
+  getDomainName,
   QR_CODE_SIZE,
   TranslationNamespace,
   useClipboardCopy
@@ -24,9 +25,9 @@ export interface ShareDialogProps {
 export const ShareDialog: React.FC<ShareDialogProps> = ({ open, onClose, id, title }) => {
   const { t } = useTranslation();
   const { i18n } = useTranslation();
-  const path = createPath(FeedbackRoute.ExternalUserPresentation, { id }, i18n.language);
-  const link = `${window.location.origin}${path}`;
   const copy = useClipboardCopy();
+  const path = createPath(FeedbackRoute.ExternalUserPresentation, { id }, i18n.language);
+  const link = `${getDomainName()}${path}`;
 
   const handleCopyBtnClick = () => {
     copy(link);
