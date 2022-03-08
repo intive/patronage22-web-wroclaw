@@ -1,8 +1,8 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { NotificationType } from "../../../../types";
-import { FeedbackSliceName } from "../types";
+import { NotificationType } from "../../../types";
+import { SiteSliceName } from "../types";
 
 export interface NotificationProps {
   id: string;
@@ -19,7 +19,7 @@ const initialState: NotificationStateInterface = {
 };
 
 export const notificationSlice = createSlice({
-  name: FeedbackSliceName.Notification,
+  name: SiteSliceName.Notification,
   initialState,
   reducers: {
     addNotification: (state, action: PayloadAction<NotificationProps[]>) => {

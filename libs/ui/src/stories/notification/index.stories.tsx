@@ -8,6 +8,11 @@ export default {
     id: "123",
     message: "sample message",
     type: NotificationType.Info
+  },
+  argTypes: {
+    type: {
+      defaultValue: NotificationType.Info
+    }
   }
 } as ComponentMeta<typeof Notification>;
 
