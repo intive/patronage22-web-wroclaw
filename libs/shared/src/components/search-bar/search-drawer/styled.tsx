@@ -1,7 +1,7 @@
 import { Box, Drawer, Typography } from "@mui/material";
 import { alpha, styled } from "@mui/material/styles";
 
-export const MUISearchDrawer = styled(Drawer)(({ theme }) => ({
+export const SearchDrawer = styled(Drawer)(({ theme }) => ({
   [theme.breakpoints.down("sm")]: {
     "& .MuiPaper-root": {
       overflow: "hidden"
@@ -45,7 +45,7 @@ export const SearchResultsBtnBox = styled(Box)(({ theme }) => ({
   justifyContent: "center",
 
   "& .MuiButton-root": {
-    borderRadius: "0",
+    borderRadius: 0,
     backgroundColor: alpha(theme.palette.primary.dark, 0.1)
   }
 }));

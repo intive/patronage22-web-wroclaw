@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { Edit } from "@mui/icons-material";
-import { InputBaseComponentProps } from "@mui/material";
+import { StandardTextFieldProps } from "@mui/material";
 import { ChangeEvent, MouseEvent } from "react";
 import { FieldValues, useController, UseControllerProps, UseFormStateReturn } from "react-hook-form";
 
@@ -18,10 +18,10 @@ export interface FormFieldProps extends Pick<UseControllerProps, "name" | "defau
   hideEditIcon?: boolean;
   onChange?: () => void;
   placeholder?: string;
-  inputProps?: InputBaseComponentProps;
-  readOnly?: boolean;
+  inputConfig?: StandardTextFieldProps["InputProps"];
   autoFocus?: boolean;
-  handleClick?: (event: MouseEvent) => void;
+  onClick?: (event: MouseEvent) => void;
+  disabled?: boolean;
 }
 
 export const FormField: React.FC<FormFieldProps> = ({
@@ -35,11 +35,11 @@ export const FormField: React.FC<FormFieldProps> = ({
   helperText,
   hideEditIcon,
   onChange,
-  handleClick,
+  onClick,
   placeholder,
-  inputProps,
-  readOnly,
-  autoFocus
+  inputConfig,
+  autoFocus,
+  disabled
 }: FormFieldProps) => {
   const {
     field: { value, onChange: onFieldChange },
@@ -48,7 +48,7 @@ export const FormField: React.FC<FormFieldProps> = ({
 
   const fieldErrors: UseFormStateReturn<FieldValues>["errors"] = errors[name];
 
-  const handleChange = (event: ChangeEvent) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     onFieldChange(event);
 
     if (onChange) {
@@ -63,15 +63,15 @@ export const FormField: React.FC<FormFieldProps> = ({
         name,
         value,
         handleChange,
-        handleClick,
+        onClick,
         variant,
         errors: fieldErrors,
         label,
         rows,
         placeholder,
-        inputProps,
-        readOnly,
-        autoFocus
+        inputConfig,
+        autoFocus,
+        disabled
       })}
       {!hideEditIcon && <Edit />}
       {renderHelperText(fieldErrors, helperText)}

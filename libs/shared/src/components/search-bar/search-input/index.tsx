@@ -12,11 +12,11 @@ interface SearchInputProps {
   onChange?: (value: string) => void;
   onClick?: (event: MouseEvent) => void;
   autoFocus?: boolean;
-  readOnly?: boolean;
   customStyle?: SxProps<Theme>;
+  disabled?: boolean;
 }
 
-export const SearchInput: React.FC<SearchInputProps> = ({ onChange, onClick, readOnly, autoFocus, customStyle }) => {
+export const SearchInput: React.FC<SearchInputProps> = ({ onChange, onClick, autoFocus, customStyle, disabled }) => {
   const { t } = useTranslation();
 
   return (
@@ -30,24 +30,23 @@ export const SearchInput: React.FC<SearchInputProps> = ({ onChange, onClick, rea
         onChange={({ searchInput }) => {
           if (onChange) {
             onChange(searchInput);
-            console.log(searchInput);
           }
         }}
         onError={errors => console.log(errors)}
         fields={[
           {
-            type: FormFieldType.SearchInput,
+            type: FormFieldType.Text,
             name: "searchInput",
             placeholder: t("search.searchbarPlaceholder"),
-            inputProps: { "aria-label": t("search.searchAriaLabel"), maxLength: `${SEARCH_CONFIG.maxLenght}` },
-            handleClick: onClick,
-            readOnly,
+            inputConfig: { "aria-label": t("search.searchAriaLabel") },
+            onClick,
+            disabled,
             autoFocus,
             hideEditIcon: true
           }
         ]}
         validationSchema={{
-          searchInput: string().max(19, t("search.maxCharLenght", { charAmount: SEARCH_CONFIG.maxLenght })),
+          searchInput: string().max(SEARCH_CONFIG.maxLength, t("search.maxCharLenght", { charAmount: SEARCH_CONFIG.maxLength })),
           description: string()
         }}
       />

@@ -13,7 +13,7 @@ export const SearchInputBox = styled(Box)(({ theme }) => ({
   },
 
   [theme.breakpoints.down("sm")]: {
-    borderRadius: "0"
+    borderRadius: 0
   }
 }));
 
@@ -32,11 +32,12 @@ export const SearchInputBase = styled(Form)(({ theme }) => ({
   color: theme.palette.primary.dark,
   maxWidth: "100%",
   margin: 0,
+
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 6)
   },
 
   "& .MuiFormControl-root": {
-    margin: "0"
+    margin: 0
   }
 }));

@@ -22,7 +22,7 @@
   },
   "search": {
     "noResultsInfo": "No results found...",
-    "tooShortPhrase": "Please enter at least {{charAmount}} characters",
+    "minCharLength": "Please enter at least {{charAmount}} characters",
     "maxCharLenght": "Maximum number of characters exceeded ({{charAmount}})"
   }
 }

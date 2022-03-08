@@ -1,8 +1,9 @@
-import { InputBase, InputBaseComponentProps, TextField } from "@mui/material";
+import { TextField } from "@mui/material";
 import { ChangeEvent, MouseEvent } from "react";
 import { FieldValues, UseFormStateReturn } from "react-hook-form";
 
 import { FormFieldType } from "../../types";
+import { FormFieldProps } from "./index";
 
 const DEFAULT_ROWS_NUMBER = 4;
 
@@ -12,16 +13,16 @@ interface RenderFieldProps {
   type: FormFieldType;
   name: string;
   value: unknown;
-  handleChange?: (event: ChangeEvent) => void;
-  handleClick?: (event: MouseEvent) => void;
+  handleChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  onClick?: (event: MouseEvent) => void;
   variant?: FormTextFieldVariant;
   errors: UseFormStateReturn<FieldValues>["errors"];
   label?: string;
   rows?: number;
   placeholder?: string;
-  inputProps?: InputBaseComponentProps;
-  readOnly?: boolean;
+  inputConfig?: FormFieldProps["inputConfig"];
   autoFocus?: boolean;
+  disabled?: boolean;
 }
 
 export const renderField = ({
@@ -29,19 +30,31 @@ export const renderField = ({
   name,
   value,
   handleChange,
-  handleClick,
+  onClick,
   variant = "outlined",
   errors,
   label,
   placeholder,
-  inputProps,
-  readOnly,
+  inputConfig,
   autoFocus,
+  disabled,
   rows = DEFAULT_ROWS_NUMBER
 }: RenderFieldProps) => {
   const field: Record<FormFieldType, JSX.Element> = {
     [FormFieldType.Text]: (
-      <TextField name={name} value={value} onChange={handleChange} variant={variant} error={!!errors} label={label} />
+      <TextField
+        name={name}
+        value={value}
+        onChange={handleChange}
+        variant={variant}
+        error={!!errors}
+        label={label}
+        onClick={onClick}
+        disabled={disabled}
+        InputProps={inputConfig}
+        placeholder={placeholder}
+        autoFocus={autoFocus}
+      />
     ),
     [FormFieldType.Textarea]: (
       <TextField
@@ -53,14 +66,10 @@ export const renderField = ({
         error={!!errors}
         label={label}
         rows={rows}
-      />
-    ),
-    [FormFieldType.SearchInput]: (
-      <InputBase
+        onClick={onClick}
+        disabled={disabled}
+        InputProps={inputConfig}
         placeholder={placeholder}
-        inputProps={inputProps}
-        onClick={handleClick}
-        readOnly={readOnly}
         autoFocus={autoFocus}
       />
     )
