@@ -1,7 +1,7 @@
-import { Login as LoginView } from "@patronage-web/shared";
+import { GoogleLogin } from "../../components";
 
 const Login: React.FC = () => {
-  return <LoginView />;
+  return <GoogleLogin />;
 };
 
 export default Login;

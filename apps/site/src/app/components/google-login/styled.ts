@@ -1,8 +1,7 @@
 import { Box, Card, styled, Typography } from "@mui/material";
+import { Form } from "@patronage-web/shared";
 
-import { Form } from "../form";
-
-export const Container = styled(Box)(({ theme }) => ({
+export const LoginGoogleContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
@@ -10,19 +9,19 @@ export const Container = styled(Box)(({ theme }) => ({
   padding: theme.spacing(0, 2)
 }));
 
-export const Title = styled(Typography)(({ theme }) => ({
+export const LoginGoogleTitle = styled(Typography)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   marginBottom: theme.spacing(1)
 }));
 
-export const Subtitle = styled(Typography)(({ theme }) => ({
+export const LoginGoogleSubtitle = styled(Typography)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   marginBottom: theme.spacing(0.5)
 }));
 
-export const BasicCard = styled(Card)(({ theme }) => ({
+export const LoginGoogleFormCard = styled(Card)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   width: "100%",
@@ -31,7 +30,7 @@ export const BasicCard = styled(Card)(({ theme }) => ({
   padding: theme.spacing(4)
 }));
 
-export const Login = styled(Form)(({ theme }) => ({
+export const LoginGoogleForm = styled(Form)(({ theme }) => ({
   width: "100%",
   margin: 0,
 

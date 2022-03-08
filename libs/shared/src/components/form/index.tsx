@@ -7,14 +7,17 @@ import { useTranslation } from "react-i18next";
 import * as yup from "yup";
 import { ObjectShape } from "yup/lib/object";
 
-import { TranslationNamespace } from "../../types";
 import { BaseButton, ButtonType } from "../base-button";
 import { FormField, FormFieldProps } from "../form-field";
 import * as Styled from "./styled";
 
+interface FormButton {
+  condition: boolean;
+  text: string;
+  icon: ReactNode;
+}
+
 export interface FormProps {
-  children?: ReactNode;
-  customField?: ReactNode;
   title?: string;
   validationSchema: ObjectShape;
   fields?: FormFieldProps[];
@@ -22,18 +25,14 @@ export interface FormProps {
   onSubmit: SubmitHandler<FieldValues>;
   onError: SubmitErrorHandler<FieldValues>;
   onCancel?: () => void;
-  showSubmitButton?: boolean;
-  showCancelButton?: boolean;
-  submitButtonText?: string;
-  cancelButtonText?: string;
-  submitButtonIcon?: ReactNode;
-  cancelButtonIcon?: ReactNode;
+  customButtons?: {
+    submit?: FormButton;
+    cancel?: FormButton;
+  };
   className?: string;
 }
 
 export const Form: React.FC<FormProps> = ({
-  children,
-  customField,
   title,
   validationSchema,
   fields,
@@ -41,15 +40,10 @@ export const Form: React.FC<FormProps> = ({
   onSubmit,
   onError,
   onCancel,
-  showSubmitButton,
-  showCancelButton,
-  submitButtonText,
-  cancelButtonText,
-  submitButtonIcon,
-  cancelButtonIcon,
+  customButtons,
   className
 }) => {
-  const { t } = useTranslation(TranslationNamespace.Common);
+  const { t } = useTranslation();
   const schema = yup.object(validationSchema).required();
 
   const methods = useForm<FieldValues>({
@@ -79,21 +73,25 @@ export const Form: React.FC<FormProps> = ({
   };
 
   const formButtons = [
-    { condition: showSubmitButton, text: submitButtonText || t("submit"), action: handleSubmit, icon: submitButtonIcon },
-    { condition: showCancelButton, text: cancelButtonText || t("cancel"), action: handleCancel, icon: cancelButtonIcon }
+    {
+      condition: customButtons?.submit?.condition,
+      text: customButtons?.submit?.text || t("submit"),
+      action: handleSubmit,
+      icon: customButtons?.submit?.icon
+    },
+    {
+      condition: customButtons?.cancel?.condition,
+      text: customButtons?.cancel?.text || t("cancel"),
+      action: handleCancel,
+      icon: customButtons?.cancel?.icon
+    }
   ];
 
   return (
     <FormProvider {...methods}>
       <Styled.Form className={className}>
         {title && <Typography variant='h3'>{title}</Typography>}
-
-        {customField}
-
         {renderFields()}
-
-        {children}
-
         {formButtons.map(
           ({ condition, text, action, icon }) =>
             condition && (

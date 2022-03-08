@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { Edit } from "@mui/icons-material";
 import { Typography } from "@mui/material";
-import { ChangeEvent } from "react";
+import { ChangeEvent, ReactNode } from "react";
 import { FieldValues, useController, UseControllerProps, UseFormStateReturn } from "react-hook-form";
 
 import { FormFieldType } from "../../types";
@@ -16,8 +16,8 @@ export interface FormFieldProps extends Pick<UseControllerProps, "name" | "defau
   label?: string;
   helperText?: string;
   hideEditIcon?: boolean;
-  showDescription?: boolean;
   description?: string;
+  appendix?: ReactNode;
   onChange?: () => void;
   disabled?: boolean;
 }
@@ -32,8 +32,8 @@ export const FormField: React.FC<FormFieldProps> = ({
   label,
   helperText,
   hideEditIcon,
-  showDescription,
   description,
+  appendix,
   onChange,
   disabled
 }: FormFieldProps) => {
@@ -54,12 +54,13 @@ export const FormField: React.FC<FormFieldProps> = ({
 
   return (
     <>
-      {showDescription && <Typography>{description}</Typography>}
+      {description && <Typography>{description}</Typography>}
       <Styled.Field>
         {renderField({ type, name, value, handleChange, variant, errors: fieldErrors, label, rows, disabled })}
         {!hideEditIcon && <Edit />}
         {renderHelperText(fieldErrors, helperText)}
       </Styled.Field>
+      {appendix}
     </>
   );
 };

@@ -7,9 +7,10 @@
     "title": "Witamy w aplikacji Patronage",
     "subtitle": "Zaloguj się do swojego konta",
     "forgotPassword": "Zapomniałeś/aś hasła?",
-    "emailRequired": "Podaj swój adres e-mail 'example@gmail.com'",
-    "emailInvalid": "Nieprawidłowy adres e-mail",
-    "notGmail": "Adres e-mail musi być w domenie Google 'example@gmail.com'"
+    "emailRequiredMessage": "Podaj swój adres e-mail 'example@gmail.com'",
+    "emailInvalidMessage": "Nieprawidłowy adres e-mail",
+    "notGmailMessage": "Adres e-mail musi być w domenie Google 'example@gmail.com'",
+    "loginWith": "Zaloguj się przez"
   },
   "password": "Hasło",
   "save": "Zapisz",

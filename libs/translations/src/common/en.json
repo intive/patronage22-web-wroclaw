@@ -7,9 +7,10 @@
     "title": "Welcome in Patronage App",
     "subtitle": "Login to your account",
     "forgotPassword": "Forgot a password?",
-    "emailRequired": "Please provide your e-mail",
-    "emailInvalid": "Invalid e-mail address",
-    "notGmail": "E-mail address must be in Google domain 'example@gmail.com'"
+    "emailRequiredMessage": "Please provide your e-mail",
+    "emailInvalidMessage": "Invalid e-mail address",
+    "notGmailMessage": "E-mail address must be in Google domain 'example@gmail.com'",
+    "loginWith": "Log in with"
   },
   "password": "Password",
   "save": "Save",
