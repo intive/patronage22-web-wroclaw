@@ -10,6 +10,7 @@
     "emailRequiredMessage": "Please provide your e-mail",
     "emailInvalidMessage": "Invalid e-mail address",
     "notGmailMessage": "E-mail address must be in Google domain 'example@gmail.com'",
+    "tooShortMessage": "Please provide at least 16 characters",
     "loginWith": "Log in with"
   },
   "password": "Password",

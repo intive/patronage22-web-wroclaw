@@ -45,6 +45,7 @@ export const GoogleLogin: React.FC = () => {
               .trim()
               .required(t("login.emailRequiredMessage"))
               .email(t("login.emailInvalidMessage"))
+              .min(16, t("login.tooShortMessage"))
               .matches(REGEX_GMAIL_VALIDATION, t("login.notGmailMessage")),
             password: string().trim()
           }}

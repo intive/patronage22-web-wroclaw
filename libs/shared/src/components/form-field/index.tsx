@@ -58,8 +58,9 @@ export const FormField: React.FC<FormFieldProps> = ({
       <Styled.Field>
         {renderField({ type, name, value, handleChange, variant, errors: fieldErrors, label, rows, disabled })}
         {!hideEditIcon && <Edit />}
-        {renderHelperText(fieldErrors, helperText)}
       </Styled.Field>
+
+      {renderHelperText(fieldErrors, helperText)}
       {appendix}
     </>
   );
