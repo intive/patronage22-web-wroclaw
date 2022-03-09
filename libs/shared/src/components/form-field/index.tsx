@@ -1,5 +1,4 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { Edit } from "@mui/icons-material";
 import { StandardTextFieldProps } from "@mui/material";
 import { ChangeEvent, MouseEvent } from "react";
 import { FieldValues, useController, UseControllerProps, UseFormStateReturn } from "react-hook-form";
@@ -15,7 +14,6 @@ export interface FormFieldProps extends Pick<UseControllerProps, "name" | "defau
   rows?: number;
   label?: string;
   helperText?: string;
-  hideEditIcon?: boolean;
   onChange?: () => void;
   placeholder?: string;
   inputConfig?: StandardTextFieldProps["InputProps"];
@@ -33,7 +31,6 @@ export const FormField: React.FC<FormFieldProps> = ({
   rows,
   label,
   helperText,
-  hideEditIcon,
   onChange,
   onClick,
   placeholder,
@@ -42,14 +39,14 @@ export const FormField: React.FC<FormFieldProps> = ({
   disabled
 }: FormFieldProps) => {
   const {
-    field: { onChange: onFieldChange },
+    field: { onChange: onSpecificFieldChange },
     formState: { errors }
   } = useController({ name, defaultValue, control });
 
   const fieldErrors: UseFormStateReturn<FieldValues>["errors"] = errors[name];
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    onFieldChange(event);
+  const onFieldChange = (event: ChangeEvent<HTMLInputElement>) => {
+    onSpecificFieldChange(event);
 
     if (onChange) {
       onChange();
@@ -61,7 +58,7 @@ export const FormField: React.FC<FormFieldProps> = ({
       {renderField({
         type,
         name,
-        handleChange,
+        onFieldChange,
         onClick,
         variant,
         errors: fieldErrors,
@@ -72,7 +69,6 @@ export const FormField: React.FC<FormFieldProps> = ({
         autoFocus,
         disabled
       })}
-      {!hideEditIcon && <Edit />}
       {renderHelperText(fieldErrors, helperText)}
     </Styled.Field>
   );

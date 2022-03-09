@@ -68,7 +68,7 @@ export const SearchDrawer: React.FC<SearchDrawerProps> = ({ open, onClose, searc
           <SearchInput
             onChange={handleInputChange}
             autoFocus
-            sx={theme => ({ [theme.breakpoints.down("sm")]: { backgroundColor: "inherit" } })}
+            customStyles={theme => ({ [theme.breakpoints.down("sm")]: { backgroundColor: "inherit" } })}
           />
         </Styled.InputBoxWrapper>
 

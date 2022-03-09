@@ -6,7 +6,7 @@
   "save": "Zapisz",
   "submit": "Zatwierdź",
   "cancel": "Anuluj",
-  "noData": "Brak danych",
+  "noDataMessage": "Brak danych",
   "notFoundPage": {
     "title": "Przepraszamy, strona, której szukasz nie istnieje"
   },
@@ -23,6 +23,6 @@
   "search": {
     "noResultsInfo": "Brak wyników...",
     "minCharLength": "Proszę wprowadzić przynajmniej {{charAmount}} znaki",
-    "maxCharLenght": "Przekroczono maksymalną ilość znaków ({{charAmount}})"
+    "maxCharLength": "Przekroczono maksymalną ilość znaków ({{charAmount}})"
   }
 }

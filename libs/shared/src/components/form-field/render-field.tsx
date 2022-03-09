@@ -1,5 +1,5 @@
 import { TextField } from "@mui/material";
-import { ChangeEvent, MouseEvent } from "react";
+import { ChangeEvent } from "react";
 import { FieldValues, UseFormStateReturn } from "react-hook-form";
 
 import { FormFieldType } from "../../types";
@@ -9,25 +9,16 @@ const DEFAULT_ROWS_NUMBER = 4;
 
 export type FormTextFieldVariant = "standard" | "filled" | "outlined";
 
-interface RenderFieldProps {
-  type: FormFieldType;
+interface RenderFieldProps extends Omit<FormFieldProps, "helperText" | "onChange"> {
   name: string;
-  handleChange?: (event: ChangeEvent<HTMLInputElement>) => void;
-  onClick?: (event: MouseEvent) => void;
-  variant?: FormTextFieldVariant;
+  onFieldChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   errors: UseFormStateReturn<FieldValues>["errors"];
-  label?: string;
-  rows?: number;
-  placeholder?: string;
-  inputConfig?: FormFieldProps["inputConfig"];
-  autoFocus?: boolean;
-  disabled?: boolean;
 }
 
 export const renderField = ({
   type,
   name,
-  handleChange,
+  onFieldChange,
   onClick,
   variant = "outlined",
   errors,
@@ -42,7 +33,7 @@ export const renderField = ({
     [FormFieldType.Text]: (
       <TextField
         name={name}
-        onChange={handleChange}
+        onChange={onFieldChange}
         variant={variant}
         error={!!errors}
         label={label}
@@ -56,7 +47,7 @@ export const renderField = ({
     [FormFieldType.Textarea]: (
       <TextField
         name={name}
-        onChange={handleChange}
+        onChange={onFieldChange}
         variant={variant}
         multiline
         error={!!errors}

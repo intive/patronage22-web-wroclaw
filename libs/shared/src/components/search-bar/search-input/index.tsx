@@ -13,16 +13,16 @@ interface SearchInputProps {
   onChange?: (value: string) => void;
   onClick?: (event: MouseEvent) => void;
   autoFocus?: boolean;
-  sx?: SxProps<Theme>;
+  customStyles?: SxProps<Theme>;
   disabled?: boolean;
 }
 
-export const SearchInput: React.FC<SearchInputProps> = ({ onChange, onClick, autoFocus, disabled, sx }) => {
+export const SearchInput: React.FC<SearchInputProps> = ({ onChange, onClick, autoFocus, disabled, customStyles }) => {
   const { t } = useTranslation();
 
   return (
     <Styled.SearchInputBase
-      sx={sx}
+      sx={customStyles}
       onChange={({ searchInput }) => {
         if (onChange) {
           onChange(searchInput);
@@ -44,13 +44,11 @@ export const SearchInput: React.FC<SearchInputProps> = ({ onChange, onClick, aut
           },
           onClick,
           disabled,
-          autoFocus,
-          hideEditIcon: true
+          autoFocus
         }
       ]}
       validationSchema={{
-        searchInput: string().max(SEARCH_CONFIG.maxLength, t("search.maxCharLenght", { charAmount: SEARCH_CONFIG.maxLength })),
-        description: string()
+        searchInput: string().max(SEARCH_CONFIG.maxLength, t("search.maxCharLength", { charAmount: SEARCH_CONFIG.maxLength }))
       }}
     />
   );

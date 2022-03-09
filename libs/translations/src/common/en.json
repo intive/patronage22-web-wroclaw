@@ -6,7 +6,7 @@
   "save": "Save",
   "submit": "Submit",
   "cancel": "Cancel",
-  "noData": "No data available",
+  "noDataMessage": "No data available",
   "notFoundPage": {
     "title": "We are sorry, the page you're looking for doesn't exist"
   },
@@ -23,6 +23,6 @@
   "search": {
     "noResultsInfo": "No results found...",
     "minCharLength": "Please enter at least {{charAmount}} characters",
-    "maxCharLenght": "Maximum number of characters exceeded ({{charAmount}})"
+    "maxCharLength": "Maximum number of characters exceeded ({{charAmount}})"
   }
 }

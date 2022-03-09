@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 import * as yup from "yup";
 import { ObjectShape } from "yup/lib/object";
 
-import { usePrevious } from "../../hooks/use-previous";
+import { usePrevious } from "../../hooks";
 import { BaseButton, ButtonType } from "../base-button";
 import { FormField, FormFieldProps } from "../form-field";
 import * as Styled from "./styled";
@@ -56,11 +56,15 @@ export const Form: React.FC<FormProps> = ({
   const previousValues = usePrevious(currentValues);
 
   const handleSubmit = () => {
-    if (onSubmit) methods.handleSubmit(onSubmit, onError)();
+    if (onSubmit) {
+      methods.handleSubmit(onSubmit, onError)();
+    }
   };
 
   const handleCancel = () => {
-    if (onCancel) onCancel();
+    if (onCancel) {
+      onCancel();
+    }
   };
 
   const handleFormChange = () => {
@@ -80,8 +84,8 @@ export const Form: React.FC<FormProps> = ({
     }
 
     return (
-      <Typography id='placeholder' variant='h4'>
-        {placeholder || t("NoData")}
+      <Typography id='no-data-placeholder' variant='h4'>
+        {placeholder || t("noDataMessage")}
       </Typography>
     );
   };
