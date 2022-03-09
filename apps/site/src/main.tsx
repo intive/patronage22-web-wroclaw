@@ -1,6 +1,7 @@
 import "./i18n";
 
-import { Notifications, ThemeProvider } from "@patronage-web/shared";
+import { ShareDialogDemo } from "@patronage-web/features-feedback";
+import { ThemeProvider } from "@patronage-web/shared";
 import { store } from "@patronage-web/shared-data";
 import { StrictMode } from "react";
 import * as ReactDOM from "react-dom";
@@ -16,7 +17,7 @@ ReactDOM.render(
         <BrowserRouter>
           <Layout>
             <Routing />
-            <Notifications />
+            <ShareDialogDemo />
           </Layout>
         </BrowserRouter>
       </ThemeProvider>

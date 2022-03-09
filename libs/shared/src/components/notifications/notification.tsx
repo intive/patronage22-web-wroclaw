@@ -1,9 +1,10 @@
-import { Alert, Snackbar, SnackbarCloseReason, SnackbarContent } from "@mui/material";
+import { Alert, SnackbarCloseReason, SnackbarContent } from "@mui/material";
 import { useDispatch } from "react-redux";
 
 import { SNACKBAR_AUTO_HIDE_DURATION } from "../../constants";
 import { NotificationProps, removeNotification } from "../../data";
 import { NotificationType } from "../../types";
+import * as Styled from "./styled";
 
 export const Notification: React.FC<NotificationProps> = ({ id, type, message }) => {
   const dispatch = useDispatch();
@@ -23,13 +24,8 @@ export const Notification: React.FC<NotificationProps> = ({ id, type, message })
   };
 
   return (
-    <Snackbar
-      open
-      onClose={handleClose}
-      anchorOrigin={{ horizontal: "center", vertical: "bottom" }}
-      autoHideDuration={SNACKBAR_AUTO_HIDE_DURATION}
-    >
+    <Styled.NotificationSnackbar open onClose={handleClose} autoHideDuration={SNACKBAR_AUTO_HIDE_DURATION}>
       {messages[type]}
-    </Snackbar>
+    </Styled.NotificationSnackbar>
   );
 };
