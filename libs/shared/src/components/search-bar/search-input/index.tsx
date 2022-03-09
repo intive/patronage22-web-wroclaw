@@ -1,4 +1,5 @@
 import SearchIcon from "@mui/icons-material/Search";
+import { InputAdornment } from "@mui/material";
 import { SxProps, Theme } from "@mui/material/styles";
 import { MouseEvent } from "react";
 import { useTranslation } from "react-i18next";
@@ -12,44 +13,45 @@ interface SearchInputProps {
   onChange?: (value: string) => void;
   onClick?: (event: MouseEvent) => void;
   autoFocus?: boolean;
-  customStyle?: SxProps<Theme>;
+  sx?: SxProps<Theme>;
   disabled?: boolean;
 }
 
-export const SearchInput: React.FC<SearchInputProps> = ({ onChange, onClick, autoFocus, customStyle, disabled }) => {
+export const SearchInput: React.FC<SearchInputProps> = ({ onChange, onClick, autoFocus, disabled, sx }) => {
   const { t } = useTranslation();
 
   return (
-    <Styled.SearchInputBox sx={customStyle}>
-      <Styled.SearchIconWrapper>
-        <SearchIcon />
-      </Styled.SearchIconWrapper>
-
-      <Styled.SearchInputBase
-        onSubmit={data => console.log(data)}
-        onChange={({ searchInput }) => {
-          if (onChange) {
-            onChange(searchInput);
-          }
-        }}
-        onError={errors => console.log(errors)}
-        fields={[
-          {
-            type: FormFieldType.Text,
-            name: "searchInput",
-            placeholder: t("search.searchbarPlaceholder"),
-            inputConfig: { "aria-label": t("search.searchAriaLabel") },
-            onClick,
-            disabled,
-            autoFocus,
-            hideEditIcon: true
-          }
-        ]}
-        validationSchema={{
-          searchInput: string().max(SEARCH_CONFIG.maxLength, t("search.maxCharLenght", { charAmount: SEARCH_CONFIG.maxLength })),
-          description: string()
-        }}
-      />
-    </Styled.SearchInputBox>
+    <Styled.SearchInputBase
+      sx={sx}
+      onChange={({ searchInput }) => {
+        if (onChange) {
+          onChange(searchInput);
+        }
+      }}
+      fields={[
+        {
+          type: FormFieldType.Text,
+          name: "searchInput",
+          placeholder: t("search.searchbarPlaceholder"),
+          inputConfig: {
+            "aria-label": t("search.searchAriaLabel"),
+            startAdornment: (
+              <InputAdornment position='start'>
+                <SearchIcon />
+              </InputAdornment>
+            ),
+            inputProps: { maxLength: SEARCH_CONFIG.maxLength + 1, autoComplete: "off" }
+          },
+          onClick,
+          disabled,
+          autoFocus,
+          hideEditIcon: true
+        }
+      ]}
+      validationSchema={{
+        searchInput: string().max(SEARCH_CONFIG.maxLength, t("search.maxCharLenght", { charAmount: SEARCH_CONFIG.maxLength })),
+        description: string()
+      }}
+    />
   );
 };

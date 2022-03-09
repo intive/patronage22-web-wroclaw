@@ -12,7 +12,6 @@ export type FormTextFieldVariant = "standard" | "filled" | "outlined";
 interface RenderFieldProps {
   type: FormFieldType;
   name: string;
-  value: unknown;
   handleChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   onClick?: (event: MouseEvent) => void;
   variant?: FormTextFieldVariant;
@@ -28,7 +27,6 @@ interface RenderFieldProps {
 export const renderField = ({
   type,
   name,
-  value,
   handleChange,
   onClick,
   variant = "outlined",
@@ -44,7 +42,6 @@ export const renderField = ({
     [FormFieldType.Text]: (
       <TextField
         name={name}
-        value={value}
         onChange={handleChange}
         variant={variant}
         error={!!errors}
@@ -59,7 +56,6 @@ export const renderField = ({
     [FormFieldType.Textarea]: (
       <TextField
         name={name}
-        value={value}
         onChange={handleChange}
         variant={variant}
         multiline

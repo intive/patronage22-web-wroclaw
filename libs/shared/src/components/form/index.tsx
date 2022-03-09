@@ -8,7 +8,6 @@ import * as yup from "yup";
 import { ObjectShape } from "yup/lib/object";
 
 import { usePrevious } from "../../hooks/use-previous";
-import { TranslationNamespace } from "../../types";
 import { BaseButton, ButtonType } from "../base-button";
 import { FormField, FormFieldProps } from "../form-field";
 import * as Styled from "./styled";
@@ -18,9 +17,9 @@ export interface FormProps {
   validationSchema: ObjectShape;
   fields?: FormFieldProps[];
   placeholder?: string;
-  onSubmit: SubmitHandler<FieldValues>;
+  onSubmit?: SubmitHandler<FieldValues>;
   onChange?: (value: Record<string, any>) => any;
-  onError: SubmitErrorHandler<FieldValues>;
+  onError?: SubmitErrorHandler<FieldValues>;
   onCancel?: () => void;
   showSubmitButton?: boolean;
   showCancelButton?: boolean;
@@ -44,7 +43,7 @@ export const Form: React.FC<FormProps> = ({
   cancelButtonText,
   className
 }) => {
-  const { t } = useTranslation(TranslationNamespace.Common);
+  const { t } = useTranslation();
   const schema = yup.object(validationSchema).required();
 
   const methods = useForm<FieldValues>({
@@ -57,7 +56,7 @@ export const Form: React.FC<FormProps> = ({
   const previousValues = usePrevious(currentValues);
 
   const handleSubmit = () => {
-    methods.handleSubmit(onSubmit, onError)();
+    if (onSubmit) methods.handleSubmit(onSubmit, onError)();
   };
 
   const handleCancel = () => {

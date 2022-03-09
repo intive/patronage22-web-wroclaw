@@ -42,7 +42,7 @@ export const FormField: React.FC<FormFieldProps> = ({
   disabled
 }: FormFieldProps) => {
   const {
-    field: { value, onChange: onFieldChange },
+    field: { onChange: onFieldChange },
     formState: { errors }
   } = useController({ name, defaultValue, control });
 
@@ -61,7 +61,6 @@ export const FormField: React.FC<FormFieldProps> = ({
       {renderField({
         type,
         name,
-        value,
         handleChange,
         onClick,
         variant,

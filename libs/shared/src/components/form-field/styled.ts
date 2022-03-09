@@ -21,21 +21,7 @@ export const Field = styled(FormControl)(({ theme }) => ({
     top: theme.spacing(-1.25)
   },
 
-  "& .MuiSvgIcon-root": {
-    position: "absolute",
-    zIndex: 1,
-    right: 0,
-    top: theme.spacing(1.5),
-    visibility: "hidden"
-  },
-
   "& .MuiOutlinedInput-input": {
     padding: theme.spacing(1)
-  },
-
-  "&:hover": {
-    "& .MuiSvgIcon-root": {
-      visibility: "visible"
-    }
   }
 }));
