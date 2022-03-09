@@ -10,7 +10,6 @@
   "search": {
     "searchbarPlaceholder": "Szukaj prezentacji",
     "showResultsButton": "Pokaż wszystkie wyniki...",
-    "searchAriaLabel": "Szukaj",
-    "noResultsInfo": "Brak wyników..."
+    "searchAriaLabel": "Szukaj"
   }
 }
