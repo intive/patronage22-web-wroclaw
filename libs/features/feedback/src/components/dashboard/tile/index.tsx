@@ -5,10 +5,6 @@ import { useTranslation } from "react-i18next";
 
 import * as Styled from "./styled";
 
-// export interface TileProps {
-//   presentation: Presentation;
-// }
-
 export const DashboardTile: React.FC<Presentation> = ({ id, isPublic, title, description, status }) => {
   const { t } = useTranslation();
 
