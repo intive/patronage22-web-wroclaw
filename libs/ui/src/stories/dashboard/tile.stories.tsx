@@ -1,14 +1,13 @@
+import { DashboardTile } from "@patronage-web/features-feedback";
+import { presentations } from "@patronage-web/shared-data";
 import { ComponentMeta } from "@storybook/react";
 
-import { Tile } from "../../../../features/feedback/src/components/dashboard/tile";
-import presentations from "../../../../shared/data/features/feedback/mock/mock.json";
-
 export const DashboardTileStory: React.FC = () => {
-  return <Tile presentation={presentations[0]} />;
+  return <DashboardTile presentation={presentations[0]} />;
 };
 
 export default {
-  title: "DashboardTile",
+  title: "FeedbackDashboardTile",
   component: DashboardTileStory,
   decorators: [
     Story => (

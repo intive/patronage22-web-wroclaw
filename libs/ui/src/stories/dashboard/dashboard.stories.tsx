@@ -1,12 +1,12 @@
-import { Dash } from "@patronage-web/features-feedback";
+import { Dashboard } from "@patronage-web/features-feedback";
 import { ComponentMeta } from "@storybook/react";
 
 export const DashboardStory: React.FC = () => {
-  return <Dash />;
+  return <Dashboard />;
 };
 
 export default {
-  title: "Dashboard",
+  title: "FeedbackDashboard",
   component: DashboardStory,
   args: {},
   decorators: [

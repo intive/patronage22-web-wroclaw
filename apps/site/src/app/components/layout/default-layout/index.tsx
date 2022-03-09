@@ -1,6 +1,6 @@
-import { BasicInfo, BasicLayout } from "@patronage-web/shared";
+import { BasicInfo, Layout as BasicLayout } from "@patronage-web/shared";
 
-import { AppName } from "../app-name";
+import { AppName } from "../../app-name";
 
 export const elementStyles = {
   margin: "auto",
@@ -24,7 +24,7 @@ export const footerConfig = {
   }
 };
 
-export const DefaultLayout: React.FC = ({ children }) => {
+export const Layout: React.FC = ({ children }) => {
   return (
     <BasicLayout navbarConfig={navbarConfig} footerConfig={footerConfig}>
       {children}

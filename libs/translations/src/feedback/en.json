@@ -1,4 +1,7 @@
 {
+  "missingTitleError": "Title cannot be empty",
+  "newPresentation": "New presentation",
+  "description": "Description",
   "breadcrumb": {
     "breadcrumb": "breadcrumb",
     "save": "Save"
@@ -8,10 +11,5 @@
     "showResultsButton": "Show all results...",
     "searchAriaLabel": "Search",
     "noResultsInfo": "No results found..."
-  },
-  "dashboard": {
-    "share": "Share",
-    "end": "End",
-    "edit": "Edit"
   }
 }

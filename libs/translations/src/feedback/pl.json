@@ -1,4 +1,7 @@
 {
+  "missingTitleError": "Tytuł nie może być pusty",
+  "newPresentation": "Nowa prezentacja",
+  "description": "Opis",
   "breadcrumb": {
     "breadcrumb": "nawigacja",
     "save": "Zapisz"
@@ -9,10 +12,5 @@
     "showResultsButton": "Pokaż wszystkie wyniki...",
     "searchAriaLabel": "Szukaj",
     "noResultsInfo": "Brak wyników..."
-  },
-  "dashboard": {
-    "share": "Udostępnij",
-    "end": "Zakończ",
-    "edit": "Edytuj"
   }
 }
