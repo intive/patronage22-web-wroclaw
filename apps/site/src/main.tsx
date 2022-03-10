@@ -1,6 +1,5 @@
 import "./i18n";
 
-import { ShareDialogDemo } from "@patronage-web/features-feedback";
 import { ThemeProvider } from "@patronage-web/shared";
 import { store } from "@patronage-web/shared-data";
 import { StrictMode } from "react";
@@ -17,7 +16,6 @@ ReactDOM.render(
         <BrowserRouter>
           <Layout>
             <Routing />
-            <ShareDialogDemo />
           </Layout>
         </BrowserRouter>
       </ThemeProvider>
