@@ -51,12 +51,19 @@ export const SearchResultsBtnBox = styled(Box)(({ theme }) => ({
 }));
 
 export const InputBoxWrapper = styled(Box)(({ theme }) => ({
-  [theme.breakpoints.up("sm")]: {
-    width: "30%"
-  },
-
   [theme.breakpoints.down("sm")]: {
     width: "85%"
+  },
+
+  [theme.breakpoints.between("sm", "md")]: {
+    width: "50%"
+  },
+  [theme.breakpoints.between("md", "lg")]: {
+    width: "40%"
+  },
+
+  [theme.breakpoints.up("lg")]: {
+    width: "25%"
   }
 }));
 

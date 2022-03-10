@@ -9,5 +9,5 @@ export const SEARCH_CONFIG = {
   limit: 5,
   offset: 0,
   minMatch: 3,
-  maxLength: 20
+  maxLength: 30
 };

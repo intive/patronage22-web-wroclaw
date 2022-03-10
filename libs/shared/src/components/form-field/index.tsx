@@ -39,14 +39,14 @@ export const FormField: React.FC<FormFieldProps> = ({
   disabled
 }: FormFieldProps) => {
   const {
-    field: { onChange: onSpecificFieldChange },
+    field: { onChange: onFormFieldChange },
     formState: { errors }
   } = useController({ name, defaultValue, control });
 
   const fieldErrors: UseFormStateReturn<FieldValues>["errors"] = errors[name];
 
   const onFieldChange = (event: ChangeEvent<HTMLInputElement>) => {
-    onSpecificFieldChange(event);
+    onFormFieldChange(event);
 
     if (onChange) {
       onChange();
