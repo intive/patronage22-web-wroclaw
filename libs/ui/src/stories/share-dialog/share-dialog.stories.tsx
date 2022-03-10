@@ -34,9 +34,7 @@ const ShareDialogTemplate = (args: { id: string; title: string }) => {
         {t("sharePresentation")}
       </Button>
       <ShareDialog open={open} onClose={handleClose} id={id} title={title} />
-      <Box sx={{ justifyContent: "center", display: "flex" }}>
-        <Notifications />
-      </Box>
+      <Notifications />
     </Box>
   );
 };

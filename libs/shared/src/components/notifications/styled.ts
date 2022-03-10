@@ -7,6 +7,5 @@ export const NotificationSnackbar = styled(Snackbar)(() => ({
 
 export const NotificationsStack = styled(Stack)(({ theme }) => ({
   position: "absolute",
-  padding: theme.spacing(1),
-  bottom: 0
+  padding: theme.spacing(1)
 }));
