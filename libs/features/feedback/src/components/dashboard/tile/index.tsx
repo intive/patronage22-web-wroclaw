@@ -1,10 +1,13 @@
 import CloseIcon from "@mui/icons-material/Close";
-import { Box, Card, Typography } from "@mui/material";
+import { Box, CardProps, Typography } from "@mui/material";
 import { BaseButton, ButtonType, FeedbackRoute, LocalizedLink, Presentation } from "@patronage-web/shared";
 import { useTranslation } from "react-i18next";
 
 import * as Styled from "./styled";
 
+export interface DashboardCardProps extends CardProps {
+  isPublic: boolean;
+}
 export const DashboardTile: React.FC<Presentation> = ({ id, isPublic, title, description, status }) => {
   const { t } = useTranslation();
 
@@ -15,7 +18,7 @@ export const DashboardTile: React.FC<Presentation> = ({ id, isPublic, title, des
 
   return (
     <Styled.DashboardTileContainer>
-      <Card className={isPublic ? "public" : ""}>
+      <Styled.BorderCard isPublic={isPublic}>
         <Styled.DashboardTileHeader
           title={<Typography noWrap>{title}</Typography>}
           subheader={
@@ -44,7 +47,7 @@ export const DashboardTile: React.FC<Presentation> = ({ id, isPublic, title, des
             </LocalizedLink>
           </Box>
         </Styled.DashboardTileButtonContainer>
-      </Card>
+      </Styled.BorderCard>
     </Styled.DashboardTileContainer>
   );
 };

@@ -1,5 +1,7 @@
-import { Box, CardActions, CardHeader } from "@mui/material";
+import { Box, Card, CardActions, CardHeader } from "@mui/material";
 import { styled } from "@mui/material/styles";
+
+import { DashboardCardProps } from "./index";
 
 export const DashboardTileHeader = styled(CardHeader)(({ theme }) => ({
   height: theme.spacing(15),
@@ -22,10 +24,10 @@ export const DashboardTileButtonContainer = styled(CardActions)(({ theme }) => (
 }));
 
 export const DashboardTileContainer = styled(Box)(({ theme }) => ({
-  "& .public": {
-    border: "2px solid blue"
-  },
-
   minWidth: "min-content",
   margin: theme.spacing(1)
+}));
+
+export const BorderCard = styled(Card)<DashboardCardProps>(props => ({
+  border: props.isPublic ? "2px solid blue" : ""
 }));
