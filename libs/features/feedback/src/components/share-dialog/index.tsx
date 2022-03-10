@@ -9,7 +9,6 @@ import {
   TranslationNamespace,
   useClipboardCopy
 } from "@patronage-web/shared";
-import React from "react";
 import { useTranslation } from "react-i18next";
 import QRCode from "react-qr-code";
 
