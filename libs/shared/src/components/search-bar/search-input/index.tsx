@@ -19,6 +19,7 @@ interface SearchInputProps {
 
 export const SearchInput: React.FC<SearchInputProps> = ({ onChange, onClick, autoFocus, disabled, customStyles }) => {
   const { t } = useTranslation();
+  const maxValidationLength = SEARCH_CONFIG.maxLength - 1;
 
   return (
     <Styled.SearchInputBase
@@ -48,10 +49,7 @@ export const SearchInput: React.FC<SearchInputProps> = ({ onChange, onClick, aut
         }
       ]}
       validationSchema={{
-        searchInput: string().max(
-          SEARCH_CONFIG.maxValidationLength,
-          t("search.maxCharLength", { charAmount: SEARCH_CONFIG.maxLength })
-        )
+        searchInput: string().max(maxValidationLength, t("search.maxCharLength", { charAmount: SEARCH_CONFIG.maxLength }))
       }}
     />
   );
