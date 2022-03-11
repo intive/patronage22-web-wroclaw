@@ -3526,7 +3526,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@reduxjs/toolkit@npm:^1.7.2":
+"@reduxjs/toolkit@npm:^1.8.0":
   version: 1.8.0
   resolution: "@reduxjs/toolkit@npm:1.8.0"
   dependencies:
@@ -3639,6 +3639,18 @@ __metadata:
     estree-walker: ^2.0.1
     picomatch: ^2.2.2
   checksum: 498d67e7b48c707e3e0d9f7ddaa405833d77575b2d9607cd1914be40455ed534235e0512f9d046bf0e4ed1740e7816fd32ab1c673195e897c4fa180bcbfd7283
+  languageName: node
+  linkType: hard
+
+"@rtk-query/graphql-request-base-query@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "@rtk-query/graphql-request-base-query@npm:2.0.1"
+  dependencies:
+    graphql-request: ^4.0.0
+  peerDependencies:
+    "@reduxjs/toolkit": ^1.7.1
+    graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
+  checksum: 8684ec821536aa55b1db25c0ebc0e5d413a3d2fd0e259f15f010ea2dc588f5d8f451e67d01cf2c63c2ae35b0c8e2e1bb34e0a6d53655ae7b837f7b434de7f61c
   languageName: node
   linkType: hard
 
@@ -9364,7 +9376,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cross-fetch@npm:3.1.5":
+"cross-fetch@npm:3.1.5, cross-fetch@npm:^3.0.6":
   version: 3.1.5
   resolution: "cross-fetch@npm:3.1.5"
   dependencies:
@@ -11458,6 +11470,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"extract-files@npm:^9.0.0":
+  version: 9.0.0
+  resolution: "extract-files@npm:9.0.0"
+  checksum: c31781d090f8d8f62cc541f1023b39ea863f24bd6fb3d4011922d71cbded70cef8191f2b70b43ec6cb5c5907cdad1dc5e9f29f78228936c10adc239091d8ab64
+  languageName: node
+  linkType: hard
+
 "extract-zip@npm:2.0.1":
   version: 2.0.1
   resolution: "extract-zip@npm:2.0.1"
@@ -12617,6 +12636,26 @@ __metadata:
   version: 4.2.9
   resolution: "graceful-fs@npm:4.2.9"
   checksum: 68ea4e07ff2c041ada184f9278b830375f8e0b75154e3f080af6b70f66172fabb4108d19b3863a96b53fc068a310b9b6493d86d1291acc5f3861eb4b79d26ad6
+  languageName: node
+  linkType: hard
+
+"graphql-request@npm:^4.0.0, graphql-request@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "graphql-request@npm:4.1.0"
+  dependencies:
+    cross-fetch: ^3.0.6
+    extract-files: ^9.0.0
+    form-data: ^3.0.0
+  peerDependencies:
+    graphql: 14 - 16
+  checksum: 347f3bb943d8f734f152765cbe507a287333d0f477b6912f4745addd4d1160cd171db3d629c7bac5c8ec627cd989c7bdf0407b32e3545808397fc791e65bfbcf
+  languageName: node
+  linkType: hard
+
+"graphql@npm:^16.3.0":
+  version: 16.3.0
+  resolution: "graphql@npm:16.3.0"
+  checksum: ba540641e9cd2a8de5b989ff1433b015f232fa73aaef478d6709c1339cd43113347917acb965a5799c004667687852fc8ff0cfaa935eb26374c91c1fd7fdaeb1
   languageName: node
   linkType: hard
 
@@ -17576,7 +17615,8 @@ __metadata:
     "@nrwl/tao": 13.3.11
     "@nrwl/web": 13.3.11
     "@nrwl/workspace": 13.3.11
-    "@reduxjs/toolkit": ^1.7.2
+    "@reduxjs/toolkit": ^1.8.0
+    "@rtk-query/graphql-request-base-query": ^2.0.1
     "@storybook/addon-essentials": ~6.4.5
     "@storybook/builder-webpack5": ~6.4.5
     "@storybook/manager-webpack5": ~6.4.5
@@ -17618,6 +17658,8 @@ __metadata:
     eslint-plugin-unused-imports: ^2.0.0
     file-loader: ^6.2.0
     fuse.js: ^6.5.3
+    graphql: ^16.3.0
+    graphql-request: ^4.1.0
     html-loader: ^3.1.0
     i18next: ^21.6.7
     i18next-browser-languagedetector: ^6.1.2
