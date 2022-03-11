@@ -13,5 +13,7 @@
   "include": ["../**/*"],
   "compilerOptions": {
     "outDir": ""
-  }
+  },
+
+"files": ["../tools/globals/typings/theme.d.ts"]
 }
