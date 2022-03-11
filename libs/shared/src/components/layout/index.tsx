@@ -1,5 +1,6 @@
 import { Footer, FooterProps } from "../footer";
 import { Navbar, NavbarProps } from "../navbar";
+import { Notifications } from "../notifications";
 import * as Styled from "./style";
 
 export interface LayoutProps {
@@ -9,6 +10,7 @@ export interface LayoutProps {
 
 export const Layout: React.FC<LayoutProps> = ({ children, navbarConfig, footerConfig }) => (
   <Styled.LayoutBox>
+    <Notifications />
     <Navbar color='inherit' position='sticky' config={navbarConfig} />
     <Styled.ContentBox>{children}</Styled.ContentBox>
     <Footer color='inherit' position='static' config={footerConfig} />
