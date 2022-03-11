@@ -6,7 +6,7 @@
   "save": "Zapisz",
   "submit": "Zatwierdź",
   "cancel": "Anuluj",
-  "noDataMessage": "Brak danych",
+  "noItems": "Brak elementów",
   "notFoundPage": {
     "title": "Przepraszamy, strona, której szukasz nie istnieje"
   },

@@ -6,7 +6,7 @@
   "save": "Save",
   "submit": "Submit",
   "cancel": "Cancel",
-  "noDataMessage": "No data available",
+  "noItems": "No items",
   "notFoundPage": {
     "title": "We are sorry, the page you're looking for doesn't exist"
   },

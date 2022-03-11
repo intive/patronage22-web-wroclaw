@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Typography } from "@mui/material";
 import { isEqual } from "lodash-es";
@@ -85,7 +84,7 @@ export const Form: React.FC<FormProps> = ({
 
     return (
       <Typography id='no-data-placeholder' variant='h4'>
-        {placeholder || t("noDataMessage")}
+        {placeholder || t("noItems")}
       </Typography>
     );
   };

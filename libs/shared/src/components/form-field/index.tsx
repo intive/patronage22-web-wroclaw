@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import { StandardTextFieldProps } from "@mui/material";
 import { ChangeEvent, MouseEvent } from "react";
 import { FieldValues, useController, UseControllerProps, UseFormStateReturn } from "react-hook-form";
@@ -58,7 +57,7 @@ export const FormField: React.FC<FormFieldProps> = ({
       {renderField({
         type,
         name,
-        onFieldChange,
+        onChange: onFieldChange,
         onClick,
         variant,
         errors: fieldErrors,
