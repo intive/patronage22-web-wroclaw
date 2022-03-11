@@ -1,5 +1,6 @@
 {
   "hello": "Hello",
-  "samle message": "Sample message",
+  "sampleText": "Sample text",
+  "sampleMessage": "Sample message",
   "sharePresentation": "Share presentation"
 }

@@ -6,7 +6,6 @@ import {
   FeedbackRoute,
   getDomainName,
   QR_CODE_SIZE,
-  TranslationNamespace,
   useClipboardCopy
 } from "@patronage-web/shared";
 import { useTranslation } from "react-i18next";
@@ -37,11 +36,9 @@ export const ShareDialog: React.FC<ShareDialogProps> = ({ open, onClose, id, tit
       <Styled.IconBox>
         <Styled.ShareIcon />
       </Styled.IconBox>
-      <Styled.ShareDialogTitle>{t("sharePresentation", { ns: TranslationNamespace.Feedback })}</Styled.ShareDialogTitle>
+      <Styled.ShareDialogTitle>{t("sharePresentation")}</Styled.ShareDialogTitle>
       <DialogContent>
-        <Styled.ShareDialogContentText>
-          {t("shareDialogMessage", { name: title, ns: TranslationNamespace.Feedback })}
-        </Styled.ShareDialogContentText>
+        <Styled.ShareDialogContentText>{t("shareDialogMessage", { name: title })}</Styled.ShareDialogContentText>
         <Styled.LinkTypography>{link}</Styled.LinkTypography>
         <Styled.QRCodeBox>
           <QRCode value={link} size={QR_CODE_SIZE} />
@@ -49,10 +46,10 @@ export const ShareDialog: React.FC<ShareDialogProps> = ({ open, onClose, id, tit
       </DialogContent>
       <DialogActions>
         <BaseButton type={ButtonType.Basic} onClick={onClose}>
-          {t("cancel", { ns: TranslationNamespace.Common })}
+          {t("cancel")}
         </BaseButton>
         <BaseButton type={ButtonType.Basic} variant='contained' onClick={handleCopyBtnClick}>
-          {t("copyLink", { ns: TranslationNamespace.Common })}
+          {t("copyLink")}
         </BaseButton>
       </DialogActions>
     </Styled.BasicShareDialog>

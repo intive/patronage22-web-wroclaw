@@ -23,7 +23,7 @@ export default {
 const NotificationTemplate: ComponentStory<typeof Notification> = (args: { type: NotificationType }) => {
   const { t } = useTranslation();
   const id = uuidv4();
-  const message = t("sample message");
+  const message = t("sampleMessage");
   const { type } = args;
   return <Notification id={id} message={message} type={type} key={id} />;
 };

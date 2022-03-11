@@ -8,6 +8,7 @@ import { NotificationType } from "../types";
 export const useClipboardCopy = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
+
   const onSuccess = () =>
     dispatch(
       addNotification([

@@ -4,14 +4,14 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { NotificationType } from "../../../types";
 import { SiteSliceName } from "../types";
 
-export interface NotificationProps {
+export interface NotificationInterface {
   id: string;
   type: NotificationType;
   message: string;
 }
 
 export interface NotificationStateInterface {
-  items: NotificationProps[];
+  items: NotificationInterface[];
 }
 
 const initialState: NotificationStateInterface = {
@@ -22,10 +22,10 @@ export const notificationSlice = createSlice({
   name: SiteSliceName.Notification,
   initialState,
   reducers: {
-    addNotification: (state, action: PayloadAction<NotificationProps[]>) => {
+    addNotification: (state, action: PayloadAction<NotificationInterface[]>) => {
       state.items = [...state.items, ...action.payload];
     },
-    removeNotification: (state, action: PayloadAction<NotificationProps[]>) => {
+    removeNotification: (state, action: PayloadAction<NotificationInterface[]>) => {
       state.items = state.items.filter(item => !action.payload.some(element => element.id === item.id));
     }
   }
