@@ -4,17 +4,17 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { NotificationType } from "../../../types";
 import { SiteSliceName } from "../types";
 
-export interface NotificationInterface {
+export interface Notification {
   id: string;
   type: NotificationType;
   message: string;
 }
 
-export interface NotificationStateInterface {
-  items: NotificationInterface[];
+export interface NotificationState {
+  items: Notification[];
 }
 
-const initialState: NotificationStateInterface = {
+const initialState: NotificationState = {
   items: []
 };
 
@@ -22,10 +22,10 @@ export const notificationSlice = createSlice({
   name: SiteSliceName.Notification,
   initialState,
   reducers: {
-    addNotification: (state, action: PayloadAction<NotificationInterface[]>) => {
+    addNotification: (state, action: PayloadAction<Notification[]>) => {
       state.items = [...state.items, ...action.payload];
     },
-    removeNotification: (state, action: PayloadAction<NotificationInterface[]>) => {
+    removeNotification: (state, action: PayloadAction<Notification[]>) => {
       state.items = state.items.filter(item => !action.payload.some(element => element.id === item.id));
     }
   }

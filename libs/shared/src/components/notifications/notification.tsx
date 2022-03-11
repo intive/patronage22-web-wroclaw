@@ -3,11 +3,11 @@ import { SyntheticEvent } from "react";
 import { useDispatch } from "react-redux";
 
 import { SNACKBAR_AUTO_HIDE_DURATION } from "../../constants";
-import { NotificationInterface, removeNotification } from "../../data";
+import { Notification as NotificationProps, removeNotification } from "../../data";
 import { NotificationType } from "../../types";
 import * as Styled from "./styled";
 
-export const Notification: React.FC<NotificationInterface> = ({ id, type, message }) => {
+export const Notification: React.FC<NotificationProps> = ({ id, type, message }) => {
   const dispatch = useDispatch();
 
   const handleClose = (event: Event | SyntheticEvent<Element, Event>, reason: SnackbarCloseReason) => {
