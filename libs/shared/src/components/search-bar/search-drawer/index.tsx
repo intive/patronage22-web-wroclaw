@@ -1,7 +1,6 @@
 import CloseIcon from "@mui/icons-material/Close";
-import { Drawer } from "@mui/material";
 import Fuse from "fuse.js";
-import { ChangeEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { AppRouteType, TranslationNamespace } from "../../../types";
@@ -29,17 +28,32 @@ export const SearchDrawer: React.FC<SearchDrawerProps> = ({ open, onClose, searc
 
   const [searchPhrase, setSearchPhrase] = useState("");
 
-  const searchResultsInformation = searchPhrase.length < SEARCH_CONFIG.minMatch ? "tooShortPhrase" : "noResultsInfo";
-  const charAmount = SEARCH_CONFIG.minMatch;
-
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSearchPhrase(event.target.value);
+  const handleInputChange = (value?: string) => {
+    setSearchPhrase(value ?? "");
   };
 
   const handleCloseDrawer = () => {
     setSearchPhrase("");
     onClose();
   };
+
+  const searchResultsInformation = searchPhrase.length < SEARCH_CONFIG.minMatch ? "minCharLength" : "noResultsInfo";
+
+  const resultsButton = (
+    <Styled.SearchResultsBtnBox>
+      <BaseButton type={ButtonType.Basic} onClick={handleCloseDrawer} disabled={!currentItems.length}>
+        {t("search.showResultsButton")}
+      </BaseButton>
+    </Styled.SearchResultsBtnBox>
+  );
+
+  const allResultsButton = currentItems.length ? (
+    <LocalizedLink to={toResult} searchPhrase={searchPhrase}>
+      {resultsButton}
+    </LocalizedLink>
+  ) : (
+    resultsButton
+  );
 
   useEffect(() => {
     setCurrentItems(
@@ -48,11 +62,16 @@ export const SearchDrawer: React.FC<SearchDrawerProps> = ({ open, onClose, searc
   }, [searchPhrase, searchKey]);
 
   return (
-    <Drawer anchor='top' open={open} onClose={handleCloseDrawer} variant='temporary'>
+    <Styled.SearchDrawer anchor='top' open={open} onClose={handleCloseDrawer} variant='temporary'>
       <Styled.SearchDrawerHeader>
         <Styled.InputBoxWrapper>
-          <SearchInput onChange={handleInputChange} autoFocus />
+          <SearchInput
+            onChange={handleInputChange}
+            autoFocus
+            customStyles={theme => ({ [theme.breakpoints.down("sm")]: { backgroundColor: "inherit" } })}
+          />
         </Styled.InputBoxWrapper>
+
         <Styled.CloseSearchBtnWrapper>
           <BaseButton type={ButtonType.Icon} onClick={handleCloseDrawer}>
             <CloseIcon />
@@ -64,15 +83,11 @@ export const SearchDrawer: React.FC<SearchDrawerProps> = ({ open, onClose, searc
         {currentItems.map(item => (
           <SearchItem onClose={handleCloseDrawer} item={item.item} key={item.item.id} toResult={toItem} />
         ))}
-        {!currentItems.length && <Styled.Paragraph>{t(`search.${searchResultsInformation}`, { charAmount })}</Styled.Paragraph>}
-        <LocalizedLink to={toResult} searchPhrase={searchPhrase}>
-          <Styled.SearchResultsBtnBox>
-            <BaseButton type={ButtonType.Basic} onClick={handleCloseDrawer}>
-              {t("search.showResultsButton")}
-            </BaseButton>
-          </Styled.SearchResultsBtnBox>
-        </LocalizedLink>
+        {!currentItems.length && (
+          <Styled.Paragraph>{t(`search.${searchResultsInformation}`, { charAmount: SEARCH_CONFIG.minMatch })}</Styled.Paragraph>
+        )}
+        {allResultsButton}
       </Styled.SearchDrawerContentBox>
-    </Drawer>
+    </Styled.SearchDrawer>
   );
 };
