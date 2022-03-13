@@ -16,14 +16,14 @@ export const BasicPresentationInfo: React.FC = () => {
           type: FormFieldType.Text,
           name: "title",
           variant: "standard",
-          defaultValue: t("newPresentation")
+          placeholder: t("newPresentation")
         },
         {
           type: FormFieldType.Text,
           name: "description",
           variant: "standard",
           defaultValue: "",
-          label: t("description")
+          placeholder: t("description")
         }
       ]}
       validationSchema={{

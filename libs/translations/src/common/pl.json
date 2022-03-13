@@ -6,14 +6,14 @@
     "feedback-external": "Uczestnik Ankiety"
   },
   "homepage": {
-    "newPresentationDescription": "Tymczasowy tekst komponentu ActionCard do tworzenia nowych ankiet z poziomu widoku Homepage",
-    "newPresentationButton": "Nowa ankieta"
+    "newPresentationButton": "Nowa ankieta",
+    "newPresentationDescription": "Tymczasowy tekst komponentu ActionCard do tworzenia nowych ankiet z poziomu widoku Homepage"
   },
   "intive": {
-    "name": "Intive",
-    "wroclaw": "Wrocław",
     "address": "Piłsudskiego 69, 50-019 Wrocław",
-    "phone": "+48 71 769 59 00"
+    "name": "Intive",
+    "phone": "+48 71 769 59 00",
+    "wroclaw": "Wrocław"
   },
   "linkCopied": "Skopiowano link",
   "linkCopyingFailed": "Kopiowanie linku nie powiodło się!",

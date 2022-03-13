@@ -6,14 +6,14 @@
     "feedback-external": "Survey Participant"
   },
   "homepage": {
-    "newPresentationDescription": "Placeholder text for ActionCard to create new presentation on Homepage",
-    "newPresentationButton": "New presentation"
+    "newPresentationButton": "New presentation",
+    "newPresentationDescription": "Placeholder text for ActionCard to create new presentation on Homepage"
   },
   "intive": {
-    "name": "Intive",
-    "wroclaw": "Wroclaw",
     "address": "Pilsudskiego 69, 50-019 Wroclaw",
-    "phone": "+48 71 769 59 00"
+    "name": "Intive",
+    "phone": "+48 71 769 59 00",
+    "wroclaw": "Wroclaw"
   },
   "linkCopied": "Link copied",
   "linkCopyingFailed": "Link copying failed!",

@@ -15,6 +15,7 @@ export interface FormFieldProps extends Pick<UseControllerProps, "name" | "defau
   label?: string;
   helperText?: string;
   hideEditIcon?: boolean;
+  placeholder?: string;
   onChange?: () => void;
 }
 
@@ -28,6 +29,7 @@ export const FormField: React.FC<FormFieldProps> = ({
   label,
   helperText,
   hideEditIcon,
+  placeholder,
   onChange
 }: FormFieldProps) => {
   const {
@@ -47,7 +49,7 @@ export const FormField: React.FC<FormFieldProps> = ({
 
   return (
     <Styled.Field>
-      {renderField({ type, name, value, handleChange, variant, errors: fieldErrors, label, rows })}
+      {renderField({ type, name, value, handleChange, variant, errors: fieldErrors, label, rows, placeholder })}
       {!hideEditIcon && <Edit />}
       {renderHelperText(fieldErrors, helperText)}
     </Styled.Field>
