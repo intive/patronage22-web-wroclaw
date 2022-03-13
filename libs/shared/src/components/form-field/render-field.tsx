@@ -3,46 +3,61 @@ import { ChangeEvent } from "react";
 import { FieldValues, UseFormStateReturn } from "react-hook-form";
 
 import { FormFieldType } from "../../types";
+import { FormFieldProps } from "./index";
 
 const DEFAULT_ROWS_NUMBER = 4;
 
 export type FormTextFieldVariant = "standard" | "filled" | "outlined";
 
-interface RenderFieldProps {
-  type: FormFieldType;
+interface RenderFieldProps extends Omit<FormFieldProps, "helperText" | "onChange"> {
   name: string;
-  value: unknown;
-  handleChange: (event: ChangeEvent) => void;
-  variant?: FormTextFieldVariant;
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   errors: UseFormStateReturn<FieldValues>["errors"];
-  label?: string;
-  rows?: number;
 }
 
 export const renderField = ({
   type,
   name,
-  value,
-  handleChange,
+  onChange,
+  onClick,
   variant = "outlined",
   errors,
   label,
+  placeholder,
+  inputConfig,
+  autoFocus,
+  disabled,
   rows = DEFAULT_ROWS_NUMBER
 }: RenderFieldProps) => {
   const field: Record<FormFieldType, JSX.Element> = {
     [FormFieldType.Text]: (
-      <TextField name={name} value={value} onChange={handleChange} variant={variant} error={!!errors} label={label} />
+      <TextField
+        name={name}
+        onChange={onChange}
+        variant={variant}
+        error={!!errors}
+        label={label}
+        onClick={onClick}
+        disabled={disabled}
+        InputProps={inputConfig}
+        placeholder={placeholder}
+        autoFocus={autoFocus}
+      />
     ),
     [FormFieldType.Textarea]: (
       <TextField
         name={name}
-        value={value}
-        onChange={handleChange}
+        onChange={onChange}
         variant={variant}
         multiline
         error={!!errors}
         label={label}
         rows={rows}
+        onClick={onClick}
+        disabled={disabled}
+        InputProps={inputConfig}
+        placeholder={placeholder}
+        autoFocus={autoFocus}
       />
     )
   };

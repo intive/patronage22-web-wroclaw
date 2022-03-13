@@ -1,6 +1,6 @@
 const rootMain = require("../../../.storybook/main");
-const path = require('path');
-const toPath = (filePath) => path.join(process.cwd(), filePath);
+const path = require("path");
+const toPath = filePath => path.join(process.cwd(), filePath);
 
 module.exports = {
   ...rootMain,
@@ -22,10 +22,10 @@ module.exports = {
         ...config.resolve,
         alias: {
           ...config.resolve.alias,
-          '@emotion/core': toPath('node_modules/@emotion/react'),
-          'emotion-theming': toPath('node_modules/@emotion/react'),
-        },
-      },
+          "@emotion/core": toPath("node_modules/@emotion/react"),
+          "emotion-theming": toPath("node_modules/@emotion/react")
+        }
+      }
     };
   }
 };
