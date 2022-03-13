@@ -1,4 +1,10 @@
 {
+  "cancel": "Cancel",
+  "copyLink": "Copy link",
+  "featureNames": {
+    "feedback": "Survey Maker",
+    "feedback-external": "Survey Participant"
+  },
   "homepage": {
     "newPresentationDescription": "Placeholder text for ActionCard to create new presentation on Homepage",
     "newPresentationButton": "New presentation"
@@ -14,9 +20,6 @@
     "loginWith": "Log in with"
   },
   "password": "Password",
-  "save": "Save",
-  "submit": "Submit",
-  "cancel": "Cancel",
   "noData": "No data available",
   "notFoundPage": {
     "title": "We are sorry, the page you're looking for doesn't exist"
@@ -27,12 +30,12 @@
     "address": "Pilsudskiego 69, 50-019 Wroclaw",
     "phone": "+48 71 769 59 00"
   },
-  "featureNames": {
-    "feedback": "Survey Maker",
-    "feedback-external": "Survey Participant"
-  },
+  "linkCopied": "Link copied",
+  "linkCopyingFailed": "Link copying failed!",
+  "save": "Save",
   "search": {
     "noResultsInfo": "No results found...",
     "tooShortPhrase": "Please enter at least {{charAmount}} characters"
-  }
+  },
+  "submit": "Submit"
 }

@@ -15,6 +15,10 @@ export const dark = createTheme({
     mode: ThemeMode.Dark,
     primary: { main: grey[100], light: grey[50], dark: grey[300] },
     background: { default: grey[900], paper: grey[800] }
+  },
+  dialog: {
+    iconBackgroundColor: grey[600],
+    iconColor: grey[200]
   }
 });
 
@@ -24,5 +28,9 @@ export const light = createTheme({
     mode: ThemeMode.Light,
     primary: { main: grey[800], light: grey[600], dark: grey[900] },
     background: { default: common.white, paper: "#f7f7f7" }
+  },
+  dialog: {
+    iconBackgroundColor: grey[300],
+    iconColor: grey[700]
   }
 });

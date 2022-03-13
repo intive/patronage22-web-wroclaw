@@ -10,6 +10,6 @@
     "allowSyntheticDefaultImports": true,
     "module": "commonjs"
   },
-  "files": ["../../../tools/globals/typings/image.d.ts"],
+  "files": ["../../../tools/globals/typings/image.d.ts", "../../../tools/globals/typings/theme.d.ts"],
   "include": ["src/**/*.ts", "src/**/*.js"]
 }
