@@ -24,8 +24,8 @@
   "save": "Save",
   "search": {
     "noResultsInfo": "No results found...",
-    "minCharLength": "Please enter at least {{charAmount}} characters",
-    "maxCharLength": "Maximum number of characters exceeded ({{charAmount}})"
+    "minCharLength": "Required number of characters: {{charAmount}}",
+    "maxCharLength": "Maximum number of characters exceeded: {{charAmount}}"
   },
   "submit": "Submit"
 }
