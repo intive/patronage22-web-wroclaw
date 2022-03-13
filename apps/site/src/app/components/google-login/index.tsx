@@ -1,10 +1,9 @@
 import { Google } from "@mui/icons-material";
-import { BaseRoute, createPath, FormFieldType, REGEX_GMAIL_VALIDATION } from "@patronage-web/shared";
+import { BaseRoute, createPath, FormFieldType, LinkedText, REGEX_GMAIL_VALIDATION } from "@patronage-web/shared";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { string } from "yup";
 
-import { ForgotPasswordLink } from "./forgot-password-link";
 import * as Styled from "./styled";
 
 export const GoogleLogin: React.FC = () => {
@@ -37,7 +36,7 @@ export const GoogleLogin: React.FC = () => {
               description: t("password"),
               disabled: true,
               hideEditIcon: true,
-              appendix: <ForgotPasswordLink variant='subtitle2' route={BaseRoute.Home} text={t("login.forgotPassword")} />
+              appendix: <LinkedText variant='subtitle2' route={BaseRoute.Home} text={t("login.forgotPassword")} />
             }
           ]}
           validationSchema={{

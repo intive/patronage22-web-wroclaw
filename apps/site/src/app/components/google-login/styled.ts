@@ -35,7 +35,13 @@ export const LoginGoogleForm = styled(Form)(({ theme }) => ({
   margin: 0,
 
   "& .MuiFormControl-root": {
-    margin: theme.spacing(0)
+    margin: 0,
+    flexGrow: 1,
+    maxWidth: "90%",
+
+    "& input": {
+      padding: theme.spacing(1, 1.5)
+    }
   },
 
   "& .MuiTypography-root:nth-of-type(2)": {
@@ -46,5 +52,9 @@ export const LoginGoogleForm = styled(Form)(({ theme }) => ({
     display: "inline-block",
     color: theme.palette.info.main,
     marginBottom: theme.spacing(3)
+  },
+
+  "& button": {
+    maxWidth: "90%"
   }
 }));

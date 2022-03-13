@@ -2,7 +2,7 @@ import { TextField } from "@mui/material";
 import { ChangeEvent } from "react";
 import { FieldValues, UseFormStateReturn } from "react-hook-form";
 
-import { FormFieldType } from "../../types";
+import { FormFieldType } from "../../../types";
 
 const DEFAULT_ROWS_NUMBER = 4;
 

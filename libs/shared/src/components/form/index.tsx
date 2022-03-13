@@ -8,7 +8,7 @@ import * as yup from "yup";
 import { ObjectShape } from "yup/lib/object";
 
 import { BaseButton, ButtonType } from "../base-button";
-import { FormField, FormFieldProps } from "../form-field";
+import { FormField, FormFieldProps } from "./form-field";
 import * as Styled from "./styled";
 
 interface FormButton {

@@ -1,13 +1,15 @@
 import { Typography, TypographyVariant } from "@mui/material";
-import { AppRouteType, LocalizedLink } from "@patronage-web/shared";
 
-interface ForgotPasswordButtonProps {
+import { AppRouteType } from "../../types";
+import { LocalizedLink } from "../localized-link";
+
+interface LinkedTextProps {
   variant: TypographyVariant;
   route: AppRouteType;
   text: string;
 }
 
-export const ForgotPasswordLink: React.FC<ForgotPasswordButtonProps> = ({ variant, route, text }) => (
+export const LinkedText: React.FC<LinkedTextProps> = ({ variant, route, text }) => (
   <LocalizedLink to={route}>
     <Typography variant={variant}>{text}</Typography>
   </LocalizedLink>

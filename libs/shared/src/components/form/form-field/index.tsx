@@ -4,7 +4,7 @@ import { Typography } from "@mui/material";
 import { ChangeEvent, ReactNode } from "react";
 import { FieldValues, useController, UseControllerProps, UseFormStateReturn } from "react-hook-form";
 
-import { FormFieldType } from "../../types";
+import { FormFieldType } from "../../../types";
 import { FormTextFieldVariant, renderField } from "./render-field";
 import { renderHelperText } from "./render-helper-text";
 import * as Styled from "./styled";
