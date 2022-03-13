@@ -13,12 +13,6 @@ interface RenderFieldProps extends Omit<FormFieldProps, "helperText" | "onChange
   name: string;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   errors: UseFormStateReturn<FieldValues>["errors"];
-<<<<<<< HEAD
-  label?: string;
-  rows?: number;
-  placeholder?: string;
-=======
->>>>>>> develop
 }
 
 export const renderField = ({
