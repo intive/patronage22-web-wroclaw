@@ -24,8 +24,8 @@
   "save": "Zapisz",
   "search": {
     "noResultsInfo": "Brak wyników...",
-    "minCharLength": "Minimalna wymagana ilość znaków: {{charAmount}}",
-    "maxCharLength": "Przekroczono maksymalną ilość znaków: {{charAmount}}"
+    "maxCharLength": "Przekroczono maksymalną ilość znaków: {{charAmount}}",
+    "minCharLength": "Minimalna wymagana ilość znaków: {{charAmount}}"  
   },
   "submit": "Zatwierdź"
 }

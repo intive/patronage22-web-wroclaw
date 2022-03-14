@@ -6,11 +6,11 @@
   "description": "Opis",
   "missingTitleError": "Tytuł nie może być pusty",
   "newPresentation": "Nowa prezentacja",
-  "shareDialogMessage": "Gratulacje, Twoja prezentacja: {{name}} właśnie się rozpoczęła, użyj poniższego linku, aby ją udostępnić!",
-  "sharePresentation": "Udostępnij prezentację",
   "search": {
     "searchAriaLabel": "Szukaj",
     "searchbarPlaceholder": "Szukaj prezentacji",
     "showResultsButton": "Pokaż wszystkie wyniki..."
-  }
+  },
+  "shareDialogMessage": "Gratulacje, Twoja prezentacja: {{name}} właśnie się rozpoczęła, użyj poniższego linku, aby ją udostępnić!",
+  "sharePresentation": "Udostępnij prezentację"
 }

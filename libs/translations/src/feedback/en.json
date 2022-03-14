@@ -6,11 +6,11 @@
   "description": "Description",
   "missingTitleError": "Title cannot be empty",
   "newPresentation": "New presentation",
-  "shareDialogMessage": "Congratulations, your presentation: {{name}} just started, use the link below to share it!",
-  "sharePresentation": "Share presentation",
   "search": {
     "searchAriaLabel": "Search",
     "searchbarPlaceholder": "Search presentations",
     "showResultsButton": "Show all results..."  
-  }
+  },
+  "shareDialogMessage": "Congratulations, your presentation: {{name}} just started, use the link below to share it!",
+  "sharePresentation": "Share presentation"
 }
