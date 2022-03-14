@@ -7,13 +7,5 @@ export const DashboardStory: React.FC = () => {
 
 export default {
   title: "FeedbackDashboard",
-  component: DashboardStory,
-  args: {},
-  decorators: [
-    Story => (
-      <div>
-        <Story />
-      </div>
-    )
-  ]
+  component: DashboardStory
 } as ComponentMeta<typeof DashboardStory>;
