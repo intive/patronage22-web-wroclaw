@@ -2,6 +2,7 @@ import { LinearScale } from "chart.js";
 import Chart from "chart.js/auto";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 
+import { CHART_STYLING } from "./constants";
 import { ChartBar } from "./styled";
 
 interface MyChartProps {
@@ -30,13 +31,13 @@ export const MyChart: React.FC<MyChartProps> = ({ labels, data, title }) => {
           datalabels: {
             anchor: "start",
             align: "top",
-            offset: 1
+            offset: CHART_STYLING.offset
           },
           title: {
             display: true,
             align: "start",
-            font: { size: 16 },
-            padding: { top: 0, bottom: 14 },
+            font: { size: CHART_STYLING.fontSize },
+            padding: { top: CHART_STYLING.paddingTop, bottom: CHART_STYLING.paddingBottom },
             text: title
           },
           legend: {
@@ -45,14 +46,14 @@ export const MyChart: React.FC<MyChartProps> = ({ labels, data, title }) => {
         },
         datasets: {
           bar: {
-            borderRadius: 4,
+            borderRadius: CHART_STYLING.borderRadius,
             backgroundColor: "lightgrey"
           }
         },
         scales: {
           y: {
             display: false,
-            min: -0.5,
+            min: CHART_STYLING.min,
             grid: {
               display: false
             }
@@ -60,7 +61,7 @@ export const MyChart: React.FC<MyChartProps> = ({ labels, data, title }) => {
           x: {
             grid: {
               display: false,
-              borderWidth: 2,
+              borderWidth: CHART_STYLING.borderWidth,
               borderColor: "grey"
             },
             ticks: {
@@ -69,7 +70,7 @@ export const MyChart: React.FC<MyChartProps> = ({ labels, data, title }) => {
           }
         }
       }}
-      height={200}
+      height={CHART_STYLING.height}
     />
   );
 };

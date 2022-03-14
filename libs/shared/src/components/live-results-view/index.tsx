@@ -1,15 +1,18 @@
 import { Dialog } from "@mui/material";
 
+import { Stoper } from "../stoper";
 import { MyChart } from "./chart";
+import * as mocks from "./mocks";
 
-const data = {
-  question: { first: "How many apples?", answers: ["two", "one", "four", "seven"] }
+interface LiveResultsViewProps {
+  isOpen: boolean;
+}
+
+export const LiveResultsView: React.FC<LiveResultsViewProps> = ({ isOpen }) => {
+  return (
+    <Dialog open={isOpen}>
+      <MyChart labels={mocks.data.question.answers} title={mocks.data.question.title} data={mocks.currentAnswers} />
+      <Stoper seconds={5} />
+    </Dialog>
+  );
 };
-
-const currentAnswers = [10, 0, 0, 5];
-
-export const LiveResultsView: React.FC = () => (
-  <Dialog open>
-    <MyChart labels={data.question.answers} title={data.question.first} data={currentAnswers} />
-  </Dialog>
-);
