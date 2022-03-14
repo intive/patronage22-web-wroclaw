@@ -23,9 +23,9 @@
   },
   "save": "Save",
   "search": {
-    "noResultsInfo": "No results found...",
     "maxCharLength": "Maximum number of characters exceeded: {{charAmount}}",
-    "minCharLength": "Minimum number of characters required: {{charAmount}}"
+    "minCharLength": "Minimum number of characters required: {{charAmount}}",
+    "noResultsInfo": "No results found..."
   },
   "submit": "Submit"
 }
