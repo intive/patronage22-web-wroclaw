@@ -42,3 +42,5 @@ Thumbs.db
 *.env
 
 .vercel
+prisma/dev.db
+prisma/dev.db-journal

@@ -3,6 +3,7 @@
   "projects": {
     "features-feedback": "libs/features/feedback",
     "features-feedback-e2e": "libs/features/feedback-e2e",
+    "server": "apps/server",
     "shared": "libs/shared",
     "site": "apps/site",
     "site-e2e": "apps/site-e2e",

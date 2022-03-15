@@ -69,7 +69,8 @@
       "options": {
         "buildTarget": "site:build",
         "hmr": true,
-        "port": 4000
+        "port": 4000,
+        "proxyConfig": "apps/site/proxy.conf.json"
       }
     },
     "test": {

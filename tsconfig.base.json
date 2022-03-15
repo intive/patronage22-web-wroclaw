@@ -30,5 +30,5 @@
       "path": ["./node_modules/path-browserify"]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": ["node_modules", "tmp", "prisma"]
 }
