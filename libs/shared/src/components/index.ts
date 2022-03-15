@@ -1,6 +1,7 @@
 export * from "./action-card";
 export * from "./base-button";
 export * from "./basic-info";
+export * from "./basic-select";
 export * from "./footer";
 export * from "./form";
 export * from "./form-field";
@@ -10,5 +11,6 @@ export * from "./loader";
 export * from "./localized-link";
 export * from "./navbar";
 export * from "./notifications";
+export * from "./pagination";
 export * from "./search-bar";
 export * from "./theme-selector";

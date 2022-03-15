@@ -21,9 +21,14 @@
   "notFoundPage": {
     "title": "We are sorry, the page you're looking for doesn't exist"
   },
+  "pagination": {
+    "show": "Show",
+    "outOf": "out of"
+  },
   "save": "Save",
   "search": {
     "noResultsInfo": "No results found...",
+
     "minCharLength": "Minimum number of characters required: {{charAmount}}",
     "maxCharLength": "Maximum number of characters exceeded: {{charAmount}}"
   },

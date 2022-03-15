@@ -21,6 +21,10 @@
   "notFoundPage": {
     "title": "Przepraszamy, strona, której szukasz nie istnieje"
   },
+  "pagination": {
+    "show": "Pokaż",
+    "outOf": "z"
+  },
   "save": "Zapisz",
   "search": {
     "noResultsInfo": "Brak wyników...",
