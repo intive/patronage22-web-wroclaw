@@ -15,5 +15,6 @@
     "**/*.test.jsx",
     "**/*.spec.jsx",
     "**/*.d.ts"
-  ]
+  ],
+  "files": ["../../tools/globals/typings/theme.d.ts"]
 }

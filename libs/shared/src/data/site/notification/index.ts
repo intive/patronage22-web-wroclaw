@@ -1,3 +1,3 @@
 export * from "./actions";
-export * from "./sample-slice";
+export * from "./notification-slice";
 export * from "./selectors";

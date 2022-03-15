@@ -1,8 +1,6 @@
 {
   "hello": "Hello",
-  "dashboard": {
-    "share": "Share",
-    "end": "End",
-    "edit": "Edit"
-  }
+  "sampleText": "Sample text",
+  "sampleMessage": "Sample message",
+  "sharePresentation": "Share presentation"
 }

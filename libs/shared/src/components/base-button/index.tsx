@@ -11,13 +11,13 @@ export interface BaseButtonProps extends Pick<ButtonProps, "children" | "onClick
   type: ButtonType;
 }
 
-export const BaseButton: React.FC<BaseButtonProps> = ({ children, onClick, type, variant }) => {
+export const BaseButton: React.FC<BaseButtonProps> = ({ children, onClick, type, variant, disabled }) => {
   const { isMobile } = useScreenSize();
   const buttonSize = isMobile ? "small" : "medium";
 
   const types = {
     [ButtonType.Basic]: (
-      <Styled.BasicButton size={buttonSize} onClick={onClick} variant={variant}>
+      <Styled.BasicButton size={buttonSize} onClick={onClick} variant={variant} disabled={disabled}>
         {children}
       </Styled.BasicButton>
     ),

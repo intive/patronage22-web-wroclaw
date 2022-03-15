@@ -1,14 +1,13 @@
 {
+  "cancel": "Cancel",
+  "copyLink": "Copy link",
+  "featureNames": {
+    "feedback": "Survey Maker",
+    "feedback-external": "Survey Participant"
+  },
   "homepage": {
     "newPresentationDescription": "Placeholder text for ActionCard to create new presentation on Homepage",
     "newPresentationButton": "New presentation"
-  },
-  "save": "Save",
-  "submit": "Submit",
-  "cancel": "Cancel",
-  "noData": "No data available",
-  "notFoundPage": {
-    "title": "We are sorry, the page you're looking for doesn't exist"
   },
   "intive": {
     "name": "Intive",
@@ -16,14 +15,19 @@
     "address": "Pilsudskiego 69, 50-019 Wroclaw",
     "phone": "+48 71 769 59 00"
   },
-  "featureNames": {
-    "feedback": "Survey Maker",
-    "feedback-external": "Survey Participant"
+  "linkCopied": "Link copied",
+  "linkCopyingFailed": "Link copying failed!",
+  "noData": "No data available",
+  "notFoundPage": {
+    "title": "We are sorry, the page you're looking for doesn't exist"
   },
+  "save": "Save",
   "search": {
     "noResultsInfo": "No results found...",
-    "tooShortPhrase": "Please enter at least {{charAmount}} characters"
+    "minCharLength": "Minimum number of characters required: {{charAmount}}",
+    "maxCharLength": "Maximum number of characters exceeded: {{charAmount}}"
   },
+  "submit": "Submit",
   "share": "Share",
   "end": "End",
   "edit": "Edit"
