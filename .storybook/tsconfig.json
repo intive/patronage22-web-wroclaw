@@ -15,5 +15,5 @@
     "outDir": ""
   },
 
-"files": ["../tools/globals/typings/theme.d.ts"]
+  "files": ["../tools/globals/typings/theme.d.ts"]
 }

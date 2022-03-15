@@ -26,6 +26,7 @@
         "import/prefer-default-export": "off",
         "no-unused-vars": "error",
         "unused-imports/no-unused-imports": "error",
+        "react/jsx-props-no-spreading": "off",
         "unused-imports/no-unused-vars": [
           "warn",
           {

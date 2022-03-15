@@ -35,7 +35,8 @@
   "save": "Zapisz",
   "search": {
     "noResultsInfo": "Brak wyników...",
-    "tooShortPhrase": "Proszę wprowadzić przynajmniej {{charAmount}} znaki"
+    "minCharLength": "Minimalna wymagana ilość znaków: {{charAmount}}",
+    "maxCharLength": "Przekroczono maksymalną ilość znaków: {{charAmount}}"
   },
   "submit": "Zatwierdź"
 }
