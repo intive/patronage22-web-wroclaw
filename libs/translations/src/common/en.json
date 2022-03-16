@@ -6,37 +6,37 @@
     "feedback-external": "Survey Participant"
   },
   "homepage": {
-    "newPresentationDescription": "Placeholder text for ActionCard to create new presentation on Homepage",
-    "newPresentationButton": "New presentation"
+    "newPresentationButton": "New presentation",
+    "newPresentationDescription": "Placeholder text for ActionCard to create new presentation on Homepage"
   },
+  "intive": {
+    "address": "Pilsudskiego 69, 50-019 Wroclaw",
+    "name": "Intive",
+    "phone": "+48 71 769 59 00",
+    "wroclaw": "Wroclaw"
+  },
+  "linkCopied": "Link copied",
+  "linkCopyingFailed": "Link copying failed!",
   "login": {
-    "title": "Welcome in Patronage App",
-    "subtitle": "Login to your account",
-    "forgotPassword": "Forgot a password?",
-    "emailRequiredMessage": "Please provide your e-mail",
     "emailInvalidMessage": "Invalid e-mail address",
+    "emailRequiredMessage": "Please provide your e-mail",
+    "forgotPassword": "Forgot a password?",
+    "loginWith": "Log in with",
     "notGmailMessage": "E-mail address must be in Google domain 'example@gmail.com'",
-    "tooShortMessage": "Please provide at least 16 characters",
-    "loginWith": "Log in with"
+    "subtitle": "Login to your account",
+    "title": "Welcome in Patronage App",
+    "tooShortMessage": "Please provide at least 16 characters"
   },
-  "password": "Password",
   "noItems": "No items available",
   "notFoundPage": {
     "title": "We are sorry, the page you're looking for doesn't exist"
   },
-  "intive": {
-    "name": "Intive",
-    "wroclaw": "Wroclaw",
-    "address": "Pilsudskiego 69, 50-019 Wroclaw",
-    "phone": "+48 71 769 59 00"
-  },
-  "linkCopied": "Link copied",
-  "linkCopyingFailed": "Link copying failed!",
+  "password": "Password",
   "save": "Save",
   "search": {
-    "noResultsInfo": "No results found...",
+    "maxCharLength": "Maximum number of characters exceeded: {{charAmount}}",
     "minCharLength": "Minimum number of characters required: {{charAmount}}",
-    "maxCharLength": "Maximum number of characters exceeded: {{charAmount}}"
+    "noResultsInfo": "No results found..."
   },
   "submit": "Submit"
 }

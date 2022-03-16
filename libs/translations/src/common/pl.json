@@ -6,37 +6,37 @@
     "feedback-external": "Uczestnik Ankiety"
   },
   "homepage": {
-    "newPresentationDescription": "Tymczasowy tekst komponentu ActionCard do tworzenia nowych ankiet z poziomu widoku Homepage",
-    "newPresentationButton": "Nowa ankieta"
+    "newPresentationButton": "Nowa ankieta",
+    "newPresentationDescription": "Tymczasowy tekst komponentu ActionCard do tworzenia nowych ankiet z poziomu widoku Homepage"
   },
+  "intive": {
+    "address": "Piłsudskiego 69, 50-019 Wrocław",
+    "name": "Intive",
+    "phone": "+48 71 769 59 00",
+    "wroclaw": "Wrocław"
+  },
+  "linkCopied": "Skopiowano link",
+  "linkCopyingFailed": "Kopiowanie linku nie powiodło się!",
   "login": {
-    "title": "Witamy w aplikacji Patronage",
-    "subtitle": "Zaloguj się do swojego konta",
-    "forgotPassword": "Zapomniałeś/aś hasła?",
-    "emailRequiredMessage": "Podaj swój adres e-mail 'example@gmail.com'",
     "emailInvalidMessage": "Nieprawidłowy adres e-mail",
+    "emailRequiredMessage": "Podaj swój adres e-mail 'example@gmail.com'",
+    "forgotPassword": "Zapomniałeś/aś hasła?",
+    "loginWith": "Zaloguj się przez",
     "notGmailMessage": "Adres e-mail musi być w domenie Google 'example@gmail.com'",
-    "tooShortMessage": "Wpisz minimum 16 znaków",
-    "loginWith": "Zaloguj się przez"
+    "subtitle": "Zaloguj się do swojego konta",
+    "title": "Witamy w aplikacji Patronage",
+    "tooShortMessage": "Wpisz minimum 16 znaków"
   },
-  "password": "Hasło",
   "noItems": "Brak elementów do wyświetlenia",
   "notFoundPage": {
     "title": "Przepraszamy, strona, której szukasz nie istnieje"
   },
-  "intive": {
-    "name": "Intive",
-    "wroclaw": "Wrocław",
-    "address": "Piłsudskiego 69, 50-019 Wrocław",
-    "phone": "+48 71 769 59 00"
-  },
-  "linkCopied": "Skopiowano link",
-  "linkCopyingFailed": "Kopiowanie linku nie powiodło się!",
+  "password": "Hasło",
   "save": "Zapisz",
   "search": {
-    "noResultsInfo": "Brak wyników...",
+    "maxCharLength": "Przekroczono maksymalną ilość znaków: {{charAmount}}",
     "minCharLength": "Minimalna wymagana ilość znaków: {{charAmount}}",
-    "maxCharLength": "Przekroczono maksymalną ilość znaków: {{charAmount}}"
+    "noResultsInfo": "Brak wyników..."
   },
   "submit": "Zatwierdź"
 }
