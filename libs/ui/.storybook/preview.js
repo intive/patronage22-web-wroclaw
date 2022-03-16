@@ -18,11 +18,7 @@ export const parameters = {
 };
 
 export const decorators = [
-  Story => (
-    <MemoryRouter>
-      {Story()}
-    </MemoryRouter>
-  ),
+  Story => <MemoryRouter>{Story()}</MemoryRouter>,
   (Story, context) => {
     const currentTheme = context.globals?.backgrounds?.value === dark.palette.background.default ? dark : light;
     return (
@@ -34,14 +30,6 @@ export const decorators = [
       </EmotionThemeProvider>
     );
   },
-  Story => (
-    <I18nWrapper>
-      {Story()}
-    </I18nWrapper>
-  ),
-  Story => (
-    <StoreProvider store={store}>
-      {Story()}
-    </StoreProvider>
-  )
+  Story => <I18nWrapper>{Story()}</I18nWrapper>,
+  Story => <StoreProvider store={store}>{Story()}</StoreProvider>
 ];

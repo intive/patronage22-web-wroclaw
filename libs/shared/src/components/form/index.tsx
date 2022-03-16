@@ -1,12 +1,12 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Typography } from "@mui/material";
+import { isEqual } from "lodash-es";
 import { FieldValues, FormProvider, SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import * as yup from "yup";
 import { ObjectShape } from "yup/lib/object";
 
-import { TranslationNamespace } from "../../types";
+import { usePrevious } from "../../hooks";
 import { BaseButton, ButtonType } from "../base-button";
 import { FormField, FormFieldProps } from "../form-field";
 import * as Styled from "./styled";
@@ -16,8 +16,9 @@ export interface FormProps {
   validationSchema: ObjectShape;
   fields?: FormFieldProps[];
   placeholder?: string;
-  onSubmit: SubmitHandler<FieldValues>;
-  onError: SubmitErrorHandler<FieldValues>;
+  onSubmit?: SubmitHandler<FieldValues>;
+  onChange?: (value: Record<string, any>) => any;
+  onError?: SubmitErrorHandler<FieldValues>;
   onCancel?: () => void;
   showSubmitButton?: boolean;
   showCancelButton?: boolean;
@@ -34,13 +35,14 @@ export const Form: React.FC<FormProps> = ({
   onSubmit,
   onError,
   onCancel,
+  onChange,
   showSubmitButton,
   showCancelButton,
   submitButtonText,
   cancelButtonText,
   className
 }) => {
-  const { t } = useTranslation(TranslationNamespace.Common);
+  const { t } = useTranslation();
   const schema = yup.object(validationSchema).required();
 
   const methods = useForm<FieldValues>({
@@ -49,24 +51,25 @@ export const Form: React.FC<FormProps> = ({
     reValidateMode: "onChange"
   });
 
-  const renderFields = () => {
-    if (fields) {
-      return fields.map(field => <FormField key={field.name} {...field} />);
-    }
-
-    return (
-      <Typography id='placeholder' variant='h4'>
-        {placeholder || t("NoData")}
-      </Typography>
-    );
-  };
+  const currentValues = methods.getValues();
+  const previousValues = usePrevious(currentValues);
 
   const handleSubmit = () => {
-    methods.handleSubmit(onSubmit, onError)();
+    if (onSubmit) {
+      methods.handleSubmit(onSubmit, onError)();
+    }
   };
 
   const handleCancel = () => {
-    if (onCancel) onCancel();
+    if (onCancel) {
+      onCancel();
+    }
+  };
+
+  const handleFormChange = () => {
+    if (onChange && !isEqual(methods.getValues(), previousValues)) {
+      onChange(methods.getValues());
+    }
   };
 
   const formButtons = [
@@ -74,9 +77,21 @@ export const Form: React.FC<FormProps> = ({
     { condition: showCancelButton, text: cancelButtonText || t("cancel"), action: handleCancel }
   ];
 
+  const renderFields = () => {
+    if (fields) {
+      return fields.map(field => <FormField key={field.name} {...field} />);
+    }
+
+    return (
+      <Typography id='no-data-placeholder' variant='h4'>
+        {placeholder || t("noItems")}
+      </Typography>
+    );
+  };
+
   return (
     <FormProvider {...methods}>
-      <Styled.Form className={className}>
+      <Styled.Form className={className} onChange={handleFormChange}>
         {title && <Typography variant='h3'>{title}</Typography>}
 
         {renderFields()}
