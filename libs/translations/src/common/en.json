@@ -5,10 +5,6 @@
     "feedback": "Survey Maker",
     "feedback-external": "Survey Participant"
   },
-  "homepage": {
-    "newPresentationButton": "New presentation",
-    "newPresentationDescription": "Placeholder text for ActionCard to create new presentation on Homepage"
-  },
   "intive": {
     "address": "Pilsudskiego 69, 50-019 Wroclaw",
     "name": "Intive",
