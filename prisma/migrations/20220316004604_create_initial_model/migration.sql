@@ -1,11 +1,12 @@
 -- CreateTable
 CREATE TABLE "Presentation" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "uuid" TEXT NOT NULL,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" DATETIME NOT NULL,
     "title" TEXT NOT NULL,
     "description" TEXT,
-    "linkn" TEXT,
+    "link" TEXT,
     "startTime" DATETIME,
     "currentTime" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "timer" DECIMAL NOT NULL,
@@ -15,6 +16,7 @@ CREATE TABLE "Presentation" (
 -- CreateTable
 CREATE TABLE "Question" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "uuid" TEXT NOT NULL,
     "title" TEXT NOT NULL,
     "type" TEXT NOT NULL,
     "startTime" DATETIME,
@@ -27,8 +29,18 @@ CREATE TABLE "Question" (
 -- CreateTable
 CREATE TABLE "Answer" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "uuid" TEXT NOT NULL,
     "title" TEXT NOT NULL,
-    "questionId" INTEGER NOT NULL,
+    "questionId" INTEGER,
     "counter" INTEGER,
-    CONSTRAINT "Answer_questionId_fkey" FOREIGN KEY ("questionId") REFERENCES "Question" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+    CONSTRAINT "Answer_questionId_fkey" FOREIGN KEY ("questionId") REFERENCES "Question" ("id") ON DELETE SET NULL ON UPDATE CASCADE
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Presentation_uuid_key" ON "Presentation"("uuid");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Question_uuid_key" ON "Question"("uuid");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Answer_uuid_key" ON "Answer"("uuid");

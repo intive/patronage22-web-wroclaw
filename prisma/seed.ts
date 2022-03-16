@@ -1,9 +1,11 @@
 import { PrismaClient, Prisma } from "@prisma/client";
+import { v4 as uuid } from "uuid";
 
 const prisma = new PrismaClient();
 
 export const userData: Prisma.PresentationCreateInput[] = [
   {
+    uuid: uuid(),
     createdAt: new Date(),
     description: "mollit magna aute consectetur eiusmod id cillum consequat",
     link: "patronage-web/external/presentation/6231096efc7c67523ece119d",
@@ -13,10 +15,12 @@ export const userData: Prisma.PresentationCreateInput[] = [
           answers: {
             create: [
               {
+                uuid: uuid(),
                 counter: 23,
                 title: "consectetur velit"
               },
               {
+                uuid: uuid(),
                 counter: 4,
                 title: "aliquip ut"
               }
@@ -26,16 +30,19 @@ export const userData: Prisma.PresentationCreateInput[] = [
           maxAnswerTime: 200,
           startTime: null,
           title: "voluptate labore irure",
-          type: "OPEN"
+          type: "OPEN",
+          uuid: uuid()
         },
         {
           answers: {
             create: [
               {
+                uuid: uuid(),
                 counter: 19,
                 title: "cupidatat ex"
               },
               {
+                uuid: uuid(),
                 counter: 21,
                 title: "minim mollit"
               }
@@ -45,7 +52,8 @@ export const userData: Prisma.PresentationCreateInput[] = [
           maxAnswerTime: 186,
           startTime: null,
           title: "ex veniam deserunt",
-          type: "CLOSED"
+          type: "CLOSED",
+          uuid: uuid()
         }
       ]
     },
@@ -58,21 +66,25 @@ export const userData: Prisma.PresentationCreateInput[] = [
     createdAt: new Date(),
     description: "nostrud sit veniam fugiat dolore sunt id ex",
     link: "patronage-web/external/presentation/6231096e9943aa384dd165d0",
+    uuid: uuid(),
     questions: {
       create: [
         {
           answers: {
             create: [
               {
+                uuid: uuid(),
                 counter: 26,
                 title: "exercitation fugiat"
               },
               {
+                uuid: uuid(),
                 counter: 1,
                 title: "ex minim"
               }
             ]
           },
+          uuid: uuid(),
           currentTime: new Date(),
           maxAnswerTime: 44,
           startTime: null,
@@ -83,10 +95,12 @@ export const userData: Prisma.PresentationCreateInput[] = [
           answers: {
             create: [
               {
+                uuid: uuid(),
                 counter: 18,
                 title: "do deserunt"
               },
               {
+                uuid: uuid(),
                 counter: 9,
                 title: "et excepteur"
               }
@@ -96,7 +110,8 @@ export const userData: Prisma.PresentationCreateInput[] = [
           maxAnswerTime: 124,
           startTime: new Date(),
           title: "ullamco ea ex",
-          type: "CLOSED"
+          type: "CLOSED",
+          uuid: uuid()
         }
       ]
     },
