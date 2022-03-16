@@ -1,6 +1,5 @@
-/* eslint-disable react/jsx-props-no-spreading */
-import { Edit } from "@mui/icons-material";
-import { ChangeEvent } from "react";
+import { StandardTextFieldProps } from "@mui/material";
+import { ChangeEvent, MouseEvent } from "react";
 import { FieldValues, useController, UseControllerProps, UseFormStateReturn } from "react-hook-form";
 
 import { FormFieldType } from "../../types";
@@ -14,8 +13,12 @@ export interface FormFieldProps extends Pick<UseControllerProps, "name" | "defau
   rows?: number;
   label?: string;
   helperText?: string;
-  hideEditIcon?: boolean;
   onChange?: () => void;
+  placeholder?: string;
+  inputConfig?: StandardTextFieldProps["InputProps"];
+  autoFocus?: boolean;
+  onClick?: (event: MouseEvent) => void;
+  disabled?: boolean;
 }
 
 export const FormField: React.FC<FormFieldProps> = ({
@@ -27,18 +30,22 @@ export const FormField: React.FC<FormFieldProps> = ({
   rows,
   label,
   helperText,
-  hideEditIcon,
-  onChange
+  onChange,
+  onClick,
+  placeholder,
+  inputConfig,
+  autoFocus,
+  disabled
 }: FormFieldProps) => {
   const {
-    field: { value, onChange: onFieldChange },
+    field: { onChange: onFormFieldChange },
     formState: { errors }
   } = useController({ name, defaultValue, control });
 
   const fieldErrors: UseFormStateReturn<FieldValues>["errors"] = errors[name];
 
-  const handleChange = (event: ChangeEvent) => {
-    onFieldChange(event);
+  const onFieldChange = (event: ChangeEvent<HTMLInputElement>) => {
+    onFormFieldChange(event);
 
     if (onChange) {
       onChange();
@@ -47,8 +54,20 @@ export const FormField: React.FC<FormFieldProps> = ({
 
   return (
     <Styled.Field>
-      {renderField({ type, name, value, handleChange, variant, errors: fieldErrors, label, rows })}
-      {!hideEditIcon && <Edit />}
+      {renderField({
+        type,
+        name,
+        onChange: onFieldChange,
+        onClick,
+        variant,
+        errors: fieldErrors,
+        label,
+        rows,
+        placeholder,
+        inputConfig,
+        autoFocus,
+        disabled
+      })}
       {renderHelperText(fieldErrors, helperText)}
     </Styled.Field>
   );
