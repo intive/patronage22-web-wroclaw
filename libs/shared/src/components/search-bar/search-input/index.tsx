@@ -15,9 +15,10 @@ interface SearchInputProps {
   autoFocus?: boolean;
   customStyles?: SxProps<Theme>;
   disabled?: boolean;
+  hideEditIcon?: boolean;
 }
 
-export const SearchInput: React.FC<SearchInputProps> = ({ onChange, onClick, autoFocus, disabled, customStyles }) => {
+export const SearchInput: React.FC<SearchInputProps> = ({ onChange, onClick, autoFocus, disabled, customStyles, hideEditIcon }) => {
   const { t } = useTranslation();
   const maxInputLength = SEARCH_CONFIG.maxLength - 1;
 
@@ -45,7 +46,8 @@ export const SearchInput: React.FC<SearchInputProps> = ({ onChange, onClick, aut
           },
           onClick,
           disabled,
-          autoFocus
+          autoFocus,
+          hideEditIcon
         }
       ]}
       validationSchema={{

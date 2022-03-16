@@ -22,6 +22,9 @@ export interface FormProps {
   title?: string;
   validationSchema: ObjectShape;
   fields?: FormFieldProps[];
+  initialValues?: {
+    [x: string]: any;
+  };
   placeholder?: string;
   onSubmit?: SubmitHandler<FieldValues>;
   onChange?: (value: Record<string, any>) => any;
@@ -38,6 +41,7 @@ export const Form: React.FC<FormProps> = ({
   title,
   validationSchema,
   fields,
+  initialValues,
   placeholder,
   onSubmit,
   onError,
@@ -52,7 +56,8 @@ export const Form: React.FC<FormProps> = ({
   const methods = useForm<FieldValues>({
     resolver: yupResolver(schema),
     mode: "onChange",
-    reValidateMode: "onChange"
+    reValidateMode: "onChange",
+    defaultValues: initialValues
   });
 
   const currentValues = methods.getValues();

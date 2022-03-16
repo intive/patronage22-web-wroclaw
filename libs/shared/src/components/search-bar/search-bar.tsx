@@ -16,7 +16,7 @@ export const SearchBar: React.FC = () => {
   return (
     <>
       <LocalizedLink to={allResultsPage}>
-        <SearchInput onClick={handleClick} disabled />
+        <SearchInput onClick={handleClick} disabled hideEditIcon />
       </LocalizedLink>
       <SearchDrawer open={isOpen} onClose={handleClick} searchKey={searchKey} toResult={allResultsPage} toItem={singleResultPage} />
     </>

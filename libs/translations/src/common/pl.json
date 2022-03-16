@@ -20,7 +20,7 @@
     "loginWith": "Zaloguj się przez"
   },
   "password": "Hasło",
-  "noData": "Brak danych",
+  "noItems": "Brak elementów do wyświetlenia",
   "notFoundPage": {
     "title": "Przepraszamy, strona, której szukasz nie istnieje"
   },
