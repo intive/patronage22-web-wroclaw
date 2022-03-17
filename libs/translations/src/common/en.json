@@ -27,5 +27,6 @@
     "minCharLength": "Minimum number of characters required: {{charAmount}}",
     "maxCharLength": "Maximum number of characters exceeded: {{charAmount}}"
   },
-  "submit": "Submit"
+  "submit": "Submit",
+  "timeIsUp": "Time is up!"
 }

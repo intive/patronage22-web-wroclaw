@@ -53,7 +53,6 @@ export const MyChart: React.FC<MyChartProps> = ({ labels, data, title }) => {
         scales: {
           y: {
             display: false,
-            min: CHART_STYLING.min,
             grid: {
               display: false
             }

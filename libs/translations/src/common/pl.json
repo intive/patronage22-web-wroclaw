@@ -27,5 +27,6 @@
     "minCharLength": "Minimalna wymagana ilość znaków: {{charAmount}}",
     "maxCharLength": "Przekroczono maksymalną ilość znaków: {{charAmount}}"
   },
-  "submit": "Zatwierdź"
+  "submit": "Zatwierdź",
+  "timeIsUp": "Czas minął!"
 }
