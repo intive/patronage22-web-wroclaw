@@ -1,8 +1,9 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post } from "@nestjs/common";
-import { ApiTags } from "@nestjs/swagger";
+import { ApiOkResponse, ApiResponse, ApiTags } from "@nestjs/swagger";
 
 import { CreatePresentationDto } from "./dto/create-presentation.dto";
 import { UpdatePresentationDto } from "./dto/update-presentation.dto";
+import { PresentationEntity } from "./entities/presentation.entity";
 import { PresentationsService } from "./presentations.service";
 
 @Controller("presentations")
@@ -11,27 +12,36 @@ export class PresentationsController {
   constructor(private readonly presentationsService: PresentationsService) {}
 
   @Post()
-  create(@Body() createPresentationDto: CreatePresentationDto) {
-    return this.presentationsService.create(createPresentationDto);
+  @ApiResponse({ status: 201, type: PresentationEntity })
+  async create(@Body() createPresentationDto: CreatePresentationDto) {
+    return new PresentationEntity(await this.presentationsService.create(createPresentationDto));
   }
 
   @Get()
-  findAll() {
-    return this.presentationsService.findAll();
+  @ApiOkResponse({ type: [PresentationEntity] })
+  async findAll() {
+    const presentation = await this.presentationsService.findAll();
+
+    return presentation.map(item => new PresentationEntity(item));
   }
 
   @Get(":id")
-  findOne(@Param("id") id: string) {
-    return this.presentationsService.findOne(id);
+  @ApiOkResponse({ type: PresentationEntity })
+  async findOne(@Param("id") id: string) {
+    const searched = await this.presentationsService.findOne(id);
+
+    return searched ? new PresentationEntity(searched) : null;
   }
 
   @Patch(":id")
-  update(@Param("id") id: string, @Body() updatePresentationDto: UpdatePresentationDto) {
-    return this.presentationsService.update(id, updatePresentationDto);
+  @ApiOkResponse({ type: PresentationEntity })
+  async update(@Param("id") id: string, @Body() updatePresentationDto: UpdatePresentationDto) {
+    return new PresentationEntity(await this.presentationsService.update(id, updatePresentationDto));
   }
 
   @Delete(":id")
-  remove(@Param("id") id: string) {
-    return this.presentationsService.remove(id);
+  @ApiOkResponse({ type: PresentationEntity })
+  async remove(@Param("id") id: string) {
+    return new PresentationEntity(await this.presentationsService.remove(id));
   }
 }

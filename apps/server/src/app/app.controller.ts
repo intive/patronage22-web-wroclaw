@@ -10,4 +10,16 @@ export class AppController {
   getHello(): string {
     return this.appService.getData().message;
   }
+
+  // eslint-disable-next-line class-methods-use-this
+  @Get("/secure/ping")
+  async securePing(): Promise<string> {
+    return "pong";
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  @Get("/ping")
+  async checkPing(): Promise<string> {
+    return "pong";
+  }
 }
