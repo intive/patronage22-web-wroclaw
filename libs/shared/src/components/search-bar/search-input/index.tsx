@@ -1,7 +1,5 @@
 import SearchIcon from "@mui/icons-material/Search";
 import { InputAdornment } from "@mui/material";
-import { SxProps, Theme } from "@mui/material/styles";
-import { MouseEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { string } from "yup";
 
@@ -11,19 +9,15 @@ import * as Styled from "./styled";
 
 interface SearchInputProps {
   onChange?: (value: string) => void;
-  onClick?: (event: MouseEvent) => void;
   autoFocus?: boolean;
-  customStyles?: SxProps<Theme>;
-  disabled?: boolean;
 }
 
-export const SearchInput: React.FC<SearchInputProps> = ({ onChange, onClick, autoFocus, disabled, customStyles }) => {
+export const SearchInput: React.FC<SearchInputProps> = ({ onChange, autoFocus }) => {
   const { t } = useTranslation();
   const maxInputLength = SEARCH_CONFIG.maxLength - 1;
 
   return (
     <Styled.SearchInputBase
-      sx={customStyles}
       onChange={({ searchInput }) => {
         if (onChange) {
           onChange(searchInput);
@@ -43,8 +37,6 @@ export const SearchInput: React.FC<SearchInputProps> = ({ onChange, onClick, aut
             ),
             inputProps: { maxLength: SEARCH_CONFIG.maxLength, autoComplete: "off" }
           },
-          onClick,
-          disabled,
           autoFocus
         }
       ]}

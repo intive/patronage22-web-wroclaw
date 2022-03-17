@@ -1,8 +1,10 @@
+import SearchIcon from "@mui/icons-material/Search";
+import { t } from "i18next";
 import { useState } from "react";
 
-import { LocalizedLink } from "../localized-link";
+import { BaseButton, ButtonType } from "../base-button";
 import { SearchDrawer } from "./search-drawer";
-import { SearchInput } from "./search-input";
+import * as Styled from "./styled";
 import { useSearchConfig } from "./use-search-config";
 
 export const SearchBar: React.FC = () => {
@@ -15,9 +17,11 @@ export const SearchBar: React.FC = () => {
 
   return (
     <>
-      <LocalizedLink to={allResultsPage}>
-        <SearchInput onClick={handleClick} disabled />
-      </LocalizedLink>
+      <Styled.SearchButtonBox>
+        <BaseButton type={ButtonType.Basic} onClick={handleClick} startIcon={<SearchIcon />} sx={{ justifyContent: "flex-start" }}>
+          {t("search.searchbarPlaceholder")}
+        </BaseButton>
+      </Styled.SearchButtonBox>
       <SearchDrawer open={isOpen} onClose={handleClick} searchKey={searchKey} toResult={allResultsPage} toItem={singleResultPage} />
     </>
   );

@@ -65,11 +65,7 @@ export const SearchDrawer: React.FC<SearchDrawerProps> = ({ open, onClose, searc
     <Styled.SearchDrawer anchor='top' open={open} onClose={handleCloseDrawer} variant='temporary'>
       <Styled.SearchDrawerHeader>
         <Styled.InputBoxWrapper>
-          <SearchInput
-            onChange={handleInputChange}
-            autoFocus
-            customStyles={theme => ({ [theme.breakpoints.down("sm")]: { backgroundColor: "inherit" } })}
-          />
+          <SearchInput onChange={handleInputChange} autoFocus />
         </Styled.InputBoxWrapper>
 
         <Styled.CloseSearchBtnWrapper>

@@ -14,7 +14,8 @@ export const SearchInputBase = styled(Form)(({ theme }) => ({
   },
 
   [theme.breakpoints.down("sm")]: {
-    borderRadius: 0
+    borderRadius: 0,
+    backgroundColor: "inherit"
   },
 
   "& .MuiFormControl-root": {
