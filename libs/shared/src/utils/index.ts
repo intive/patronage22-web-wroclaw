@@ -1,4 +1,6 @@
 export * from "./create-path";
+export * from "./delete-by-keys";
+export * from "./filter-by-keys";
 export * from "./get-app-route";
 export * from "./get-domain-name";
 export * from "./get-theme-config";
