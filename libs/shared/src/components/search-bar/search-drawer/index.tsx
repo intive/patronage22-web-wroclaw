@@ -1,6 +1,6 @@
 import CloseIcon from "@mui/icons-material/Close";
 import Fuse from "fuse.js";
-import { FormEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
@@ -41,7 +41,7 @@ export const SearchDrawer: React.FC<SearchDrawerProps> = ({ open, onClose, searc
     onClose();
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: any) => {
     event.preventDefault();
     const phrase = currentItems.length ? searchPhrase : "";
 

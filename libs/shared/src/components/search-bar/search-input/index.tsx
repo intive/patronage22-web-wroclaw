@@ -1,6 +1,6 @@
 import SearchIcon from "@mui/icons-material/Search";
 import { InputAdornment } from "@mui/material";
-import { FormEvent } from "react";
+import { BaseSyntheticEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { string } from "yup";
 
@@ -11,7 +11,7 @@ import * as Styled from "./styled";
 interface SearchInputProps {
   onChange?: (value: string) => void;
   autoFocus?: boolean;
-  onSubmit: (event: FormEvent<HTMLFormElement>) => void;
+  onSubmit: (data: unknown, event?: BaseSyntheticEvent) => void;
 }
 
 export const SearchInput: React.FC<SearchInputProps> = ({ onChange, autoFocus, onSubmit }) => {
@@ -25,7 +25,7 @@ export const SearchInput: React.FC<SearchInputProps> = ({ onChange, autoFocus, o
           onChange(searchInput);
         }
       }}
-      onFormSubmit={onSubmit}
+      onSubmit={onSubmit}
       fields={[
         {
           type: FormFieldType.Text,

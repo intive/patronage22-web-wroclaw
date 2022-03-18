@@ -1,7 +1,6 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Typography } from "@mui/material";
 import { isEqual } from "lodash-es";
-import { FormEvent } from "react";
 import { FieldValues, FormProvider, SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import * as yup from "yup";
@@ -26,7 +25,6 @@ export interface FormProps {
   submitButtonText?: string;
   cancelButtonText?: string;
   className?: string;
-  onFormSubmit?: (event: FormEvent<HTMLFormElement>) => void;
 }
 
 export const Form: React.FC<FormProps> = ({
@@ -38,7 +36,6 @@ export const Form: React.FC<FormProps> = ({
   onError,
   onCancel,
   onChange,
-  onFormSubmit,
   showSubmitButton,
   showCancelButton,
   submitButtonText,
@@ -50,7 +47,6 @@ export const Form: React.FC<FormProps> = ({
 
   const methods = useForm<FieldValues>({
     resolver: yupResolver(schema),
-    mode: "onChange",
     reValidateMode: "onChange"
   });
 
@@ -94,7 +90,7 @@ export const Form: React.FC<FormProps> = ({
 
   return (
     <FormProvider {...methods}>
-      <Styled.Form className={className} onChange={handleFormChange} onSubmit={onFormSubmit}>
+      <Styled.Form className={className} onChange={handleFormChange} onSubmit={onSubmit}>
         {title && <Typography variant='h3'>{title}</Typography>}
 
         {renderFields()}
