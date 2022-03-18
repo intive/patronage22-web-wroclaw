@@ -17675,12 +17675,14 @@ __metadata:
     react-hook-form: ^7.27.0
     react-i18next: ^11.15.3
     react-is: 17.0.2
+    react-qr-code: ^2.0.3
     react-redux: ^7.2.6
     react-router-dom: ^6.2.1
     react-test-renderer: 17.0.2
     redux-logger: ^3.0.6
     regenerator-runtime: 0.13.7
     standard-version: ^9.3.2
+    storybook-react-i18next: ^1.0.17
     styled-components: 5.3.3
     ts-jest: 27.0.5
     tslib: ^2.0.0
@@ -18680,6 +18682,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"qr.js@npm:0.0.0":
+  version: 0.0.0
+  resolution: "qr.js@npm:0.0.0"
+  checksum: 5ac6c393967bdeaa660e7fd3a501a25eb538c1f6008a4d30ab2b97bbe520e5c236530090773f1578aa0a523cdaa6923c866615e21143f9e7cd22abd41c789b69
+  languageName: node
+  linkType: hard
+
 "qs@npm:6.9.6":
   version: 6.9.6
   resolution: "qs@npm:6.9.6"
@@ -18987,6 +18996,19 @@ __metadata:
     "@popperjs/core": ^2.0.0
     react: ^16.8.0 || ^17
   checksum: 915fcf08e1da4fd48a200074fcdd936f601ee2173f1e730cfed8a54fd47716aa8bf9cce2392463e3bcbe64a096d0baf463809ed2874b94d3a9d430ae6d817b5d
+  languageName: node
+  linkType: hard
+
+"react-qr-code@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "react-qr-code@npm:2.0.3"
+  dependencies:
+    prop-types: ^15.7.2
+    qr.js: 0.0.0
+  peerDependencies:
+    react: ^16.x || ^17.x
+    react-native-svg: "*"
+  checksum: d82d3c2e8929bc40fdcbab714d088890744bc67aa5de5a998c14352f1fe56ca10032613abb49ea649bd9b8363ed5f482a942e5ed5e676a6f5e0b00a7e9960cb0
   languageName: node
   linkType: hard
 
@@ -20837,6 +20859,52 @@ __metadata:
   version: 2.13.1
   resolution: "store2@npm:2.13.1"
   checksum: c5fa1ac7dbf8431d87ad4563d9838311bb421cc6e13696b668c772192942be2e07ef20d36104f7496acab6dc4d569a9b50d6c2299ceaddbcb86628f585323ff4
+  languageName: node
+  linkType: hard
+
+"storybook-i18n@npm:^1.0.11":
+  version: 1.0.11
+  resolution: "storybook-i18n@npm:1.0.11"
+  peerDependencies:
+    "@storybook/addons": ^6.4.17
+    "@storybook/api": ^6.4.17
+    "@storybook/components": ^6.4.17
+    "@storybook/core-events": ^6.4.17
+    "@storybook/theming": ^6.4.17
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
+  peerDependenciesMeta:
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: 7cb18a50e23835bd47f73ca316a5eb0ec8885fa5e522fc2b49e142991c6e0edbb6bf1e9567a209fb42aac37ae2986f6177e8e9d12f2451d71524c0203e2fccb8
+  languageName: node
+  linkType: hard
+
+"storybook-react-i18next@npm:^1.0.17":
+  version: 1.0.17
+  resolution: "storybook-react-i18next@npm:1.0.17"
+  dependencies:
+    storybook-i18n: ^1.0.11
+  peerDependencies:
+    "@storybook/addons": ^6.4.17
+    "@storybook/api": ^6.4.17
+    "@storybook/components": ^6.4.17
+    "@storybook/core-events": ^6.4.17
+    "@storybook/theming": ^6.4.17
+    i18next: ^20.0.0 || ^21.0.0
+    i18next-browser-languagedetector: ^6.1.2
+    i18next-http-backend: ^1.3.1
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
+    react-i18next: ^11.15.1
+  peerDependenciesMeta:
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: 1cf95bd49f7b943b6b286d11b7fa88486858bc8c88fccd877d85cf4d9ef9e4722ab104a0ecbe4808c1534072d927b71f530cf4e0df10b8d4bd10e8e03e749c2e
   languageName: node
   linkType: hard
 

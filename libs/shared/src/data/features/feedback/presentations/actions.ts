@@ -1,4 +1,4 @@
-import { presentationApi } from "./presentation-slice";
+import { presentations } from "./presentations-slice";
 
 export const {
   useGetPresentationsQuery,
@@ -6,4 +6,4 @@ export const {
   useAddPresentationMutation,
   useChangePresentationMutation,
   useDeletePresentationMutation
-} = presentationApi;
+} = presentations;
