@@ -1,41 +1,28 @@
-import { isEmpty } from "lodash";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
-import { BaseQueryParams } from "../types";
-import { deleteByKeys, filterByKeys } from "../utils";
-import { useCurrentParams } from "./use-current-params";
+import { SUPPORTED_PARAM_KEYS } from "../constants";
+import { BaseQueryParams, Nullable } from "../types";
+import { parseUrlParams } from "../utils";
+import { convertUrlParamsToString } from "../utils/convert-url-params-to-string";
+import { filterByKeys } from "../utils/filter-by-keys";
 
-export const useURLParams = <TParams extends BaseQueryParams>(paramKeys: (keyof TParams)[], URLParams?: TParams | null) => {
-  const currentParams = useCurrentParams();
-  const [queryParams, setQueryParams] = useState<TParams | null | undefined>({
-    ...URLParams,
-    ...filterByKeys<TParams>(currentParams, paramKeys)
-  } as TParams);
-  const [, setSearchParams] = useSearchParams();
+export const useUrlParams = <TParams extends BaseQueryParams>(initialParams?: Nullable<TParams>) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const parsedParams = parseUrlParams(searchParams);
 
-  const setParams = (params: TParams, isNew?: boolean) => {
-    if (!isEmpty(currentParams) && !isNew) {
-      setSearchParams({ ...currentParams, ...params });
-      setQueryParams({ ...queryParams, ...params });
-    } else {
-      setSearchParams(params as unknown as URLSearchParams);
-      setQueryParams(params);
-    }
-  };
+  const updateParams = (params: Nullable<TParams>, replace = false) => {
+    const newParams = replace ? params : filterByKeys({ ...parsedParams, ...params }, SUPPORTED_PARAM_KEYS);
 
-  const removeParams = (paramNames: (keyof TParams)[]) => {
-    if (queryParams) {
-      setQueryParams(deleteByKeys<TParams>(queryParams, paramNames as string[]));
-      setSearchParams(deleteByKeys(currentParams, paramNames as string[]));
-    }
+    setSearchParams(convertUrlParamsToString(newParams as Record<string, unknown>));
   };
 
   useEffect(() => {
-    if (queryParams) {
-      setSearchParams({ ...currentParams, ...queryParams, ...currentParams });
+    if (initialParams) {
+      updateParams({ ...initialParams, ...parsedParams });
     }
-  }, [currentParams, queryParams, setSearchParams]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  return { params: queryParams, setParams, removeParams };
+  return { params: filterByKeys(parsedParams, SUPPORTED_PARAM_KEYS), updateParams };
 };
