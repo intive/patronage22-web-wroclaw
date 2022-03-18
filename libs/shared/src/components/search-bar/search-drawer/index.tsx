@@ -4,7 +4,7 @@ import { FormEvent, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
-import { AppRouteType, FeedbackRoute } from "../../../types";
+import { AppRouteType, FeedbackRoute, TranslationNamespace } from "../../../types";
 import { createPath } from "../../../utils";
 import { BaseButton, ButtonType } from "../../base-button";
 import { LocalizedLink } from "../../localized-link";
@@ -24,7 +24,8 @@ interface SearchDrawerProps {
 }
 
 export const SearchDrawer: React.FC<SearchDrawerProps> = ({ open, onClose, searchKey, toResult, toItem }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation(TranslationNamespace.Feedback);
+  const { i18n } = useTranslation();
   const navigate = useNavigate();
 
   const [currentItems, setCurrentItems] = useState<Fuse.FuseResult<PresentationSearchItem>[]>([]);
