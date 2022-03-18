@@ -1,6 +1,6 @@
 import SearchIcon from "@mui/icons-material/Search";
-import { t } from "i18next";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import { BaseButton, ButtonType } from "../base-button";
 import { SearchDrawer } from "./search-drawer";
@@ -10,6 +10,7 @@ import { useSearchConfig } from "./use-search-config";
 export const SearchBar: React.FC = () => {
   const { searchKey, allResultsPage, singleResultPage } = useSearchConfig();
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useTranslation();
 
   const handleClick = () => {
     setIsOpen(prevState => !prevState);
@@ -18,7 +19,13 @@ export const SearchBar: React.FC = () => {
   return (
     <>
       <Styled.SearchButtonBox>
-        <BaseButton type={ButtonType.Basic} onClick={handleClick} startIcon={<SearchIcon />} sx={{ justifyContent: "flex-start" }}>
+        <BaseButton
+          type={ButtonType.Basic}
+          onClick={handleClick}
+          startIcon={<SearchIcon />}
+          disableRipple
+          sx={{ justifyContent: "flex-start" }}
+        >
           {t("search.searchbarPlaceholder")}
         </BaseButton>
       </Styled.SearchButtonBox>

@@ -1,5 +1,6 @@
 import SearchIcon from "@mui/icons-material/Search";
 import { InputAdornment } from "@mui/material";
+import { FormEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { string } from "yup";
 
@@ -10,9 +11,10 @@ import * as Styled from "./styled";
 interface SearchInputProps {
   onChange?: (value: string) => void;
   autoFocus?: boolean;
+  onSubmit: (event: FormEvent<HTMLFormElement>) => void;
 }
 
-export const SearchInput: React.FC<SearchInputProps> = ({ onChange, autoFocus }) => {
+export const SearchInput: React.FC<SearchInputProps> = ({ onChange, autoFocus, onSubmit }) => {
   const { t } = useTranslation();
   const maxInputLength = SEARCH_CONFIG.maxLength - 1;
 
@@ -23,6 +25,7 @@ export const SearchInput: React.FC<SearchInputProps> = ({ onChange, autoFocus })
           onChange(searchInput);
         }
       }}
+      onFormSubmit={onSubmit}
       fields={[
         {
           type: FormFieldType.Text,

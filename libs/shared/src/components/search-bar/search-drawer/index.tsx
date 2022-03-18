@@ -1,9 +1,11 @@
 import CloseIcon from "@mui/icons-material/Close";
 import Fuse from "fuse.js";
-import { useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
-import { AppRouteType } from "../../../types";
+import { AppRouteType, FeedbackRoute } from "../../../types";
+import { createPath } from "../../../utils";
 import { BaseButton, ButtonType } from "../../base-button";
 import { LocalizedLink } from "../../localized-link";
 import { SEARCH_CONFIG } from "../constants";
@@ -22,7 +24,8 @@ interface SearchDrawerProps {
 }
 
 export const SearchDrawer: React.FC<SearchDrawerProps> = ({ open, onClose, searchKey, toResult, toItem }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
 
   const [currentItems, setCurrentItems] = useState<Fuse.FuseResult<PresentationSearchItem>[]>([]);
 
@@ -33,6 +36,15 @@ export const SearchDrawer: React.FC<SearchDrawerProps> = ({ open, onClose, searc
   };
 
   const handleCloseDrawer = () => {
+    setSearchPhrase("");
+    onClose();
+  };
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const phrase = currentItems.length ? searchPhrase : "";
+
+    navigate(createPath(FeedbackRoute.Dashboard, {}, i18n.language, phrase));
     setSearchPhrase("");
     onClose();
   };
@@ -65,7 +77,7 @@ export const SearchDrawer: React.FC<SearchDrawerProps> = ({ open, onClose, searc
     <Styled.SearchDrawer anchor='top' open={open} onClose={handleCloseDrawer} variant='temporary'>
       <Styled.SearchDrawerHeader>
         <Styled.InputBoxWrapper>
-          <SearchInput onChange={handleInputChange} autoFocus />
+          <SearchInput onChange={handleInputChange} autoFocus onSubmit={handleSubmit} />
         </Styled.InputBoxWrapper>
 
         <Styled.CloseSearchBtnWrapper>
