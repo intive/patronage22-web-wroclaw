@@ -47,7 +47,8 @@ export const Form: React.FC<FormProps> = ({
   const schema = yup.object(validationSchema).required();
 
   const methods = useForm<FieldValues>({
-    resolver: yupResolver(schema)
+    resolver: yupResolver(schema),
+    mode: "onChange"
   });
 
   const currentValues = methods.getValues();
