@@ -47,7 +47,6 @@ export const Form: React.FC<FormProps> = ({
 
   const methods = useForm<FieldValues>({
     resolver: yupResolver(schema),
-    mode: "onChange",
     reValidateMode: "onChange"
   });
 
@@ -91,7 +90,7 @@ export const Form: React.FC<FormProps> = ({
 
   return (
     <FormProvider {...methods}>
-      <Styled.Form className={className} onChange={handleFormChange}>
+      <Styled.Form className={className} onChange={handleFormChange} onSubmit={handleSubmit}>
         {title && <Typography variant='h3'>{title}</Typography>}
 
         {renderFields()}
