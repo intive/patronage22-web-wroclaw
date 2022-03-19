@@ -54,9 +54,7 @@ export const Form: React.FC<FormProps> = ({
   const currentValues = methods.getValues();
   const previousValues = usePrevious(currentValues);
 
-  const handleSubmit = (event: React.BaseSyntheticEvent) => {
-    event.preventDefault();
-
+  const handleSubmit = () => {
     if (onSubmit) {
       methods.handleSubmit(onSubmit, onError)();
     }
