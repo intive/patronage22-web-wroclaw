@@ -5,15 +5,11 @@
     "feedback": "Survey Maker",
     "feedback-external": "Survey Participant"
   },
-  "homepage": {
-    "newPresentationDescription": "Placeholder text for ActionCard to create new presentation on Homepage",
-    "newPresentationButton": "New presentation"
-  },
   "intive": {
-    "name": "Intive",
-    "wroclaw": "Wroclaw",
     "address": "Pilsudskiego 69, 50-019 Wroclaw",
-    "phone": "+48 71 769 59 00"
+    "name": "Intive",
+    "phone": "+48 71 769 59 00",
+    "wroclaw": "Wroclaw"
   },
   "linkCopied": "Link copied",
   "linkCopyingFailed": "Link copying failed!",
@@ -23,9 +19,9 @@
   },
   "save": "Save",
   "search": {
-    "noResultsInfo": "No results found...",
+    "maxCharLength": "Maximum number of characters exceeded: {{charAmount}}",
     "minCharLength": "Minimum number of characters required: {{charAmount}}",
-    "maxCharLength": "Maximum number of characters exceeded: {{charAmount}}"
+    "noResultsInfo": "No results found..."
   },
   "submit": "Submit",
   "timeIsUp": "Time is up!"
