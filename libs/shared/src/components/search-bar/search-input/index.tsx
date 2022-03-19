@@ -5,7 +5,7 @@ import { MouseEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { string } from "yup";
 
-import { FormFieldType } from "../../../types";
+import { FormFieldType, TranslationNamespace } from "../../../types";
 import { SEARCH_CONFIG } from "../constants";
 import * as Styled from "./styled";
 
@@ -18,8 +18,8 @@ interface SearchInputProps {
   hideEditIcon?: boolean;
 }
 
-export const SearchInput: React.FC<SearchInputProps> = ({ onChange, onClick, autoFocus, disabled, customStyles, hideEditIcon }) => {
-  const { t } = useTranslation();
+export const SearchInput: React.FC<SearchInputProps> = ({ onChange, onClick, autoFocus, disabled, customStyles }) => {
+  const { t } = useTranslation(TranslationNamespace.Feedback);
   const maxInputLength = SEARCH_CONFIG.maxLength - 1;
 
   return (

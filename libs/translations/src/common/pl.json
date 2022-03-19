@@ -5,10 +5,6 @@
     "feedback": "Kreator Ankiety",
     "feedback-external": "Uczestnik Ankiety"
   },
-  "homepage": {
-    "newPresentationButton": "Nowa ankieta",
-    "newPresentationDescription": "Tymczasowy tekst komponentu ActionCard do tworzenia nowych ankiet z poziomu widoku Homepage"
-  },
   "intive": {
     "address": "Piłsudskiego 69, 50-019 Wrocław",
     "name": "Intive",
