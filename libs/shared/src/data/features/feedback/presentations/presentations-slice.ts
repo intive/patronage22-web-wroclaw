@@ -13,13 +13,13 @@ export const presentations = createApi({
       query: id => `/presentations/${id}`
     }),
     addPresentation: builder.mutation({
-      query: () => "/presentations"
+      query: presentation => ({ url: "/presentations", method: "POST", body: presentation })
     }),
     changePresentation: builder.mutation({
-      query: id => `/presentations/${id}`
+      query: presentation => ({ url: `/presentations/${presentation.id}`, method: "PUT", body: presentation })
     }),
     deletePresentation: builder.mutation({
-      query: id => `/presentations/${id}`
+      query: id => ({ url: `/presentations/${id}`, method: "DELETE" })
     })
   })
 });
