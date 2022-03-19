@@ -22,7 +22,7 @@
     "title": "Przepraszamy, strona, której szukasz nie istnieje"
   },
   "pagination": {
-    "show": "Pokaż",
+    "itemsPerPage": "Przedmiotów na stronie",
     "outOf": "z"
   },
   "save": "Zapisz",

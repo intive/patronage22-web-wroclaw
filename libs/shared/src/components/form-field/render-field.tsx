@@ -1,4 +1,4 @@
-import { TextField } from "@mui/material";
+import { MenuItem, TextField } from "@mui/material";
 import { ChangeEvent } from "react";
 import { FieldValues, UseFormStateReturn } from "react-hook-form";
 
@@ -13,6 +13,7 @@ interface RenderFieldProps extends Omit<FormFieldProps, "helperText" | "onChange
   name: string;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   errors: UseFormStateReturn<FieldValues>["errors"];
+  value?: unknown;
 }
 
 export const renderField = ({
@@ -27,7 +28,10 @@ export const renderField = ({
   inputConfig,
   autoFocus,
   disabled,
-  rows = DEFAULT_ROWS_NUMBER
+  rows = DEFAULT_ROWS_NUMBER,
+  selectItems,
+  size,
+  value
 }: RenderFieldProps) => {
   const field: Record<FormFieldType, JSX.Element> = {
     [FormFieldType.Text]: (
@@ -59,6 +63,16 @@ export const renderField = ({
         placeholder={placeholder}
         autoFocus={autoFocus}
       />
+    ),
+    [FormFieldType.Select]: (
+      <TextField select name={name} onChange={onChange} value={value} size={size} label={label}>
+        {selectItems &&
+          selectItems.map(({ value: itemValue, name: itemName }) => (
+            <MenuItem key={itemName} value={itemValue}>
+              {itemName}
+            </MenuItem>
+          ))}
+      </TextField>
     )
   };
 

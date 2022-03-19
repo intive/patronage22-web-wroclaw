@@ -2,23 +2,26 @@ import { StandardTextFieldProps } from "@mui/material";
 import { ChangeEvent, MouseEvent } from "react";
 import { FieldValues, useController, UseControllerProps, UseFormStateReturn } from "react-hook-form";
 
-import { FormFieldType } from "../../types";
+import { FormFieldType, SelectItem } from "../../types";
 import { FormTextFieldVariant, renderField } from "./render-field";
 import { renderHelperText } from "./render-helper-text";
 import * as Styled from "./styled";
 
-export interface FormFieldProps extends Pick<UseControllerProps, "name" | "defaultValue" | "control"> {
+export interface FormFieldProps
+  extends Pick<UseControllerProps, "name" | "defaultValue" | "control">,
+    Partial<Pick<StandardTextFieldProps, "size">> {
   type: FormFieldType;
   variant?: FormTextFieldVariant;
   rows?: number;
   label?: string;
   helperText?: string;
-  onChange?: () => void;
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
   inputConfig?: StandardTextFieldProps["InputProps"];
   autoFocus?: boolean;
   onClick?: (event: MouseEvent) => void;
   disabled?: boolean;
+  selectItems?: SelectItem[];
 }
 
 export const FormField: React.FC<FormFieldProps> = ({
@@ -35,10 +38,12 @@ export const FormField: React.FC<FormFieldProps> = ({
   placeholder,
   inputConfig,
   autoFocus,
-  disabled
+  disabled,
+  selectItems,
+  size
 }: FormFieldProps) => {
   const {
-    field: { onChange: onFormFieldChange },
+    field: { onChange: onFormFieldChange, value },
     formState: { errors }
   } = useController({ name, defaultValue, control });
 
@@ -48,7 +53,7 @@ export const FormField: React.FC<FormFieldProps> = ({
     onFormFieldChange(event);
 
     if (onChange) {
-      onChange();
+      onChange(event);
     }
   };
 
@@ -66,7 +71,10 @@ export const FormField: React.FC<FormFieldProps> = ({
         placeholder,
         inputConfig,
         autoFocus,
-        disabled
+        disabled,
+        selectItems,
+        size,
+        value
       })}
       {renderHelperText(fieldErrors, helperText)}
     </Styled.Field>

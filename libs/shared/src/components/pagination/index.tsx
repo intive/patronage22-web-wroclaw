@@ -3,8 +3,7 @@ import { ChangeEvent, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 import { useScreenSize, useURLParams } from "../../hooks";
-import { PaginationQueryParams } from "../../types";
-import { BasicSelect, BasicSelectProps, SelectItem } from "../basic-select";
+import { FormFieldType, PaginationQueryParams } from "../../types";
 import * as Styled from "./style";
 
 const INITIAL_PAGE = 1;
@@ -12,8 +11,8 @@ const INITIAL_SIZE_POSITION = 0;
 
 interface BasicPaginationProps {
   itemsPerPageOptions: number[];
+  itemsPerPageLabel?: string;
   itemsCount: number;
-  selectStyles?: BasicSelectProps["sx"];
   initialValues?: {
     page: string;
     size: string;
@@ -24,8 +23,8 @@ interface BasicPaginationProps {
 export const BasicPagination: React.FC<BasicPaginationProps> = ({
   itemsPerPageOptions,
   itemsCount,
-  selectStyles,
   initialValues,
+  itemsPerPageLabel,
   onChange
 }) => {
   const { isMobile } = useScreenSize();
@@ -53,9 +52,10 @@ export const BasicPagination: React.FC<BasicPaginationProps> = ({
     return { name: data.toString(), value: data };
   });
 
-  const handleSelectChange = (value: SelectItem["value"]) => {
-    setParams({ size: value as string });
-    onChange(page, value as number);
+  const handleSelectChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+    setParams({ size: value });
+    onChange(page, Number(value));
   };
 
   const handlePageChange = (event: ChangeEvent<unknown>, currentPage: number) => {
@@ -83,17 +83,23 @@ export const BasicPagination: React.FC<BasicPaginationProps> = ({
         boundaryCount={isMobile ? 0 : 1}
         siblingCount={isMobile ? 0 : 1}
       />
-      <Styled.PaginationSectionBox>
-        <BasicSelect
-          sx={selectStyles}
-          value={size}
-          size='small'
-          onChangeHandler={handleSelectChange}
-          label={t("pagination.show")}
-          items={itemsPerPage}
+      <Styled.SectionBox>
+        <Styled.InfoBox>{`${itemsPerPageLabel || t("pagination.itemsPerPage")}: `}</Styled.InfoBox>
+        <Styled.SizeSelector
+          validationSchema={{}}
+          fields={[
+            {
+              onChange: handleSelectChange,
+              type: FormFieldType.Select,
+              name: "sizeSelector",
+              size: "small",
+              defaultValue: size,
+              selectItems: itemsPerPage
+            }
+          ]}
         />
-        <Styled.PaginationInfoBox>{infoText}</Styled.PaginationInfoBox>
-      </Styled.PaginationSectionBox>
+        <Styled.InfoBox>{infoText}</Styled.InfoBox>
+      </Styled.SectionBox>
     </Styled.PaginationBox>
   );
 };

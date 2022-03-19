@@ -22,7 +22,7 @@
     "title": "We are sorry, the page you're looking for doesn't exist"
   },
   "pagination": {
-    "show": "Show",
+    "itemsPerPage": "Items per page",
     "outOf": "out of"
   },
   "save": "Save",
