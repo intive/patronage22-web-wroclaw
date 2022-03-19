@@ -5,15 +5,11 @@
     "feedback": "Kreator Ankiety",
     "feedback-external": "Uczestnik Ankiety"
   },
-  "homepage": {
-    "newPresentationDescription": "Tymczasowy tekst komponentu ActionCard do tworzenia nowych ankiet z poziomu widoku Homepage",
-    "newPresentationButton": "Nowa ankieta"
-  },
   "intive": {
-    "name": "Intive",
-    "wroclaw": "Wrocław",
     "address": "Piłsudskiego 69, 50-019 Wrocław",
-    "phone": "+48 71 769 59 00"
+    "name": "Intive",
+    "phone": "+48 71 769 59 00",
+    "wroclaw": "Wrocław"
   },
   "linkCopied": "Skopiowano link",
   "linkCopyingFailed": "Kopiowanie linku nie powiodło się!",
@@ -27,9 +23,9 @@
   },
   "save": "Zapisz",
   "search": {
-    "noResultsInfo": "Brak wyników...",
+    "maxCharLength": "Przekroczono maksymalną ilość znaków: {{charAmount}}",
     "minCharLength": "Minimalna wymagana ilość znaków: {{charAmount}}",
-    "maxCharLength": "Przekroczono maksymalną ilość znaków: {{charAmount}}"
+    "noResultsInfo": "Brak wyników..."
   },
   "submit": "Zatwierdź"
 }
