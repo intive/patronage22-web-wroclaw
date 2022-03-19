@@ -1,6 +1,6 @@
 import CloseIcon from "@mui/icons-material/Close";
 import Fuse from "fuse.js";
-import { useEffect, useState } from "react";
+import { BaseSyntheticEvent, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
@@ -41,8 +41,11 @@ export const SearchDrawer: React.FC<SearchDrawerProps> = ({ open, onClose, searc
     onClose();
   };
 
-  const handleSubmit = (event: any) => {
-    event.preventDefault();
+  const handleSubmit = (_data: unknown, event?: BaseSyntheticEvent) => {
+    if (event) {
+      event.preventDefault();
+    }
+
     const phrase = currentItems.length ? searchPhrase : "";
 
     navigate(createPath(FeedbackRoute.Dashboard, {}, i18n.language, phrase));
