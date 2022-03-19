@@ -3,17 +3,18 @@ import Chart from "chart.js/auto";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 
 import { CHART_STYLING } from "./constants";
-import { ChartBar } from "./styled";
+import * as Styled from "./styled";
 
-interface MyChartProps {
-  labels: string[];
+// Registering chart
+Chart.register(LinearScale, ChartDataLabels);
+
+interface ResultsChartProps {
+  labels: string[] | undefined;
   data: number[];
   title: string;
 }
 
-export const MyChart: React.FC<MyChartProps> = ({ labels, data, title }) => {
-  Chart.register(LinearScale, ChartDataLabels);
-
+export const ResultsChart: React.FC<ResultsChartProps> = ({ labels, data, title }) => {
   const chartData = {
     labels,
     datasets: [
@@ -24,7 +25,7 @@ export const MyChart: React.FC<MyChartProps> = ({ labels, data, title }) => {
   };
 
   return (
-    <ChartBar
+    <Styled.LiveResultsChartBar
       data={chartData}
       options={{
         plugins: {

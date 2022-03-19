@@ -1,18 +1,24 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { STOPER_CONFIG } from "../../constants";
 import * as Styled from "./styled";
 
-interface StoperProps {
+export const STOPER_CONFIG = {
+  ten: 10,
+  second: 1000
+};
+
+interface TimerProps {
   seconds: number;
 }
 
-export const Stoper: React.FC<StoperProps> = ({ seconds }) => {
+export const Timer: React.FC<TimerProps> = ({ seconds }) => {
   const [currentSeconds, setCurrentSeconds] = useState(seconds);
   const { t } = useTranslation();
-  const message =
-    currentSeconds > 0 ? `00:${currentSeconds >= STOPER_CONFIG.addZero ? currentSeconds : `0${currentSeconds}`}` : t("timeIsUp");
+
+  const second = currentSeconds >= STOPER_CONFIG.ten ? currentSeconds : `0${currentSeconds}`;
+
+  const message = currentSeconds > 0 ? `00:${second}` : t("timeIsUp");
 
   useEffect(() => {
     const startTimer = () => {
