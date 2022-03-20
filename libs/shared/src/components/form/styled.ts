@@ -1,4 +1,4 @@
-import { styled } from "@mui/material";
+import { Box, styled } from "@mui/material";
 
 export const Form = styled("form")(({ theme }) => ({
   display: "flex",
@@ -12,5 +12,16 @@ export const Form = styled("form")(({ theme }) => ({
 
   "& #placeholder": {
     alignSelf: "center"
+  }
+}));
+
+export const ButtonSetWrapper = styled(Box)(({ theme }) => ({
+  width: "100%",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "flex-end",
+
+  "& .MuiButton-root": {
+    margin: theme.spacing(0, 1)
   }
 }));

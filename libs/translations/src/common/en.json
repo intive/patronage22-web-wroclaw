@@ -23,5 +23,6 @@
     "minCharLength": "Minimum number of characters required: {{charAmount}}",
     "noResultsInfo": "No results found..."
   },
-  "submit": "Submit"
+  "submit": "Submit",
+  "continue": "Continue"
 }

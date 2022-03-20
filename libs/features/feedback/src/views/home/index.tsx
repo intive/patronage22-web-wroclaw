@@ -1,7 +1,7 @@
 import { ActionCard, FeedbackRoute, TranslationNamespace } from "@patronage-web/shared";
 import { useTranslation } from "react-i18next";
 
-import { StarsImage } from "../assets";
+import { StarsImage } from "../../assets";
 
 export const HomeView: React.FC = () => {
   const { t } = useTranslation(TranslationNamespace.Feedback);

@@ -8,13 +8,20 @@
     "newPresentationButton": "Nowa prezentacja",
     "newPresentationDescription": "Czy zastanawiałeś się kiedyś, co zrobić, by Twoja prezentacja była bardziej interaktywna? Kliknij przycisk poniżej i po prostu... spraw, by tak się stało!"
   },
+  "missingQuestionError": "Pytanie nie może być puste",
   "missingTitleError": "Tytuł nie może być pusty",
   "newPresentation": "Nowa prezentacja",
+  "newQuestion": "Nowe pytanie",
+  "question": {
+    "maxCharLength": "Przekroczono maksymalną ilość znaków ({{charAmount}})"
+  },
+  "questionField": "Zadaj pytanie",
   "search": {
     "searchAriaLabel": "Szukaj",
     "searchbarPlaceholder": "Szukaj prezentacji",
     "showResultsButton": "Pokaż wszystkie wyniki..."
   },
+  "setQuestionTime": "Czas na odpowiedź (sekundy)",
   "shareDialogMessage": "Gratulacje, Twoja prezentacja: {{name}} właśnie się rozpoczęła, użyj poniższego linku, aby ją udostępnić!",
   "sharePresentation": "Udostępnij prezentację"
 }

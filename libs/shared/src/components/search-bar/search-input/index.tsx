@@ -29,7 +29,7 @@ export const SearchInput: React.FC<SearchInputProps> = ({ onChange, onClick, aut
           onChange(searchInput);
         }
       }}
-      fields={[
+      fieldset={[
         {
           type: FormFieldType.Text,
           name: "searchInput",

@@ -1,10 +1,16 @@
-import { styled } from "@mui/material/styles";
+import { styled } from "@mui/material";
 import { Form } from "@patronage-web/shared";
 
-export const BasicPresentationInfo = styled(Form)(({ theme }) => ({
-  maxWidth: theme.spacing(92),
+export const TitleAndButtons = styled(Form)(({ theme }) => ({
+  maxWidth: theme.spacing(60),
+  display: "flex",
+  flexDirection: "row"
+}));
 
-  "& .MuiInput-underline:nth-child(2)": {
+export const BasicPresentationInfo = styled(Form)(({ theme }) => ({
+  maxWidth: theme.spacing(60),
+
+  "& .MuiInput-underline:nth-child(2n)": {
     borderBottom: "none",
 
     "&:before": {

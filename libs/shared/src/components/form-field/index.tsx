@@ -1,5 +1,5 @@
-import { StandardTextFieldProps } from "@mui/material";
-import { ChangeEvent, MouseEvent } from "react";
+import { StandardTextFieldProps, Typography } from "@mui/material";
+import { ChangeEvent, MouseEvent, ReactNode } from "react";
 import { FieldValues, useController, UseControllerProps, UseFormStateReturn } from "react-hook-form";
 
 import { FormFieldType } from "../../types";
@@ -9,10 +9,13 @@ import * as Styled from "./styled";
 
 export interface FormFieldProps extends Pick<UseControllerProps, "name" | "defaultValue" | "control"> {
   type: FormFieldType;
+  edit?: boolean;
   variant?: FormTextFieldVariant;
   rows?: number;
   label?: string;
   helperText?: string;
+  description?: string;
+  appendix?: ReactNode;
   onChange?: () => void;
   placeholder?: string;
   inputConfig?: StandardTextFieldProps["InputProps"];
@@ -35,6 +38,8 @@ export const FormField: React.FC<FormFieldProps> = ({
   placeholder,
   inputConfig,
   autoFocus,
+  description,
+  appendix,
   disabled
 }: FormFieldProps) => {
   const {
@@ -53,22 +58,26 @@ export const FormField: React.FC<FormFieldProps> = ({
   };
 
   return (
-    <Styled.Field>
-      {renderField({
-        type,
-        name,
-        onChange: onFieldChange,
-        onClick,
-        variant,
-        errors: fieldErrors,
-        label,
-        rows,
-        placeholder,
-        inputConfig,
-        autoFocus,
-        disabled
-      })}
-      {renderHelperText(fieldErrors, helperText)}
-    </Styled.Field>
+    <>
+      {description && <Typography>{description}</Typography>}
+      <Styled.Field>
+        {renderField({
+          type,
+          name,
+          onChange: onFieldChange,
+          onClick,
+          variant,
+          errors: fieldErrors,
+          label,
+          rows,
+          placeholder,
+          inputConfig,
+          autoFocus,
+          disabled
+        })}
+        {renderHelperText(fieldErrors, helperText)}
+      </Styled.Field>
+      {appendix}
+    </>
   );
 };

@@ -1,6 +1,7 @@
 import { FormControl, styled } from "@mui/material";
 
 export const Field = styled(FormControl)(({ theme }) => ({
+  width: "100%",
   display: "inline-flex",
   justifyContent: "center",
   position: "relative",

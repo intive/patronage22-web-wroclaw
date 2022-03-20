@@ -10,11 +10,18 @@
   },
   "missingTitleError": "Title cannot be empty",
   "newPresentation": "New presentation",
+  "newQuestion": "New question",
+  "question": {
+    "maxCharLength": "Maximum number of characters exceeded ({{charAmount}})",
+    "missingQuestionError": "Question cannot be empty",
+    "questionField": "Ask question"
+  },
   "search": {
     "searchAriaLabel": "Search",
     "searchbarPlaceholder": "Search presentations",
     "showResultsButton": "Show all results..."
   },
+  "setQuestionTime": "Time to answer (seconds)",
   "shareDialogMessage": "Congratulations, your presentation: {{name}} just started, use the link below to share it!",
   "sharePresentation": "Share presentation"
 }
