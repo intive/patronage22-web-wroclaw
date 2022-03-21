@@ -5,7 +5,7 @@ describe("Feedback Homepage", () => {
 
   it("displays welcome text", () => {
     cy.get(".e1y13pc43 > .MuiTypography-root").contains(
-      "Tymczasowy tekst komponentu ActionCard do tworzenia nowych ankiet z poziomu widoku Homepage"
+      "Czy zastanawiałeś się kiedyś, co zrobić, by Twoja prezentacja była bardziej interaktywna? Kliknij przycisk poniżej i po prostu... spraw, by tak się stało!"
     );
   });
 
