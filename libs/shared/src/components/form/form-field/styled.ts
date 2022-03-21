@@ -5,12 +5,12 @@ export const Field = styled(Box)(({ theme }) => ({
   justifyContent: "flex-start",
   alignItems: "center",
 
-  "& .MuiSvgIcon-root": {
+  "& #editIcon": {
     visibility: "hidden"
   },
 
   "&:hover": {
-    "& .MuiSvgIcon-root": {
+    "& #editIcon": {
       visibility: "visible"
     }
   }

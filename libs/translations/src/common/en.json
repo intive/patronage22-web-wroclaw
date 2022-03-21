@@ -5,37 +5,34 @@
     "feedback": "Survey Maker",
     "feedback-external": "Survey Participant"
   },
-  "homepage": {
-    "newPresentationDescription": "Placeholder text for ActionCard to create new presentation on Homepage",
-    "newPresentationButton": "New presentation"
-  },
-  "login": {
-    "title": "Welcome in Patronage App",
-    "subtitle": "Login to your account",
-    "forgotPassword": "Forgot a password?",
-    "emailRequiredMessage": "Please provide your e-mail",
-    "emailInvalidMessage": "Invalid e-mail address",
-    "notGmailMessage": "E-mail address must be in Google domain 'example@gmail.com'",
-    "tooShortMessage": "Please provide at least 16 characters",
-    "loginWith": "Log in with"
-  },
-  "password": "Password",
-  "noData": "No data available",
-  "notFoundPage": {
-    "title": "We are sorry, the page you're looking for doesn't exist"
-  },
   "intive": {
-    "name": "Intive",
-    "wroclaw": "Wroclaw",
     "address": "Pilsudskiego 69, 50-019 Wroclaw",
-    "phone": "+48 71 769 59 00"
+    "name": "Intive",
+    "phone": "+48 71 769 59 00",
+    "wroclaw": "Wroclaw"
   },
   "linkCopied": "Link copied",
   "linkCopyingFailed": "Link copying failed!",
+  "login": {
+    "emailInvalidMessage": "Invalid e-mail address",
+    "emailRequiredMessage": "Please provide your e-mail",
+    "forgotPassword": "Forgot a password?",
+    "loginWith": "Log in with",
+    "notGmailMessage": "E-mail address must be in Google domain 'example@gmail.com'",
+    "subtitle": "Login to your account",
+    "title": "Welcome in Patronage App",
+    "tooShortMessage": "Please provide at least 16 characters"
+  },
+  "noItems": "No items available",
+  "notFoundPage": {
+    "title": "We are sorry, the page you're looking for doesn't exist"
+  },
+  "password": "Password",
   "save": "Save",
   "search": {
-    "noResultsInfo": "No results found...",
-    "tooShortPhrase": "Please enter at least {{charAmount}} characters"
+    "maxCharLength": "Maximum number of characters exceeded: {{charAmount}}",
+    "minCharLength": "Minimum number of characters required: {{charAmount}}",
+    "noResultsInfo": "No results found..."
   },
   "submit": "Submit"
 }

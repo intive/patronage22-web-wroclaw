@@ -1,12 +1,13 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Typography } from "@mui/material";
-import { ReactNode } from "react";
+import { isEqual } from "lodash-es";
+import { BaseSyntheticEvent, ReactNode } from "react";
 import { FieldValues, FormProvider, SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import * as yup from "yup";
 import { ObjectShape } from "yup/lib/object";
 
+import { usePrevious } from "../../hooks";
 import { BaseButton, ButtonType } from "../base-button";
 import { FormField, FormFieldProps } from "./form-field";
 import * as Styled from "./styled";
@@ -21,9 +22,13 @@ export interface FormProps {
   title?: string;
   validationSchema: ObjectShape;
   fields?: FormFieldProps[];
+  initialValues?: {
+    [x: string]: any;
+  };
   placeholder?: string;
-  onSubmit: SubmitHandler<FieldValues>;
-  onError: SubmitErrorHandler<FieldValues>;
+  onSubmit?: SubmitHandler<FieldValues>;
+  onChange?: (value: Record<string, any>) => any;
+  onError?: SubmitErrorHandler<FieldValues>;
   onCancel?: () => void;
   customButtons?: {
     submit?: FormButton;
@@ -36,10 +41,12 @@ export const Form: React.FC<FormProps> = ({
   title,
   validationSchema,
   fields,
+  initialValues,
   placeholder,
   onSubmit,
   onError,
   onCancel,
+  onChange,
   customButtons,
   className
 }) => {
@@ -49,27 +56,28 @@ export const Form: React.FC<FormProps> = ({
   const methods = useForm<FieldValues>({
     resolver: yupResolver(schema),
     mode: "onChange",
-    reValidateMode: "onChange"
+    defaultValues: initialValues
   });
 
-  const renderFields = () => {
-    if (fields) {
-      return fields.map(field => <FormField key={field.name} {...field} />);
+  const currentValues = methods.getValues();
+  const previousValues = usePrevious(currentValues);
+
+  const handleSubmit = (event: BaseSyntheticEvent) => {
+    if (onSubmit) {
+      methods.handleSubmit(onSubmit, onError)(event);
     }
-
-    return (
-      <Typography id='placeholder' variant='h4'>
-        {placeholder || t("NoData")}
-      </Typography>
-    );
-  };
-
-  const handleSubmit = () => {
-    methods.handleSubmit(onSubmit, onError)();
   };
 
   const handleCancel = () => {
-    if (onCancel) onCancel();
+    if (onCancel) {
+      onCancel();
+    }
+  };
+
+  const handleFormChange = () => {
+    if (onChange && !isEqual(methods.getValues(), previousValues)) {
+      onChange(methods.getValues());
+    }
   };
 
   const formButtons = [
@@ -87,9 +95,21 @@ export const Form: React.FC<FormProps> = ({
     }
   ];
 
+  const renderFields = () => {
+    if (fields) {
+      return fields.map(field => <FormField key={field.name} {...field} />);
+    }
+
+    return (
+      <Typography id='no-data-placeholder' variant='h4'>
+        {placeholder || t("noItems")}
+      </Typography>
+    );
+  };
+
   return (
     <FormProvider {...methods}>
-      <Styled.Form className={className}>
+      <Styled.Form className={className} onChange={handleFormChange} onSubmit={handleSubmit}>
         {title && <Typography variant='h3'>{title}</Typography>}
         {renderFields()}
         {formButtons.map(

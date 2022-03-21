@@ -1,16 +1,26 @@
 import { Google } from "@mui/icons-material";
-import { BaseRoute, createPath, FormFieldType, LinkedText, REGEX_GMAIL_VALIDATION } from "@patronage-web/shared";
+import {
+  BaseRoute,
+  createPath,
+  FormFieldType,
+  LinkedText,
+  REGEX_GMAIL_VALIDATION,
+  TranslationNamespace
+} from "@patronage-web/shared";
+import { BaseSyntheticEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { string } from "yup";
 
 import * as Styled from "./styled";
 
+const MIN_GMAIL_ADDRESS_LENGTH = 16;
+
 export const GoogleLogin: React.FC = () => {
-  const { i18n, t } = useTranslation();
+  const { i18n, t } = useTranslation(TranslationNamespace.Common);
   const navigate = useNavigate();
 
-  const handleSubmit = (_data: unknown) => {
+  const handleSubmit = (data: unknown, event?: BaseSyntheticEvent) => {
     navigate(createPath({ route: BaseRoute.Home, language: i18n.language }));
   };
 
@@ -20,18 +30,17 @@ export const GoogleLogin: React.FC = () => {
       <Styled.LoginGoogleSubtitle variant='h6'>{t("login.subtitle")}</Styled.LoginGoogleSubtitle>
       <Styled.LoginGoogleFormCard>
         <Styled.LoginGoogleForm
+          initialValues={{ email: "", password: "" }}
           fields={[
             {
               type: FormFieldType.Text,
               name: "email",
-              defaultValue: "",
               variant: "filled",
               description: "E-mail"
             },
             {
               type: FormFieldType.Text,
               name: "password",
-              defaultValue: "",
               variant: "filled",
               description: t("password"),
               disabled: true,
@@ -44,7 +53,7 @@ export const GoogleLogin: React.FC = () => {
               .trim()
               .required(t("login.emailRequiredMessage"))
               .email(t("login.emailInvalidMessage"))
-              .min(16, t("login.tooShortMessage"))
+              .min(MIN_GMAIL_ADDRESS_LENGTH, t("login.tooShortMessage"))
               .matches(REGEX_GMAIL_VALIDATION, t("login.notGmailMessage")),
             password: string().trim()
           }}
