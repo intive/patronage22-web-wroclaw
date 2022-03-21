@@ -25,5 +25,9 @@ export const SearchInputBase = styled(Form)(({ theme }) => ({
     "& fieldset": {
       border: "none"
     }
+  },
+
+  "& .MuiFormHelperText-root.Mui-error": {
+    marginLeft: theme.spacing(2)
   }
 }));

@@ -2,14 +2,14 @@ import { TextField } from "@mui/material";
 import { ChangeEvent } from "react";
 import { FieldValues, UseFormStateReturn } from "react-hook-form";
 
-import { FormFieldType } from "../../types";
+import { FormFieldType } from "../../../types";
 import { FormFieldProps } from "./index";
 
 const DEFAULT_ROWS_NUMBER = 4;
 
 export type FormTextFieldVariant = "standard" | "filled" | "outlined";
 
-interface RenderFieldProps extends Omit<FormFieldProps, "helperText" | "onChange"> {
+interface RenderFieldProps extends Omit<FormFieldProps, "helperText" | "onChange" | "description" | "appendix" | "hideEditIcon"> {
   name: string;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   errors: UseFormStateReturn<FieldValues>["errors"];
