@@ -1,7 +1,7 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Typography } from "@mui/material";
 import { isEqual } from "lodash-es";
-import { ReactNode } from "react";
+import { BaseSyntheticEvent, ReactNode } from "react";
 import { FieldValues, FormProvider, SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import * as yup from "yup";
@@ -56,16 +56,15 @@ export const Form: React.FC<FormProps> = ({
   const methods = useForm<FieldValues>({
     resolver: yupResolver(schema),
     mode: "onChange",
-    reValidateMode: "onChange",
     defaultValues: initialValues
   });
 
   const currentValues = methods.getValues();
   const previousValues = usePrevious(currentValues);
 
-  const handleSubmit = () => {
+  const handleSubmit = (event: BaseSyntheticEvent) => {
     if (onSubmit) {
-      methods.handleSubmit(onSubmit, onError)();
+      methods.handleSubmit(onSubmit, onError)(event);
     }
   };
 
@@ -110,7 +109,7 @@ export const Form: React.FC<FormProps> = ({
 
   return (
     <FormProvider {...methods}>
-      <Styled.Form className={className} onChange={handleFormChange}>
+      <Styled.Form className={className} onChange={handleFormChange} onSubmit={handleSubmit}>
         {title && <Typography variant='h3'>{title}</Typography>}
         {renderFields()}
         {formButtons.map(
