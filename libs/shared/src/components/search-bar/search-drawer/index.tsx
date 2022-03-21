@@ -48,7 +48,13 @@ export const SearchDrawer: React.FC<SearchDrawerProps> = ({ open, onClose, searc
 
     const phrase = currentItems.length ? searchPhrase : "";
 
-    navigate(createPath(FeedbackRoute.Dashboard, {}, i18n.language, phrase));
+    navigate(
+      createPath({
+        route: FeedbackRoute.Dashboard,
+        language: i18n.language,
+        search: phrase
+      })
+    );
     setSearchPhrase("");
     onClose();
   };

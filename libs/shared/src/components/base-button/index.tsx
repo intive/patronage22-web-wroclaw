@@ -9,7 +9,7 @@ export enum ButtonType {
 }
 
 export interface BaseButtonProps
-  extends Pick<ButtonProps, "children" | "onClick" | "variant" | "disabled" | "startIcon" | "sx" | "disableRipple"> {
+  extends Pick<ButtonProps, "children" | "onClick" | "variant" | "disabled" | "startIcon" | "sx" | "disableRipple" | "endIcon"> {
   type: ButtonType;
 }
 
@@ -21,7 +21,8 @@ export const BaseButton: React.FC<BaseButtonProps> = ({
   disabled,
   startIcon,
   sx,
-  disableRipple
+  disableRipple,
+  endIcon
 }) => {
   const { isMobile } = useScreenSize();
   const buttonSize = isMobile ? "small" : "medium";
@@ -36,6 +37,7 @@ export const BaseButton: React.FC<BaseButtonProps> = ({
         startIcon={startIcon}
         sx={sx}
         disableRipple={disableRipple}
+        endIcon={endIcon}
       >
         {children}
       </Styled.BasicButton>
