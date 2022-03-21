@@ -56,16 +56,15 @@ export const Form: React.FC<FormProps> = ({
   const methods = useForm<FieldValues>({
     resolver: yupResolver(schema),
     mode: "onChange",
-    reValidateMode: "onChange",
     defaultValues: initialValues
   });
 
   const currentValues = methods.getValues();
   const previousValues = usePrevious(currentValues);
 
-  const handleSubmit = () => {
+  const handleSubmit = (event: BaseSyntheticEvent) => {
     if (onSubmit) {
-      methods.handleSubmit(onSubmit, onError)();
+      methods.handleSubmit(onSubmit, onError)(event);
     }
   };
 
@@ -110,7 +109,7 @@ export const Form: React.FC<FormProps> = ({
 
   return (
     <FormProvider {...methods}>
-      <Styled.Form className={className} onChange={handleFormChange}>
+      <Styled.Form className={className} onChange={handleFormChange} onSubmit={handleSubmit}>
         {title && <Typography variant='h3'>{title}</Typography>}
         {renderFields()}
         {formButtons.map(
