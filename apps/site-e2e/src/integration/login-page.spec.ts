@@ -22,6 +22,6 @@ describe("Login page", () => {
 
   it("redirects to homepage after successful login", () => {
     cy.get(".MuiButton-root").click();
-    cy.url().should("eq", "http://localhost:4000/?lang=pl");
+    cy.url().should("eq", "http://localhost:4000/");
   });
 });
