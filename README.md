@@ -76,6 +76,7 @@ Project is **_in progress_ **
 - We do not use "magic numbers"
 - We have in mind SOLID principles (https://github.com/ryanmcdermott/clean-code-javascript)
 - If it comes to styles, we follow BEM rules (https://css-tricks.com/bem-101/)
+- We add underscore to variables that are not used but required (throwaway variable)
 
 ### Naming conventions:
 
