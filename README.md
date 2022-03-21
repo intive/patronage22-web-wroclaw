@@ -77,10 +77,11 @@ Project is **_in progress_ **
 - We have in mind SOLID principles (https://github.com/ryanmcdermott/clean-code-javascript)
 - If it comes to styles, we follow BEM rules (https://css-tricks.com/bem-101/)
 - We add underscore to variables that are not used but required (throwaway variable), for instance:
-  ( \_notUsedVariable: any, usedVariable: any) => (const result = usedVariable + 1)
+  ( \_notUsedVariable: any, usedVariable: any) => {
+  const result = usedVariable + 1
 
-return result
-}
+  return result
+  }
 
 ### Naming conventions:
 
