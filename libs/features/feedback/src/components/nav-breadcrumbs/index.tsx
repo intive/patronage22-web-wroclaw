@@ -1,5 +1,5 @@
 import { Breadcrumbs } from "@mui/material";
-import { BaseRoute, LocalizedLink } from "@patronage-web/shared";
+import { BaseRoute, LocalizedLink, TranslationNamespace } from "@patronage-web/shared";
 import { useTranslation } from "react-i18next";
 
 import * as Styled from "./styled";
@@ -9,7 +9,7 @@ export interface NavBreadcrumbsProps {
 }
 
 export const NavBreadcrumbs: React.FC<NavBreadcrumbsProps> = ({ presentationName }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(TranslationNamespace.Feedback);
 
   return (
     <Breadcrumbs aria-label={t("breadcrumb.breadcrumb")} separator={<Styled.ArrowSeparator />}>

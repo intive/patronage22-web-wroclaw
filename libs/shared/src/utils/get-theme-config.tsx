@@ -14,7 +14,7 @@ export const dark = createTheme({
   palette: {
     mode: ThemeMode.Dark,
     primary: { main: grey[100], light: grey[50], dark: grey[300] },
-    background: { default: grey[700], paper: grey[600] }
+    background: { default: grey[900], paper: grey[800] }
   },
   dialog: {
     iconBackgroundColor: grey[600],

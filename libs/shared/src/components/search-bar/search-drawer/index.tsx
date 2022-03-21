@@ -3,7 +3,7 @@ import Fuse from "fuse.js";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { AppRouteType } from "../../../types";
+import { AppRouteType, TranslationNamespace } from "../../../types";
 import { BaseButton, ButtonType } from "../../base-button";
 import { LocalizedLink } from "../../localized-link";
 import { SEARCH_CONFIG } from "../constants";
@@ -22,7 +22,7 @@ interface SearchDrawerProps {
 }
 
 export const SearchDrawer: React.FC<SearchDrawerProps> = ({ open, onClose, searchKey, toResult, toItem }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(TranslationNamespace.Feedback);
 
   const [currentItems, setCurrentItems] = useState<Fuse.FuseResult<PresentationSearchItem>[]>([]);
 
@@ -69,6 +69,7 @@ export const SearchDrawer: React.FC<SearchDrawerProps> = ({ open, onClose, searc
             onChange={handleInputChange}
             autoFocus
             customStyles={theme => ({ [theme.breakpoints.down("sm")]: { backgroundColor: "inherit" } })}
+            hideEditIcon
           />
         </Styled.InputBoxWrapper>
 
