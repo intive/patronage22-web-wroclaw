@@ -18,7 +18,7 @@ interface SearchInputProps {
   hideEditIcon?: boolean;
 }
 
-export const SearchInput: React.FC<SearchInputProps> = ({ onChange, onClick, autoFocus, disabled, customStyles }) => {
+export const SearchInput: React.FC<SearchInputProps> = ({ onChange, onClick, autoFocus, disabled, customStyles, hideEditIcon }) => {
   const { t } = useTranslation(TranslationNamespace.Feedback);
   const maxInputLength = SEARCH_CONFIG.maxLength - 1;
 
