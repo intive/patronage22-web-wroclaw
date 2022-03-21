@@ -18,7 +18,7 @@ export const LanguageButton = () => {
   };
 
   useEffect(() => {
-    setSearchParams(langQueryString);
+    setSearchParams(langQueryString, { replace: true });
   }, [i18n.language, langQueryString, setSearchParams]);
 
   return (
