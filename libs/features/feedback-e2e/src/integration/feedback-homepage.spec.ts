@@ -1,11 +1,12 @@
 describe("Feedback Homepage", () => {
-  it("opens the login page", () => {
-    cy.visit("http://localhost:4000/");
+  it("opens the Homepage", () => {
+    cy.visit("http://localhost:4000/?lang=en");
+    cy.url().should("eq", "http://localhost:4000/?lang=en");
   });
 
   it("displays welcome text", () => {
     cy.get(".e1y13pc43 > .MuiTypography-root").contains(
-      "Czy zastanawiałeś się kiedyś, co zrobić, by Twoja prezentacja była bardziej interaktywna? Kliknij przycisk poniżej i po prostu... spraw, by tak się stało!"
+      "Have you ever wonder how to make your presentation more interactive? Click the button below and simply... make it happen!"
     );
   });
 
