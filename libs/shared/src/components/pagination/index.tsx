@@ -2,7 +2,7 @@ import { Pagination } from "@mui/material";
 import { ChangeEvent, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
-import { useScreenSize, useURLParams } from "../../hooks";
+import { useScreenSize, useUrlParams } from "../../hooks";
 import { FormFieldType, PaginationQueryParams } from "../../types";
 import * as Styled from "./style";
 
@@ -31,9 +31,8 @@ export const BasicPagination: React.FC<BasicPaginationProps> = ({
   const { t } = useTranslation();
   const initialSize = itemsPerPageOptions[INITIAL_SIZE_POSITION];
 
-  const { params, setParams } = useURLParams<PaginationQueryParams>(
-    ["lang", "page", "size"],
-    initialValues || { page: INITIAL_PAGE, size: initialSize }
+  const { params, updateParams } = useUrlParams<PaginationQueryParams>(
+    initialValues || { page: INITIAL_PAGE.toString(), size: initialSize.toString() }
   );
 
   const sizeFromParam = Number(params?.size);
@@ -54,22 +53,22 @@ export const BasicPagination: React.FC<BasicPaginationProps> = ({
 
   const handleSelectChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
-    setParams({ size: value });
+    updateParams({ size: value });
     onChange(page, Number(value));
   };
 
   const handlePageChange = (event: ChangeEvent<unknown>, currentPage: number) => {
-    setParams({ page: currentPage.toString() });
+    updateParams({ page: currentPage.toString() });
     onChange(currentPage, size);
   };
 
   useEffect(() => {
     if (!isPageCorrect || !isSizeCorrect) {
-      setParams({ page, size });
+      updateParams({ page: page.toString(), size: size.toString() });
     } else {
       onChange(page, size);
     }
-  }, [isPageCorrect, isSizeCorrect, onChange, page, setParams, size]);
+  }, [isPageCorrect, isSizeCorrect, onChange, page, updateParams, size]);
 
   return (
     <Styled.PaginationBox>
