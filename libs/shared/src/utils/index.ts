@@ -1,4 +1,3 @@
-export * from "./convert-url-params-to-string";
 export * from "./create-path";
 export * from "./filter-by-keys";
 export * from "./get-app-route";
@@ -6,5 +5,5 @@ export * from "./get-domain-name";
 export * from "./get-theme-config";
 export * from "./lang-fns";
 export * from "./load-i18n";
-export * from "./parse-url-params";
 export * from "./trim-string";
+export * from "./url-params";

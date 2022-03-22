@@ -1,4 +1,5 @@
 import { ToggleButton, ToggleButtonGroup } from "@mui/material";
+import { MouseEvent } from "react";
 import { useTranslation } from "react-i18next";
 
 import { useUrlParams } from "../../hooks";
@@ -16,7 +17,7 @@ export const LanguageButton = () => {
 
   const { updateParams } = useUrlParams(getCurrentLang());
 
-  const handleChange = (event: React.MouseEvent<HTMLElement>, value: SupportedLanguage) => {
+  const handleChange = (_event: MouseEvent<HTMLElement>, value: SupportedLanguage) => {
     if (value) {
       changeLanguage(i18n, value);
       updateParams(getCurrentLang());

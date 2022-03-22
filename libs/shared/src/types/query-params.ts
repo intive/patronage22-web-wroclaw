@@ -3,6 +3,6 @@ export interface BaseQueryParams {
 }
 
 export interface PaginationQueryParams extends BaseQueryParams {
-  page?: string | number;
-  size?: string | number;
+  page?: string;
+  size?: string;
 }

@@ -1,11 +1,9 @@
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
-import { SUPPORTED_PARAM_KEYS } from "../constants";
+import { SUPPORTED_PARAM_KEYS } from "../configs";
 import { BaseQueryParams, Nullable } from "../types";
-import { parseUrlParams } from "../utils";
-import { convertUrlParamsToString } from "../utils/convert-url-params-to-string";
-import { filterByKeys } from "../utils/filter-by-keys";
+import { convertUrlParamsToString, filterByKeys, parseUrlParams } from "../utils";
 
 export const useUrlParams = <TParams extends BaseQueryParams>(initialParams?: Nullable<TParams>) => {
   const [searchParams, setSearchParams] = useSearchParams();
