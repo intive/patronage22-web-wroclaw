@@ -1,4 +1,4 @@
-import { TextField } from "@mui/material";
+import { FormControlLabel, Radio, RadioGroup, TextField } from "@mui/material";
 import { ChangeEvent } from "react";
 import { FieldValues, UseFormStateReturn } from "react-hook-form";
 
@@ -27,6 +27,8 @@ export const renderField = ({
   inputConfig,
   autoFocus,
   disabled,
+  options,
+  value,
   rows = DEFAULT_ROWS_NUMBER
 }: RenderFieldProps) => {
   const field: Record<FormFieldType, JSX.Element> = {
@@ -58,7 +60,15 @@ export const renderField = ({
         InputProps={inputConfig}
         placeholder={placeholder}
         autoFocus={autoFocus}
+        fullWidth
       />
+    ),
+    [FormFieldType.RadioGroup]: (
+      <RadioGroup value={value} onChange={onChange}>
+        {options?.map(option => (
+          <FormControlLabel value={option} control={<Radio />} label={option} key={options.indexOf(option)} />
+        ))}
+      </RadioGroup>
     )
   };
 

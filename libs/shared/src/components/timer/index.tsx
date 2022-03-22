@@ -26,7 +26,7 @@ export const Timer: React.FC<TimerProps> = ({ initialTimeMsec, label, onTimeElap
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (remainingTime <= 0) {
+      if (remainingTime <= 1000) {
         clearInterval(interval);
         onTimeElapsed();
       } else {

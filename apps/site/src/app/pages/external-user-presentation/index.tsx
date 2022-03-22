@@ -4,6 +4,8 @@ import { Timer } from "@patronage-web/shared";
 import { ExternalPresentationMock } from "@patronage-web/shared-data";
 import { useState } from "react";
 
+import * as Styled from "./styled";
+
 const ExternalUserPresentationPage: React.FC = () => {
   const { questions, timer } = ExternalPresentationMock;
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -15,21 +17,23 @@ const ExternalUserPresentationPage: React.FC = () => {
     setIsSubmit(false);
   };
 
-  const view = (
-    <>
-      {!isSubmit ? (
-        <CurrentQuestionView question={questions[questionIndex]} onSubmit={handleSubmit} />
-      ) : (
-        <Button onClick={handleBtnClick}>Live Results</Button>
-      )}
-      <Timer initialTimeMsec={timer * 1000} onTimeElapsed={handleBtnClick} label='' key={questionIndex} />
-    </>
-  );
+  const view = () => {
+    return (
+      <Styled.ViewContainer>
+        {!isSubmit ? (
+          <CurrentQuestionView question={questions[questionIndex]} onSubmit={handleSubmit} />
+        ) : (
+          <Button onClick={handleBtnClick}>Live Results</Button>
+        )}
+        <Timer initialTimeMsec={timer * 1000} onTimeElapsed={handleBtnClick} label='' key={questions[questionIndex].id} />
+      </Styled.ViewContainer>
+    );
+  };
 
   return (
     // TODO - replace when proper data will be delivered
     // <h1>Presentation page for external user</h1>
-    questionIndex < questions.length ? view : <Typography>Thanks!</Typography>
+    questionIndex < questions.length ? view() : <Typography>Thanks!</Typography>
   );
 };
 

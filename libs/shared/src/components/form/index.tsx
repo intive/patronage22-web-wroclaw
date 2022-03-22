@@ -15,7 +15,7 @@ import * as Styled from "./styled";
 interface FormButton {
   condition: boolean;
   text: string;
-  icon: ReactNode;
+  icon?: ReactNode;
 }
 
 export interface FormProps {
@@ -110,7 +110,7 @@ export const Form: React.FC<FormProps> = ({
   return (
     <FormProvider {...methods}>
       <Styled.Form className={className} onChange={handleFormChange} onSubmit={handleSubmit}>
-        {title && <Typography variant='h3'>{title}</Typography>}
+        {title && <Typography variant='h4'>{title}</Typography>}
         {renderFields()}
         {formButtons.map(
           ({ condition, text, action, icon }) =>

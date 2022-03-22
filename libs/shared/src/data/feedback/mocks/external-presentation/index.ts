@@ -13,21 +13,21 @@ export const ExternalPresentationMock: ExternalPresentation = {
   isPublic: true,
   questions: [
     {
-      id: "0",
+      id: "cjksjlclsjclk",
       number: 1,
       title: "How many apples?",
       type: QuestionType.Closed,
       answers: ["Test 1", " Test 2", "Test 3"]
     },
     {
-      id: "1",
+      id: "bBkbKxkkak",
       number: 2,
       title: "How many doggos?",
       type: QuestionType.Closed,
       answers: ["11", "24", "37"]
     },
     {
-      id: "2",
+      id: "lkkhaugcugvajvu",
       number: 3,
       title: "How many doggos?",
       type: QuestionType.Open

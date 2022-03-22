@@ -15,7 +15,7 @@ export interface FormFieldProps extends Pick<UseControllerProps, "name" | "contr
   label?: string;
   helperText?: string;
   description?: string;
-  onChange?: () => void;
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
   inputConfig?: StandardTextFieldProps["InputProps"];
   autoFocus?: boolean;
@@ -23,6 +23,8 @@ export interface FormFieldProps extends Pick<UseControllerProps, "name" | "contr
   disabled?: boolean;
   appendix?: ReactNode;
   hideEditIcon?: boolean;
+  options?: string[];
+  value?: string;
 }
 
 export const FormField: React.FC<FormFieldProps> = ({
@@ -41,7 +43,9 @@ export const FormField: React.FC<FormFieldProps> = ({
   autoFocus,
   disabled,
   appendix,
-  hideEditIcon
+  hideEditIcon,
+  options,
+  value
 }: FormFieldProps) => {
   const {
     field: { onChange: onFormFieldChange },
@@ -54,7 +58,7 @@ export const FormField: React.FC<FormFieldProps> = ({
     onFormFieldChange(event);
 
     if (onChange) {
-      onChange();
+      onChange(event);
     }
   };
 
@@ -74,7 +78,9 @@ export const FormField: React.FC<FormFieldProps> = ({
           placeholder,
           inputConfig,
           autoFocus,
-          disabled
+          disabled,
+          options,
+          value
         })}
         {!hideEditIcon && <Edit id='editIcon' />}
       </Styled.Field>
