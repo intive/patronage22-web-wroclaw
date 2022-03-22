@@ -16,23 +16,19 @@ export const SearchDrawerHeader = styled(Box)(({ theme }) => ({
   alignItems: "center",
 
   [theme.breakpoints.down("sm")]: {
-    alignItems: "flex-start",
     justifyContent: "start",
-    marginRight: theme.spacing(3),
-    backgroundColor: alpha(theme.palette.primary.dark, 0.05),
-    width: "100%"
+    backgroundColor: alpha(theme.palette.primary.dark, 0.1)
   }
 }));
 
 export const CloseSearchBtnWrapper = styled(Box)(({ theme }) => ({
   position: "absolute",
-  top: theme.spacing(2),
+  top: theme.spacing(2.2),
   right: theme.spacing(1)
 }));
 
 export const SearchDrawerContentBox = styled(Box)(({ theme }) => ({
   display: "flex",
-  justifyContent: "center",
   marginTop: theme.spacing(2),
   alignItems: "center",
   flexDirection: "column"
@@ -41,8 +37,6 @@ export const SearchDrawerContentBox = styled(Box)(({ theme }) => ({
 export const SearchResultsBtnBox = styled(Box)(({ theme }) => ({
   width: "100vw",
   marginTop: theme.spacing(1),
-  display: "flex",
-  justifyContent: "center",
 
   "& .MuiButton-root": {
     borderRadius: 0,
@@ -58,6 +52,7 @@ export const InputBoxWrapper = styled(Box)(({ theme }) => ({
   [theme.breakpoints.between("sm", "md")]: {
     width: "50%"
   },
+
   [theme.breakpoints.between("md", "lg")]: {
     width: "40%"
   },

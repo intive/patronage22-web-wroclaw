@@ -1,8 +1,10 @@
+/* eslint-disable global-require */
+
 import i18n from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import { initReactI18next } from "react-i18next";
 
-import { SupportedLanguage, TranslationNamespace } from "../types/translations";
+import { SupportedLanguage, TranslationNamespace } from "../types";
 
 interface I18nOptions {
   env: string | "development";
