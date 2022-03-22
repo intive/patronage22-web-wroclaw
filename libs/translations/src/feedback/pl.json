@@ -1,16 +1,20 @@
 {
-  "missingTitleError": "Tytuł nie może być pusty",
-  "newPresentation": "Nowa prezentacja",
-  "description": "Opis",
   "breadcrumb": {
     "breadcrumb": "nawigacja",
     "save": "Zapisz"
   },
-  "shareDialogMessage": "Gratulacje, Twoja prezentacja: {{name}} właśnie się rozpoczęła, użyj poniższego linku, aby ją udostępnić!",
-  "sharePresentation": "Udostępnij prezentację",
+  "description": "Opis",
+  "homepage": {
+    "newPresentationButton": "Nowa prezentacja",
+    "newPresentationDescription": "Czy zastanawiałeś się kiedyś, co zrobić, by Twoja prezentacja była bardziej interaktywna? Kliknij przycisk poniżej i po prostu... spraw, by tak się stało!"
+  },
+  "missingTitleError": "Tytuł nie może być pusty",
+  "newPresentation": "Nowa prezentacja",
   "search": {
+    "searchAriaLabel": "Szukaj",
     "searchbarPlaceholder": "Szukaj prezentacji",
-    "showResultsButton": "Pokaż wszystkie wyniki...",
-    "searchAriaLabel": "Szukaj"
-  }
+    "showResultsButton": "Pokaż wszystkie wyniki..."
+  },
+  "shareDialogMessage": "Gratulacje, Twoja prezentacja: {{name}} właśnie się rozpoczęła, użyj poniższego linku, aby ją udostępnić!",
+  "sharePresentation": "Udostępnij prezentację"
 }

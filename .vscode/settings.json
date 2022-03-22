@@ -10,7 +10,8 @@
   "editor.codeActionsOnSave": {
     "source.organizeImports": true,
     "source.sortMembers": true,
-    "source.fixAll": true
+    "source.fixAll": true,
+    "source.fixAll.sortJSON": false
   },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"

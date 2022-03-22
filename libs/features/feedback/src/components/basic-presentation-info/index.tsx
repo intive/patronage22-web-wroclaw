@@ -1,4 +1,5 @@
 import { FormFieldType, TranslationNamespace } from "@patronage-web/shared";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import { string } from "yup";
 
@@ -9,21 +10,20 @@ export const BasicPresentationInfo: React.FC = () => {
 
   return (
     <Styled.BasicPresentationInfo
-      onSubmit={data => console.log(data)}
-      onError={errors => console.log(errors)}
       fields={[
         {
           type: FormFieldType.Text,
           name: "title",
           variant: "standard",
-          defaultValue: t("newPresentation")
+          placeholder: t("newPresentation")
         },
         {
-          type: FormFieldType.Text,
+          type: FormFieldType.Textarea,
           name: "description",
           variant: "standard",
-          defaultValue: "",
-          label: t("description")
+          placeholder: t("description"),
+          rows: 2,
+          inputConfig: { disableUnderline: true }
         }
       ]}
       validationSchema={{
