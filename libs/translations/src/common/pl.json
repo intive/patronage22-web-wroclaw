@@ -13,7 +13,17 @@
   },
   "linkCopied": "Skopiowano link",
   "linkCopyingFailed": "Kopiowanie linku nie powiodło się!",
-  "noData": "Brak danych",
+  "login": {
+    "emailInvalidMessage": "Nieprawidłowy adres e-mail",
+    "emailRequiredMessage": "Podaj swój adres e-mail 'example@gmail.com'",
+    "forgotPassword": "Zapomniałeś/aś hasła?",
+    "loginWith": "Zaloguj się przez",
+    "notGmailMessage": "Adres e-mail musi być w domenie Google 'example@gmail.com'",
+    "subtitle": "Zaloguj się do swojego konta",
+    "title": "Witamy w aplikacji Patronage",
+    "tooShortMessage": "Wpisz minimum 16 znaków"
+  },
+  "noItems": "Brak elementów do wyświetlenia",
   "notFoundPage": {
     "title": "Przepraszamy, strona, której szukasz nie istnieje"
   },
@@ -21,6 +31,7 @@
     "itemsPerPage": "Przedmiotów na stronie",
     "outOf": "z"
   },
+  "password": "Hasło",
   "save": "Zapisz",
   "search": {
     "maxCharLength": "Przekroczono maksymalną ilość znaków: {{charAmount}}",

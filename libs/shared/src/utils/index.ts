@@ -8,3 +8,4 @@ export * from "./get-theme-config";
 export * from "./lang-fns";
 export * from "./load-i18n";
 export * from "./trim-string";
+export * from "./url-params";

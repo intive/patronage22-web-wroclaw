@@ -1,4 +1,5 @@
 export * from "./app-routes";
+export * from "./common";
 export * from "./form-field-type";
 export * from "./http-status";
 export * from "./notification-type";
