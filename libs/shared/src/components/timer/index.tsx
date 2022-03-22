@@ -4,8 +4,7 @@ import { useTranslation } from "react-i18next";
 import * as Styled from "./styled";
 
 export const STOPER_CONFIG = {
-  ten: 10,
-  second: 1000
+  refreshTime: 1000
 };
 
 interface TimerProps {
@@ -16,18 +15,18 @@ export const Timer: React.FC<TimerProps> = ({ seconds }) => {
   const [currentSeconds, setCurrentSeconds] = useState(seconds);
   const { t } = useTranslation();
 
-  const second = currentSeconds >= STOPER_CONFIG.ten ? currentSeconds : `0${currentSeconds}`;
+  const currentSecondsString = currentSeconds.toFixed().padStart(2, "0");
 
-  const message = currentSeconds > 0 ? `00:${second}` : t("timeIsUp");
+  const message = currentSeconds > 0 ? `00:${currentSecondsString}` : t("timeIsUp");
 
   useEffect(() => {
-    const startTimer = () => {
+    const timeStart = () => {
       if (currentSeconds > 0) {
         setCurrentSeconds(prevState => prevState - 1);
       }
     };
 
-    const time = setInterval(startTimer, STOPER_CONFIG.second);
+    const time = setInterval(timeStart, STOPER_CONFIG.refreshTime);
 
     return () => {
       clearInterval(time);

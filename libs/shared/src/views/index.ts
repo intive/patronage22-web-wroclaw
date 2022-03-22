@@ -1,1 +1,1 @@
-export * from "./live-results";
+export * from ".";
