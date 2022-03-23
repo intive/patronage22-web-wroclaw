@@ -7,12 +7,16 @@ import { useState } from "react";
 import * as Styled from "./styled";
 
 const ExternalUserPresentationPage: React.FC = () => {
-  const { questions, timer } = ExternalPresentationMock;
-  const [questionIndex, setQuestionIndex] = useState(0);
+  const { questions, timer, startTime, currentTime } = ExternalPresentationMock;
+  const startQuestionIndex = Math.floor((currentTime - startTime) / timer);
+  const startQuestionTime = timer - ((currentTime - startTime) % timer);
+  const [questionIndex, setQuestionIndex] = useState(startQuestionIndex);
+  const [time, setTime] = useState(startQuestionTime);
   const [isSubmit, setIsSubmit] = useState(false);
 
   const handleSubmit = () => setIsSubmit(true);
   const handleBtnClick = () => {
+    setTime(timer);
     setQuestionIndex(questionIndex + 1);
     setIsSubmit(false);
   };
@@ -25,7 +29,7 @@ const ExternalUserPresentationPage: React.FC = () => {
         ) : (
           <Button onClick={handleBtnClick}>Live Results</Button>
         )}
-        <Timer initialTimeMsec={timer * 1000} onTimeElapsed={handleBtnClick} label='' key={questions[questionIndex].id} />
+        <Timer initialTimeMsec={time * 1000} onTimeElapsed={handleBtnClick} label='' key={questions[questionIndex].id} />
       </Styled.ViewContainer>
     );
   };

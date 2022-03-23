@@ -11,12 +11,11 @@ export interface CurrentQuestionViewProps {
 }
 
 export const CurrentQuestionView: React.FC<CurrentQuestionViewProps> = ({ question, onSubmit }) => {
-  // eslint-disable-next-line unused-imports/no-unused-vars
-  const { id, number, title, type, answers, defaultAnswer } = question;
+  const { id, number, title, type, answers } = question;
 
   const { t } = useTranslation(TranslationNamespace.Common);
 
-  const [usersAnswer, setUsersAnswer] = useState("");
+  const [usersAnswer, setUsersAnswer] = useState(answers ? answers[0] : "");
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setUsersAnswer((event.target as HTMLInputElement).value);
@@ -48,17 +47,6 @@ export const CurrentQuestionView: React.FC<CurrentQuestionViewProps> = ({ questi
     ]
   };
 
-  // const fields = [
-  //   {
-  //     type: FormFieldType.RadioGroup,
-  //     name: "posibleAnswers",
-  //     options: answers,
-  //     onChange: handleChange,
-  //     value: usersAnswer,
-  //     hideEditIcon: true
-  //   }
-  // ];
-
   return (
     <Styled.QuestionFormCard>
       <Form
@@ -67,45 +55,7 @@ export const CurrentQuestionView: React.FC<CurrentQuestionViewProps> = ({ questi
         fields={answersField[type]}
         customButtons={{ submit: { condition: true, text: t("submit") } }}
         onSubmit={handleSubmit}
-        key={`questionview${id}`}
       />
     </Styled.QuestionFormCard>
   );
-
-  // const [usersAnswer, setUsersAnswer] = useState("");
-
-  // const options = answers?.map(answer => (
-  //   <FormControlLabel value={answer} control={<Radio />} label={answer} key={answers.indexOf(answer)} />
-  // ));
-
-  // const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setUsersAnswer((event.target as HTMLInputElement).value);
-  // };
-
-  // const handleSubmit = () => {
-  //   onSubmit();
-  //   console.log(usersAnswer);
-  // };
-
-  // const answersField = {
-  //   [QuestionType.Closed]: (
-  //     <RadioGroup value={usersAnswer} onChange={handleChange}>
-  //       {options}
-  //     </RadioGroup>
-  //   ),
-  //   [QuestionType.Open]: <TextField placeholder='Your answer' variant='standard' fullWidth onChange={handleChange} />
-  // };
-
-  // return (
-  //   <FormControl>
-  //     <FormLabel>
-  //       <Typography>{number}</Typography>
-  //       <Typography>{title}</Typography>
-  //     </FormLabel>
-  //     {answersField[type]}
-  //     <Button onClick={handleSubmit} variant='contained' disabled={usersAnswer === ""}>
-  //       Submit
-  //     </Button>
-  //   </FormControl>
-  // );
 };

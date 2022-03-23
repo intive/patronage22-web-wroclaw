@@ -15,14 +15,12 @@ const translationResources = {
   en: {
     [TranslationNamespace.Common]: require("../../../translations/src/common/en.json"),
     [TranslationNamespace.Feedback]: require("../../../translations/src/feedback/en.json"),
-    [TranslationNamespace.Ui]: require("../../../translations/src/ui/en.json"),
-    [TranslationNamespace.Shared]: require("../../../translations/src/shared/en.json")
+    [TranslationNamespace.Ui]: require("../../../translations/src/ui/en.json")
   },
   pl: {
     [TranslationNamespace.Common]: require("../../../translations/src/common/pl.json"),
     [TranslationNamespace.Feedback]: require("../../../translations/src/feedback/pl.json"),
-    [TranslationNamespace.Ui]: require("../../../translations/src/ui/pl.json"),
-    [TranslationNamespace.Shared]: require("../../../translations/src/shared/pl.json")
+    [TranslationNamespace.Ui]: require("../../../translations/src/ui/pl.json")
   }
 };
 

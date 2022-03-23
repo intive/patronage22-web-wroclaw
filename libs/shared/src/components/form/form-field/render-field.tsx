@@ -64,7 +64,7 @@ export const renderField = ({
       />
     ),
     [FormFieldType.RadioGroup]: (
-      <RadioGroup value={value} onChange={onChange}>
+      <RadioGroup onChange={onChange} value={value}>
         {options?.map(option => (
           <FormControlLabel value={option} control={<Radio />} label={option} key={options.indexOf(option)} />
         ))}

@@ -15,7 +15,7 @@ export interface TimerProps {
 export const Timer: React.FC<TimerProps> = ({ initialTimeMsec, label, onTimeElapsed }) => {
   const timeToRefresh = 1000;
 
-  const { t } = useTranslation(TranslationNamespace.Shared);
+  const { t } = useTranslation(TranslationNamespace.Common);
 
   const [remainingTime, setRemainingTime] = useState(initialTimeMsec);
 
@@ -45,7 +45,7 @@ export const Timer: React.FC<TimerProps> = ({ initialTimeMsec, label, onTimeElap
           {formatDuration(intervalToDuration({ start: 0, end: remainingTime }), { locale: plLocale })}
         </Typography>
       ) : (
-        <Typography>{t("endTimeLabel")}</Typography>
+        <Typography>{t("endTime")}</Typography>
       )}
     </>
   );

@@ -1,6 +1,7 @@
 {
   "cancel": "Cancel",
   "copyLink": "Copy link",
+  "endTime": "Time is up!",
   "featureNames": {
     "feedback": "Survey Maker",
     "feedback-external": "Survey Participant"
