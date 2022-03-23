@@ -40,10 +40,10 @@ export const Routing: React.FC = () =>
       false,
       [
         createChildrenRoute(FeedbackRoute.AddPresentation, <AddPresentationPage />),
-        createChildrenRoute(FeedbackRoute.EditPresentation, <EditPresentationPage />),
-        createChildrenRoute(FeedbackRoute.ExternalUserPresentation, <ExternalUserPresentationPage />)
+        createChildrenRoute(FeedbackRoute.EditPresentation, <EditPresentationPage />)
       ]
     ),
+    createRoute(FeedbackRoute.ExternalUserPresentation, <ExternalUserPresentationPage />, <Loader type={LoaderType.Circular} />),
     createRoute(BaseRoute.Login, <Login />, <Loader type={LoaderType.Circular} />),
     createRoute(BaseRoute.NotFound, <NotFoundPage />, <Loader type={LoaderType.Circular} />)
   ]);
