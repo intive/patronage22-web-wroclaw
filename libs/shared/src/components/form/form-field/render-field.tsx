@@ -1,5 +1,4 @@
-import { MenuItem, TextField } from "@mui/material";
-import { ChangeEvent } from "react";
+import { FormControl, InputLabel, MenuItem, Select, TextField } from "@mui/material";
 import { FieldValues, UseFormStateReturn } from "react-hook-form";
 
 import { FormFieldType } from "../../../types";
@@ -11,7 +10,7 @@ export type FormTextFieldVariant = "standard" | "filled" | "outlined";
 
 interface RenderFieldProps extends Omit<FormFieldProps, "helperText" | "onChange" | "description" | "appendix" | "hideEditIcon"> {
   name: string;
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (event: any) => void;
   errors: UseFormStateReturn<FieldValues>["errors"];
   value?: unknown;
 }
@@ -65,14 +64,25 @@ export const renderField = ({
       />
     ),
     [FormFieldType.Select]: (
-      <TextField select name={name} onChange={onChange} value={value} size={size} label={label}>
-        {selectItems &&
-          selectItems.map(({ value: itemValue, name: itemName }) => (
-            <MenuItem key={itemName} value={itemValue}>
-              {itemName}
-            </MenuItem>
-          ))}
-      </TextField>
+      <FormControl fullWidth>
+        <InputLabel id={`${label}-label`}>{label}</InputLabel>
+        <Select
+          name={name}
+          value={value}
+          size={size}
+          variant={variant}
+          label={label}
+          labelId={`${label}-label`}
+          onChange={onChange}
+        >
+          {selectItems &&
+            selectItems.map(({ value: itemValue, name: itemName }) => (
+              <MenuItem key={itemName} value={itemValue}>
+                {itemName}
+              </MenuItem>
+            ))}
+        </Select>
+      </FormControl>
     )
   };
 

@@ -1,4 +1,4 @@
-import { Pagination } from "@mui/material";
+import { Pagination, SelectChangeEvent } from "@mui/material";
 import { ChangeEvent, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -47,17 +47,20 @@ export const BasicPagination: React.FC<BasicPaginationProps> = ({
   const isPageCorrect = !!pageFromParam && pageFromParam <= pagesCount && pageFromParam > 0;
   const page = isPageCorrect ? pageFromParam : INITIAL_PAGE;
 
+  const pageLabel = `${itemsPerPageLabel || t("pagination.itemsPerPage")}: `;
+  const pagesVisibilityCount = isMobile ? 0 : 1;
+
   const itemsPerPage = itemsPerPageOptions.map(data => {
     return { name: data.toString(), value: data };
   });
 
-  const handleSelectChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleSizeChange = (event: SelectChangeEvent<number>) => {
     const { value } = event.target;
-    updateParams({ size: value });
-    onChange(page, Number(value));
+    updateParams({ size: value as string });
+    onChange(page, value as number);
   };
 
-  const handlePageChange = (event: ChangeEvent<unknown>, currentPage: number) => {
+  const handlePageChange = (_event: ChangeEvent<unknown>, currentPage: number) => {
     updateParams({ page: currentPage.toString() });
     onChange(currentPage, size);
   };
@@ -79,21 +82,22 @@ export const BasicPagination: React.FC<BasicPaginationProps> = ({
         showFirstButton
         showLastButton
         size='large'
-        boundaryCount={isMobile ? 0 : 1}
-        siblingCount={isMobile ? 0 : 1}
+        boundaryCount={pagesVisibilityCount}
+        siblingCount={pagesVisibilityCount}
       />
       <Styled.SectionBox>
-        <Styled.InfoBox>{`${itemsPerPageLabel || t("pagination.itemsPerPage")}: `}</Styled.InfoBox>
+        <Styled.InfoBox>{pageLabel}</Styled.InfoBox>
         <Styled.SizeSelector
           validationSchema={{}}
           fields={[
             {
-              onChange: handleSelectChange,
               type: FormFieldType.Select,
               name: "sizeSelector",
               size: "small",
               defaultValue: size,
-              selectItems: itemsPerPage
+              selectItems: itemsPerPage,
+              hideEditIcon: true,
+              onChange: handleSizeChange
             }
           ]}
         />

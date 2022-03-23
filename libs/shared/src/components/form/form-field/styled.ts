@@ -1,6 +1,6 @@
 import { Box, styled } from "@mui/material";
 
-export const Field = styled(Box)(({ theme }) => ({
+export const Field = styled(Box)({
   display: "inline-flex",
   justifyContent: "flex-start",
   alignItems: "center",
@@ -14,4 +14,4 @@ export const Field = styled(Box)(({ theme }) => ({
       visibility: "visible"
     }
   }
-}));
+});

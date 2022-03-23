@@ -46,12 +46,13 @@ export const FormField: React.FC<FormFieldProps> = ({
   selectItems,
   size,
   appendix,
-  hideEditIcon
+  hideEditIcon,
+  defaultValue
 }: FormFieldProps) => {
   const {
     field: { onChange: onFormFieldChange, value },
     formState: { errors }
-  } = useController({ name, control });
+  } = useController({ name, control, defaultValue });
 
   const fieldErrors: UseFormStateReturn<FieldValues>["errors"] = errors[name];
 
