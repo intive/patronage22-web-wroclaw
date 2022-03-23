@@ -1,25 +1,28 @@
 import { ToggleButton, ToggleButtonGroup } from "@mui/material";
-import { useEffect } from "react";
+import { MouseEvent } from "react";
 import { useTranslation } from "react-i18next";
-import { useSearchParams } from "react-router-dom";
 
+import { useUrlParams } from "../../hooks";
 import { SupportedLanguage } from "../../types";
 import { changeLanguage, isOtherLanguage } from "../../utils";
 
 export const LanguageButton = () => {
   const { i18n } = useTranslation();
-  const [, setSearchParams] = useSearchParams();
 
-  const isOtherLang = i18n.language?.length && isOtherLanguage(i18n.language);
-  const langQueryString = isOtherLang ? `?lang=${i18n.language}` : "";
+  const getCurrentLang = () => {
+    const isOtherLang = i18n.language?.length && isOtherLanguage(i18n.language);
 
-  const handleChange = (event: React.MouseEvent<HTMLElement>, value: SupportedLanguage) => {
-    changeLanguage(i18n, value);
+    return { lang: isOtherLang ? i18n.language : "" };
   };
 
-  useEffect(() => {
-    setSearchParams(langQueryString, { replace: true });
-  }, [i18n.language, langQueryString, setSearchParams]);
+  const { updateParams } = useUrlParams(getCurrentLang());
+
+  const handleChange = (_event: MouseEvent<HTMLElement>, value: SupportedLanguage) => {
+    if (value) {
+      changeLanguage(i18n, value);
+      updateParams(getCurrentLang());
+    }
+  };
 
   return (
     <ToggleButtonGroup color='primary' size='small' value={i18n.language} onChange={handleChange} exclusive>

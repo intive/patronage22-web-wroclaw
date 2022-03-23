@@ -14,17 +14,23 @@ export const SearchInputBase = styled(Form)(({ theme }) => ({
   },
 
   [theme.breakpoints.down("sm")]: {
-    borderRadius: 0
+    borderRadius: 0,
+    backgroundColor: "inherit"
   },
 
   "& .MuiFormControl-root": {
-    margin: 0
+    margin: 0,
+    flexGrow: 1
   },
 
   "& .MuiOutlinedInput-root": {
     "& fieldset": {
       border: "none"
     }
+  },
+
+  "& .MuiInputBase-input": {
+    padding: theme.spacing(1)
   },
 
   "& .MuiFormHelperText-root.Mui-error": {

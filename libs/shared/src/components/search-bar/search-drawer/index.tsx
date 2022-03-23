@@ -1,9 +1,11 @@
 import CloseIcon from "@mui/icons-material/Close";
 import Fuse from "fuse.js";
-import { useEffect, useState } from "react";
+import { BaseSyntheticEvent, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
-import { AppRouteType, TranslationNamespace } from "../../../types";
+import { AppRouteType, FeedbackRoute, TranslationNamespace } from "../../../types";
+import { createPath } from "../../../utils";
 import { BaseButton, ButtonType } from "../../base-button";
 import { LocalizedLink } from "../../localized-link";
 import { SEARCH_CONFIG } from "../constants";
@@ -23,6 +25,8 @@ interface SearchDrawerProps {
 
 export const SearchDrawer: React.FC<SearchDrawerProps> = ({ open, onClose, searchKey, toResult, toItem }) => {
   const { t } = useTranslation(TranslationNamespace.Feedback);
+  const { i18n } = useTranslation();
+  const navigate = useNavigate();
 
   const [currentItems, setCurrentItems] = useState<Fuse.FuseResult<PresentationSearchItem>[]>([]);
 
@@ -33,6 +37,24 @@ export const SearchDrawer: React.FC<SearchDrawerProps> = ({ open, onClose, searc
   };
 
   const handleCloseDrawer = () => {
+    setSearchPhrase("");
+    onClose();
+  };
+
+  const handleSubmit = (_data: unknown, event?: BaseSyntheticEvent) => {
+    if (event) {
+      event.preventDefault();
+    }
+
+    const phrase = currentItems.length ? searchPhrase : "";
+
+    navigate(
+      createPath({
+        route: FeedbackRoute.Dashboard,
+        language: i18n.language,
+        search: phrase
+      })
+    );
     setSearchPhrase("");
     onClose();
   };
@@ -65,12 +87,7 @@ export const SearchDrawer: React.FC<SearchDrawerProps> = ({ open, onClose, searc
     <Styled.SearchDrawer anchor='top' open={open} onClose={handleCloseDrawer} variant='temporary'>
       <Styled.SearchDrawerHeader>
         <Styled.InputBoxWrapper>
-          <SearchInput
-            onChange={handleInputChange}
-            autoFocus
-            customStyles={theme => ({ [theme.breakpoints.down("sm")]: { backgroundColor: "inherit" } })}
-            hideEditIcon
-          />
+          <SearchInput onChange={handleInputChange} autoFocus onSubmit={handleSubmit} />
         </Styled.InputBoxWrapper>
 
         <Styled.CloseSearchBtnWrapper>
