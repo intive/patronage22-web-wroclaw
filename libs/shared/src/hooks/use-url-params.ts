@@ -12,7 +12,7 @@ export const useUrlParams = <TParams extends BaseQueryParams>(initialParams?: Nu
   const updateParams = (params: Nullable<TParams>, replace = false) => {
     const newParams = replace ? params : filterByKeys({ ...parsedParams, ...params }, SUPPORTED_PARAM_KEYS);
 
-    setSearchParams(convertUrlParamsToString(newParams as Record<string, unknown>));
+    setSearchParams(convertUrlParamsToString(newParams as Record<string, unknown>), { replace: true });
   };
 
   useEffect(() => {
