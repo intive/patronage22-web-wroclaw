@@ -1,6 +1,5 @@
-import { DeleteOutlined, Share } from "@mui/icons-material";
-import { Box } from "@mui/material";
-import { ButtonType, FormFieldType, TranslationNamespace } from "@patronage-web/shared";
+import { FormFieldType, TranslationNamespace } from "@patronage-web/shared";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import { number, string } from "yup";
 
@@ -25,6 +24,7 @@ export const BasicPresentationInfo: React.FC = () => {
   };
 
   return (
+<<<<<<< HEAD
     <Box>
       <Styled.TitleAndButtons
         fieldset={[
@@ -90,5 +90,29 @@ export const BasicPresentationInfo: React.FC = () => {
         }}
       />
     </Box>
+=======
+    <Styled.BasicPresentationInfo
+      fields={[
+        {
+          type: FormFieldType.Text,
+          name: "title",
+          variant: "standard",
+          placeholder: t("newPresentation")
+        },
+        {
+          type: FormFieldType.Textarea,
+          name: "description",
+          variant: "standard",
+          placeholder: t("description"),
+          rows: 2,
+          inputConfig: { disableUnderline: true }
+        }
+      ]}
+      validationSchema={{
+        title: string().trim().required(t("missingTitleError")),
+        description: string()
+      }}
+    />
+>>>>>>> d9e73288d98a7604e31439d9741eba499cc8bb98
   );
 };
