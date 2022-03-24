@@ -4,5 +4,5 @@ import { environment } from "./environments/environment";
 
 loadI18n({
   env: environment.NODE_ENV,
-  ns: [TranslationNamespace.Feedback, TranslationNamespace.Common, TranslationNamespace.Shared]
+  ns: [TranslationNamespace.Feedback, TranslationNamespace.Common]
 });
