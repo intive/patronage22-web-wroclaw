@@ -1,16 +1,18 @@
-import { Pagination, SelectChangeEvent } from "@mui/material";
+import { Pagination } from "@mui/material";
 import { ChangeEvent, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
+import { ITEMS_PER_PAGE_OPTIONS } from "../../configs";
 import { useScreenSize, useUrlParams } from "../../hooks";
 import { FormFieldType, PaginationQueryParams } from "../../types";
 import * as Styled from "./style";
 
 const INITIAL_PAGE = 1;
 const INITIAL_SIZE_POSITION = 0;
+const FIRST_ITEM_PER_PAGE_POSITION = 0;
+const ITEMS_PER_PAGE_RATIO = 0.5;
 
 interface BasicPaginationProps {
-  itemsPerPageOptions: number[];
   itemsPerPageLabel?: string;
   itemsCount: number;
   initialValues?: {
@@ -20,54 +22,54 @@ interface BasicPaginationProps {
   onChange: (page: number, size: number) => void;
 }
 
-export const BasicPagination: React.FC<BasicPaginationProps> = ({
-  itemsPerPageOptions,
-  itemsCount,
-  initialValues,
-  itemsPerPageLabel,
-  onChange
-}) => {
+export const BasicPagination: React.FC<BasicPaginationProps> = ({ itemsCount, initialValues, itemsPerPageLabel, onChange }) => {
   const { isMobile } = useScreenSize();
   const { t } = useTranslation();
-  const initialSize = itemsPerPageOptions[INITIAL_SIZE_POSITION];
+  const initialSize = ITEMS_PER_PAGE_OPTIONS[INITIAL_SIZE_POSITION];
 
   const { params, updateParams } = useUrlParams<PaginationQueryParams>(
-    initialValues || { page: INITIAL_PAGE.toString(), size: initialSize.toString() }
+    initialValues || { page: `${INITIAL_PAGE}`, size: `${initialSize}` }
   );
 
   const sizeFromParam = Number(params?.size);
   const pageFromParam = Number(params?.page);
 
-  const isSizeCorrect = !!sizeFromParam && itemsPerPageOptions.includes(sizeFromParam);
+  const isSizeCorrect = !!sizeFromParam && ITEMS_PER_PAGE_OPTIONS.includes(sizeFromParam);
   const size = isSizeCorrect ? sizeFromParam : initialSize;
 
   const pagesCount = Math.ceil(itemsCount / size);
-  const infoText = `${sizeFromParam >= itemsCount ? itemsCount : size} ${t("pagination.outOf")} ${itemsCount}`;
 
   const isPageCorrect = !!pageFromParam && pageFromParam <= pagesCount && pageFromParam > 0;
   const page = isPageCorrect ? pageFromParam : INITIAL_PAGE;
 
+  const lastButOnePage = pagesCount - 1;
+  const shownItemsPerPageCount = page === pagesCount ? itemsCount - lastButOnePage * size : size;
+  const infoText = `${sizeFromParam >= itemsCount ? itemsCount : shownItemsPerPageCount} ${t("pagination.outOf")} ${itemsCount}`;
+
   const pageLabel = `${itemsPerPageLabel || t("pagination.itemsPerPage")}: `;
   const pagesVisibilityCount = isMobile ? 0 : 1;
 
-  const itemsPerPage = itemsPerPageOptions.map(data => {
-    return { name: data.toString(), value: data };
-  });
+  const itemsPerPageOptions = ITEMS_PER_PAGE_OPTIONS.reduce((acc, option) => {
+    if (itemsCount / option <= ITEMS_PER_PAGE_RATIO && option !== ITEMS_PER_PAGE_OPTIONS[FIRST_ITEM_PER_PAGE_POSITION]) {
+      return acc;
+    }
 
-  const handleSizeChange = (event: SelectChangeEvent<number>) => {
-    const { value } = event.target;
-    updateParams({ size: value as string });
-    onChange(page, value as number);
+    return [...acc, { [`${option}`]: option }];
+  }, [] as Record<string, number>[]);
+
+  const handleSizeChange = (value: string) => {
+    updateParams({ size: value });
+    onChange(page, Number(value));
   };
 
   const handlePageChange = (_event: ChangeEvent<unknown>, currentPage: number) => {
-    updateParams({ page: currentPage.toString() });
+    updateParams({ page: `${currentPage}` });
     onChange(currentPage, size);
   };
 
   useEffect(() => {
     if (!isPageCorrect || !isSizeCorrect) {
-      updateParams({ page: page.toString(), size: size.toString() });
+      updateParams({ page: `${page}`, size: `${size}` });
     } else {
       onChange(page, size);
     }
@@ -88,18 +90,19 @@ export const BasicPagination: React.FC<BasicPaginationProps> = ({
       <Styled.SectionBox>
         <Styled.InfoBox>{pageLabel}</Styled.InfoBox>
         <Styled.SizeSelector
+          initialValues={{ sizeSelector: size }}
           validationSchema={{}}
           fields={[
             {
               type: FormFieldType.Select,
               name: "sizeSelector",
-              size: "small",
-              defaultValue: size,
-              selectItems: itemsPerPage,
-              hideEditIcon: true,
-              onChange: handleSizeChange
+              values: itemsPerPageOptions,
+              hideEditIcon: true
             }
           ]}
+          onChange={({ sizeSelector }) => {
+            handleSizeChange(sizeSelector);
+          }}
         />
         <Styled.InfoBox>{infoText}</Styled.InfoBox>
       </Styled.SectionBox>

@@ -1,16 +1,18 @@
-import { FormControl, InputLabel, MenuItem, Select, TextField } from "@mui/material";
+import { TextField } from "@mui/material";
 import { FieldValues, UseFormStateReturn } from "react-hook-form";
 
 import { FormFieldType } from "../../../types";
 import { FormFieldProps } from "./index";
+import { SelectField } from "./select-field";
 
 const DEFAULT_ROWS_NUMBER = 4;
 
 export type FormTextFieldVariant = "standard" | "filled" | "outlined";
 
-interface RenderFieldProps extends Omit<FormFieldProps, "helperText" | "onChange" | "description" | "appendix" | "hideEditIcon"> {
+export interface RenderFieldProps
+  extends Omit<FormFieldProps, "helperText" | "onChange" | "description" | "appendix" | "hideEditIcon"> {
   name: string;
-  onChange?: (event: any) => void;
+  onChange: (value: unknown) => void;
   errors: UseFormStateReturn<FieldValues>["errors"];
   value?: unknown;
 }
@@ -28,9 +30,8 @@ export const renderField = ({
   autoFocus,
   disabled,
   rows = DEFAULT_ROWS_NUMBER,
-  selectItems,
-  size,
-  value
+  value,
+  values
 }: RenderFieldProps) => {
   const field: Record<FormFieldType, JSX.Element> = {
     [FormFieldType.Text]: (
@@ -64,25 +65,7 @@ export const renderField = ({
       />
     ),
     [FormFieldType.Select]: (
-      <FormControl fullWidth>
-        <InputLabel id={`${label}-label`}>{label}</InputLabel>
-        <Select
-          name={name}
-          value={value}
-          size={size}
-          variant={variant}
-          label={label}
-          labelId={`${label}-label`}
-          onChange={onChange}
-        >
-          {selectItems &&
-            selectItems.map(({ value: itemValue, name: itemName }) => (
-              <MenuItem key={itemName} value={itemValue}>
-                {itemName}
-              </MenuItem>
-            ))}
-        </Select>
-      </FormControl>
+      <SelectField name={name} value={value} onChange={onChange} variant={variant} label={label} options={values} />
     )
   };
 
