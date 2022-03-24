@@ -8,11 +8,17 @@ export const STOPER_CONFIG = {
 };
 
 interface TimerProps {
-  seconds: number;
+  timeToElapse: number;
+  onTimeElapsed: () => void;
 }
 
-export const Timer: React.FC<TimerProps> = ({ seconds }) => {
-  const [currentSeconds, setCurrentSeconds] = useState(seconds);
+/**
+ * Generates a timer
+ * @param {number} timeToElapse - it should be provided in seconds
+ */
+
+export const Timer: React.FC<TimerProps> = ({ timeToElapse, onTimeElapsed }) => {
+  const [currentSeconds, setCurrentSeconds] = useState(timeToElapse);
   const { t } = useTranslation();
 
   const currentSecondsString = currentSeconds.toFixed().padStart(2, "0");
@@ -28,10 +34,14 @@ export const Timer: React.FC<TimerProps> = ({ seconds }) => {
 
     const time = setInterval(timeStart, STOPER_CONFIG.refreshTime);
 
+    if (currentSeconds === 0) {
+      onTimeElapsed();
+    }
+
     return () => {
       clearInterval(time);
     };
-  }, [currentSeconds]);
+  }, [currentSeconds, onTimeElapsed]);
 
   return <Styled.Timer>{message}</Styled.Timer>;
 };

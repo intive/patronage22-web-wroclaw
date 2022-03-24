@@ -4,17 +4,19 @@ import { FeedbackQuestionAnswers } from "@patronage-web/shared-data";
 
 interface LiveResultsViewProps {
   data: FeedbackQuestionAnswers;
+  timeToElapse: number;
+  onTimeElapsed: () => void;
 }
 
-export const LiveResultsView: React.FC<LiveResultsViewProps> = ({ data }) => {
+export const LiveResultsView: React.FC<LiveResultsViewProps> = ({ data, timeToElapse, onTimeElapsed }) => {
   const { id, title, answers } = data;
-  const questions = answers.map(e => e.title);
-  const numberOfAnswers = answers.map(e => e.count);
+  const questions = answers.map(answer => answer.title);
+  const answersCounts = answers.map(answer => answer.count);
 
   return (
-    <Card id={`graph${id}`}>
-      <Diagram labels={questions} title={title} data={numberOfAnswers} type={DiagramType.Bar} />
-      <Timer seconds={15} />
+    <Card id={`diagram${id}`}>
+      <Diagram labels={questions} title={title} data={answersCounts} type={DiagramType.Bar} />
+      <Timer timeToElapse={timeToElapse} onTimeElapsed={onTimeElapsed} />
     </Card>
   );
 };

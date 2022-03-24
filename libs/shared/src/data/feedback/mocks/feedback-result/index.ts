@@ -1,4 +1,4 @@
-import { FeedbackQuestionAnswers, ParticipationQuestionType } from "../../../types";
+import { FeedbackQuestionAnswers, ParticipationQuestionType } from "../../types";
 
 export const LiveResultsAnswers: FeedbackQuestionAnswers = {
   id: "38b451fe-aa14-498e-ad33-4b452a70d21a",
