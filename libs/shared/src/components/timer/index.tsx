@@ -16,7 +16,6 @@ interface TimerProps {
  * Generates a timer
  * @param {number} timeToElapse - it should be provided in seconds
  */
-
 export const Timer: React.FC<TimerProps> = ({ timeToElapse, onTimeElapsed }) => {
   const [currentSeconds, setCurrentSeconds] = useState(timeToElapse);
   const { t } = useTranslation();
@@ -27,14 +26,14 @@ export const Timer: React.FC<TimerProps> = ({ timeToElapse, onTimeElapsed }) => 
 
   useEffect(() => {
     const timeStart = () => {
-      if (currentSeconds > 0) {
+      if (currentSeconds) {
         setCurrentSeconds(prevState => prevState - 1);
       }
     };
 
     const time = setInterval(timeStart, STOPER_CONFIG.refreshTime);
 
-    if (currentSeconds === 0) {
+    if (!currentSeconds) {
       onTimeElapsed();
     }
 

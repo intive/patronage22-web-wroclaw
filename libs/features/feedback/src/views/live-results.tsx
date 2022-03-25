@@ -8,14 +8,19 @@ interface LiveResultsViewProps {
   onTimeElapsed: () => void;
 }
 
-export const LiveResultsView: React.FC<LiveResultsViewProps> = ({ data, timeToElapse, onTimeElapsed }) => {
-  const { id, title, answers } = data;
-  const questions = answers.map(answer => answer.title);
-  const answersCounts = answers.map(answer => answer.count);
+export const LiveResultsView: React.FC<LiveResultsViewProps> = ({ data: { id, title, answers }, timeToElapse, onTimeElapsed }) => {
+  const answersData = answers.reduce(
+    (total, item) => {
+      total.answersTitles.push(item.title);
+      total.answersCounts.push(item.count);
+      return total;
+    },
+    { answersTitles: new Array<string>(), answersCounts: new Array<number>() }
+  );
 
   return (
     <Card id={`diagram${id}`}>
-      <Diagram labels={questions} title={title} data={answersCounts} type={DiagramType.Bar} />
+      <Diagram title={title} type={DiagramType.Bar} {...answersData} />
       <Timer timeToElapse={timeToElapse} onTimeElapsed={onTimeElapsed} />
     </Card>
   );
