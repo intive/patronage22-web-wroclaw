@@ -8,8 +8,8 @@ import { BarDiagram } from "./bar-diagram";
 Chart.register(LinearScale, ChartDataLabels);
 
 interface DiagramProps {
-  questionsTitles: string[];
-  questionsCounts: number[];
+  titles: string[];
+  counts: number[];
   title: string;
   type: DiagramType;
 }
@@ -18,12 +18,12 @@ export enum DiagramType {
   Bar = "Bar"
 }
 
-export const Diagram: React.FC<DiagramProps> = ({ questionsTitles, questionsCounts, title, type }) => {
+export const Diagram: React.FC<DiagramProps> = ({ titles, counts, title, type }) => {
   const diagramData = {
-    labels: questionsTitles,
+    labels: titles,
     datasets: [
       {
-        data: questionsCounts
+        data: counts
       }
     ]
   };
