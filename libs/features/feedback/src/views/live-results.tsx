@@ -11,11 +11,11 @@ interface LiveResultsViewProps {
 export const LiveResultsView: React.FC<LiveResultsViewProps> = ({ data: { id, title, answers }, timeToElapse, onTimeElapsed }) => {
   const answersData = answers.reduce(
     (total, item) => {
-      total.answersTitles.push(item.title);
-      total.answersCounts.push(item.count);
+      total.questionsTitles.push(item.title);
+      total.questionsCounts.push(item.count);
       return total;
     },
-    { answersTitles: new Array<string>(), answersCounts: new Array<number>() }
+    { questionsTitles: new Array<string>(), questionsCounts: new Array<number>() }
   );
 
   return (
