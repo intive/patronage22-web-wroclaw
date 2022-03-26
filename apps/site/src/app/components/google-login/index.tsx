@@ -36,7 +36,10 @@ export const GoogleLogin: React.FC = () => {
               type: FormFieldType.Text,
               name: "email",
               variant: "filled",
-              description: "E-mail"
+              description: "E-mail",
+              inputConfig: {
+                disableUnderline: true
+              }
             },
             {
               type: FormFieldType.Text,
@@ -45,6 +48,9 @@ export const GoogleLogin: React.FC = () => {
               description: t("password"),
               disabled: true,
               hideEditIcon: true,
+              inputConfig: {
+                disableUnderline: true
+              },
               appendix: <LinkedText variant='subtitle2' route={BaseRoute.Home} text={t("login.forgotPassword")} />
             }
           ]}
@@ -59,7 +65,7 @@ export const GoogleLogin: React.FC = () => {
           }}
           onSubmit={handleSubmit}
           onError={errors => console.log(errors)}
-          customButtons={{ submit: { condition: true, text: t("login.loginWith"), icon: <Google /> } }}
+          basicButtons={{ submit: { condition: true, text: t("login.loginWith"), icon: <Google /> } }}
         />
       </Styled.LoginGoogleFormCard>
     </Styled.LoginGoogleContainer>

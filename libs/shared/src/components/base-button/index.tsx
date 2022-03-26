@@ -29,9 +29,6 @@ export const BaseButton: React.FC<BaseButtonProps> = ({
 
   const types = {
     [ButtonType.Basic]: (
-<<<<<<< HEAD
-      <Styled.BasicButton size={buttonSize} onClick={onClick} variant={variant} endIcon={endIcon} disabled={disabled}>
-=======
       <Styled.BasicButton
         size={buttonSize}
         onClick={onClick}
@@ -42,16 +39,11 @@ export const BaseButton: React.FC<BaseButtonProps> = ({
         disableRipple={disableRipple}
         endIcon={endIcon}
       >
->>>>>>> d9e73288d98a7604e31439d9741eba499cc8bb98
         {children}
       </Styled.BasicButton>
     ),
     [ButtonType.Icon]: (
-<<<<<<< HEAD
-      <IconButton size={buttonSize} onClick={onClick} disabled={disabled}>
-=======
       <IconButton size={buttonSize} onClick={onClick} sx={sx} disableRipple={disableRipple}>
->>>>>>> d9e73288d98a7604e31439d9741eba499cc8bb98
         {children}
       </IconButton>
     )

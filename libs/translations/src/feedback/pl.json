@@ -13,9 +13,12 @@
   "newPresentation": "Nowa prezentacja",
   "newQuestion": "Nowe pytanie",
   "question": {
-    "maxCharLength": "Przekroczono maksymalną ilość znaków ({{charAmount}})"
+    "addField": "Dodaj odpowiedź...",
+    "maxCharLength": "Przekroczono maksymalną ilość znaków ({{charAmount}})",
+    "missingQuestionError": "Pole z pytaniem nie moe być puste",
+    "questionField": "Zadaj pytanie"
   },
-  "questionField": "Zadaj pytanie",
+  "saveQuestion": "Zapisz pytanie",
   "search": {
     "searchAriaLabel": "Szukaj",
     "searchbarPlaceholder": "Szukaj prezentacji",

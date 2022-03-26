@@ -1,5 +1,4 @@
 import { TextField } from "@mui/material";
-import { ChangeEvent } from "react";
 import { FieldValues, UseFormStateReturn } from "react-hook-form";
 
 import { FormFieldType } from "../../../types";
@@ -11,8 +10,9 @@ export type FormTextFieldVariant = "standard" | "filled" | "outlined";
 
 interface RenderFieldProps extends Omit<FormFieldProps, "helperText" | "onChange" | "description" | "appendix" | "hideEditIcon"> {
   name: string;
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (value: unknown) => void;
   errors: UseFormStateReturn<FieldValues>["errors"];
+  value?: unknown;
 }
 
 export const renderField = ({
@@ -27,7 +27,8 @@ export const renderField = ({
   inputConfig,
   autoFocus,
   disabled,
-  rows = DEFAULT_ROWS_NUMBER
+  rows = DEFAULT_ROWS_NUMBER,
+  value
 }: RenderFieldProps) => {
   const field: Record<FormFieldType, JSX.Element> = {
     [FormFieldType.Text]: (
@@ -42,6 +43,7 @@ export const renderField = ({
         InputProps={inputConfig}
         placeholder={placeholder}
         autoFocus={autoFocus}
+        value={value}
       />
     ),
     [FormFieldType.Textarea]: (
@@ -58,6 +60,7 @@ export const renderField = ({
         InputProps={inputConfig}
         placeholder={placeholder}
         autoFocus={autoFocus}
+        value={value}
       />
     )
   };

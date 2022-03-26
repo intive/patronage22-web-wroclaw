@@ -12,10 +12,12 @@
   "newPresentation": "New presentation",
   "newQuestion": "New question",
   "question": {
+    "addField": "Add answer...",
     "maxCharLength": "Maximum number of characters exceeded ({{charAmount}})",
     "missingQuestionError": "Question cannot be empty",
     "questionField": "Ask question"
   },
+  "saveQuestion": "Save question",
   "search": {
     "searchAriaLabel": "Search",
     "searchbarPlaceholder": "Search presentations",

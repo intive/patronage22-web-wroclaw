@@ -1,5 +1,6 @@
-import { FormFieldType, TranslationNamespace } from "@patronage-web/shared";
-import React from "react";
+import { DeleteOutlined, Share } from "@mui/icons-material";
+import { Box } from "@mui/material";
+import { ButtonType, FormFieldType, TranslationNamespace } from "@patronage-web/shared";
 import { useTranslation } from "react-i18next";
 import { number, string } from "yup";
 
@@ -24,17 +25,14 @@ export const BasicPresentationInfo: React.FC = () => {
   };
 
   return (
-<<<<<<< HEAD
     <Box>
       <Styled.TitleAndButtons
-        fieldset={[
+        fields={[
           {
             type: FormFieldType.Text,
             name: "title",
             variant: "standard",
-            inputConfig: {
-              defaultValue: t("newPresentation")
-            }
+            placeholder: t("newPresentation")
           }
         ]}
         validationSchema={{
@@ -61,17 +59,14 @@ export const BasicPresentationInfo: React.FC = () => {
         ]}
       />
       <Styled.BasicPresentationInfo
-        onSubmit={data => console.log(data)}
-        onError={errors => console.log(errors)}
-        fieldset={[
+        fields={[
           {
-            type: FormFieldType.Text,
+            type: FormFieldType.Textarea,
             name: "description",
             variant: "standard",
-            label: t("description"),
-            inputConfig: {
-              defaultValue: ""
-            }
+            placeholder: t("description"),
+            rows: 2,
+            inputConfig: { disableUnderline: true }
           },
           {
             type: FormFieldType.Text,
@@ -90,29 +85,5 @@ export const BasicPresentationInfo: React.FC = () => {
         }}
       />
     </Box>
-=======
-    <Styled.BasicPresentationInfo
-      fields={[
-        {
-          type: FormFieldType.Text,
-          name: "title",
-          variant: "standard",
-          placeholder: t("newPresentation")
-        },
-        {
-          type: FormFieldType.Textarea,
-          name: "description",
-          variant: "standard",
-          placeholder: t("description"),
-          rows: 2,
-          inputConfig: { disableUnderline: true }
-        }
-      ]}
-      validationSchema={{
-        title: string().trim().required(t("missingTitleError")),
-        description: string()
-      }}
-    />
->>>>>>> d9e73288d98a7604e31439d9741eba499cc8bb98
   );
 };

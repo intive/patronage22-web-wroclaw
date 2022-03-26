@@ -48,6 +48,11 @@ export const LoginGoogleForm = styled(Form)(({ theme }) => ({
     marginTop: theme.spacing(3)
   },
 
+  "& .MuiFilledInput-root": {
+    borderRadius: theme.shape.borderRadius,
+    margin: theme.spacing(1)
+  },
+
   "& a": {
     display: "inline-block",
     color: theme.palette.info.main,

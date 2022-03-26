@@ -1,5 +1,6 @@
 {
   "cancel": "Anuluj",
+  "continue": "Kontynuuj",
   "copyLink": "Kopiuj link",
   "featureNames": {
     "feedback": "Kreator Ankiety",
@@ -34,6 +35,5 @@
     "minCharLength": "Minimalna wymagana ilość znaków: {{charAmount}}",
     "noResultsInfo": "Brak wyników..."
   },
-  "submit": "Zatwierdź",
-  "continue": "Kontynuuj"
+  "submit": "Zatwierdź"
 }

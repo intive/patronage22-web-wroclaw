@@ -1,27 +1,30 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Typography } from "@mui/material";
+import { Delete } from "@mui/icons-material";
+import { Box, Typography } from "@mui/material";
 import { isEqual } from "lodash";
-import { BaseSyntheticEvent, ReactNode } from "react";
-import { FieldValues, FormProvider, SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
+import { BaseSyntheticEvent, ReactNode, useEffect } from "react";
+import { FieldValues, FormProvider, SubmitErrorHandler, SubmitHandler, useFieldArray, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import * as yup from "yup";
 import { ObjectShape } from "yup/lib/object";
 
-import { usePrevious } from "../../hooks";
-import { BaseButton, ButtonType } from "../base-button";
+import { BaseButton, BaseButtonProps, ButtonType } from "../base-button";
 import { FormField, FormFieldProps } from "./form-field";
 import * as Styled from "./styled";
 
 interface FormButton {
   condition: boolean;
   text: string;
-  icon: ReactNode;
+  icon?: ReactNode;
+  type?: ButtonType;
+  variant?: "text" | "contained" | "outlined" | undefined;
+  fieldType?: string;
 }
 
 export interface FormProps {
   title?: string;
   validationSchema: ObjectShape;
-  fields?: FormFieldProps[];
+  fields: FormFieldProps[];
   initialValues?: {
     [x: string]: any;
   };
@@ -30,10 +33,11 @@ export interface FormProps {
   onChange?: (value: Record<string, any>) => any;
   onError?: SubmitErrorHandler<FieldValues>;
   onCancel?: () => void;
-  customButtons?: {
+  basicButtons?: {
     submit?: FormButton;
     cancel?: FormButton;
   };
+  customButtons?: BaseButtonProps[];
   className?: string;
 }
 
@@ -47,6 +51,7 @@ export const Form: React.FC<FormProps> = ({
   onError,
   onCancel,
   onChange,
+  basicButtons,
   customButtons,
   className
 }) => {
@@ -59,15 +64,27 @@ export const Form: React.FC<FormProps> = ({
     defaultValues: initialValues
   });
 
-  const currentValues = methods.getValues();
-  const previousValues = usePrevious(currentValues);
-  const { control, reset } = methods;
+  const currentValues = methods.watch();
+  const { control } = methods;
 
-  const { append } = useFieldArray({
+  const {
+    append,
+    remove,
+    fields: fieldArray
+  } = useFieldArray({
     control,
-    name: "fieldArray"
+    name: "dynamic"
   });
 
+  useEffect(() => {
+    console.log(fields.find(field => field.dynamics?.name));
+
+    if (fieldArray.length === 0) {
+      const dynamicField = fields.find(field => field.dynamics?.name);
+      append({ name: dynamicField?.dynamics?.name || "" });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleSubmit = (event: BaseSyntheticEvent) => {
     if (onSubmit) {
@@ -81,39 +98,67 @@ export const Form: React.FC<FormProps> = ({
     }
   };
 
-  const handleAddField = () => {
-    append(answerField);
-    fieldset.push(answerField);
-  };
-
   const handleFormChange = () => {
     i18n.on("languageChanged", () => {
       methods.clearErrors();
     });
-    if (onChange && !isEqual(methods.getValues(), previousValues)) {
+    if (onChange && !isEqual(methods.getValues(), currentValues)) {
       onChange(methods.getValues());
     }
   };
 
   const formButtons = [
     {
-      condition: customButtons?.submit?.condition,
-      text: customButtons?.submit?.text || t("submit"),
+      condition: basicButtons?.submit?.condition,
+      text: basicButtons?.submit?.text || t("submit"),
       action: handleSubmit,
-      icon: customButtons?.submit?.icon
+      icon: basicButtons?.submit?.icon,
+      type: basicButtons?.submit?.type,
+      variant: basicButtons?.submit?.variant
     },
     {
-      condition: customButtons?.cancel?.condition,
-      text: customButtons?.cancel?.text || t("cancel"),
+      condition: basicButtons?.cancel?.condition,
+      text: basicButtons?.cancel?.text || t("cancel"),
       action: handleCancel,
-      icon: customButtons?.cancel?.icon
+      icon: basicButtons?.cancel?.icon,
+      type: basicButtons?.cancel?.type,
+      variant: basicButtons?.cancel?.variant
     }
   ];
 
+  // eslint-disable-next-line react/no-unstable-nested-components
+  const renderDynamicFields = (name: string, addText: string, elements: FormFieldProps[]) => {
+    return (
+      // eslint-disable-next-line react/jsx-no-useless-fragment
+      <>
+        {fieldArray.map((dynamicField, dynamicFieldIndex) =>
+          elements.map(field => (
+            <Box sx={{ display: "flex" }} key={dynamicField.id}>
+              <FormField key={dynamicField.id} {...field} name={`dynamic[${dynamicFieldIndex}].${field.name}`} type={field.type} />
+              <Box>
+                <BaseButton key='remove-btn' type={ButtonType.Icon} onClick={() => remove(dynamicFieldIndex)}>
+                  <Delete />
+                </BaseButton>
+              </Box>
+            </Box>
+          ))
+        )}
+        {addText !== "" && (
+          <BaseButton key='add-btn' type={ButtonType.Basic} onClick={() => append({ name })}>
+            {addText}
+          </BaseButton>
+        )}
+      </>
+    );
+  };
+
   const renderFields = () => {
-    if (fieldset) {
-      return fields.map((field: any, index) => (
-        <FormField key={field.id} {...field} name={`fieldArray.[${index}].${field.name}`} />
+    if (fields) {
+      return fields.map(field => (
+        <Box key={field.name}>
+          <FormField key={field.name} {...field} onFieldChange={field?.onChange} onChange={handleFormChange} />
+          {field?.dynamics && renderDynamicFields(field?.dynamics?.name, field?.dynamics?.addButtonText, field?.dynamics?.fields)}
+        </Box>
       ));
     }
 
@@ -139,8 +184,9 @@ export const Form: React.FC<FormProps> = ({
         )}
         {customButtons && (
           <Styled.ButtonSetWrapper>
-            {customButtons.map(customButtonProps => (
-              <BaseButton {...customButtonProps} />
+            {customButtons.map((customButtonProps, customButtonPropsIndex) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <BaseButton {...customButtonProps} key={customButtonPropsIndex} />
             ))}
           </Styled.ButtonSetWrapper>
         )}
