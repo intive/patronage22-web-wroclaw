@@ -1,52 +1,46 @@
-import { CircularProgress, Typography } from "@mui/material";
-import { formatDuration, intervalToDuration } from "date-fns";
-import plLocale from "date-fns/locale/pl";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { TranslationNamespace } from "../../types";
+import * as Styled from "./styled";
 
-export interface TimerProps {
-  initialTimeMsec: number;
-  label: string;
+export const STOPER_CONFIG = {
+  refreshTime: 1000
+};
+
+interface TimerProps {
+  timeToElapse: number;
   onTimeElapsed: () => void;
 }
 
-export const Timer: React.FC<TimerProps> = ({ initialTimeMsec, label, onTimeElapsed }) => {
-  const timeToRefresh = 1000;
+/**
+ * Generates a timer
+ * @param {number} timeToElapse - it should be provided in seconds
+ */
+export const Timer: React.FC<TimerProps> = ({ timeToElapse, onTimeElapsed }) => {
+  const [currentSeconds, setCurrentSeconds] = useState(timeToElapse);
+  const { t } = useTranslation();
 
-  const { t } = useTranslation(TranslationNamespace.Common);
+  const currentSecondsString = currentSeconds.toFixed().padStart(2, "0");
 
-  const [remainingTime, setRemainingTime] = useState(initialTimeMsec);
-
-  const normalise = (value: number) => {
-    const oneHundredPercent = 100;
-    return (value * oneHundredPercent) / initialTimeMsec;
-  };
+  const message = currentSeconds > 0 ? `00:${currentSecondsString}` : t("timeIsUp");
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (remainingTime <= 1000) {
-        clearInterval(interval);
-        onTimeElapsed();
-      } else {
-        setRemainingTime(remainingTime - timeToRefresh);
+    const timeStart = () => {
+      if (currentSeconds) {
+        setCurrentSeconds(prevState => prevState - 1);
       }
-    }, timeToRefresh);
-    return () => clearInterval(interval);
-  });
+    };
 
-  return (
-    <>
-      <CircularProgress variant='determinate' value={normalise(remainingTime)} />
-      {remainingTime ? (
-        <Typography>
-          {label}
-          {formatDuration(intervalToDuration({ start: 0, end: remainingTime }), { locale: plLocale })}
-        </Typography>
-      ) : (
-        <Typography>{t("endTime")}</Typography>
-      )}
-    </>
-  );
+    const time = setInterval(timeStart, STOPER_CONFIG.refreshTime);
+
+    if (!currentSeconds) {
+      onTimeElapsed();
+    }
+
+    return () => {
+      clearInterval(time);
+    };
+  }, [currentSeconds, onTimeElapsed]);
+
+  return <Styled.Timer>{message}</Styled.Timer>;
 };
