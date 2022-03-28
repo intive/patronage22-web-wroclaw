@@ -4,7 +4,11 @@ import { Form } from "@patronage-web/shared";
 export const TitleAndButtons = styled(Form)(({ theme }) => ({
   maxWidth: theme.spacing(60),
   display: "flex",
-  flexDirection: "row"
+  flexDirection: "row",
+
+  [theme.breakpoints.down("sm")]: {
+    flexDirection: "column"
+  }
 }));
 
 export const BasicPresentationInfo = styled(Form)(({ theme }) => ({

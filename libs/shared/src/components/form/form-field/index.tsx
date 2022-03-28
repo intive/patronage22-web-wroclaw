@@ -14,9 +14,9 @@ export interface DynamicsInterface {
   addButtonText: string;
   maxAmount: number;
 }
+
 export interface FormFieldProps extends Pick<UseControllerProps, "name" | "defaultValue"> {
   type: FormFieldType;
-  edit?: boolean;
   variant?: FormTextFieldVariant;
   rows?: number;
   label?: string;

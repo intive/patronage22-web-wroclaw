@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 import * as yup from "yup";
 import { ObjectShape } from "yup/lib/object";
 
+import { TranslationNamespace } from "../../types";
 import { BaseButton, BaseButtonProps, ButtonType } from "../base-button";
 import { FormField, FormFieldProps } from "./form-field";
 import * as Styled from "./styled";
@@ -55,7 +56,7 @@ export const Form: React.FC<FormProps> = ({
   customButtons,
   className
 }) => {
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation(TranslationNamespace.Common);
   const schema = yup.object(validationSchema).required();
 
   const methods = useForm<FieldValues>({

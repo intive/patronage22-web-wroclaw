@@ -8,7 +8,8 @@ export const Form = styled("form")(({ theme }) => ({
   width: "100%",
 
   "& .MuiFormControl-root": {
-    margin: theme.spacing(1, 0)
+    margin: theme.spacing(1, 0),
+    width: "100%"
   },
 
   "& #placeholder": {
@@ -17,7 +18,9 @@ export const Form = styled("form")(({ theme }) => ({
 }));
 
 export const ButtonSetWrapper = styled(Box)(({ theme }) => ({
+  padding: theme.spacing(0, 1),
+
   "& .MuiButton-root": {
-    margin: theme.spacing(0, 1)
+    margin: theme.spacing(1, 1)
   }
 }));
