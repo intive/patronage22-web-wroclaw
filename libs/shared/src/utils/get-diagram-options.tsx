@@ -1,7 +1,7 @@
-import { DiagramType } from "../..";
-import { DIAGRAM_CONFIG } from "./config";
+import { DIAGRAM_CONFIG } from "../configs";
+import { DiagramType } from "../types";
 
-export const useDiagramOptions = (type: DiagramType, title: string) => {
+export const getDiagramOptions = (type: DiagramType, title: string) => {
   const options: Record<DiagramType, any> = {
     [DiagramType.Bar]: {
       plugins: {

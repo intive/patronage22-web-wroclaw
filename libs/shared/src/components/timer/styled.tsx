@@ -5,6 +5,6 @@ export const Timer = styled(Typography)(({ theme }) => ({
   color: theme.palette.grey[600],
   textAlign: "center",
   fontSize: theme.spacing(2),
-  fontWeight: "bold",
+  fontWeight: theme.typography.fontWeightBold,
   margin: theme.spacing(1)
 }));

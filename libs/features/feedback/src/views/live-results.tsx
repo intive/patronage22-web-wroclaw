@@ -13,7 +13,7 @@ interface LiveResultsViewProps {
   onTimeElapsed: () => void;
 }
 
-export const LiveResultsView: React.FC<LiveResultsViewProps> = ({ data: { id, title, answers }, timeToElapse, onTimeElapsed }) => {
+export const LiveResultsView: React.FC<LiveResultsViewProps> = ({ data: { title, answers }, timeToElapse, onTimeElapsed }) => {
   const answersData = answers.reduce<ReducerObj>(
     (acc, item) => {
       acc.titles.push(item.title);
@@ -24,7 +24,7 @@ export const LiveResultsView: React.FC<LiveResultsViewProps> = ({ data: { id, ti
   );
 
   return (
-    <Card id={`diagram${id}`}>
+    <Card>
       <Diagram title={title} type={DiagramType.Bar} {...answersData} />
       <Timer timeToElapse={timeToElapse} onTimeElapsed={onTimeElapsed} />
     </Card>

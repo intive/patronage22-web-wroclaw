@@ -3,6 +3,7 @@ import Chart from "chart.js/auto";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import React from "react";
 
+import { DiagramType } from "../../types";
 import { BarDiagram } from "./bar-diagram";
 
 Chart.register(LinearScale, ChartDataLabels);
@@ -12,10 +13,6 @@ interface DiagramProps {
   counts: number[];
   title: string;
   type: DiagramType;
-}
-
-export enum DiagramType {
-  Bar = "Bar"
 }
 
 export const Diagram: React.FC<DiagramProps> = ({ titles, counts, title, type }) => {
