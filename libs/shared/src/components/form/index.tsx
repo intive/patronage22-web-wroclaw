@@ -77,8 +77,6 @@ export const Form: React.FC<FormProps> = ({
   });
 
   useEffect(() => {
-    console.log(fields.find(field => field.dynamics?.name));
-
     if (fieldArray.length === 0) {
       const dynamicField = fields.find(field => field.dynamics?.name);
       append({ name: dynamicField?.dynamics?.name || "" });
@@ -126,10 +124,8 @@ export const Form: React.FC<FormProps> = ({
     }
   ];
 
-  // eslint-disable-next-line react/no-unstable-nested-components
-  const renderDynamicFields = (name: string, addText: string, elements: FormFieldProps[]) => {
+  const renderDynamicFields = (name: string, addText: string, elements: FormFieldProps[], maxAmount: number) => {
     return (
-      // eslint-disable-next-line react/jsx-no-useless-fragment
       <>
         {fieldArray.map((dynamicField, dynamicFieldIndex) =>
           elements.map(field => (
@@ -143,7 +139,7 @@ export const Form: React.FC<FormProps> = ({
             </Box>
           ))
         )}
-        {addText !== "" && (
+        {addText !== "" && fieldArray.length < maxAmount && (
           <BaseButton key='add-btn' type={ButtonType.Basic} onClick={() => append({ name })}>
             {addText}
           </BaseButton>
@@ -157,7 +153,13 @@ export const Form: React.FC<FormProps> = ({
       return fields.map(field => (
         <Box key={field.name}>
           <FormField key={field.name} {...field} onFieldChange={field?.onChange} onChange={handleFormChange} />
-          {field?.dynamics && renderDynamicFields(field?.dynamics?.name, field?.dynamics?.addButtonText, field?.dynamics?.fields)}
+          {field?.dynamics &&
+            renderDynamicFields(
+              field?.dynamics?.name,
+              field?.dynamics?.addButtonText,
+              field?.dynamics?.fields,
+              field?.dynamics?.maxAmount
+            )}
         </Box>
       ));
     }

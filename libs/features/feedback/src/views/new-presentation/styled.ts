@@ -27,8 +27,6 @@ export const NewQuestionFormWrapper = styled(Box)(({ theme }) => ({
 }));
 
 export const NewQuestionForm = styled(Form)(({ theme }) => ({
-  // width: "100%",
-
   "& .MuiFormControl-root": {
     marginTop: theme.spacing(0.3),
     width: "100%"
@@ -47,7 +45,7 @@ export const QuestionCardBtnWrapper = styled(Box)(({ theme }) => ({
   width: "100%",
   display: "flex",
   justifyContent: "space-between",
-  padding: theme.spacing(0, 4)
+  padding: theme.spacing(1, 4)
 }));
 
 export const NewQuestionBtnWrapper = styled(Box)(({ theme }) => ({

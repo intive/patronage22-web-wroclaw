@@ -11,17 +11,16 @@ import { useTranslation } from "react-i18next";
 import { string } from "yup";
 
 import { BasicPresentationInfo } from "../../components";
+import { QUESTION_CONFIG } from "../../configs";
 import * as Styled from "./styled";
 
 export const NewPresentationView: React.FC = () => {
   const { i18n, t } = useTranslation(TranslationNamespace.Feedback);
-  const QUESTION_CONFIG = Object.freeze({
-    maxLength: 200
-  });
 
   const defaultAnswer: DynamicsInterface = {
     name: "questions",
     addButtonText: t("question.addField"),
+    maxAmount: QUESTION_CONFIG.maxAmountOfAnswers,
     fields: [
       {
         type: FormFieldType.Text,
@@ -48,7 +47,8 @@ export const NewPresentationView: React.FC = () => {
         dynamics: {
           name: "questions",
           addButtonText: "",
-          fields: []
+          fields: [],
+          maxAmount: 0
         }
       }
     ],
@@ -62,15 +62,49 @@ export const NewPresentationView: React.FC = () => {
 
   const [questions, setQuestions] = useState([defaultQuestion]);
   const [showContinueBtn, setShowContinueBtn] = useState([true]);
+  const [isQuestionListFull, setIsQuestionListFull] = useState(false);
 
-  // i18n.on("languageChanged", () => {
-  //   setQuestions(questions);
-  //   console.log(questions);
-  // });
+  i18n.on("languageChanged", () => {
+    const translatedQuestions = questions.map((question, questionIndex) => ({
+      ...question,
+      validationSchema: {
+        ...question.validationSchema,
+        question: string()
+          .trim()
+          .required(t("question.missingQuestionError"))
+          .max(QUESTION_CONFIG.maxLength, t("question.maxCharLength", { charAmount: QUESTION_CONFIG.maxLength }))
+      },
+      fields: question.fields.map(field =>
+        field.name === "question"
+          ? {
+              ...field,
+              description: showContinueBtn[questionIndex] ? t("question.questionField") : field.description,
+              dynamics:
+                !showContinueBtn[questionIndex] && field.dynamics?.name === "questions"
+                  ? { ...field.dynamics, addButtonText: t("question.addField") }
+                  : field.dynamics
+            }
+          : field
+      )
+    }));
+    setQuestions(translatedQuestions);
+  });
 
   const handleNewQuestion = () => {
-    setQuestions(prevQuestions => [...prevQuestions, defaultQuestion]);
-    setShowContinueBtn(prevValues => [...prevValues, true]);
+    if (questions.length < QUESTION_CONFIG.maxAmountOfQuestions) {
+      setQuestions(prevQuestions => [...prevQuestions, defaultQuestion]);
+      setShowContinueBtn(prevValues => [...prevValues, true]);
+    }
+    if (questions.length + 1 === QUESTION_CONFIG.maxAmountOfQuestions) {
+      setIsQuestionListFull(true);
+    }
+  };
+
+  const handleRemoveQuestion = (questionFormIndex: number) => {
+    setQuestions(questions.filter((item, itemIndex) => itemIndex !== questionFormIndex));
+    if (questions.length - 1 !== QUESTION_CONFIG.maxAmountOfQuestions) {
+      setIsQuestionListFull(false);
+    }
   };
 
   const handleContinue = (questionFormIndex: number) => {
@@ -117,7 +151,7 @@ export const NewPresentationView: React.FC = () => {
             <BaseButton
               key='remove-question-btn'
               type={ButtonType.Icon}
-              onClick={() => setQuestions(questions.filter((item, itemIndex) => itemIndex !== questionFormIndex))}
+              onClick={() => handleRemoveQuestion(questionFormIndex)}
               variant='contained'
             >
               <Delete />
@@ -126,7 +160,13 @@ export const NewPresentationView: React.FC = () => {
         </Styled.QuestionCard>
       ))}
       <Styled.NewQuestionBtnWrapper>
-        <BaseButton key='add-question-btn' type={ButtonType.Basic} variant='contained' onClick={handleNewQuestion}>
+        <BaseButton
+          key='add-question-btn'
+          type={ButtonType.Basic}
+          variant='contained'
+          onClick={handleNewQuestion}
+          disabled={isQuestionListFull}
+        >
           {t("newQuestion")}
         </BaseButton>
       </Styled.NewQuestionBtnWrapper>

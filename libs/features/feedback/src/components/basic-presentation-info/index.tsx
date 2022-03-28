@@ -4,6 +4,7 @@ import { ButtonType, FormFieldType, TranslationNamespace } from "@patronage-web/
 import { useTranslation } from "react-i18next";
 import { number, string } from "yup";
 
+import { QUESTION_CONFIG } from "../../configs";
 import * as Styled from "./styled";
 
 export const BasicPresentationInfo: React.FC = () => {
@@ -75,13 +76,13 @@ export const BasicPresentationInfo: React.FC = () => {
             label: t("setQuestionTime"),
             inputConfig: {
               type: "number",
-              defaultValue: 15
+              defaultValue: QUESTION_CONFIG.defaultTime
             }
           }
         ]}
         validationSchema={{
           description: string(),
-          time: number().default(15)
+          time: number().default(QUESTION_CONFIG.defaultTime)
         }}
       />
     </Box>

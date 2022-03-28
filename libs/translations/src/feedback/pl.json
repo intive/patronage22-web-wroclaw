@@ -8,14 +8,13 @@
     "newPresentationButton": "Nowa prezentacja",
     "newPresentationDescription": "Czy zastanawiałeś się kiedyś, co zrobić, by Twoja prezentacja była bardziej interaktywna? Kliknij przycisk poniżej i po prostu... spraw, by tak się stało!"
   },
-  "missingQuestionError": "Pytanie nie może być puste",
   "missingTitleError": "Tytuł nie może być pusty",
   "newPresentation": "Nowa prezentacja",
   "newQuestion": "Nowe pytanie",
   "question": {
     "addField": "Dodaj odpowiedź...",
     "maxCharLength": "Przekroczono maksymalną ilość znaków ({{charAmount}})",
-    "missingQuestionError": "Pole z pytaniem nie moe być puste",
+    "missingQuestionError": "Pole z pytaniem nie może być puste",
     "questionField": "Zadaj pytanie"
   },
   "saveQuestion": "Zapisz pytanie",

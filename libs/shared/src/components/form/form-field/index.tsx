@@ -12,6 +12,7 @@ export interface DynamicsInterface {
   name: string;
   fields: FormFieldProps[];
   addButtonText: string;
+  maxAmount: number;
 }
 export interface FormFieldProps extends Pick<UseControllerProps, "name" | "defaultValue"> {
   type: FormFieldType;
