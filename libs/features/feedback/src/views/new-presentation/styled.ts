@@ -17,6 +17,7 @@ export const QuestionCard = styled(Card)(({ theme }) => ({
   marginBottom: theme.spacing(1),
   backgroundColor: theme.palette.background.default,
   boxShadow: `0 3px .4em  ${theme.palette.primary.light}`,
+
   [theme.breakpoints.up("md")]: {
     width: theme.spacing(60)
   }
@@ -24,10 +25,26 @@ export const QuestionCard = styled(Card)(({ theme }) => ({
 
 export const NewQuestionFormWrapper = styled(Box)(({ theme }) => ({
   width: "100%",
-  padding: theme.spacing(1, 8, 1, 4)
+  padding: theme.spacing(1, 4),
+  display: "flex"
+}));
+
+export const QuestionNumberBox = styled(Box)(({ theme }) => ({
+  backgroundColor: theme.palette.primary.light,
+  color: theme.palette.background.default,
+  marginTop: theme.spacing(2),
+  borderRadius: theme.shape.borderRadius,
+  height: theme.spacing(3.5),
+  width: theme.spacing(3.5),
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center"
 }));
 
 export const NewQuestionForm = styled(Form)(({ theme }) => ({
+  marginLeft: theme.spacing(1),
+  width: "90%",
+
   "& .MuiFormControl-root": {
     marginTop: theme.spacing(0.3),
     width: "100%"

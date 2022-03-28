@@ -61,39 +61,41 @@ export const NewPresentationView: React.FC = () => {
   };
 
   const [questions, setQuestions] = useState([defaultQuestion]);
-  const [showContinueBtn, setShowContinueBtn] = useState([true]);
+  const [isQuestionAsked, setIsQuestionAsked] = useState([false]);
   const [isQuestionListFull, setIsQuestionListFull] = useState(false);
 
   i18n.on("languageChanged", () => {
-    const translatedQuestions = questions.map((question, questionIndex) => ({
-      ...question,
-      validationSchema: {
-        ...question.validationSchema,
-        question: string()
-          .trim()
-          .required(t("question.missingQuestionError"))
-          .max(QUESTION_CONFIG.maxLength, t("question.maxCharLength", { charAmount: QUESTION_CONFIG.maxLength }))
-      },
-      fields: question.fields.map(field =>
-        field.name === "question"
-          ? {
-              ...field,
-              description: showContinueBtn[questionIndex] ? t("question.questionField") : field.description,
-              dynamics:
-                !showContinueBtn[questionIndex] && field.dynamics?.name === "questions"
-                  ? { ...field.dynamics, addButtonText: t("question.addField") }
-                  : field.dynamics
-            }
-          : field
-      )
-    }));
-    setQuestions(translatedQuestions);
+    setQuestions(prevValues =>
+      prevValues.map((question, questionIndex) => ({
+        ...question,
+        validationSchema: {
+          ...question.validationSchema,
+          question: string()
+            .trim()
+            .required(t("question.missingQuestionError"))
+            .max(QUESTION_CONFIG.maxLength, t("question.maxCharLength", { charAmount: QUESTION_CONFIG.maxLength }))
+        },
+        fields: question.fields.map(field =>
+          field.name === "question"
+            ? {
+                ...field,
+                description: !isQuestionAsked[questionIndex] ? t("question.questionField") : field.description,
+                dynamics:
+                  isQuestionAsked[questionIndex] && field.dynamics?.name === "questions"
+                    ? { ...field.dynamics, addButtonText: t("question.addField") }
+                    : field.dynamics
+              }
+            : field
+        )
+      }))
+    );
   });
 
   const handleNewQuestion = () => {
+    // console.log(questions.length);
     if (questions.length < QUESTION_CONFIG.maxAmountOfQuestions) {
       setQuestions(prevQuestions => [...prevQuestions, defaultQuestion]);
-      setShowContinueBtn(prevValues => [...prevValues, true]);
+      setIsQuestionAsked(prevValues => [...prevValues, false]);
     }
     if (questions.length + 1 === QUESTION_CONFIG.maxAmountOfQuestions) {
       setIsQuestionListFull(true);
@@ -101,27 +103,32 @@ export const NewPresentationView: React.FC = () => {
   };
 
   const handleRemoveQuestion = (questionFormIndex: number) => {
-    setQuestions(questions.filter((item, itemIndex) => itemIndex !== questionFormIndex));
+    console.log(questions.length);
+    console.log(questionFormIndex);
+    setQuestions(prevValues => prevValues.filter((item, itemIndex) => itemIndex !== questionFormIndex));
+    setIsQuestionAsked(isQuestionAsked.filter((item, itemIndex) => itemIndex !== questionFormIndex));
     if (questions.length - 1 !== QUESTION_CONFIG.maxAmountOfQuestions) {
       setIsQuestionListFull(false);
     }
   };
 
   const handleContinue = (questionFormIndex: number) => {
-    const newQuestionArray = questions.map((questionCard, questionCardIndex) =>
-      questionCardIndex === questionFormIndex
-        ? {
-            ...questionCard,
-            fields: questionCard.fields.map(field =>
-              field.name === "question"
-                ? { ...field, variant: "standard" as FormTextFieldVariant, description: "", dynamics: defaultAnswer }
-                : field
-            )
-          }
-        : questionCard
+    // console.log(questions.length);
+    setQuestions(prevQuestions =>
+      prevQuestions.map((questionCard, questionCardIndex) =>
+        questionCardIndex === questionFormIndex
+          ? {
+              ...questionCard,
+              fields: questionCard.fields.map(field =>
+                field.name === "question"
+                  ? { ...field, variant: "standard" as FormTextFieldVariant, description: "", dynamics: defaultAnswer }
+                  : field
+              )
+            }
+          : questionCard
+      )
     );
-    setQuestions(newQuestionArray);
-    setShowContinueBtn(prevValues => prevValues.map((value, valueIndex) => (valueIndex === questionFormIndex ? false : value)));
+    setIsQuestionAsked(prevValues => prevValues.map((value, valueIndex) => (valueIndex === questionFormIndex ? true : value)));
   };
 
   // TODO - replace with proper save question action when ready
@@ -133,13 +140,14 @@ export const NewPresentationView: React.FC = () => {
     <Styled.NewPresentationWrapper>
       <BasicPresentationInfo />
       {questions.map((questionForm, questionFormIndex) => (
-        <Styled.QuestionCard key={questionFormIndex}>
+        <Styled.QuestionCard key={`question-card-${questionFormIndex}`}>
           <Styled.NewQuestionFormWrapper>
+            {isQuestionAsked[questionFormIndex] && <Styled.QuestionNumberBox>{questionFormIndex + 1}</Styled.QuestionNumberBox>}
             <Styled.NewQuestionForm key={`question-form-${questionFormIndex}`} {...questionForm} />
           </Styled.NewQuestionFormWrapper>
           <Divider sx={{ width: "100%" }} />
           <Styled.QuestionCardBtnWrapper>
-            {showContinueBtn[questionFormIndex] ? (
+            {!isQuestionAsked[questionFormIndex] ? (
               <BaseButton key='continue-question-btn' type={ButtonType.Basic} onClick={() => handleContinue(questionFormIndex)}>
                 {t("continue")}
               </BaseButton>
