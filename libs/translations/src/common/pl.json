@@ -11,6 +11,9 @@
     "phone": "+48 71 769 59 00",
     "wroclaw": "Wrocław"
   },
+  "goToPage": {
+    "previous": "Poprzednia strona"
+  },
   "linkCopied": "Skopiowano link",
   "linkCopyingFailed": "Kopiowanie linku nie powiodło się!",
   "login": {

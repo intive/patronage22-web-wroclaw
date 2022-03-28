@@ -11,6 +11,9 @@
     "phone": "+48 71 769 59 00",
     "wroclaw": "Wroclaw"
   },
+  "goToPage": {
+    "previous": "Previous page"
+  },
   "linkCopied": "Link copied",
   "linkCopyingFailed": "Link copying failed!",
   "login": {
