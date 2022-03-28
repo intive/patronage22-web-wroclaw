@@ -17,3 +17,26 @@ export interface FeedbackQuestionAnswers {
   current: number;
   answers: AnswerResult[];
 }
+
+export interface ExternalPresentation {
+  id: string;
+  name: string;
+  description?: string;
+  email: string;
+  timer: number;
+  startTime: number;
+  currentTime: number;
+  link: string;
+  status: string;
+  isPublic: boolean;
+  questions: ExternalQuestion[];
+}
+
+export interface ExternalQuestion {
+  id: string;
+  number: number;
+  title: string;
+  type: ParticipationQuestionType;
+  answers?: string[];
+  defaultAnswer?: string;
+}

@@ -1,1 +1,1 @@
-export * from ".";
+export * from "./get-remaining-time";

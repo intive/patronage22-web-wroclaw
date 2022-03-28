@@ -65,8 +65,9 @@ export const renderField = ({
     ),
     [FormFieldType.RadioGroup]: (
       <RadioGroup onChange={onChange} value={value}>
-        {options?.map(option => (
-          <FormControlLabel value={option} control={<Radio />} label={option} key={options.indexOf(option)} />
+        {options?.map((option, index) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <FormControlLabel value={option} control={<Radio />} label={option} key={index} />
         ))}
       </RadioGroup>
     )
