@@ -5,15 +5,16 @@
     "feedback": "Survey Maker",
     "feedback-external": "Survey Participant"
   },
+  "goToPage": {
+    "previous": "Previous page"
+  },
   "intive": {
     "address": "Pilsudskiego 69, 50-019 Wroclaw",
     "name": "Intive",
     "phone": "+48 71 769 59 00",
     "wroclaw": "Wroclaw"
   },
-  "goToPage": {
-    "previous": "Previous page"
-  },
+
   "linkCopied": "Link copied",
   "linkCopyingFailed": "Link copying failed!",
   "login": {

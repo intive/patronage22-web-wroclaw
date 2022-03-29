@@ -5,15 +5,16 @@
     "feedback": "Kreator Ankiety",
     "feedback-external": "Uczestnik Ankiety"
   },
+  "goToPage": {
+    "previous": "Poprzednia strona"
+  },
   "intive": {
     "address": "Piłsudskiego 69, 50-019 Wrocław",
     "name": "Intive",
     "phone": "+48 71 769 59 00",
     "wroclaw": "Wrocław"
   },
-  "goToPage": {
-    "previous": "Poprzednia strona"
-  },
+
   "linkCopied": "Skopiowano link",
   "linkCopyingFailed": "Kopiowanie linku nie powiodło się!",
   "login": {
