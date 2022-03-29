@@ -1,4 +1,4 @@
-import { styled } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import { Bar } from "react-chartjs-2";
 
 export const BarDiagramWrapper = styled(Bar)(({ theme }) => ({

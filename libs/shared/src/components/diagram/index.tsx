@@ -1,7 +1,6 @@
 import { LinearScale } from "chart.js";
 import Chart from "chart.js/auto";
 import ChartDataLabels from "chartjs-plugin-datalabels";
-import React from "react";
 
 import { DiagramType } from "../../types";
 import { BarDiagram } from "./bar-diagram";

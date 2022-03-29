@@ -1,3 +1,3 @@
 export enum DiagramType {
-  Bar = "Bar"
+  Bar = "bar"
 }

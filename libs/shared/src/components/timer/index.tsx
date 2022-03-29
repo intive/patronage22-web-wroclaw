@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { TranslationNamespace } from "../../types";
 import * as Styled from "./styled";
 
 export const STOPER_CONFIG = {
@@ -18,7 +19,7 @@ interface TimerProps {
  */
 export const Timer: React.FC<TimerProps> = ({ timeToElapse, onTimeElapsed }) => {
   const [currentSeconds, setCurrentSeconds] = useState(timeToElapse);
-  const { t } = useTranslation();
+  const { t } = useTranslation(TranslationNamespace.Common);
 
   const currentSecondsString = currentSeconds.toFixed().padStart(2, "0");
 
