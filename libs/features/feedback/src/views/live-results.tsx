@@ -2,9 +2,9 @@ import { Card } from "@mui/material";
 import { Diagram, DiagramType, Timer } from "@patronage-web/shared";
 import { FeedbackQuestionAnswers } from "@patronage-web/shared-data";
 
-interface ReducerObj {
-  titles: string[];
-  counts: number[];
+interface LiveResultsData {
+  labels: string[];
+  values: number[];
 }
 
 interface LiveResultsViewProps {
@@ -14,13 +14,13 @@ interface LiveResultsViewProps {
 }
 
 export const LiveResultsView: React.FC<LiveResultsViewProps> = ({ data: { title, answers }, timeToElapse, onTimeElapsed }) => {
-  const answersData = answers.reduce<ReducerObj>(
+  const answersData = answers.reduce<LiveResultsData>(
     (acc, item) => {
-      acc.titles.push(item.title);
-      acc.counts.push(item.count);
+      acc.labels.push(item.title);
+      acc.values.push(item.count);
       return acc;
     },
-    { titles: [], counts: [] }
+    { labels: [], values: [] }
   );
 
   return (
