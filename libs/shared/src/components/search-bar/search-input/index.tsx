@@ -1,34 +1,31 @@
 import SearchIcon from "@mui/icons-material/Search";
 import { InputAdornment } from "@mui/material";
-import { SxProps, Theme } from "@mui/material/styles";
-import { MouseEvent } from "react";
+import { BaseSyntheticEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { string } from "yup";
 
-import { FormFieldType } from "../../../types";
+import { FormFieldType, TranslationNamespace } from "../../../types";
 import { SEARCH_CONFIG } from "../constants";
 import * as Styled from "./styled";
 
 interface SearchInputProps {
   onChange?: (value: string) => void;
-  onClick?: (event: MouseEvent) => void;
   autoFocus?: boolean;
-  customStyles?: SxProps<Theme>;
-  disabled?: boolean;
+  onSubmit: (data: unknown, event?: BaseSyntheticEvent) => void;
 }
 
-export const SearchInput: React.FC<SearchInputProps> = ({ onChange, onClick, autoFocus, disabled, customStyles }) => {
-  const { t } = useTranslation();
+export const SearchInput: React.FC<SearchInputProps> = ({ onChange, autoFocus, onSubmit }) => {
+  const { t } = useTranslation(TranslationNamespace.Feedback);
   const maxInputLength = SEARCH_CONFIG.maxLength - 1;
 
   return (
     <Styled.SearchInputBase
-      sx={customStyles}
       onChange={({ searchInput }) => {
         if (onChange) {
           onChange(searchInput);
         }
       }}
+      onSubmit={onSubmit}
       fields={[
         {
           type: FormFieldType.Text,
@@ -43,8 +40,6 @@ export const SearchInput: React.FC<SearchInputProps> = ({ onChange, onClick, aut
             ),
             inputProps: { maxLength: SEARCH_CONFIG.maxLength, autoComplete: "off" }
           },
-          onClick,
-          disabled,
           autoFocus
         }
       ]}

@@ -15,16 +15,16 @@ export const DashboardTile: React.FC<Presentation> = ({ id, isPublic, title, des
 
   const [open, setOpen] = useState(false);
 
-  const handleOpenShareDialog = () => {
+  const handleOpenDialog = () => {
     setOpen(true);
   };
 
-  const handleCloseShareDialog = () => {
+  const handleCloseDialog = () => {
     setOpen(false);
   };
 
   const dashboardTileButtons = [
-    { text: t("share"), action: handleOpenShareDialog },
+    { text: t("share"), action: handleOpenDialog },
     { text: t("end"), action: undefined }
   ];
 
@@ -61,7 +61,7 @@ export const DashboardTile: React.FC<Presentation> = ({ id, isPublic, title, des
         </Styled.DashboardTileButtonContainer>
       </Styled.BorderCard>
 
-      <ShareDialog open={open} onClose={handleCloseShareDialog} id={id} title={title} />
+      <ShareDialog open={open} onClose={handleCloseDialog} id={id} title={title} />
     </Styled.DashboardTileContainer>
   );
 };
