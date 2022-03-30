@@ -1,7 +1,6 @@
 import { Box, Card, CardActions, CardHeader } from "@mui/material";
 import { styled } from "@mui/material/styles";
-
-import { DashboardCardProps } from "./index";
+import { DashboardCardProps } from "@patronage-web/shared";
 
 export const DashboardTileContainer = styled(Box)(({ theme }) => ({
   minWidth: "min-content",

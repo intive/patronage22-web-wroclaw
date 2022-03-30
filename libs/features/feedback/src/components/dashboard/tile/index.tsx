@@ -1,16 +1,13 @@
 import CloseIcon from "@mui/icons-material/Close";
-import { CardProps, Typography } from "@mui/material";
-import { BaseButton, ButtonType, FeedbackRoute, LocalizedLink, Presentation } from "@patronage-web/shared";
+import { Typography } from "@mui/material";
+import { BaseButton, ButtonType, FeedbackRoute, LocalizedLink, Presentation as DashboardTileProps } from "@patronage-web/shared";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { ShareDialog } from "../../share-dialog";
 import * as Styled from "./styled";
 
-export interface DashboardCardProps extends CardProps {
-  isPublic: boolean;
-}
-export const DashboardTile: React.FC<Presentation> = ({ id, isPublic, title, description }) => {
+export const DashboardTile: React.FC<DashboardTileProps> = ({ id, isPublic, title, description }) => {
   const { t } = useTranslation();
 
   const [open, setOpen] = useState(false);
