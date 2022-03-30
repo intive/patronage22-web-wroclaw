@@ -1,7 +1,7 @@
 import { mockPresentations } from "@patronage-web/shared-data";
 
+import { DashboardTile } from "../tile";
 import * as Styled from "./styled";
-import { DashboardTile } from "./tile";
 
 export const Dashboard = () => (
   <Styled.DashboardTileGrid container>
