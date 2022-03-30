@@ -1,2 +1,2 @@
-export { default as presentations } from "./dashboard/dashboard.json";
+export * from "./dashboard";
 export * from "./presentation-search-items";

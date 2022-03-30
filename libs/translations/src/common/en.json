@@ -1,6 +1,8 @@
 {
   "cancel": "Cancel",
   "copyLink": "Copy link",
+  "edit": "Edit",
+  "end": "End",
   "featureNames": {
     "feedback": "Survey Maker",
     "feedback-external": "Survey Participant"
@@ -34,8 +36,6 @@
     "minCharLength": "Minimum number of characters required: {{charAmount}}",
     "noResultsInfo": "No results found..."
   },
-  "submit": "Submit",
   "share": "Share",
-  "end": "End",
-  "edit": "Edit"
+  "submit": "Submit"
 }

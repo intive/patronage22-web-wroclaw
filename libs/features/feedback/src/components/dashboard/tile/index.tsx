@@ -4,13 +4,13 @@ import { BaseButton, ButtonType, FeedbackRoute, LocalizedLink, Presentation } fr
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { ShareDialog } from "../../index";
+import { ShareDialog } from "../../share-dialog";
 import * as Styled from "./styled";
 
 export interface DashboardCardProps extends CardProps {
   isPublic: boolean;
 }
-export const DashboardTile: React.FC<Presentation> = ({ id, isPublic, title, description, status }) => {
+export const DashboardTile: React.FC<Presentation> = ({ id, isPublic, title, description }) => {
   const { t } = useTranslation();
 
   const [open, setOpen] = useState(false);

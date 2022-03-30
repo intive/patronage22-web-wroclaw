@@ -1,6 +1,8 @@
 {
   "cancel": "Anuluj",
   "copyLink": "Kopiuj link",
+  "edit": "Edytuj",
+  "end": "Zakończ",
   "featureNames": {
     "feedback": "Kreator Ankiety",
     "feedback-external": "Uczestnik Ankiety"
@@ -34,8 +36,6 @@
     "minCharLength": "Minimalna wymagana ilość znaków: {{charAmount}}",
     "noResultsInfo": "Brak wyników..."
   },
-  "submit": "Zatwierdź",
   "share": "Udostępnij",
-  "end": "Zakończ",
-  "edit": "Edytuj"
+  "submit": "Zatwierdź"
 }
