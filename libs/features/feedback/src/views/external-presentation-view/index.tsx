@@ -1,6 +1,5 @@
 /* eslint-disable no-nested-ternary */
 import { Button, Typography } from "@mui/material";
-import { Timer } from "@patronage-web/shared";
 import { ExternalPresentation, LiveResultsAnswers } from "@patronage-web/shared-data";
 import { useState } from "react";
 
@@ -26,9 +25,10 @@ export const ExternalPresentationView: React.FC<ExternalPresentationViewProps> =
     questions[currentQuestionIndex] && localStorageLastSubmitedQuestionId === questions[currentQuestionIndex].id
   );
 
-  const handleSubmit = () => {
+  const handleSubmit = (value?: Record<string, string> | undefined) => {
+    console.log("value", value ? value.userAnswer : "brak");
     const liveResultData = LiveResultsAnswers;
-    const liveResultRemainingTime = getRemainingTime(liveResultData.created, liveResultData.current, timer);
+    const liveResultRemainingTime = getRemainingTime(startTime, liveResultData.current, timer);
     setTimeToElapse(liveResultRemainingTime);
     window.localStorage.setItem("lastSubmitedQuestionId", questions[currentQuestionIndex].id);
     setIsSubmit(true);
@@ -41,6 +41,7 @@ export const ExternalPresentationView: React.FC<ExternalPresentationViewProps> =
   };
 
   return questionsCount <= currentQuestionIndex ? (
+    // replace with summary?
     <Typography>Thanks!</Typography>
   ) : !isSubmit ? (
     <CurrentQuestionView
@@ -51,9 +52,7 @@ export const ExternalPresentationView: React.FC<ExternalPresentationViewProps> =
       key={currentQuestionIndex}
     />
   ) : (
-    <>
-      <Button onClick={handleTimeElapsed}>Live results{currentQuestionIndex}</Button>
-      <Timer timeToElapse={timeToElapse} onTimeElapsed={handleTimeElapsed} key={currentQuestionIndex} />
-    </>
+    // replace with <LiveResults> when will be ready
+    <Button onClick={handleTimeElapsed}>Live results{currentQuestionIndex}</Button>
   );
 };

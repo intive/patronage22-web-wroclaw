@@ -1,6 +1,5 @@
 import { Form, FormFieldType, Timer, TranslationNamespace } from "@patronage-web/shared";
 import { ExternalQuestion, ParticipationQuestionType } from "@patronage-web/shared-data";
-import { ChangeEvent, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import * as Styled from "./styled";
@@ -20,25 +19,21 @@ export const CurrentQuestionView: React.FC<CurrentQuestionViewProps> = ({
 }) => {
   const { t } = useTranslation(TranslationNamespace.Common);
 
-  const [userAnswer, setUserAnswer] = useState(answers ? answers[0] : "");
+  const values = answers
+    ? answers.map(answer => {
+        return { [`${answer}`]: answer } as Record<string, string>;
+      })
+    : [{ "": "" }];
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setUserAnswer((event.target as HTMLInputElement).value);
-  };
-
-  const handleSubmit = () => {
-    onSubmit();
-    console.log(userAnswer);
-  };
+  const defaultAnswer = answers ? answers[0] : "";
 
   const answersField = {
     [ParticipationQuestionType.Closed]: [
       {
         type: FormFieldType.RadioGroup,
-        name: "posibleAnswers",
-        options: answers,
-        onChange: handleChange,
-        value: userAnswer,
+        name: "userAnswer",
+        defaultValue: defaultAnswer,
+        values,
         hideEditIcon: true
       }
     ],
@@ -46,7 +41,6 @@ export const CurrentQuestionView: React.FC<CurrentQuestionViewProps> = ({
       {
         type: FormFieldType.Textarea,
         name: "userAnswer",
-        onChange: handleChange,
         hideEditIcon: true
       }
     ]
@@ -60,7 +54,7 @@ export const CurrentQuestionView: React.FC<CurrentQuestionViewProps> = ({
           validationSchema={{}}
           fields={answersField[type]}
           customButtons={{ submit: { condition: true, text: t("submit") } }}
-          onSubmit={handleSubmit}
+          onSubmit={onSubmit}
         />
       </Styled.QuestionFormCard>
       <Timer onTimeElapsed={onTimeElapsed} timeToElapse={timeToElapse} />

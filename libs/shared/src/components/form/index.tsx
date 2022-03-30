@@ -7,7 +7,6 @@ import { useTranslation } from "react-i18next";
 import * as yup from "yup";
 import { ObjectShape } from "yup/lib/object";
 
-import { usePrevious } from "../../hooks";
 import { BaseButton, ButtonType } from "../base-button";
 import { FormField, FormFieldProps } from "./form-field";
 import * as Styled from "./styled";
@@ -59,8 +58,7 @@ export const Form: React.FC<FormProps> = ({
     defaultValues: initialValues
   });
 
-  const currentValues = methods.getValues();
-  const previousValues = usePrevious(currentValues);
+  const currentValues = methods.watch();
 
   const handleSubmit = (event: BaseSyntheticEvent) => {
     if (onSubmit) {
@@ -75,7 +73,7 @@ export const Form: React.FC<FormProps> = ({
   };
 
   const handleFormChange = () => {
-    if (onChange && !isEqual(methods.getValues(), previousValues)) {
+    if (onChange && !isEqual(methods.getValues(), currentValues)) {
       onChange(methods.getValues());
     }
   };
@@ -97,7 +95,9 @@ export const Form: React.FC<FormProps> = ({
 
   const renderFields = () => {
     if (fields) {
-      return fields.map(field => <FormField key={field.name} {...field} />);
+      return fields.map(field => (
+        <FormField key={field.name} {...field} onFieldChange={field?.onChange} onChange={handleFormChange} />
+      ));
     }
 
     return (

@@ -1,21 +1,22 @@
 import { Edit } from "@mui/icons-material";
 import { StandardTextFieldProps, Typography } from "@mui/material";
-import { ChangeEvent, MouseEvent, ReactNode } from "react";
-import { FieldValues, useController, UseControllerProps, UseFormStateReturn } from "react-hook-form";
+import { MouseEvent, ReactNode } from "react";
+import { FieldValues, useController, UseControllerProps, useFormContext, UseFormStateReturn } from "react-hook-form";
 
 import { FormFieldType } from "../../../types";
 import { FormTextFieldVariant, renderField } from "./render-field";
 import { renderHelperText } from "./render-helper-text";
 import * as Styled from "./styled";
 
-export interface FormFieldProps extends Pick<UseControllerProps, "name" | "control"> {
+export interface FormFieldProps extends Pick<UseControllerProps, "name" | "defaultValue"> {
   type: FormFieldType;
   variant?: FormTextFieldVariant;
   rows?: number;
   label?: string;
   helperText?: string;
   description?: string;
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChange?: () => void;
+  onFieldChange?: () => void;
   placeholder?: string;
   inputConfig?: StandardTextFieldProps["InputProps"];
   autoFocus?: boolean;
@@ -23,20 +24,19 @@ export interface FormFieldProps extends Pick<UseControllerProps, "name" | "contr
   disabled?: boolean;
   appendix?: ReactNode;
   hideEditIcon?: boolean;
-  options?: string[];
-  value?: string;
+  values?: Record<string, unknown>[];
 }
 
 export const FormField: React.FC<FormFieldProps> = ({
   type,
   name,
-  control,
   variant,
   rows,
   label,
   helperText,
   description,
   onChange,
+  onFieldChange,
   onClick,
   placeholder,
   inputConfig,
@@ -44,21 +44,26 @@ export const FormField: React.FC<FormFieldProps> = ({
   disabled,
   appendix,
   hideEditIcon,
-  options,
-  value
+  defaultValue,
+  values
 }: FormFieldProps) => {
+  const { control } = useFormContext();
   const {
-    field: { onChange: onFormFieldChange },
+    field: fieldController,
     formState: { errors }
-  } = useController({ name, control });
+  } = useController({ name, control, defaultValue });
 
   const fieldErrors: UseFormStateReturn<FieldValues>["errors"] = errors[name];
 
-  const onFieldChange = (event: ChangeEvent<HTMLInputElement>) => {
-    onFormFieldChange(event);
+  const handleFieldChange = (value: unknown) => {
+    fieldController.onChange(value);
 
     if (onChange) {
-      onChange(event);
+      onChange();
+    }
+
+    if (onFieldChange) {
+      onFieldChange();
     }
   };
 
@@ -69,7 +74,7 @@ export const FormField: React.FC<FormFieldProps> = ({
         {renderField({
           type,
           name,
-          onChange: onFieldChange,
+          onChange: handleFieldChange,
           onClick,
           variant,
           errors: fieldErrors,
@@ -79,8 +84,8 @@ export const FormField: React.FC<FormFieldProps> = ({
           inputConfig,
           autoFocus,
           disabled,
-          options,
-          value
+          values,
+          value: fieldController.value
         })}
         {!hideEditIcon && <Edit id='editIcon' />}
       </Styled.Field>
