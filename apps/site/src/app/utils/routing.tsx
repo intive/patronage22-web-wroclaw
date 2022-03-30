@@ -8,6 +8,7 @@ const PresentationPage = lazy(() => import("../pages/presentation"));
 const AddPresentationPage = lazy(() => import("../pages/add-presentation"));
 const EditPresentationPage = lazy(() => import("../pages/edit-presentation"));
 const ExternalUserPresentationPage = lazy(() => import("../pages/external-user-presentation"));
+const Login = lazy(() => import("../pages/login"));
 const NotFoundPage = lazy(() => import("../pages/not-found"));
 
 const createRoute = (
@@ -39,9 +40,10 @@ export const Routing: React.FC = () =>
       false,
       [
         createChildrenRoute(FeedbackRoute.AddPresentation, <AddPresentationPage />),
-        createChildrenRoute(FeedbackRoute.EditPresentation, <EditPresentationPage />),
-        createChildrenRoute(FeedbackRoute.ExternalUserPresentation, <ExternalUserPresentationPage />)
+        createChildrenRoute(FeedbackRoute.EditPresentation, <EditPresentationPage />)
       ]
     ),
+    createRoute(FeedbackRoute.ExternalUserPresentation, <ExternalUserPresentationPage />, <Loader type={LoaderType.Circular} />),
+    createRoute(BaseRoute.Login, <Login />, <Loader type={LoaderType.Circular} />),
     createRoute(BaseRoute.NotFound, <NotFoundPage />, <Loader type={LoaderType.Circular} />)
   ]);

@@ -50,25 +50,27 @@ describe("createPath generation test", () => {
     Object.values(SupportedLanguage).forEach(lang => {
       const langPath = isDefaultLanguage(lang) ? "" : `?lang=${lang}`;
       it(`should generate proper link for language ${lang}`, () => {
-        expect(createPath(config.targetPage, config.routeParams, lang)).toBe(`${config.targetPath}${langPath}`);
+        expect(createPath({ route: config.targetPage, params: config.routeParams, language: lang })).toBe(
+          `${config.targetPath}${langPath}`
+        );
       });
 
       it(`should generate proper link for default language`, () => {
-        expect(createPath(config.targetPage, config.routeParams)).toBe(`${config.targetPath}`);
+        expect(createPath({ route: config.targetPage, params: config.routeParams })).toBe(`${config.targetPath}`);
       });
     });
 
     Object.keys(searchQueries).forEach(key => {
       it(`should generate proper link for searched phrase ${key} with ${SupportedLanguage.En} language`, () => {
-        expect(createPath(config.targetPage, config.routeParams, SupportedLanguage.En, key)).toBe(
-          `${config.targetPath}?search=${searchQueries[key]}`
-        );
+        expect(
+          createPath({ route: config.targetPage, params: config.routeParams, language: SupportedLanguage.En, search: key })
+        ).toBe(`${config.targetPath}?search=${searchQueries[key]}`);
       });
 
       it(`should generate proper link for searched phrase ${key} with ${SupportedLanguage.Pl} language`, () => {
-        expect(createPath(config.targetPage, config.routeParams, SupportedLanguage.Pl, key)).toBe(
-          `${config.targetPath}?lang=pl&search=${searchQueries[key]}`
-        );
+        expect(
+          createPath({ route: config.targetPage, params: config.routeParams, language: SupportedLanguage.Pl, search: key })
+        ).toBe(`${config.targetPath}?lang=pl&search=${searchQueries[key]}`);
       });
     });
   });
