@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { ITEMS_PER_PAGE_OPTIONS } from "../../configs";
 import { useScreenSize, useUrlParams } from "../../hooks";
 import { FormFieldType, PaginationQueryParams } from "../../types";
-import * as Styled from "./style";
+import * as Styled from "./styled";
 
 const INITIAL_PAGE = 1;
 const INITIAL_SIZE_POSITION = 0;
