@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import { TranslationNamespace } from "../../types";
 import { BaseButton, ButtonType } from "../base-button";
+import * as Styled from "./styled";
 
 const goToPreviousPage = -1;
 
@@ -15,10 +16,13 @@ export const PreviousPageButton = () => {
   const previousPageMessage = t("goToPage.previous");
 
   return (
-    <BaseButton type={ButtonType.Icon} onClick={() => navigate(goToPreviousPage)}>
-      <Tooltip title={previousPageMessage}>
-        <ArrowBackIcon />
-      </Tooltip>
-    </BaseButton>
+    <Styled.PreviousPageButtonWrapper>
+      <BaseButton type={ButtonType.Icon} onClick={() => navigate(goToPreviousPage)} sx={Styled.PreviousButtonStyle}>
+        <Tooltip title={previousPageMessage}>
+          <ArrowBackIcon sx={Styled.BackArrowIconStyle} />
+        </Tooltip>
+        {t("goToPage.previous")}
+      </BaseButton>
+    </Styled.PreviousPageButtonWrapper>
   );
 };

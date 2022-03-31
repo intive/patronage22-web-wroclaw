@@ -1,7 +1,7 @@
 import { SearchBar, ThemeSelector } from "@patronage-web/shared";
 
 import { NavBreadcrumbs } from "../nav-breadcrumbs";
-import { navbarCenterSectionStyles } from "./style";
+import { navbarCenterSectionStyles } from "./styled";
 // TODO center element should be replaced with SearchBar when will be ready
 export const navbarConfig = {
   start: {
