@@ -42,20 +42,28 @@ export const BasicPagination: React.FC<BasicPaginationProps> = ({ itemsCount, in
   const isPageCorrect = !!pageFromParam && pageFromParam <= pagesCount && pageFromParam > 0;
   const page = isPageCorrect ? pageFromParam : INITIAL_PAGE;
 
-  const lastButOnePage = pagesCount - 1;
-  const shownItemsPerPageCount = page === pagesCount ? itemsCount - lastButOnePage * size : size;
-  const infoText = `${sizeFromParam >= itemsCount ? itemsCount : shownItemsPerPageCount} ${t("pagination.outOf")} ${itemsCount}`;
+  const penultimatePage = pagesCount - 1;
+  const lastPageItemsCount = itemsCount - penultimatePage * size;
+
+  const itemsPerPageCount = page === pagesCount ? lastPageItemsCount : size;
+  const shownItemsPerPageCount = sizeFromParam >= itemsCount ? itemsCount : itemsPerPageCount;
+  const infoText = `${shownItemsPerPageCount} ${t("pagination.outOf")} ${itemsCount}`;
 
   const pageLabel = `${itemsPerPageLabel || t("pagination.itemsPerPage")}: `;
-  const pagesVisibilityCount = isMobile ? 0 : 1;
+  const pagesVisibilityLevel = isMobile ? 0 : 1;
 
-  const itemsPerPageOptions = ITEMS_PER_PAGE_OPTIONS.reduce((acc, option) => {
-    if (itemsCount / option <= ITEMS_PER_PAGE_RATIO && option !== ITEMS_PER_PAGE_OPTIONS[FIRST_ITEM_PER_PAGE_POSITION]) {
+  const itemsPerPageOptions = ITEMS_PER_PAGE_OPTIONS.reduce<Record<string, number>[]>((acc, sizeOption) => {
+    const isSizeFirstOption = sizeOption === ITEMS_PER_PAGE_OPTIONS[FIRST_ITEM_PER_PAGE_POSITION];
+    const isSizeRatioCorrect = itemsCount / sizeOption > ITEMS_PER_PAGE_RATIO;
+
+    if (!isSizeRatioCorrect && !isSizeFirstOption) {
       return acc;
     }
 
-    return [...acc, { [`${option}`]: option }];
-  }, [] as Record<string, number>[]);
+    acc.push({ [`${sizeOption}`]: sizeOption });
+
+    return acc;
+  }, []);
 
   const handleSizeChange = (value: string) => {
     updateParams({ size: value });
@@ -84,8 +92,8 @@ export const BasicPagination: React.FC<BasicPaginationProps> = ({ itemsCount, in
         showFirstButton
         showLastButton
         size='large'
-        boundaryCount={pagesVisibilityCount}
-        siblingCount={pagesVisibilityCount}
+        boundaryCount={pagesVisibilityLevel}
+        siblingCount={pagesVisibilityLevel}
       />
       <Styled.SectionBox>
         <Styled.InfoBox>{pageLabel}</Styled.InfoBox>
