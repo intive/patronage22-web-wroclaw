@@ -1,4 +1,3 @@
-/* eslint-disable react/no-array-index-key */
 import { Delete } from "@mui/icons-material";
 import { Divider } from "@mui/material";
 import { BaseButton, ButtonType, FormFieldType, FormProps, TranslationNamespace } from "@patronage-web/shared";
@@ -8,6 +7,7 @@ import { DynamicsInterface } from "libs/shared/src/components/form/form-field";
 import { FormTextFieldVariant } from "libs/shared/src/components/form/form-field/render-field";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { v4 as uuidv4 } from "uuid";
 import { string } from "yup";
 
 import { BasicPresentationInfo } from "../../components";
@@ -34,6 +34,7 @@ export const NewPresentationView: React.FC = () => {
   };
 
   const defaultQuestion: FormProps = {
+    id: uuidv4(),
     initialValues: { question: "" },
     fields: [
       {
@@ -79,7 +80,7 @@ export const NewPresentationView: React.FC = () => {
           field.name === "question"
             ? {
                 ...field,
-                description: !isQuestionAsked[questionIndex] ? t("question.questionField") : field.description,
+                description: !isQuestionAsked[questionIndex] ? t("question.questionField") : "",
                 dynamics:
                   isQuestionAsked[questionIndex] && field.dynamics?.name === "questions"
                     ? { ...field.dynamics, addButtonText: t("question.addField") }
@@ -92,9 +93,8 @@ export const NewPresentationView: React.FC = () => {
   });
 
   const handleNewQuestion = () => {
-    // console.log(questions.length);
     if (questions.length < QUESTION_CONFIG.maxAmountOfQuestions) {
-      setQuestions(prevQuestions => [...prevQuestions, defaultQuestion]);
+      setQuestions(prevQuestions => [...prevQuestions, { ...defaultQuestion, id: uuidv4() }]);
       setIsQuestionAsked(prevValues => [...prevValues, false]);
     }
     if (questions.length + 1 === QUESTION_CONFIG.maxAmountOfQuestions) {
@@ -103,8 +103,6 @@ export const NewPresentationView: React.FC = () => {
   };
 
   const handleRemoveQuestion = (questionFormIndex: number) => {
-    console.log(questions.length);
-    console.log(questionFormIndex);
     setQuestions(prevValues => prevValues.filter((item, itemIndex) => itemIndex !== questionFormIndex));
     setIsQuestionAsked(isQuestionAsked.filter((item, itemIndex) => itemIndex !== questionFormIndex));
     if (questions.length - 1 !== QUESTION_CONFIG.maxAmountOfQuestions) {
@@ -113,7 +111,6 @@ export const NewPresentationView: React.FC = () => {
   };
 
   const handleContinue = (questionFormIndex: number) => {
-    // console.log(questions.length);
     setQuestions(prevQuestions =>
       prevQuestions.map((questionCard, questionCardIndex) =>
         questionCardIndex === questionFormIndex
@@ -140,10 +137,10 @@ export const NewPresentationView: React.FC = () => {
     <Styled.NewPresentationWrapper>
       <BasicPresentationInfo />
       {questions.map((questionForm, questionFormIndex) => (
-        <Styled.QuestionCard key={`question-card-${questionFormIndex}`}>
+        <Styled.QuestionCard key={`question-card-${questionForm.id}`}>
           <Styled.NewQuestionFormWrapper>
             {isQuestionAsked[questionFormIndex] && <Styled.QuestionNumberBox>{questionFormIndex + 1}</Styled.QuestionNumberBox>}
-            <Styled.NewQuestionForm key={`question-form-${questionFormIndex}`} {...questionForm} />
+            <Styled.NewQuestionForm key={`question-form-${questionForm.id}`} {...questionForm} />
           </Styled.NewQuestionFormWrapper>
           <Divider sx={{ width: "100%" }} />
           <Styled.QuestionCardBtnWrapper>

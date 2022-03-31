@@ -1,4 +1,4 @@
-import { styled } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import { Form } from "@patronage-web/shared";
 
 export const TitleAndButtons = styled(Form)(({ theme }) => ({

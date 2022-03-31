@@ -5,6 +5,7 @@ import { isEqual } from "lodash";
 import { BaseSyntheticEvent, ReactNode, useEffect } from "react";
 import { FieldValues, FormProvider, SubmitErrorHandler, SubmitHandler, useFieldArray, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
+import { v4 as uuidv4 } from "uuid";
 import * as yup from "yup";
 import { ObjectShape } from "yup/lib/object";
 
@@ -24,6 +25,7 @@ interface FormButton {
 
 export interface FormProps {
   title?: string;
+  id?: string;
   validationSchema: ObjectShape;
   fields: FormFieldProps[];
   initialValues?: {
@@ -187,9 +189,8 @@ export const Form: React.FC<FormProps> = ({
         )}
         {customButtons && (
           <Styled.ButtonSetWrapper>
-            {customButtons.map((customButtonProps, customButtonPropsIndex) => (
-              // eslint-disable-next-line react/no-array-index-key
-              <BaseButton {...customButtonProps} key={customButtonPropsIndex} />
+            {customButtons.map(customButtonProps => (
+              <BaseButton {...customButtonProps} key={`${uuidv4()}`} />
             ))}
           </Styled.ButtonSetWrapper>
         )}
