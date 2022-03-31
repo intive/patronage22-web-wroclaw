@@ -7,7 +7,7 @@ import { TranslationNamespace } from "../../types";
 import { BaseButton, ButtonType } from "../base-button";
 import * as Styled from "./styled";
 
-const goToPreviousPage = -1;
+const PREVIOUS_PAGE = -1;
 
 export const PreviousPageButton = () => {
   // TODO replace routing logic with redux-first-routing when will be ready
@@ -17,11 +17,11 @@ export const PreviousPageButton = () => {
 
   return (
     <Styled.PreviousPageButtonWrapper>
-      <BaseButton type={ButtonType.Icon} onClick={() => navigate(goToPreviousPage)} sx={Styled.PreviousButtonStyle}>
+      <BaseButton type={ButtonType.Icon} onClick={() => navigate(PREVIOUS_PAGE)} sx={Styled.PreviousButtonStyle}>
         <Tooltip title={previousPageMessage}>
           <ArrowBackIcon sx={Styled.BackArrowIconStyle} />
         </Tooltip>
-        {t("goToPage.previous")}
+        {previousPageMessage}
       </BaseButton>
     </Styled.PreviousPageButtonWrapper>
   );

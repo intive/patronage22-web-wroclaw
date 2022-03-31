@@ -15,9 +15,9 @@ export const PreviousPageButtonWrapper = styled(Box)(({ theme }) => ({
   position: "absolute",
   top: theme.spacing(10),
   left: theme.spacing(4),
+  display: "block",
 
-  [theme.breakpoints.down("sm")]: {
-    top: theme.spacing(12),
-    left: theme.spacing(3)
+  [theme.breakpoints.down("md")]: {
+    display: "none"
   }
 }));
