@@ -1,5 +1,5 @@
-import { DIAGRAM_CONFIG } from "../configs";
-import { DiagramType } from "../types";
+import { DIAGRAM_CONFIG } from "../../configs";
+import { DiagramType } from "../../types";
 
 export const getDiagramOptions = (type: DiagramType, title: string) => {
   const options: Record<DiagramType, any> = {
