@@ -63,9 +63,10 @@ export const renderField = ({
         placeholder={placeholder}
         autoFocus={autoFocus}
         fullWidth
+        defaultValue={value}
       />
     ),
-    [FormFieldType.RadioGroup]: <RadioGroupField value={value} options={values} />
+    [FormFieldType.RadioGroup]: <RadioGroupField value={value} options={values} onChange={onChange} />
   };
 
   return field[type];

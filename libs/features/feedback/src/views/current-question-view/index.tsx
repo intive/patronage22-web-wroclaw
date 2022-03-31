@@ -41,7 +41,8 @@ export const CurrentQuestionView: React.FC<CurrentQuestionViewProps> = ({
       {
         type: FormFieldType.Textarea,
         name: "userAnswer",
-        hideEditIcon: true
+        hideEditIcon: true,
+        defaultValue: ""
       }
     ]
   };
@@ -55,6 +56,7 @@ export const CurrentQuestionView: React.FC<CurrentQuestionViewProps> = ({
           fields={answersField[type]}
           customButtons={{ submit: { condition: true, text: t("submit") } }}
           onSubmit={onSubmit}
+          onChange={() => {}}
         />
       </Styled.QuestionFormCard>
       <Timer onTimeElapsed={onTimeElapsed} timeToElapse={timeToElapse} />
