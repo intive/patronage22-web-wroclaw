@@ -10,5 +10,6 @@ export * from "./loader";
 export * from "./localized-link";
 export * from "./navbar";
 export * from "./notifications";
+export * from "./previous-page-button";
 export * from "./search-bar";
 export * from "./theme-selector";
