@@ -1,9 +1,9 @@
-import { FeedbackQuestionAnswers, ParticipationQuestionType } from "../../types";
+import { FeedbackQuestionAnswers, QuestionType } from "../../types";
 
 export const LiveResultsAnswers: FeedbackQuestionAnswers = {
   id: "38b451fe-aa14-498e-ad33-4b452a70d21a",
   title: "How many apples?",
-  type: ParticipationQuestionType.Closed,
+  type: QuestionType.Closed,
   created: 1645132670,
   current: 1645132675,
   answers: [

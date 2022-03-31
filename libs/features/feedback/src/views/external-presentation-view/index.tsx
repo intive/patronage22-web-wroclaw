@@ -1,7 +1,9 @@
 /* eslint-disable no-nested-ternary */
 import { Button, Typography } from "@mui/material";
+import { TranslationNamespace } from "@patronage-web/shared";
 import { ExternalPresentation, LiveResultsAnswers } from "@patronage-web/shared-data";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import { getRemainingTime } from "../../utils";
 import { CurrentQuestionView } from "../current-question-view";
@@ -13,6 +15,7 @@ export interface ExternalPresentationViewProps {
 export const ExternalPresentationView: React.FC<ExternalPresentationViewProps> = ({
   presentation: { questions, timer, startTime, currentTime }
 }) => {
+  const { t } = useTranslation(TranslationNamespace.Feedback);
   const questionsCount = questions.length;
   const startQuestionIndex = Math.floor((currentTime - startTime) / timer);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(startQuestionIndex);
@@ -42,9 +45,10 @@ export const ExternalPresentationView: React.FC<ExternalPresentationViewProps> =
 
   return questionsCount <= currentQuestionIndex ? (
     // replace with summary?
-    <Typography>Thanks!</Typography>
+    <Typography>{t("summary")}</Typography>
   ) : !isSubmit ? (
     <CurrentQuestionView
+      number={currentQuestionIndex + 1}
       question={questions[currentQuestionIndex]}
       timeToElapse={timeToElapse}
       onTimeElapsed={handleTimeElapsed}
