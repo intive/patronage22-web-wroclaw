@@ -33,6 +33,10 @@
   "notFoundPage": {
     "title": "Przepraszamy, strona, której szukasz nie istnieje"
   },
+  "pagination": {
+    "itemsPerPage": "Przedmiotów na stronie",
+    "outOf": "z"
+  },
   "password": "Hasło",
   "save": "Zapisz",
   "search": {
@@ -40,5 +44,6 @@
     "minCharLength": "Minimalna wymagana ilość znaków: {{charAmount}}",
     "noResultsInfo": "Brak wyników..."
   },
-  "submit": "Zatwierdź"
+  "submit": "Zatwierdź",
+  "timeIsUp": "Czas minął!"
 }
