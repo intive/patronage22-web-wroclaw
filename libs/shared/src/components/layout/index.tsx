@@ -1,6 +1,6 @@
 import { Footer, FooterProps } from "../footer";
 import { Navbar, NavbarProps } from "../navbar";
-import * as Styled from "./style";
+import * as Styled from "./styled";
 
 export interface LayoutProps {
   navbarConfig: NavbarProps["config"];

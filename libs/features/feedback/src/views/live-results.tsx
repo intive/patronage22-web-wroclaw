@@ -18,6 +18,7 @@ export const LiveResultsView: React.FC<LiveResultsViewProps> = ({ data: { title,
     (acc, item) => {
       acc.labels.push(item.title);
       acc.values.push(item.count);
+
       return acc;
     },
     { labels: [], values: [] }

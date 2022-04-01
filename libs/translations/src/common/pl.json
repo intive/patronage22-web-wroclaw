@@ -31,6 +31,10 @@
   "notFoundPage": {
     "title": "Przepraszamy, strona, której szukasz nie istnieje"
   },
+  "pagination": {
+    "itemsPerPage": "Przedmiotów na stronie",
+    "outOf": "z"
+  },
   "password": "Hasło",
   "save": "Zapisz",
   "search": {

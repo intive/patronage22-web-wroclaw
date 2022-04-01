@@ -31,6 +31,10 @@
   "notFoundPage": {
     "title": "We are sorry, the page you're looking for doesn't exist"
   },
+  "pagination": {
+    "itemsPerPage": "Items per page",
+    "outOf": "out of"
+  },
   "password": "Password",
   "save": "Save",
   "search": {
