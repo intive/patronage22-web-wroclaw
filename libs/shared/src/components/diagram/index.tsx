@@ -4,6 +4,7 @@ import ChartDataLabels from "chartjs-plugin-datalabels";
 
 import { DiagramType } from "../../types";
 import { BarDiagram } from "./bar-diagram";
+import { getDiagramOptions } from "./get-diagram-options";
 
 Chart.register(LinearScale, ChartDataLabels);
 
@@ -25,7 +26,7 @@ export const Diagram: React.FC<DiagramProps> = ({ labels, values, title, type })
   };
 
   const diagrams: Record<DiagramType, JSX.Element> = {
-    [DiagramType.Bar]: <BarDiagram data={diagramData} title={title} />
+    [DiagramType.Bar]: <BarDiagram data={diagramData} title={title} options={getDiagramOptions(DiagramType.Bar, title)} />
   };
 
   return diagrams[type];
