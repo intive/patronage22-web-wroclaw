@@ -16,5 +16,5 @@ export const isDefaultLanguage = (lang: string) => {
 };
 
 export const isOtherLanguage = (lang: string) => {
-  return lang !== SupportedLanguage.En;
+  return lang.slice(0, 2) !== SupportedLanguage.En;
 };
