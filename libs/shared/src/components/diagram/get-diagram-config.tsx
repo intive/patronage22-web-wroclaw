@@ -1,7 +1,16 @@
 import { DIAGRAM_CONFIG } from "../../configs";
 import { DiagramType } from "../../types";
 
-export const getDiagramOptions = (type: DiagramType, title: string) => {
+export const getDiagramConfig = (type: DiagramType, title: string, labels: string[], values: number[]) => {
+  const data = {
+    labels,
+    datasets: [
+      {
+        data: values
+      }
+    ]
+  };
+
   const options: Record<DiagramType, any> = {
     [DiagramType.Bar]: {
       plugins: {
@@ -48,5 +57,5 @@ export const getDiagramOptions = (type: DiagramType, title: string) => {
     }
   };
 
-  return options[type];
+  return { data, options: options[type] };
 };

@@ -1,4 +1,3 @@
-export * from "../components/diagram/get-diagram-options";
 export * from "./create-path";
 export * from "./filter-by-keys";
 export * from "./get-app-route";
