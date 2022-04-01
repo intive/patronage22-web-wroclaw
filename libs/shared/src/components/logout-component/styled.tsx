@@ -8,7 +8,7 @@ export const LoginButtonWrapper = styled(Box)(({ theme }) => ({
 
   [theme.breakpoints.down("sm")]: {
     top: theme.spacing(12),
-    right: theme.spacing(3)
+    right: theme.spacing(1)
   }
 }));
 
