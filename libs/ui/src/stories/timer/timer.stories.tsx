@@ -10,7 +10,7 @@ export default {
   component: TimerStory,
   argTypes: {
     timeToElapse: {
-      control: { type: "select" },
+      control: { type: "radio" },
       defaultValue: 5,
       options: [10, 15]
     }
