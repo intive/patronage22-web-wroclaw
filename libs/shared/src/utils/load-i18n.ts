@@ -31,7 +31,7 @@ export const loadI18n = ({ env, ns }: I18nOptions) => {
     .init({
       fallbackLng: "en",
       supportedLngs: [SupportedLanguage.En, SupportedLanguage.Pl],
-      load: "currentOnly",
+      load: "languageOnly",
       debug: env === "development",
 
       resources: translationResources,
