@@ -1,6 +1,7 @@
 export * from "./action-card";
 export * from "./base-button";
 export * from "./basic-info";
+export * from "./diagram";
 export * from "./footer";
 export * from "./form";
 export * from "./language-button";
@@ -10,5 +11,8 @@ export * from "./loader";
 export * from "./localized-link";
 export * from "./navbar";
 export * from "./notifications";
+export * from "./pagination";
+export * from "./previous-page-button";
 export * from "./search-bar";
 export * from "./theme-selector";
+export * from "./timer";
