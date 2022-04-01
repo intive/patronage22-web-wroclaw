@@ -5,5 +5,3 @@ export const PAGINATION_CONFIG = {
   firstItemPerPagePosition: 0,
   itemsPerPageRatio: 0.5
 };
-
-export const itemsPerPageOptions = [6, 12, 24, 48];
