@@ -3,14 +3,16 @@ import { FieldValues, UseFormStateReturn } from "react-hook-form";
 
 import { FormFieldType } from "../../../types";
 import { FormFieldProps } from "./index";
+import { SelectField } from "./select-field";
 
 const DEFAULT_ROWS_NUMBER = 4;
 
 export type FormTextFieldVariant = "standard" | "filled" | "outlined";
 
-interface RenderFieldProps extends Omit<FormFieldProps, "helperText" | "onChange" | "description" | "appendix" | "hideEditIcon"> {
+export interface RenderFieldProps
+  extends Omit<FormFieldProps, "helperText" | "onChange" | "description" | "appendix" | "hideEditIcon"> {
   name: string;
-  onChange?: (value: unknown) => void;
+  onChange: (value: unknown) => void;
   errors: UseFormStateReturn<FieldValues>["errors"];
   value?: unknown;
 }
@@ -28,7 +30,8 @@ export const renderField = ({
   autoFocus,
   disabled,
   rows = DEFAULT_ROWS_NUMBER,
-  value
+  value,
+  values
 }: RenderFieldProps) => {
   const field: Record<FormFieldType, JSX.Element> = {
     [FormFieldType.Text]: (
@@ -62,6 +65,9 @@ export const renderField = ({
         autoFocus={autoFocus}
         value={value}
       />
+    ),
+    [FormFieldType.Select]: (
+      <SelectField name={name} value={value} onChange={onChange} variant={variant} label={label} options={values} />
     )
   };
 

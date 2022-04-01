@@ -3,7 +3,7 @@ import { StandardTextFieldProps, Typography } from "@mui/material";
 import { MouseEvent, ReactNode } from "react";
 import { FieldValues, useController, UseControllerProps, useFormContext, UseFormStateReturn } from "react-hook-form";
 
-import { FormFieldType } from "../../../types";
+import { FormFieldType, SelectItem } from "../../../types";
 import { FormTextFieldVariant, renderField } from "./render-field";
 import { renderHelperText } from "./render-helper-text";
 import * as Styled from "./styled";
@@ -21,17 +21,19 @@ export interface FormFieldProps extends Pick<UseControllerProps, "name" | "defau
   rows?: number;
   label?: string;
   helperText?: string;
-  description?: string;
   onChange?: () => void;
   onFieldChange?: () => void;
+  description?: string;
   placeholder?: string;
   inputConfig?: StandardTextFieldProps["InputProps"];
   autoFocus?: boolean;
   onClick?: (event: MouseEvent) => void;
   disabled?: boolean;
+  selectItems?: SelectItem[];
   appendix?: ReactNode;
   hideEditIcon?: boolean;
   dynamics?: DynamicsInterface;
+  values?: Record<string, unknown>[];
 }
 
 export const FormField: React.FC<FormFieldProps> = ({
@@ -51,7 +53,8 @@ export const FormField: React.FC<FormFieldProps> = ({
   disabled,
   appendix,
   hideEditIcon,
-  defaultValue
+  defaultValue,
+  values
 }: FormFieldProps) => {
   const { control } = useFormContext();
   const {
@@ -90,6 +93,7 @@ export const FormField: React.FC<FormFieldProps> = ({
           inputConfig,
           autoFocus,
           disabled,
+          values,
           value: fieldController.value
         })}
         {!hideEditIcon && <Edit id='editIcon' />}
