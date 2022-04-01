@@ -4,6 +4,7 @@ import { FieldValues, UseFormStateReturn } from "react-hook-form";
 import { FormFieldType } from "../../../types";
 import { FormFieldProps } from "./index";
 import { RadioGroupField } from "./radio-gropu-field";
+import { SelectField } from "./select-field";
 
 const DEFAULT_ROWS_NUMBER = 4;
 
@@ -12,9 +13,9 @@ export type FormTextFieldVariant = "standard" | "filled" | "outlined";
 export interface RenderFieldProps
   extends Omit<FormFieldProps, "helperText" | "onChange" | "description" | "appendix" | "hideEditIcon"> {
   name: string;
-  onChange?: (value: unknown) => void;
+  onChange: (value: unknown) => void;
   errors: UseFormStateReturn<FieldValues>["errors"];
-  value: unknown;
+  value?: unknown;
 }
 
 export const renderField = ({
@@ -66,7 +67,10 @@ export const renderField = ({
         defaultValue={value}
       />
     ),
-    [FormFieldType.RadioGroup]: <RadioGroupField value={value} options={values} onChange={onChange} />
+    [FormFieldType.RadioGroup]: <RadioGroupField value={value} options={values} onChange={onChange} />,
+    [FormFieldType.Select]: (
+      <SelectField name={name} value={value} onChange={onChange} variant={variant} label={label} options={values} />
+    )
   };
 
   return field[type];

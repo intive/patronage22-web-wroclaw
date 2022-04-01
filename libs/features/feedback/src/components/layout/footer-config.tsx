@@ -1,6 +1,6 @@
 import { BasicInfo, LanguageButton } from "@patronage-web/shared";
 
-import { footerStartSectionStyles } from "./style";
+import { footerStartSectionStyles } from "./styled";
 
 export const footerConfig = {
   start: {
