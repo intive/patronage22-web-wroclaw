@@ -2,7 +2,7 @@ import { footerConfig as feedbackFooterConfig, navbarConfig as feedbackNavbarCon
 import { Layout } from "@patronage-web/shared";
 import { ComponentMeta } from "@storybook/react";
 
-export const BasicLayoutStory: typeof Layout = ({ children, navbarConfig, footerConfig }) => (
+export const LayoutStory: typeof Layout = ({ children, navbarConfig, footerConfig }) => (
   <Layout navbarConfig={navbarConfig} footerConfig={footerConfig}>
     {children}
   </Layout>
@@ -10,7 +10,7 @@ export const BasicLayoutStory: typeof Layout = ({ children, navbarConfig, footer
 
 export default {
   title: "BasicLayout",
-  component: BasicLayoutStory,
+  component: LayoutStory,
   argTypes: {
     children: {
       // TODO replace with any web page component when will be ready
@@ -25,4 +25,4 @@ export default {
       defaultValue: feedbackFooterConfig
     }
   }
-} as ComponentMeta<typeof BasicLayoutStory>;
+} as ComponentMeta<typeof LayoutStory>;

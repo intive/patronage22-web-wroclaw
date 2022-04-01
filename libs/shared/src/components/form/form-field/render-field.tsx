@@ -1,18 +1,20 @@
 import { TextField } from "@mui/material";
-import { ChangeEvent } from "react";
 import { FieldValues, UseFormStateReturn } from "react-hook-form";
 
 import { FormFieldType } from "../../../types";
 import { FormFieldProps } from "./index";
+import { SelectField } from "./select-field";
 
 const DEFAULT_ROWS_NUMBER = 4;
 
 export type FormTextFieldVariant = "standard" | "filled" | "outlined";
 
-interface RenderFieldProps extends Omit<FormFieldProps, "helperText" | "onChange" | "description" | "appendix" | "hideEditIcon"> {
+export interface RenderFieldProps
+  extends Omit<FormFieldProps, "helperText" | "onChange" | "description" | "appendix" | "hideEditIcon"> {
   name: string;
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChange: (value: unknown) => void;
   errors: UseFormStateReturn<FieldValues>["errors"];
+  value?: unknown;
 }
 
 export const renderField = ({
@@ -27,7 +29,9 @@ export const renderField = ({
   inputConfig,
   autoFocus,
   disabled,
-  rows = DEFAULT_ROWS_NUMBER
+  rows = DEFAULT_ROWS_NUMBER,
+  value,
+  values
 }: RenderFieldProps) => {
   const field: Record<FormFieldType, JSX.Element> = {
     [FormFieldType.Text]: (
@@ -59,6 +63,9 @@ export const renderField = ({
         placeholder={placeholder}
         autoFocus={autoFocus}
       />
+    ),
+    [FormFieldType.Select]: (
+      <SelectField name={name} value={value} onChange={onChange} variant={variant} label={label} options={values} />
     )
   };
 

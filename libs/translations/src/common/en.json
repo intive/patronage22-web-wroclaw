@@ -7,12 +7,16 @@
     "feedback": "Survey Maker",
     "feedback-external": "Survey Participant"
   },
+  "goToPage": {
+    "previous": "Previous page"
+  },
   "intive": {
     "address": "Pilsudskiego 69, 50-019 Wroclaw",
     "name": "Intive",
     "phone": "+48 71 769 59 00",
     "wroclaw": "Wroclaw"
   },
+
   "linkCopied": "Link copied",
   "linkCopyingFailed": "Link copying failed!",
   "login": {
@@ -29,6 +33,10 @@
   "notFoundPage": {
     "title": "We are sorry, the page you're looking for doesn't exist"
   },
+  "pagination": {
+    "itemsPerPage": "Items per page",
+    "outOf": "out of"
+  },
   "password": "Password",
   "save": "Save",
   "search": {
@@ -38,4 +46,6 @@
   },
   "share": "Share",
   "submit": "Submit"
+  "submit": "Submit",
+  "timeIsUp": "Time is up!"
 }
