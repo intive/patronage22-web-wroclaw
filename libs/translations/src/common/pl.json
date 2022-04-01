@@ -42,5 +42,6 @@
     "minCharLength": "Minimalna wymagana ilość znaków: {{charAmount}}",
     "noResultsInfo": "Brak wyników..."
   },
-  "submit": "Zatwierdź"
+  "submit": "Zatwierdź",
+  "timeIsUp": "Czas minął!"
 }
