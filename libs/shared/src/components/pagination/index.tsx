@@ -2,15 +2,10 @@ import { Pagination } from "@mui/material";
 import { ChangeEvent, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
-import { ITEMS_PER_PAGE_OPTIONS } from "../../configs";
+import { PAGINATION_CONFIG } from "../../configs";
 import { useScreenSize, useUrlParams } from "../../hooks";
 import { FormFieldType, PaginationQueryParams } from "../../types";
 import * as Styled from "./styled";
-
-const INITIAL_PAGE = 1;
-const INITIAL_SIZE_POSITION = 0;
-const FIRST_ITEM_PER_PAGE_POSITION = 0;
-const ITEMS_PER_PAGE_RATIO = 0.5;
 
 interface BasicPaginationProps {
   itemsPerPageLabel?: string;
@@ -25,22 +20,24 @@ interface BasicPaginationProps {
 export const BasicPagination: React.FC<BasicPaginationProps> = ({ itemsCount, initialValues, itemsPerPageLabel, onChange }) => {
   const { isMobile } = useScreenSize();
   const { t } = useTranslation();
-  const initialSize = ITEMS_PER_PAGE_OPTIONS[INITIAL_SIZE_POSITION];
+
+  const { itemsPerPageOptions, initialPage, initialSizePosition, firstItemPerPagePosition, itemsPerPageRatio } = PAGINATION_CONFIG;
+  const initialSize = itemsPerPageOptions[initialSizePosition];
 
   const { params, updateParams } = useUrlParams<PaginationQueryParams>(
-    initialValues || { page: `${INITIAL_PAGE}`, size: `${initialSize}` }
+    initialValues || { page: `${initialPage}`, size: `${initialSize}` }
   );
 
   const sizeFromParam = Number(params?.size);
   const pageFromParam = Number(params?.page);
 
-  const isSizeCorrect = !!sizeFromParam && ITEMS_PER_PAGE_OPTIONS.includes(sizeFromParam);
+  const isSizeCorrect = !!sizeFromParam && itemsPerPageOptions.includes(sizeFromParam);
   const size = isSizeCorrect ? sizeFromParam : initialSize;
 
   const pagesCount = Math.ceil(itemsCount / size);
 
   const isPageCorrect = !!pageFromParam && pageFromParam <= pagesCount && pageFromParam > 0;
-  const page = isPageCorrect ? pageFromParam : INITIAL_PAGE;
+  const page = isPageCorrect ? pageFromParam : initialPage;
 
   const penultimatePage = pagesCount - 1;
   const lastPageItemsCount = itemsCount - penultimatePage * size;
@@ -52,9 +49,9 @@ export const BasicPagination: React.FC<BasicPaginationProps> = ({ itemsCount, in
   const pageLabel = `${itemsPerPageLabel || t("pagination.itemsPerPage")}: `;
   const pagesVisibilityLevel = isMobile ? 0 : 1;
 
-  const itemsPerPageOptions = ITEMS_PER_PAGE_OPTIONS.reduce<Record<string, number>[]>((acc, sizeOption) => {
-    const isSizeFirstOption = sizeOption === ITEMS_PER_PAGE_OPTIONS[FIRST_ITEM_PER_PAGE_POSITION];
-    const isSizeRatioCorrect = itemsCount / sizeOption > ITEMS_PER_PAGE_RATIO;
+  const selectItemsPerPageOptions = itemsPerPageOptions.reduce<Record<string, number>[]>((acc, sizeOption) => {
+    const isSizeFirstOption = sizeOption === itemsPerPageOptions[firstItemPerPagePosition];
+    const isSizeRatioCorrect = itemsCount / sizeOption > itemsPerPageRatio;
 
     if (!isSizeRatioCorrect && !isSizeFirstOption) {
       return acc;
@@ -104,7 +101,7 @@ export const BasicPagination: React.FC<BasicPaginationProps> = ({ itemsCount, in
             {
               type: FormFieldType.Select,
               name: "sizeSelector",
-              values: itemsPerPageOptions,
+              values: selectItemsPerPageOptions,
               hideEditIcon: true
             }
           ]}
