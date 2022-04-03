@@ -15,7 +15,10 @@
     "addField": "Add answer...",
     "maxCharLength": "Maximum number of characters exceeded ({{charAmount}})",
     "missingQuestionError": "Question cannot be empty",
-    "questionField": "Ask question"
+    "questionField": "Ask question",
+    "questionType": "Question type: ",
+    "questionTypeClosed": "Closed",
+    "questionTypeOpen": "Open"
   },
   "saveQuestion": "Save question",
   "search": {

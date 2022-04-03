@@ -29,21 +29,21 @@ export const NewQuestionFormWrapper = styled(Box)(({ theme }) => ({
   display: "flex"
 }));
 
-export const QuestionNumberBox = styled(Box)(({ theme }) => ({
+export const QuestionNumberBox = styled(Box)<{ visible: boolean }>(({ theme, visible }) => ({
   backgroundColor: theme.palette.primary.light,
   color: theme.palette.background.default,
-  marginTop: theme.spacing(2),
+  marginTop: theme.spacing(8.5),
   borderRadius: theme.shape.borderRadius,
   height: theme.spacing(3.5),
   width: theme.spacing(3.5),
   display: "flex",
   alignItems: "center",
-  justifyContent: "center"
+  justifyContent: "center",
+  visibility: visible ? "visible" : "hidden"
 }));
 
 export const NewQuestionForm = styled(Form)(({ theme }) => ({
-  marginLeft: theme.spacing(1),
-  width: "90%",
+  width: "80%",
 
   "& .MuiFormControl-root": {
     marginTop: theme.spacing(0.3),
@@ -60,7 +60,10 @@ export const NewQuestionForm = styled(Form)(({ theme }) => ({
 }));
 
 export const DeleteQuestionBtnWrapper = styled(Box)(({ theme }) => ({
-  marginTop: theme.spacing(1),
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  marginTop: theme.spacing(2),
   height: theme.spacing(3.5),
   width: theme.spacing(3.5)
 }));

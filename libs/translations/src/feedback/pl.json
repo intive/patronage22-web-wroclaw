@@ -15,7 +15,10 @@
     "addField": "Dodaj odpowiedź...",
     "maxCharLength": "Przekroczono maksymalną ilość znaków ({{charAmount}})",
     "missingQuestionError": "Pole z pytaniem nie może być puste",
-    "questionField": "Zadaj pytanie"
+    "questionField": "Zadaj pytanie",
+    "questionType": "Typ pytania: ",
+    "questionTypeClosed": "Zamknięte",
+    "questionTypeOpen": "Otwarte"
   },
   "saveQuestion": "Zapisz pytanie",
   "search": {

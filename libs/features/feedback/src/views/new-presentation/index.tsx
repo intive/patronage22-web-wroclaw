@@ -14,8 +14,20 @@ import { BasicPresentationInfo } from "../../components";
 import { QUESTION_CONFIG } from "../../configs";
 import * as Styled from "./styled";
 
+// TODO - replace with import from shared/data/feedback/types when
+// "P2022-413 Praticipate in presentation" is ready
+export enum QuestionType {
+  Open = "open",
+  Closed = "closed"
+}
+
 export const NewPresentationView: React.FC = () => {
   const { i18n, t } = useTranslation(TranslationNamespace.Feedback);
+
+  const QuestionTypeOptions = [
+    { [t("question.questionTypeOpen")]: QuestionType.Open },
+    { [t("question.questionTypeClosed")]: QuestionType.Closed }
+  ];
 
   const defaultAnswer: DynamicsInterface = {
     name: "questions",
@@ -35,8 +47,14 @@ export const NewPresentationView: React.FC = () => {
 
   const defaultQuestion: FormProps = {
     id: uuidv4(),
-    initialValues: { question: "" },
+    initialValues: { question: "", questionType: QuestionType.Closed },
     fields: [
+      {
+        type: FormFieldType.Select,
+        name: "questionType",
+        label: t("question.questionType"),
+        values: QuestionTypeOptions
+      },
       {
         type: FormFieldType.Text,
         name: "question",
@@ -78,6 +96,7 @@ export const NewPresentationView: React.FC = () => {
             .max(QUESTION_CONFIG.maxLength, t("question.maxCharLength", { charAmount: QUESTION_CONFIG.maxLength }))
         },
         fields: question.fields.map(field =>
+          // eslint-disable-next-line no-nested-ternary
           field.name === "question"
             ? {
                 ...field,
@@ -86,6 +105,15 @@ export const NewPresentationView: React.FC = () => {
                   isQuestionAsked[questionIndex] && field.dynamics?.name === "questions"
                     ? { ...field.dynamics, addButtonText: t("question.addField") }
                     : field.dynamics
+              }
+            : field.name === "questionType"
+            ? {
+                ...field,
+                label: t("question.questionType"),
+                values: [
+                  { [t("question.questionTypeOpen")]: QuestionType.Open },
+                  { [t("question.questionTypeClosed")]: QuestionType.Closed }
+                ]
               }
             : field
         )
@@ -135,7 +163,9 @@ export const NewPresentationView: React.FC = () => {
       {questions.map((questionForm, questionFormIndex) => (
         <Styled.QuestionCard key={`question-card-${questionForm.id}`}>
           <Styled.NewQuestionFormWrapper>
-            {isQuestionAsked[questionFormIndex] && <Styled.QuestionNumberBox>{questionFormIndex + 1}</Styled.QuestionNumberBox>}
+            <Styled.QuestionNumberBox visible={isQuestionAsked[questionFormIndex]}>
+              {questionFormIndex + 1}
+            </Styled.QuestionNumberBox>
             <Styled.NewQuestionForm key={`question-form-${questionForm.id}`} {...questionForm} />
             <Styled.DeleteQuestionBtnWrapper>
               <BaseButton
