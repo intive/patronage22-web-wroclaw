@@ -30,8 +30,8 @@ export const LiveResultsAnswers: FeedbackQuestionAnswers[] = [
     id: "38b451fe-aa14-498e-ad33-4b452a70d21v",
     title: "How many cats?",
     type: QuestionType.Open,
-    created: 1645132683,
-    current: 1645132683,
+    created: 1645132694,
+    current: 1645132694,
     answers: [
       { title: "15", count: 7, answer: 1 },
       { title: "2", count: 5, answer: 2 },

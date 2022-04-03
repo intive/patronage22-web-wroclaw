@@ -26,11 +26,9 @@ export const ExternalPresentationView: React.FC<ExternalPresentationViewProps> =
   const questionsCount = questions.length;
   const startQuestionIndex = Math.floor((currentTime - startTime) / timer);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(startQuestionIndex);
-
+  const [currentQuestion, setCurrentQuestion] = useState(questions[startQuestionIndex]);
   const localStorageLastSubmitedQuestionId = localStorage.getItem("lastSubmitedQuestionId");
-  const [isSubmit, setIsSubmit] = useState(
-    questions[currentQuestionIndex] && localStorageLastSubmitedQuestionId === questions[currentQuestionIndex].id
-  );
+  const [isSubmit, setIsSubmit] = useState(currentQuestion && localStorageLastSubmitedQuestionId === currentQuestion.id);
 
   const [liveResultData, setLiveResultData] = useState<FeedbackQuestionAnswers>();
 
@@ -39,16 +37,17 @@ export const ExternalPresentationView: React.FC<ExternalPresentationViewProps> =
 
   const handleSubmit = (value?: Record<string, string> | undefined) => {
     console.log("value", value ? value.userAnswer : "brak");
-    const feedbackData = getFeedbackAnswerData(questions[currentQuestionIndex].id);
+    const feedbackData = getFeedbackAnswerData(currentQuestion.id);
     setLiveResultData(feedbackData);
     setTimeToElapse(feedbackData ? getRemainingTime(startTime, feedbackData.current, timer) : 0);
-    localStorage.setItem("lastSubmitedQuestionId", questions[currentQuestionIndex].id);
+    localStorage.setItem("lastSubmitedQuestionId", currentQuestion.id);
     setIsSubmit(true);
   };
 
   const handleTimeElapsed = () => {
     setTimeToElapse(timer);
-    setCurrentQuestionIndex(currentQuestionIndex + 1);
+    setCurrentQuestion(questions[currentQuestionIndex + 1]);
+    setCurrentQuestionIndex(prevState => prevState + 1);
     setIsSubmit(false);
   };
 
@@ -58,7 +57,7 @@ export const ExternalPresentationView: React.FC<ExternalPresentationViewProps> =
     return (
       <CurrentQuestionView
         number={currentQuestionIndex + 1}
-        question={questions[currentQuestionIndex]}
+        question={currentQuestion}
         timeToElapse={timeToElapse}
         onTimeElapsed={handleTimeElapsed}
         onSubmit={handleSubmit}
@@ -69,7 +68,7 @@ export const ExternalPresentationView: React.FC<ExternalPresentationViewProps> =
   if (liveResultData)
     return <LiveResultsView data={liveResultData} timeToElapse={timeToElapse} onTimeElapsed={handleTimeElapsed} />;
 
-  const feedbackData = getFeedbackAnswerData(questions[currentQuestionIndex].id);
+  const feedbackData = getFeedbackAnswerData(currentQuestion.id);
   if (feedbackData) {
     setLiveResultData(feedbackData);
     setTimeToElapse(getRemainingTime(startTime, feedbackData.current, timer));
