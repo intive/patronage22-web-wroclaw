@@ -59,6 +59,12 @@ export const NewQuestionForm = styled(Form)(({ theme }) => ({
   }
 }));
 
+export const DeleteQuestionBtnWrapper = styled(Box)(({ theme }) => ({
+  marginTop: theme.spacing(1),
+  height: theme.spacing(3.5),
+  width: theme.spacing(3.5)
+}));
+
 export const QuestionCardBtnWrapper = styled(Box)(({ theme }) => ({
   width: "100%",
   display: "flex",

@@ -64,6 +64,7 @@ export const NewPresentationView: React.FC = () => {
   const [questions, setQuestions] = useState([defaultQuestion]);
   const [isQuestionAsked, setIsQuestionAsked] = useState([false]);
   const [isQuestionListFull, setIsQuestionListFull] = useState(false);
+  const isLastQuestionAsked = isQuestionAsked[isQuestionAsked.length - 1];
 
   i18n.on("languageChanged", () => {
     setQuestions(prevValues =>
@@ -128,11 +129,6 @@ export const NewPresentationView: React.FC = () => {
     setIsQuestionAsked(prevValues => prevValues.map((value, valueIndex) => (valueIndex === questionFormIndex ? true : value)));
   };
 
-  // TODO - replace with proper save question action when ready
-  const handleSaveQuestion = (questionFormIndex: number) => {
-    console.log("Saving question: ", questionFormIndex);
-  };
-
   return (
     <Styled.NewPresentationWrapper>
       <BasicPresentationInfo />
@@ -141,27 +137,27 @@ export const NewPresentationView: React.FC = () => {
           <Styled.NewQuestionFormWrapper>
             {isQuestionAsked[questionFormIndex] && <Styled.QuestionNumberBox>{questionFormIndex + 1}</Styled.QuestionNumberBox>}
             <Styled.NewQuestionForm key={`question-form-${questionForm.id}`} {...questionForm} />
+            <Styled.DeleteQuestionBtnWrapper>
+              <BaseButton
+                key='remove-question-btn'
+                type={ButtonType.Icon}
+                onClick={() => handleRemoveQuestion(questionFormIndex)}
+                variant='contained'
+              >
+                <Delete />
+              </BaseButton>
+            </Styled.DeleteQuestionBtnWrapper>
           </Styled.NewQuestionFormWrapper>
-          <Divider sx={{ width: "100%" }} />
-          <Styled.QuestionCardBtnWrapper>
-            {!isQuestionAsked[questionFormIndex] ? (
-              <BaseButton key='continue-question-btn' type={ButtonType.Basic} onClick={() => handleContinue(questionFormIndex)}>
-                {t("continue")}
-              </BaseButton>
-            ) : (
-              <BaseButton key='save-question-btn' type={ButtonType.Basic} onClick={() => handleSaveQuestion(questionFormIndex)}>
-                {t("saveQuestion")}
-              </BaseButton>
-            )}
-            <BaseButton
-              key='remove-question-btn'
-              type={ButtonType.Icon}
-              onClick={() => handleRemoveQuestion(questionFormIndex)}
-              variant='contained'
-            >
-              <Delete />
-            </BaseButton>
-          </Styled.QuestionCardBtnWrapper>
+          {!isQuestionAsked[questionFormIndex] && (
+            <>
+              <Divider sx={{ width: "100%" }} />
+              <Styled.QuestionCardBtnWrapper>
+                <BaseButton key='continue-question-btn' type={ButtonType.Basic} onClick={() => handleContinue(questionFormIndex)}>
+                  {t("continue")}
+                </BaseButton>
+              </Styled.QuestionCardBtnWrapper>
+            </>
+          )}
         </Styled.QuestionCard>
       ))}
       <Styled.NewQuestionBtnWrapper>
@@ -170,7 +166,7 @@ export const NewPresentationView: React.FC = () => {
           type={ButtonType.Basic}
           variant='contained'
           onClick={handleNewQuestion}
-          disabled={isQuestionListFull}
+          disabled={(isQuestionListFull || !isLastQuestionAsked) && questions.length > 0}
         >
           {t("newQuestion")}
         </BaseButton>
