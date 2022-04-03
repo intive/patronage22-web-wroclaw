@@ -13,7 +13,7 @@ import * as Styled from "./styled";
 
 interface FormButton {
   condition: boolean;
-  text: string;
+  text?: string;
   icon?: ReactNode;
 }
 

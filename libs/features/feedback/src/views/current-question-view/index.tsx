@@ -31,7 +31,7 @@ export const CurrentQuestionView: React.FC<CurrentQuestionViewProps> = ({
             title={{ text: `${content}`, variant: "h5" }}
             validationSchema={{}}
             fields={answerField(type, answers)}
-            customButtons={{ submit: { condition: true, text: t("submit") } }}
+            customButtons={{ submit: { condition: true } }}
             onSubmit={onSubmit}
             onChange={() => {}}
           />

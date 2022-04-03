@@ -3,7 +3,7 @@ import { FieldValues, UseFormStateReturn } from "react-hook-form";
 
 import { FormFieldType } from "../../../types";
 import { FormFieldProps } from "./index";
-import { RadioGroupField } from "./radio-gropu-field";
+import { RadioGroupField } from "./radio-group-field";
 import { SelectField } from "./select-field";
 
 const DEFAULT_ROWS_NUMBER = 4;

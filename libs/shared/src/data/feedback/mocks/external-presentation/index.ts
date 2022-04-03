@@ -20,14 +20,14 @@ export const ExternalPresentationMock: ExternalPresentation = {
       answer: ""
     },
     {
-      id: "bBkbKxkkak",
+      id: "38b451fe-aa14-498e-ad33-4b452a70d21b",
       content: "How many dogs?",
       type: QuestionType.Closed,
       answers: ["1", "2", "3"],
       answer: ""
     },
     {
-      id: "lkkhaugcugvajvu",
+      id: "38b451fe-aa14-498e-ad33-4b452a70d21v",
       content: "How many cats?",
       type: QuestionType.Open,
       answer: ""
