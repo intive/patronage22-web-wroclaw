@@ -1,4 +1,4 @@
-import { Card } from "@mui/material";
+import { Box, Card } from "@mui/material";
 import { Diagram, DiagramType, Timer } from "@patronage-web/shared";
 import { FeedbackQuestionAnswers } from "@patronage-web/shared-data";
 
@@ -25,9 +25,11 @@ export const LiveResultsView: React.FC<LiveResultsViewProps> = ({ data: { title,
   );
 
   return (
-    <Card>
-      <Diagram title={title} type={DiagramType.Bar} {...answersData} />
+    <Box>
+      <Card>
+        <Diagram title={title} type={DiagramType.Bar} {...answersData} />
+      </Card>
       <Timer timeToElapse={timeToElapse} onTimeElapsed={onTimeElapsed} />
-    </Card>
+    </Box>
   );
 };

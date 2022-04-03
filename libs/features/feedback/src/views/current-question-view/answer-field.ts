@@ -1,12 +1,12 @@
 import { FormFieldType } from "@patronage-web/shared";
 import { QuestionType } from "@patronage-web/shared-data";
 
+const turnAnswersIntoRecords = (answers: string[]) => {
+  return answers.map(answer => ({ [`${answer}`]: answer } as Record<string, string>));
+};
+
 export const answerField = (questionType: QuestionType, answers?: string[]) => {
-  const values = answers
-    ? answers.map(answer => {
-        return { [`${answer}`]: answer } as Record<string, string>;
-      })
-    : [{ "": "" }];
+  const values = answers ? turnAnswersIntoRecords(answers) : [{ "": "" }];
 
   const defaultAnswer = answers ? answers[0] : "";
 
