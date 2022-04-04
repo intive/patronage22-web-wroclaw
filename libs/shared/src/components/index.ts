@@ -9,7 +9,7 @@ export * from "./layout";
 export * from "./linked-text";
 export * from "./loader";
 export * from "./localized-link";
-export * from "./logout-component";
+export * from "./logout";
 export * from "./navbar";
 export * from "./notifications";
 export * from "./pagination";

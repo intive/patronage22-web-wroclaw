@@ -16,10 +16,10 @@ export const LogoutButton = () => {
   };
 
   return (
-    <Styled.LoginButtonWrapper>
-      <BaseButton type={ButtonType.Basic} onClick={handleLogout} sx={Styled.LoginButtonStyle}>
+    <Styled.LogoutButtonWrapper>
+      <BaseButton type={ButtonType.Basic} onClick={handleLogout}>
         {t("login.logout")}
       </BaseButton>
-    </Styled.LoginButtonWrapper>
+    </Styled.LogoutButtonWrapper>
   );
 };

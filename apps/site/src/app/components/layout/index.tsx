@@ -1,5 +1,5 @@
 import { Layout as FeedbackLayout } from "@patronage-web/features-feedback";
-import { FeatureName, LogoutButton, PreviousPageButton, useFeatureName } from "@patronage-web/shared";
+import { FeatureName, PreviousPageButton, useFeatureName } from "@patronage-web/shared";
 
 import { Layout as DefaultLayout } from "./default-layout";
 
@@ -8,7 +8,6 @@ export const Layout: React.FC = ({ children }) => {
     [FeatureName.Feedback]: (
       <FeedbackLayout>
         <PreviousPageButton />
-        <LogoutButton />
         {children}
       </FeedbackLayout>
     ),
