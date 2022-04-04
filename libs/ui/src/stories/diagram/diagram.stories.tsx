@@ -22,7 +22,7 @@ export default {
       defaultValue: ["Dog", "Cat", "Horse", "Parrot"],
       options: [
         ["One", "Two", "Three", "Four"],
-        ["Mag", "Warrior", "Thief", "Elf"]
+        ["Mage", "Warrior", "Thief", "Elf"]
       ]
     },
     values: {
