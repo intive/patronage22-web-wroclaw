@@ -68,9 +68,9 @@ export const DeleteQuestionBtnWrapper = styled(Box)(({ theme }) => ({
   width: theme.spacing(3.5)
 }));
 
-export const FullWidthDivider = styled(Divider)(() => ({
+export const FullWidthDivider = styled(Divider)({
   width: "100%"
-}));
+});
 
 export const QuestionCardBtnWrapper = styled(Box)(({ theme }) => ({
   width: "100%",
