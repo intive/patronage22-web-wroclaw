@@ -1,5 +1,4 @@
 import { Delete } from "@mui/icons-material";
-import { Divider } from "@mui/material";
 import { BaseButton, ButtonType, FormFieldType, FormProps, TranslationNamespace } from "@patronage-web/shared";
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { DynamicsInterface } from "libs/shared/src/components/form/form-field";
@@ -180,7 +179,7 @@ export const NewPresentationView: React.FC = () => {
           </Styled.NewQuestionFormWrapper>
           {!isQuestionAsked[questionFormIndex] && (
             <>
-              <Divider sx={{ width: "100%" }} />
+              <Styled.FullWidthDivider />
               <Styled.QuestionCardBtnWrapper>
                 <BaseButton key='continue-question-btn' type={ButtonType.Basic} onClick={() => handleContinue(questionFormIndex)}>
                   {t("continue")}

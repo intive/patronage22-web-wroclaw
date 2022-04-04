@@ -1,4 +1,4 @@
-import { Box, Card, styled } from "@mui/material";
+import { Box, Card, Divider, styled } from "@mui/material";
 import { Form } from "@patronage-web/shared";
 
 export const NewPresentationWrapper = styled(Box)(({ theme }) => ({
@@ -16,7 +16,7 @@ export const QuestionCard = styled(Card)(({ theme }) => ({
   flexDirection: "column",
   marginBottom: theme.spacing(1),
   backgroundColor: theme.palette.background.default,
-  boxShadow: `0 3px .4em  ${theme.palette.primary.light}`,
+  boxShadow: theme.shadows[5],
 
   [theme.breakpoints.up("md")]: {
     width: theme.spacing(60)
@@ -66,6 +66,10 @@ export const DeleteQuestionBtnWrapper = styled(Box)(({ theme }) => ({
   marginTop: theme.spacing(2),
   height: theme.spacing(3.5),
   width: theme.spacing(3.5)
+}));
+
+export const FullWidthDivider = styled(Divider)(() => ({
+  width: "100%"
 }));
 
 export const QuestionCardBtnWrapper = styled(Box)(({ theme }) => ({
