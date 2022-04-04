@@ -16,8 +16,9 @@ interface ResultsData {
 
 export const ExternalUserPresentationSummary: React.FC<ExtPresentationSummaryProps> = ({ questions }) => {
   const { t } = useTranslation([TranslationNamespace.Feedback, TranslationNamespace.Common]);
+
   /* eslint-disable react/destructuring-assignment */
-  const results = questions.map(({ content, answers }) => {
+  const results = questions.map(({ content, answers, id }) => {
     const { labels, values } = answers.reduce<ResultsData>(
       (acc, item) => {
         acc.labels.push(item.content);
@@ -28,12 +29,18 @@ export const ExternalUserPresentationSummary: React.FC<ExtPresentationSummaryPro
       { labels: [], values: [] }
     );
 
-    return <Diagram title={content} type={DiagramType.Bar} labels={labels} values={values} />;
+    return (
+      <Styled.DiagramContainer key={id}>
+        <Diagram title={content} type={DiagramType.Bar} labels={labels} values={values} />
+      </Styled.DiagramContainer>
+    );
   });
 
   return (
     <Styled.PresentationSummaryContainer>
-      <Typography>{t("presentationSummary")}</Typography>
+      <Typography variant='h6' className='summaryTitle'>
+        {t("presentationSummary")}
+      </Typography>
       {results}
     </Styled.PresentationSummaryContainer>
   );

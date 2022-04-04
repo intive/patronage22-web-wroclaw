@@ -32,11 +32,12 @@ const questions: Question[] = [
     id: "3",
     content: "Best SW movie:",
     answers: [
-      { answer: 1, content: "The New Hope", count: 10 },
-      { answer: 2, content: "Empire Strikes Back", count: 13 },
-      { answer: 3, content: "Revenge of the Siths", count: 25 },
-      { answer: 4, content: "Phantom Menace", count: 5 },
-      { answer: 5, content: "The Last Jedi", count: 3 }
+      { answer: 1, content: "Episode I", count: 10 },
+      { answer: 2, content: "Episode II", count: 13 },
+      { answer: 3, content: "Episode III", count: 25 },
+      { answer: 4, content: "Episode IV", count: 5 },
+      { answer: 5, content: "Episode V", count: 3 },
+      { answer: 6, content: "Episode VI", count: 3 }
     ]
   },
   {
@@ -46,7 +47,7 @@ const questions: Question[] = [
       { answer: 1, content: "Wroclaw", count: 10 },
       { answer: 2, content: "London", count: 5 },
       { answer: 3, content: "Berlin", count: 13 },
-      { answer: 4, content: "Rio De Janeiro", count: 15 },
+      { answer: 4, content: "Las Palmas", count: 15 },
       { answer: 5, content: "Miami", count: 17 }
     ]
   }
