@@ -9,7 +9,7 @@ export interface ExtPresentationSummaryProps {
   questions: Question[];
 }
 
-interface ResultsData {
+interface PresentationResultsData {
   labels: string[];
   values: number[];
 }
@@ -19,7 +19,7 @@ export const ExternalUserPresentationSummary: React.FC<ExtPresentationSummaryPro
 
   /* eslint-disable react/destructuring-assignment */
   const results = questions.map(({ content, answers, id }) => {
-    const { labels, values } = answers.reduce<ResultsData>(
+    const { labels, values } = answers.reduce<PresentationResultsData>(
       (acc, item) => {
         acc.labels.push(item.content);
         acc.values.push(item.count);
