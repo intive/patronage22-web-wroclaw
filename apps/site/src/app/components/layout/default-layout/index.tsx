@@ -1,4 +1,4 @@
-import { BasicInfo, Layout as BasicLayout, LogoutButton } from "@patronage-web/shared";
+import { BasicInfo, Layout as BasicLayout } from "@patronage-web/shared";
 
 import { AppName } from "../../app-name";
 
@@ -16,7 +16,7 @@ export const navbarConfig = {
     customStyles: elementStyles
   },
   end: {
-    elements: [<LogoutButton />]
+    elements: []
   }
 };
 

@@ -1,4 +1,4 @@
-import { LogoutButton, SearchBar, ThemeSelector } from "@patronage-web/shared";
+import { SearchBar, ThemeSelector } from "@patronage-web/shared";
 
 import { NavBreadcrumbs } from "../nav-breadcrumbs";
 import { navbarCenterSectionStyles } from "./styled";
@@ -12,6 +12,6 @@ export const navbarConfig = {
     customStyles: navbarCenterSectionStyles
   },
   end: {
-    elements: [<ThemeSelector />, <LogoutButton />]
+    elements: [<ThemeSelector />]
   }
 };
