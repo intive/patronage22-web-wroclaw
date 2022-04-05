@@ -1,5 +1,5 @@
 import { Edit } from "@mui/icons-material";
-import { StandardTextFieldProps, Typography } from "@mui/material";
+import { BaseTextFieldProps, StandardTextFieldProps, Typography } from "@mui/material";
 import { MouseEvent, ReactNode } from "react";
 import { FieldValues, useController, UseControllerProps, useFormContext, UseFormStateReturn } from "react-hook-form";
 
@@ -10,6 +10,7 @@ import * as Styled from "./styled";
 
 export interface FormFieldProps extends Pick<UseControllerProps, "name" | "defaultValue"> {
   type: FormFieldType;
+  inputType?: BaseTextFieldProps["type"];
   variant?: FormTextFieldVariant;
   rows?: number;
   label?: string;
@@ -30,6 +31,7 @@ export interface FormFieldProps extends Pick<UseControllerProps, "name" | "defau
 
 export const FormField: React.FC<FormFieldProps> = ({
   type,
+  inputType,
   name,
   variant,
   rows,
@@ -74,6 +76,7 @@ export const FormField: React.FC<FormFieldProps> = ({
       <Styled.Field>
         {renderField({
           type,
+          inputType,
           name,
           onChange: handleFieldChange,
           onClick,

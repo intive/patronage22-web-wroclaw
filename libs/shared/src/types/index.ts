@@ -6,5 +6,6 @@ export * from "./http-status";
 export * from "./notification-type";
 export * from "./query-params";
 export * from "./select-types";
+export * from "./sign-in-provider";
 export * from "./theme-modes";
 export * from "./translations";

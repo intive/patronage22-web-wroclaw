@@ -1,7 +1,7 @@
 import { Box, Card, styled, Typography } from "@mui/material";
 import { Form } from "@patronage-web/shared";
 
-export const LoginGoogleContainer = styled(Box)(({ theme }) => ({
+export const LoginContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
@@ -9,35 +9,35 @@ export const LoginGoogleContainer = styled(Box)(({ theme }) => ({
   padding: theme.spacing(0, 2)
 }));
 
-export const LoginGoogleTitle = styled(Typography)(({ theme }) => ({
+export const LoginTitle = styled(Typography)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   marginBottom: theme.spacing(1)
 }));
 
-export const LoginGoogleSubtitle = styled(Typography)(({ theme }) => ({
+export const LoginSubtitle = styled(Typography)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   marginBottom: theme.spacing(0.5)
 }));
 
-export const LoginGoogleFormCard = styled(Card)(({ theme }) => ({
+export const LoginFormCard = styled(Card)(({ theme }) => ({
   display: "flex",
-  justifyContent: "center",
+  flexDirection: "column",
+  alignItems: "center",
   width: "100%",
   maxWidth: theme.spacing(76),
   marginBottom: theme.spacing(6),
   padding: theme.spacing(4)
 }));
 
-export const LoginGoogleForm = styled(Form)(({ theme }) => ({
+export const LoginForm = styled(Form)(({ theme }) => ({
   width: "100%",
   margin: 0,
 
   "& .MuiFormControl-root": {
     margin: 0,
     flexGrow: 1,
-    maxWidth: "90%",
 
     "& input": {
       padding: theme.spacing(1, 1.5)
@@ -52,9 +52,11 @@ export const LoginGoogleForm = styled(Form)(({ theme }) => ({
     display: "inline-block",
     color: theme.palette.info.main,
     marginBottom: theme.spacing(3)
-  },
-
-  "& button": {
-    maxWidth: "90%"
   }
+}));
+
+export const LoginButtonBox = styled(Box)(({ theme }) => ({
+  width: "100%",
+  maxWidth: theme.spacing(50),
+  marginTop: theme.spacing(3)
 }));

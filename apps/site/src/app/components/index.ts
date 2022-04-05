@@ -1,3 +1,4 @@
 export * from "./app-name";
-export * from "./google-login";
+export * from "./auth-detector";
 export * from "./layout";
+export * from "./login";

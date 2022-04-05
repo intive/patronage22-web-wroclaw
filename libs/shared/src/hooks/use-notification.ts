@@ -1,38 +1,33 @@
-import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 
 import { addNotification } from "../data";
 import { NotificationType } from "../types";
 
-export const useClipboardCopy = () => {
-  const { t } = useTranslation();
+export const useNotification = () => {
   const dispatch = useDispatch();
 
-  const onSuccess = () =>
+  const showSuccess = (message: string) =>
     dispatch(
       addNotification([
         {
           id: uuidv4(),
           type: NotificationType.Success,
-          message: t("linkCopied")
+          message
         }
       ])
     );
 
-  const onFail = () =>
+  const showFail = (message: string) =>
     dispatch(
       addNotification([
         {
           id: uuidv4(),
           type: NotificationType.Error,
-          message: t("linkCopyingFailed")
+          message
         }
       ])
     );
 
-  const copyFunction = (text: string) => {
-    navigator.clipboard.writeText(text).then(onSuccess, onFail);
-  };
-  return copyFunction;
+  return { showSuccess, showFail };
 };

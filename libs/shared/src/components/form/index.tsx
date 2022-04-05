@@ -14,7 +14,8 @@ import * as Styled from "./styled";
 interface FormButton {
   condition: boolean;
   text: string;
-  icon: ReactNode;
+  icon?: ReactNode;
+  disabled?: boolean;
 }
 
 export interface FormProps {
@@ -83,13 +84,15 @@ export const Form: React.FC<FormProps> = ({
       condition: customButtons?.submit?.condition,
       text: customButtons?.submit?.text || t("submit"),
       action: handleSubmit,
-      icon: customButtons?.submit?.icon
+      icon: customButtons?.submit?.icon,
+      disabled: customButtons?.submit?.disabled || false
     },
     {
       condition: customButtons?.cancel?.condition,
       text: customButtons?.cancel?.text || t("cancel"),
       action: handleCancel,
-      icon: customButtons?.cancel?.icon
+      icon: customButtons?.cancel?.icon,
+      disabled: customButtons?.cancel?.disabled || false
     }
   ];
 
@@ -113,9 +116,16 @@ export const Form: React.FC<FormProps> = ({
         {title && <Typography variant='h3'>{title}</Typography>}
         {renderFields()}
         {formButtons.map(
-          ({ condition, text, action, icon }) =>
+          ({ condition, text, action, icon, disabled }) =>
             condition && (
-              <BaseButton key={text} type={ButtonType.Basic} onClick={action} variant='contained' endIcon={icon}>
+              <BaseButton
+                key={text}
+                type={ButtonType.Basic}
+                onClick={action}
+                variant='contained'
+                endIcon={icon}
+                disabled={disabled}
+              >
                 {text}
               </BaseButton>
             )

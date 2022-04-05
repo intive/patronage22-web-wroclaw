@@ -7,7 +7,7 @@ import {
   getDomainName,
   QR_CODE_SIZE,
   TranslationNamespace,
-  useClipboardCopy
+  useNotification
 } from "@patronage-web/shared";
 import { useTranslation } from "react-i18next";
 import QRCode from "react-qr-code";
@@ -24,12 +24,15 @@ export interface ShareDialogProps {
 export const ShareDialog: React.FC<ShareDialogProps> = ({ open, onClose, id, title }) => {
   const { t } = useTranslation([TranslationNamespace.Feedback, TranslationNamespace.Common]);
   const { i18n } = useTranslation();
-  const copy = useClipboardCopy();
+  const { showSuccess, showFail } = useNotification();
   const path = createPath({ route: FeedbackRoute.ExternalUserPresentation, params: { id }, language: i18n.language });
   const link = `${getDomainName()}${path}`;
 
   const handleCopyBtnClick = () => {
-    copy(link);
+    navigator.clipboard.writeText(link).then(
+      () => showSuccess(t("linkCopied")),
+      () => showFail(t("linkCopyingFailed"))
+    );
   };
 
   return (
