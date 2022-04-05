@@ -36,7 +36,8 @@ export const GoogleLogin: React.FC = () => {
               type: FormFieldType.Text,
               name: "email",
               variant: "filled",
-              description: "E-mail"
+              description: "E-mail",
+              hideEditIcon: true
             },
             {
               type: FormFieldType.Text,
@@ -53,8 +54,8 @@ export const GoogleLogin: React.FC = () => {
               .trim()
               .required(t("login.emailRequiredMessage"))
               .email(t("login.emailInvalidMessage"))
-              .min(MIN_GMAIL_ADDRESS_LENGTH, t("login.tooShortMessage"))
-              .matches(REGEX_GMAIL_VALIDATION, t("login.notGmailMessage")),
+              .matches(REGEX_GMAIL_VALIDATION, t("login.notGmailMessage"))
+              .min(MIN_GMAIL_ADDRESS_LENGTH, t("login.tooShortMessage")),
             password: string().trim()
           }}
           onSubmit={handleSubmit}
