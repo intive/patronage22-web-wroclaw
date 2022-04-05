@@ -1,6 +1,5 @@
 export * from "./app-routes";
 export * from "./common";
-export * from "./dashboard";
 export * from "./diagram-type";
 export * from "./form-field-type";
 export * from "./http-status";

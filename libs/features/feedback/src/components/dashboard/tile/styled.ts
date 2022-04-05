@@ -1,6 +1,7 @@
 import { Box, Card, CardActions, CardHeader } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { DashboardCardProps } from "@patronage-web/shared";
+
+import { DashboardCardProps } from "../../../types";
 
 export const PresentationTileContainer = styled(Box)(({ theme }) => ({
   minWidth: "min-content",

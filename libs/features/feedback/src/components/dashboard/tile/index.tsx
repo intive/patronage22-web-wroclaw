@@ -1,16 +1,10 @@
 import CloseIcon from "@mui/icons-material/Close";
 import { Typography } from "@mui/material";
-import {
-  BaseButton,
-  ButtonType,
-  FeedbackRoute,
-  LocalizedLink,
-  Presentation as DashboardTileProps,
-  TranslationNamespace
-} from "@patronage-web/shared";
+import { BaseButton, ButtonType, FeedbackRoute, LocalizedLink, TranslationNamespace } from "@patronage-web/shared";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { Presentation as DashboardTileProps } from "../../../types";
 import { ShareDialog } from "../../share-dialog";
 import * as Styled from "./styled";
 
