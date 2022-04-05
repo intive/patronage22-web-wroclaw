@@ -1,6 +1,13 @@
 import CloseIcon from "@mui/icons-material/Close";
 import { Typography } from "@mui/material";
-import { BaseButton, ButtonType, FeedbackRoute, LocalizedLink, Presentation as DashboardTileProps } from "@patronage-web/shared";
+import {
+  BaseButton,
+  ButtonType,
+  FeedbackRoute,
+  LocalizedLink,
+  Presentation as DashboardTileProps,
+  TranslationNamespace
+} from "@patronage-web/shared";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -8,7 +15,7 @@ import { ShareDialog } from "../../share-dialog";
 import * as Styled from "./styled";
 
 export const DashboardTile: React.FC<DashboardTileProps> = ({ id, isPublic, title, description }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(TranslationNamespace.Common);
 
   const [open, setOpen] = useState(false);
 
