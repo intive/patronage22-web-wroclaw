@@ -1,1 +1,1 @@
-export { default as mockPresentations } from "./dashboard.json";
+export { default as presentationsMock } from "./dashboard.json";

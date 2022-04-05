@@ -16,7 +16,6 @@ import * as Styled from "./styled";
 
 export const DashboardTile: React.FC<DashboardTileProps> = ({ id, isPublic, title, description }) => {
   const { t } = useTranslation(TranslationNamespace.Common);
-
   const [open, setOpen] = useState(false);
 
   const handleOpenDialog = () => {
@@ -27,6 +26,7 @@ export const DashboardTile: React.FC<DashboardTileProps> = ({ id, isPublic, titl
     setOpen(false);
   };
 
+  // TODO - replace undefined with proper action when ready
   const dashboardTileButtons = [
     { text: t("share"), action: handleOpenDialog },
     { text: t("end"), action: undefined }
