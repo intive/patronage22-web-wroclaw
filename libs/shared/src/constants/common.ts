@@ -1,3 +1,6 @@
 export const QR_CODE_SIZE = 160;
 
 export const SNACKBAR_AUTO_HIDE_DURATION = 1200;
+
+export const LANG_FIRST_LETTER_POSITION = 0;
+export const LANG_LAST_LETTER_POSITION = 2;

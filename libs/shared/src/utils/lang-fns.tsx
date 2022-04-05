@@ -1,6 +1,7 @@
 import { i18n } from "i18next";
 
-import { SliceRange, SupportedLanguage } from "../types";
+import { LANG_FIRST_LETTER_POSITION, LANG_LAST_LETTER_POSITION } from "../constants";
+import { SupportedLanguage } from "../types";
 
 export interface ChangeLanguage {
   (i18n: i18n, lang: SupportedLanguage): void;
@@ -16,5 +17,5 @@ export const isDefaultLanguage = (lang: string) => {
 };
 
 export const isOtherLanguage = (lang: string) => {
-  return lang.slice(SliceRange.begin, SliceRange.end) !== SupportedLanguage.En;
+  return lang.slice(LANG_FIRST_LETTER_POSITION, LANG_LAST_LETTER_POSITION) !== SupportedLanguage.En;
 };
