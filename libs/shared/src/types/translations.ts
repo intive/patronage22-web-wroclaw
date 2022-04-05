@@ -8,3 +8,8 @@ export enum TranslationNamespace {
   Common = "common",
   Ui = "ui"
 }
+
+export enum SliceRange {
+  begin = 0,
+  end = 2
+}
