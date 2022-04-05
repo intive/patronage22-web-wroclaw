@@ -1,11 +1,11 @@
-import { Grid } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 export const FeedbackDashboardGrid = styled(Grid)(({ theme }) => ({
   padding: theme.spacing(2)
 }));
 
-export const TileGrid = styled(Grid)(({ theme }) => ({
+export const TileGrid = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up("xs")]: {
     width: "100%"
   },
