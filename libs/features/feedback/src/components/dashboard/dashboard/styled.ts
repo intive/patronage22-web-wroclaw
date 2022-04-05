@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
-export const DashboardTileGrid = styled(Grid)(({ theme }) => ({
+export const FeedbackDashboardGrid = styled(Grid)(({ theme }) => ({
   padding: theme.spacing(2)
 }));
 

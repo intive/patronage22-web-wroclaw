@@ -14,7 +14,7 @@ import { useTranslation } from "react-i18next";
 import { ShareDialog } from "../../share-dialog";
 import * as Styled from "./styled";
 
-export const DashboardTile: React.FC<DashboardTileProps> = ({ id, isPublic, title, description }) => {
+export const PresentationTile: React.FC<DashboardTileProps> = ({ id, isPublic, title, description }) => {
   const { t } = useTranslation(TranslationNamespace.Common);
   const [open, setOpen] = useState(false);
 
@@ -33,9 +33,9 @@ export const DashboardTile: React.FC<DashboardTileProps> = ({ id, isPublic, titl
   ];
 
   return (
-    <Styled.DashboardTileContainer>
-      <Styled.BorderCard isPublic={isPublic} raised>
-        <Styled.DashboardTileHeader
+    <Styled.PresentationTileContainer>
+      <Styled.PresentationCard isPublic={isPublic} raised>
+        <Styled.PresentationTileHeader
           title={<Typography noWrap>{title}</Typography>}
           subheader={
             <Typography variant='subtitle2' noWrap>
@@ -49,8 +49,8 @@ export const DashboardTile: React.FC<DashboardTileProps> = ({ id, isPublic, titl
           }
         />
 
-        <Styled.DashboardTileButtonContainer>
-          <Styled.DashboardTileButtonBox>
+        <Styled.PresentationTileButtonContainer>
+          <Styled.PresentationTileButtonBox>
             {dashboardTileButtons.map(({ text, action }) => (
               <BaseButton type={ButtonType.Basic} onClick={action} variant='outlined'>
                 {text}
@@ -61,11 +61,11 @@ export const DashboardTile: React.FC<DashboardTileProps> = ({ id, isPublic, titl
                 {t("edit")}
               </BaseButton>
             </LocalizedLink>
-          </Styled.DashboardTileButtonBox>
-        </Styled.DashboardTileButtonContainer>
-      </Styled.BorderCard>
+          </Styled.PresentationTileButtonBox>
+        </Styled.PresentationTileButtonContainer>
+      </Styled.PresentationCard>
 
       <ShareDialog open={open} onClose={handleCloseDialog} id={id} title={title} />
-    </Styled.DashboardTileContainer>
+    </Styled.PresentationTileContainer>
   );
 };

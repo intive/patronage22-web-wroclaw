@@ -2,12 +2,12 @@ import { Box, Card, CardActions, CardHeader } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { DashboardCardProps } from "@patronage-web/shared";
 
-export const DashboardTileContainer = styled(Box)(({ theme }) => ({
+export const PresentationTileContainer = styled(Box)(({ theme }) => ({
   minWidth: "min-content",
   margin: theme.spacing(1)
 }));
 
-export const BorderCard = styled(Card)<DashboardCardProps>(props => ({
+export const PresentationCard = styled(Card)<DashboardCardProps>(props => ({
   border: props.isPublic ? "2px solid blue" : "",
 
   "&:hover": {
@@ -16,7 +16,7 @@ export const BorderCard = styled(Card)<DashboardCardProps>(props => ({
   }
 }));
 
-export const DashboardTileHeader = styled(CardHeader)(({ theme }) => ({
+export const PresentationTileHeader = styled(CardHeader)(({ theme }) => ({
   height: theme.spacing(15),
   display: "flex",
   overflow: "hidden",
@@ -26,7 +26,7 @@ export const DashboardTileHeader = styled(CardHeader)(({ theme }) => ({
   }
 }));
 
-export const DashboardTileButtonContainer = styled(CardActions)(({ theme }) => ({
+export const PresentationTileButtonContainer = styled(CardActions)(({ theme }) => ({
   display: "flex",
   justifyContent: "flex-end",
 
@@ -37,6 +37,6 @@ export const DashboardTileButtonContainer = styled(CardActions)(({ theme }) => (
   }
 }));
 
-export const DashboardTileButtonBox = styled(Box)(({ theme }) => ({
+export const PresentationTileButtonBox = styled(Box)(({ theme }) => ({
   display: "flex"
 }));
