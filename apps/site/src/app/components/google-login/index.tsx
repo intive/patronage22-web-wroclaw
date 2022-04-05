@@ -20,7 +20,7 @@ export const GoogleLogin: React.FC = () => {
   const { i18n, t } = useTranslation(TranslationNamespace.Common);
   const navigate = useNavigate();
 
-  const handleSubmit = (data: unknown, event?: BaseSyntheticEvent) => {
+  const handleSubmit = (_data: unknown, _event?: BaseSyntheticEvent) => {
     navigate(createPath({ route: BaseRoute.Home, language: i18n.language }));
   };
 
@@ -59,7 +59,6 @@ export const GoogleLogin: React.FC = () => {
             password: string().trim()
           }}
           onSubmit={handleSubmit}
-          onError={errors => console.log(errors)}
           customButtons={{ submit: { condition: true, text: t("login.loginWith"), icon: <Google /> } }}
         />
       </Styled.LoginGoogleFormCard>
