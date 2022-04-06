@@ -8,7 +8,7 @@ export const STOPER_CONFIG = {
   refreshTime: 1000
 };
 
-interface TimerProps {
+export interface TimerProps {
   timeToElapse: number;
   onTimeElapsed: () => void;
 }

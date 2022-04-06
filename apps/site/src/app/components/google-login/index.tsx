@@ -20,7 +20,7 @@ export const GoogleLogin: React.FC = () => {
   const { i18n, t } = useTranslation(TranslationNamespace.Common);
   const navigate = useNavigate();
 
-  const handleSubmit = (data: unknown, event?: BaseSyntheticEvent) => {
+  const handleSubmit = (_data: unknown, _event?: BaseSyntheticEvent) => {
     navigate(createPath({ route: BaseRoute.Home, language: i18n.language }));
   };
 
@@ -36,7 +36,8 @@ export const GoogleLogin: React.FC = () => {
               type: FormFieldType.Text,
               name: "email",
               variant: "filled",
-              description: "E-mail"
+              description: "E-mail",
+              hideEditIcon: true
             },
             {
               type: FormFieldType.Text,
@@ -53,12 +54,11 @@ export const GoogleLogin: React.FC = () => {
               .trim()
               .required(t("login.emailRequiredMessage"))
               .email(t("login.emailInvalidMessage"))
-              .min(MIN_GMAIL_ADDRESS_LENGTH, t("login.tooShortMessage"))
-              .matches(REGEX_GMAIL_VALIDATION, t("login.notGmailMessage")),
+              .matches(REGEX_GMAIL_VALIDATION, t("login.notGmailMessage"))
+              .min(MIN_GMAIL_ADDRESS_LENGTH, t("login.tooShortMessage")),
             password: string().trim()
           }}
           onSubmit={handleSubmit}
-          onError={errors => console.log(errors)}
           customButtons={{ submit: { condition: true, text: t("login.loginWith"), icon: <Google /> } }}
         />
       </Styled.LoginGoogleFormCard>
