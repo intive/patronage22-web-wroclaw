@@ -1,6 +1,5 @@
 import { Form, FormFieldProps, FormFieldType, FormProps } from "@patronage-web/shared";
 import { ComponentMeta } from "@storybook/react";
-import { t } from "i18next";
 import { string } from "yup";
 import { ObjectShape } from "yup/lib/object";
 
@@ -8,7 +7,7 @@ export const FormStory: React.FC<FormProps> = ({ validationSchema, fields, onSub
   <Form validationSchema={validationSchema} fields={fields} onSubmit={onSubmit} onError={onError} customButtons={customButtons} />
 );
 
-const customButtons: FormProps["customButtons"] = { submit: { condition: true, text: t("submit") } };
+const customButtons: FormProps["customButtons"] = { submit: { condition: true } };
 
 const fields: FormFieldProps[] = [
   { type: FormFieldType.Text, name: "field1", variant: "filled" },

@@ -1,9 +1,9 @@
-import { ExternalUserPresentationSummary, ExtPresentationSummaryProps } from "@patronage-web/features-feedback";
+import { PresentationLiveSummary, PresentationLiveSummaryProps } from "@patronage-web/features-feedback";
 import { Question } from "@patronage-web/shared-data";
 import { ComponentMeta } from "@storybook/react";
 
-export const ExternalUserPresentationSummaryStory: React.FC<ExtPresentationSummaryProps> = ({ questions }) => {
-  return <ExternalUserPresentationSummary questions={questions} />;
+export const PresentationLiveSummaryStory: React.FC<PresentationLiveSummaryProps> = ({ questions }) => {
+  return <PresentationLiveSummary questions={questions} />;
 };
 
 const questions: Question[] = [
@@ -55,6 +55,6 @@ const questions: Question[] = [
 
 export default {
   title: "Presentation summary for external user",
-  component: ExternalUserPresentationSummaryStory,
+  component: PresentationLiveSummaryStory,
   args: { questions }
-} as ComponentMeta<typeof ExternalUserPresentationSummaryStory>;
+} as ComponentMeta<typeof PresentationLiveSummaryStory>;
