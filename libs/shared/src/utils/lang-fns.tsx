@@ -1,8 +1,9 @@
 import { i18n } from "i18next";
 
-import { LANG_FIRST_LETTER_POSITION, LANG_LAST_LETTER_POSITION } from "../constants";
 import { SupportedLanguage } from "../types";
 
+export const LANG_FIRST_LETTER_POSITION = 0;
+export const LANG_LAST_LETTER_POSITION = 2;
 export interface ChangeLanguage {
   (i18n: i18n, lang: SupportedLanguage): void;
 }
