@@ -1,8 +1,8 @@
 import { presentationsMock } from "@patronage-web/shared-data";
 
-import { Presentation } from "../../../types";
-import { PresentationTile } from "../tile";
+import { Presentation } from "../../types";
 import * as Styled from "./styled";
+import { PresentationTile } from "./tile";
 
 // TODO - replace with redux action when ready
 const presentation: Presentation[] = presentationsMock;
