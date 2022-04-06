@@ -6,8 +6,8 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { getRemainingTime } from "../../utils";
-import { LiveResultsView } from "..";
 import { CurrentQuestionView } from "../current-question-view";
+import { LiveResultsView } from "../live-results";
 
 export interface ExternalPresentationViewProps {
   presentation: ExternalPresentation;
