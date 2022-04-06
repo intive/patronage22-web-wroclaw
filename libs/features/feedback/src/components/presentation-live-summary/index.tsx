@@ -14,7 +14,7 @@ interface PresentationResultsData {
 }
 
 export const PresentationLiveSummary: React.FC<PresentationLiveSummaryProps> = ({ questions }) => {
-  const { t } = useTranslation([TranslationNamespace.Feedback]);
+  const { t } = useTranslation(TranslationNamespace.Feedback);
 
   /* eslint-disable react/destructuring-assignment */
   const results = questions.map(({ content, answers, id }) => {
