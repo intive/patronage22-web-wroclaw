@@ -53,7 +53,6 @@ export const Login: React.FC = () => {
               .min(MIN_EMAIL_ADDRESS_LENGTH, t("login.tooShortMessage")),
             password: string().trim()
           }}
-          onError={errors => console.log(errors)}
           customButtons={{ submit: { condition: true, text: t("login.login"), disabled: true } }}
         />
         <Styled.LoginButtonBox>
