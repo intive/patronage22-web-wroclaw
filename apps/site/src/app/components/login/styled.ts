@@ -1,4 +1,5 @@
-import { Box, Card, styled, Typography } from "@mui/material";
+import { Box, Card, Typography } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import { Form } from "@patronage-web/shared";
 
 export const LoginContainer = styled(Box)(({ theme }) => ({

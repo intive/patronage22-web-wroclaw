@@ -21,9 +21,9 @@
     "emailInvalidMessage": "Invalid e-mail address",
     "emailRequiredMessage": "Please provide your e-mail",
     "forgotPassword": "Forgot a password?",
+    "login": "Login",
     "loginFailed": "Logging in failed",
     "loginWith": "Login with",
-    "login": "Login",
     "subtitle": "Login to your account",
     "title": "Welcome in Patronage App",
     "tooShortMessage": "Please provide at least 16 characters"

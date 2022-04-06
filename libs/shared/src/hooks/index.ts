@@ -1,3 +1,4 @@
+export * from "./use-clipboard-copy";
 export * from "./use-feature-name";
 export * from "./use-notification";
 export * from "./use-previous";

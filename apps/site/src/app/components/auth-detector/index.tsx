@@ -16,10 +16,6 @@ export const AuthDetector: React.FC = ({ children }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return (
-    <>
-      {isLoading && <Loader type={LoaderType.Circular} />}
-      {!isLoading && children}
-    </>
-  );
+  // eslint-disable-next-line react/jsx-no-useless-fragment
+  return isLoading ? <Loader type={LoaderType.Circular} /> : <>{children}</>;
 };

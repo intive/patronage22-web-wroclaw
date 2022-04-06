@@ -21,9 +21,9 @@
     "emailInvalidMessage": "Nieprawidłowy adres e-mail",
     "emailRequiredMessage": "Podaj swój adres e-mail 'example@gmail.com'",
     "forgotPassword": "Zapomniałeś/aś hasła?",
+    "login": "Zaloguj się",
     "loginFailed": "Logowanie nie powiodło się",
     "loginWith": "Zaloguj się przez",
-    "login": "Zaloguj się",
     "subtitle": "Zaloguj się do swojego konta",
     "title": "Witamy w aplikacji Patronage",
     "tooShortMessage": "Wpisz minimum 16 znaków"
