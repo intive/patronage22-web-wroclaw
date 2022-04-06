@@ -10,6 +10,7 @@
   },
   "missingTitleError": "Title cannot be empty",
   "newPresentation": "New presentation",
+  "presentationSummary": "Presentation summary",
   "search": {
     "searchAriaLabel": "Search",
     "searchbarPlaceholder": "Search presentations",
