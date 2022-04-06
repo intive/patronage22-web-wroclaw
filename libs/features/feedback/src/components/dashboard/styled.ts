@@ -26,3 +26,7 @@ export const TileGrid = styled(Box)(({ theme }) => ({
     width: "20%"
   }
 }));
+
+export const NewPresentationButtonContainer = styled(Box)(({ theme }) => ({
+  padding: theme.spacing(2)
+}));
