@@ -1,13 +1,10 @@
 import { TextField } from "@mui/material";
 import { FieldValues, UseFormStateReturn } from "react-hook-form";
 
-import { FormFieldType } from "../../../types";
-import { FormFieldProps } from "./index";
+import { FormFieldProps, FormFieldType } from "../../../types";
 import { SelectField } from "./select-field";
 
 const DEFAULT_ROWS_NUMBER = 4;
-
-export type FormTextFieldVariant = "standard" | "filled" | "outlined";
 
 export interface RenderFieldProps
   extends Omit<FormFieldProps, "helperText" | "onChange" | "description" | "appendix" | "hideEditIcon"> {
