@@ -17913,7 +17913,7 @@ __metadata:
     react-hook-form: ^7.27.0
     react-i18next: ^11.15.3
     react-is: 17.0.2
-    react-qr-code: ^2.0.3
+    react-qr-code: ^2.0.5
     react-redux: ^7.2.6
     react-router-dom: ^6.2.1
     react-test-renderer: 17.0.2
@@ -19259,7 +19259,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-qr-code@npm:^2.0.3":
+"react-qr-code@npm:^2.0.5":
   version: 2.0.5
   resolution: "react-qr-code@npm:2.0.5"
   dependencies:
