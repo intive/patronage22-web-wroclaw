@@ -11,6 +11,7 @@
   "missingTitleError": "Tytuł nie może być pusty",
   "newPresentation": "Nowa prezentacja",
   "notFoundPresentation": "Nie znaleziono prezentacji",
+  "presentationSummary": "Podsumowanie prezentacji",
   "search": {
     "searchAriaLabel": "Szukaj",
     "searchbarPlaceholder": "Szukaj prezentacji",

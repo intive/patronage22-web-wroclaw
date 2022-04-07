@@ -11,6 +11,7 @@
   "missingTitleError": "Title cannot be empty",
   "newPresentation": "New presentation",
   "notFoundPresentation": "Presentation not found",
+  "presentationSummary": "Presentation summary",
   "search": {
     "searchAriaLabel": "Search",
     "searchbarPlaceholder": "Search presentations",
