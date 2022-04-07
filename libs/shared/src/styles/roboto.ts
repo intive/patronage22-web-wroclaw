@@ -13,6 +13,7 @@ export const robotoRegular = `
          url("${robotoFontsPath}roboto-regular.svg") format("svg");
   }
 `;
+
 export const robotoRegularBold = `
   @font-face {
     font-family: "Roboto";
@@ -25,7 +26,8 @@ export const robotoRegularBold = `
          url("${robotoFontsPath}roboto-700.ttf") format("truetype"), 
          url("${robotoFontsPath}roboto-700.svg") format("svg");
   }
-  `;
+`;
+
 export const robotoItalicBold = `
   @font-face {
     font-family: "Roboto";
@@ -39,6 +41,7 @@ export const robotoItalicBold = `
          url("${robotoFontsPath}roboto-700italic.svg") format("svg");
   }
 `;
+
 export const robotoItalic = `
 @font-face {
     font-family: "Roboto";
