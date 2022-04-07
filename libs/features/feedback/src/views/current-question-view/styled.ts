@@ -1,4 +1,5 @@
-import { Box, Card, styled } from "@mui/material";
+import { Box, Card } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import { Form } from "@patronage-web/shared";
 
 export const CurrentQuestionViewContainer = styled(Box)(({ theme }) => ({

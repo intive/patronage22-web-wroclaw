@@ -1,10 +1,9 @@
-/* eslint-disable no-nested-ternary */
-import { Typography } from "@mui/material";
 import { Loader, LoaderType, TranslationNamespace } from "@patronage-web/shared";
 import { ExternalPresentation, FeedbackQuestionAnswers, LiveResultsAnswers } from "@patronage-web/shared-data";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { PresentationLiveSummary } from "../../components";
 import { getRemainingTime } from "../../utils";
 import { CurrentQuestionView } from "../current-question-view";
 import { LiveResultsView } from "../live-results";
@@ -13,6 +12,7 @@ export interface ExternalPresentationViewProps {
   presentation: ExternalPresentation;
 }
 
+// TODO remove when getting data from the server will be ready
 const getFeedbackAnswerData = (id: string) => {
   const feedbackAnswer = LiveResultsAnswers.find(answer => answer.id === id);
 
@@ -27,7 +27,8 @@ export const ExternalPresentationView: React.FC<ExternalPresentationViewProps> =
   const startQuestionIndex = Math.floor((currentTime - startTime) / timer);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(startQuestionIndex);
   const [currentQuestion, setCurrentQuestion] = useState(questions[startQuestionIndex]);
-  const localStorageLastSubmitedQuestionId = localStorage.getItem("lastSubmitedQuestionId");
+  const lastSubmitedQuestionIdLocalStorageKey = "lastSubmitedQuestionId";
+  const localStorageLastSubmitedQuestionId = localStorage.getItem(lastSubmitedQuestionIdLocalStorageKey);
   const [isSubmit, setIsSubmit] = useState(currentQuestion && localStorageLastSubmitedQuestionId === currentQuestion.id);
 
   const [liveResultData, setLiveResultData] = useState<FeedbackQuestionAnswers>();
@@ -36,11 +37,12 @@ export const ExternalPresentationView: React.FC<ExternalPresentationViewProps> =
   const [timeToElapse, setTimeToElapse] = useState(startQuestionRemainingTime);
 
   const handleSubmit = (value?: Record<string, string> | undefined) => {
-    console.log("value", value ? value.userAnswer : "brak");
+    // TODO add sending current value to the server as a userAnswer
+    // TODO replace with getting data from the server
     const feedbackData = getFeedbackAnswerData(currentQuestion.id);
     setLiveResultData(feedbackData);
     setTimeToElapse(feedbackData ? getRemainingTime(startTime, feedbackData.current, timer) : 0);
-    localStorage.setItem("lastSubmitedQuestionId", currentQuestion.id);
+    localStorage.setItem(lastSubmitedQuestionIdLocalStorageKey, currentQuestion.id);
     setIsSubmit(true);
   };
 
@@ -51,7 +53,11 @@ export const ExternalPresentationView: React.FC<ExternalPresentationViewProps> =
     setIsSubmit(false);
   };
 
-  if (questionsCount <= currentQuestionIndex) return <Typography>{t("summary")}</Typography>;
+  if (questionsCount <= currentQuestionIndex) {
+    // TODO replace with getting data from the server
+    const summaryData = LiveResultsAnswers;
+    return <PresentationLiveSummary questions={summaryData} />;
+  }
 
   if (!isSubmit)
     return (
@@ -68,6 +74,7 @@ export const ExternalPresentationView: React.FC<ExternalPresentationViewProps> =
   if (liveResultData)
     return <LiveResultsView data={liveResultData} timeToElapse={timeToElapse} onTimeElapsed={handleTimeElapsed} />;
 
+  // TODO replace with getting data from the server
   const feedbackData = getFeedbackAnswerData(currentQuestion.id);
   if (feedbackData) {
     setLiveResultData(feedbackData);
