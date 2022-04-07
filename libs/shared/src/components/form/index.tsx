@@ -9,14 +9,14 @@ import { v4 as uuidv4 } from "uuid";
 import * as yup from "yup";
 import { ObjectShape } from "yup/lib/object";
 
-import { TranslationNamespace } from "../../types";
+import { FormFieldProps, TranslationNamespace } from "../../types";
 import { BaseButton, BaseButtonProps, ButtonType } from "../base-button";
-import { FormField, FormFieldProps } from "./form-field";
+import { FormField } from "./form-field";
 import * as Styled from "./styled";
 
 interface FormButton {
   condition: boolean;
-  text: string;
+  text?: string;
   icon?: ReactNode;
   type?: ButtonType;
   variant?: "text" | "contained" | "outlined" | undefined;

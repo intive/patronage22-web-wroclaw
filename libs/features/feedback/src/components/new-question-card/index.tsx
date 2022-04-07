@@ -1,8 +1,5 @@
 import { Delete } from "@mui/icons-material";
-import { BaseButton, ButtonType, FormFieldType, FormProps, TranslationNamespace } from "@patronage-web/shared";
-// TODO - replace import when "P2022-1542 Summary of the finished presentation" is ready
-// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
-import { DynamicsInterface } from "libs/shared/src/components/form/form-field";
+import { BaseButton, ButtonType, DynamicsInterface, FormFieldType, FormProps, TranslationNamespace } from "@patronage-web/shared";
 import { useTranslation } from "react-i18next";
 
 import { QUESTION_CONFIG } from "../../configs";

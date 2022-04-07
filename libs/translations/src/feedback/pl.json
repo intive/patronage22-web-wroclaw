@@ -11,6 +11,7 @@
   "missingTitleError": "Tytuł nie może być pusty",
   "newPresentation": "Nowa prezentacja",
   "newQuestion": "Nowe pytanie",
+  "presentationSummary": "Podsumowanie prezentacji",
   "question": {
     "addField": "Dodaj odpowiedź...",
     "maxCharLength": "Przekroczono maksymalną ilość znaków ({{charAmount}})",

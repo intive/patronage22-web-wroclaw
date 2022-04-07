@@ -11,6 +11,7 @@
   "missingTitleError": "Title cannot be empty",
   "newPresentation": "New presentation",
   "newQuestion": "New question",
+  "presentationSummary": "Presentation summary",
   "question": {
     "addField": "Add answer...",
     "maxCharLength": "Maximum number of characters exceeded ({{charAmount}})",
