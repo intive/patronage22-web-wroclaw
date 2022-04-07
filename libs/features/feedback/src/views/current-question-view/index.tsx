@@ -1,6 +1,5 @@
-import { Timer, TranslationNamespace } from "@patronage-web/shared";
+import { Timer } from "@patronage-web/shared";
 import { ExternalQuestion } from "@patronage-web/shared-data";
-import { useTranslation } from "react-i18next";
 
 import { answerField } from "./answer-field";
 import * as Styled from "./styled";
@@ -20,8 +19,6 @@ export const CurrentQuestionView: React.FC<CurrentQuestionViewProps> = ({
   onTimeElapsed,
   onSubmit
 }) => {
-  const { t } = useTranslation(TranslationNamespace.Common);
-
   return (
     <Styled.CurrentQuestionViewContainer>
       <Styled.QuestionFormCard>

@@ -16,6 +16,7 @@ export const QuestionFormCard = styled(Card)(({ theme }) => ({
   alignItems: "center",
   flexDirection: "column",
   marginBottom: theme.spacing(1),
+  maxWidth: "95%",
 
   [theme.breakpoints.up("md")]: {
     width: theme.spacing(60)

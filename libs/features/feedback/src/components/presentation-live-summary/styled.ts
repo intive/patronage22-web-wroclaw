@@ -9,7 +9,10 @@ export const PresentationSummaryContainer = styled(Box)(({ theme }) => ({
   margin: theme.spacing(1)
 }));
 
-export const SummaryTitle = styled(Typography)(({ theme }) => ({ margin: theme.spacing(1) }));
+export const SummaryTitle = styled(Typography)(({ theme }) => ({
+  margin: theme.spacing(1),
+  fontWeight: theme.typography.fontWeightBold
+}));
 
 export const DiagramContainer = styled(Box)({
   maxWidth: "90%"
