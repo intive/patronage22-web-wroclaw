@@ -1,5 +1,4 @@
 import "./i18n";
-import "./styles.css";
 
 import { Notifications, ThemeProvider } from "@patronage-web/shared";
 import { store } from "@patronage-web/shared-data";
