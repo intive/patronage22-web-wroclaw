@@ -9,7 +9,7 @@ export const PresentationSummaryContainer = styled(Box)(({ theme }) => ({
   margin: theme.spacing(1)
 }));
 
-export const SummaryTitle = styled(Typography)(({ theme }) => ({
+export const LiveSummaryTitle = styled(Typography)(({ theme }) => ({
   margin: theme.spacing(1),
   fontWeight: theme.typography.fontWeightBold
 }));

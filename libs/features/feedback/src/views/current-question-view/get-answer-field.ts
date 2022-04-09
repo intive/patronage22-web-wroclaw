@@ -5,12 +5,12 @@ const turnAnswersIntoRecords = (answers: string[]) => {
   return answers.map(answer => ({ [`${answer}`]: answer } as Record<string, string>));
 };
 
-export const answerField = (questionType: QuestionType, answers?: string[]) => {
+export const getAnswerField = (type: QuestionType, answers?: string[]) => {
   const values = answers ? turnAnswersIntoRecords(answers) : [{ "": "" }];
 
   const defaultAnswer = answers ? answers[0] : "";
 
-  const formFieldProps = {
+  const fields = {
     [QuestionType.Closed]: [
       {
         type: FormFieldType.RadioGroup,
@@ -30,5 +30,5 @@ export const answerField = (questionType: QuestionType, answers?: string[]) => {
     ]
   };
 
-  return formFieldProps[questionType];
+  return fields[type];
 };

@@ -1,34 +1,40 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+import { Typography } from "@mui/material";
 import { Loader, LoaderType, TranslationNamespace } from "@patronage-web/shared";
-import { ExternalPresentation, FeedbackQuestionAnswers, LiveResultsAnswers } from "@patronage-web/shared-data";
+import { ExternalPresentationMock, FeedbackQuestionAnswers, LiveResultsAnswers } from "@patronage-web/shared-data";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useParams } from "react-router-dom";
 
 import { PresentationLiveSummary } from "../../components";
 import { getRemainingTime } from "../../utils";
 import { CurrentQuestionView } from "../current-question-view";
 import { LiveResultsView } from "../live-results";
 
-export interface ExternalPresentationViewProps {
-  presentation: ExternalPresentation;
-}
-
 // TODO remove when getting data from the server will be ready
-const getFeedbackAnswerData = (id: string) => {
+const getAnswerById = (id: string) => {
   const feedbackAnswer = LiveResultsAnswers.find(answer => answer.id === id);
 
   return feedbackAnswer;
 };
 
-export const ExternalPresentationView: React.FC<ExternalPresentationViewProps> = ({
-  presentation: { questions, timer, startTime, currentTime }
-}) => {
+const LAST_SUBMITTED_QUESTION_ID_LOCAL_STORAGE_KEY = "lastSubmitedQuestionId";
+
+export const ExternalPresentationView: React.FC = () => {
+  const params = useParams();
   const { t } = useTranslation(TranslationNamespace.Feedback);
+
+  if (ExternalPresentationMock.id !== params.id) {
+    return <Typography variant='h1'>{t("notFoundPresentation")}</Typography>;
+  }
+
+  const { questions, timer, startTime, currentTime } = ExternalPresentationMock;
   const questionsCount = questions.length;
   const startQuestionIndex = Math.floor((currentTime - startTime) / timer);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(startQuestionIndex);
   const [currentQuestion, setCurrentQuestion] = useState(questions[startQuestionIndex]);
-  const lastSubmitedQuestionIdLocalStorageKey = "lastSubmitedQuestionId";
-  const localStorageLastSubmitedQuestionId = localStorage.getItem(lastSubmitedQuestionIdLocalStorageKey);
+
+  const localStorageLastSubmitedQuestionId = localStorage.getItem(LAST_SUBMITTED_QUESTION_ID_LOCAL_STORAGE_KEY);
   const [isSubmit, setIsSubmit] = useState(currentQuestion && localStorageLastSubmitedQuestionId === currentQuestion.id);
 
   const [liveResultData, setLiveResultData] = useState<FeedbackQuestionAnswers>();
@@ -39,10 +45,10 @@ export const ExternalPresentationView: React.FC<ExternalPresentationViewProps> =
   const handleSubmit = (value?: Record<string, string> | undefined) => {
     // TODO add sending current value to the server as a userAnswer
     // TODO replace with getting data from the server
-    const feedbackData = getFeedbackAnswerData(currentQuestion.id);
+    const feedbackData = getAnswerById(currentQuestion.id);
     setLiveResultData(feedbackData);
     setTimeToElapse(feedbackData ? getRemainingTime(startTime, feedbackData.current, timer) : 0);
-    localStorage.setItem(lastSubmitedQuestionIdLocalStorageKey, currentQuestion.id);
+    localStorage.setItem(LAST_SUBMITTED_QUESTION_ID_LOCAL_STORAGE_KEY, currentQuestion.id);
     setIsSubmit(true);
   };
 
@@ -75,7 +81,7 @@ export const ExternalPresentationView: React.FC<ExternalPresentationViewProps> =
     return <LiveResultsView data={liveResultData} timeToElapse={timeToElapse} onTimeElapsed={handleTimeElapsed} />;
 
   // TODO replace with getting data from the server
-  const feedbackData = getFeedbackAnswerData(currentQuestion.id);
+  const feedbackData = getAnswerById(currentQuestion.id);
   if (feedbackData) {
     setLiveResultData(feedbackData);
     setTimeToElapse(getRemainingTime(startTime, feedbackData.current, timer));

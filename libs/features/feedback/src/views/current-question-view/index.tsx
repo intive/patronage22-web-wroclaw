@@ -1,7 +1,7 @@
 import { Timer } from "@patronage-web/shared";
 import { ExternalQuestion } from "@patronage-web/shared-data";
 
-import { answerField } from "./answer-field";
+import { getAnswerField } from "./get-answer-field";
 import * as Styled from "./styled";
 
 export interface CurrentQuestionViewProps {
@@ -27,7 +27,7 @@ export const CurrentQuestionView: React.FC<CurrentQuestionViewProps> = ({
           <Styled.QuestionForm
             title={{ text: `${content}`, variant: "h5" }}
             validationSchema={{}}
-            fields={answerField(type, answers)}
+            fields={getAnswerField(type, answers)}
             customButtons={{ submit: { condition: true } }}
             onSubmit={onSubmit}
             onChange={() => {}}

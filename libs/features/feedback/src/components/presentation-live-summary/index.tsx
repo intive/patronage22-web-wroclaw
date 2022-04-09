@@ -17,7 +17,7 @@ export const PresentationLiveSummary: React.FC<PresentationLiveSummaryProps> = (
   const { t } = useTranslation(TranslationNamespace.Feedback);
 
   /* eslint-disable react/destructuring-assignment */
-  const results = questions.map(({ title, answers, id }) => {
+  const results = questions.map(({ title: diagramTitle, answers, id }) => {
     const diagramValues = answers.reduce<PresentationResultsData>(
       (acc, item) => {
         acc.labels.push(item.title);
@@ -30,14 +30,14 @@ export const PresentationLiveSummary: React.FC<PresentationLiveSummaryProps> = (
 
     return (
       <Styled.DiagramContainer key={id}>
-        <Diagram title={title} type={DiagramType.Bar} {...diagramValues} />
+        <Diagram title={diagramTitle} type={DiagramType.Bar} {...diagramValues} />
       </Styled.DiagramContainer>
     );
   });
 
   return (
     <Styled.PresentationSummaryContainer>
-      <Styled.SummaryTitle variant='h6'>{t("presentationSummary")}</Styled.SummaryTitle>
+      <Styled.LiveSummaryTitle variant='h6'>{t("presentationSummary")}</Styled.LiveSummaryTitle>
       {results}
     </Styled.PresentationSummaryContainer>
   );
