@@ -6,6 +6,7 @@ export * from "./footer";
 export * from "./form";
 export * from "./language-button";
 export * from "./layout";
+export * from "./layout/styled";
 export * from "./linked-text";
 export * from "./loader";
 export * from "./localized-link";

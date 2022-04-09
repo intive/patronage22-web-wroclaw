@@ -1,9 +1,9 @@
 /* eslint-disable react/no-array-index-key */
 import { AppBarProps, ToolbarProps } from "@mui/material";
 import { SxProps } from "@mui/material/styles";
-import { matchPath, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-import { PROTECTED_ROUTES } from "../../types";
+import { isProtectedRoute } from "../../utils";
 import { LogoutButton } from "../logout";
 import * as Styled from "./styled";
 
@@ -24,7 +24,17 @@ export interface NavbarProps extends Pick<AppBarProps, "color" | "position">, Pi
 
 export const Navbar: React.FC<NavbarProps> = ({ config, color, position, variant = "dense" }) => {
   const location = useLocation();
-  const protectedRoute = PROTECTED_ROUTES.find(route => matchPath(route, location.pathname));
+  const ProtectedRoute = isProtectedRoute(location);
+
+  const senctionsElements: Record<NavbarSectionPosition, JSX.Element[]> = {
+    [NavbarSectionPosition.Start]: [],
+    [NavbarSectionPosition.Center]: [],
+    [NavbarSectionPosition.End]: []
+  };
+
+  if (ProtectedRoute) {
+    senctionsElements[NavbarSectionPosition.End].push(<LogoutButton key='logout-button' />);
+  }
 
   const navSectionElements = Object.values(NavbarSectionPosition).map((section, sectionIndex) => {
     const sectionItem = config[section];
@@ -34,6 +44,7 @@ export const Navbar: React.FC<NavbarProps> = ({ config, color, position, variant
         {sectionItem?.elements.map((element, elementIndex) => (
           <Styled.NavbarSectionItem key={`element-${elementIndex}`}>{element}</Styled.NavbarSectionItem>
         ))}
+        {senctionsElements[section]}
       </Styled.NavbarSectionContainer>
     );
   });
@@ -41,7 +52,6 @@ export const Navbar: React.FC<NavbarProps> = ({ config, color, position, variant
   return (
     <Styled.AppNavbar position={position} color={color}>
       <Styled.NavbarToolbar variant={variant}>{navSectionElements}</Styled.NavbarToolbar>
-      {protectedRoute && <LogoutButton />}
     </Styled.AppNavbar>
   );
 };

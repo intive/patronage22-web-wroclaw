@@ -30,12 +30,3 @@ export const ROUTES: Record<AppRouteType, string | string[]> = {
   [FeedbackRoute.ExternalUserPresentation]: [`/${FeatureName.ExternalFeedback}`, "/presentation", "/:id"],
   [FeedbackRoute.EditPresentation]: [`/${FeatureName.Feedback}`, "/presentation", "/edit/:id"]
 };
-
-export const PROTECTED_ROUTES = [
-  "/",
-  [`/${FeatureName.Feedback}`, "/dashboard"].join(""),
-  [`/${FeatureName.Feedback}`, "/presentation"].join(""),
-  [`/${FeatureName.Feedback}`, "/presentation", "/add"].join(""),
-  [`/${FeatureName.ExternalFeedback}`, "/presentation", "/:id"].join(""),
-  [`/${FeatureName.Feedback}`, "/presentation", "/edit/:id"].join("")
-];

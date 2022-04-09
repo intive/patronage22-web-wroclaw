@@ -17,7 +17,11 @@ export const PreviousPageButton = () => {
 
   return (
     <Styled.PreviousPageButtonWrapper>
-      <BaseButton type={ButtonType.Icon} onClick={() => navigate(PREVIOUS_PAGE)} sx={Styled.PreviousButtonStyle}>
+      <BaseButton
+        type={ButtonType.Icon}
+        onClick={() => navigate(PREVIOUS_PAGE)}
+        sx={{ fontFamily: "inherit", fontSize: "20px", borderRadius: "8px" }}
+      >
         <Tooltip title={previousPageMessage}>
           <ArrowBackIcon sx={Styled.BackArrowIconStyle} />
         </Tooltip>
