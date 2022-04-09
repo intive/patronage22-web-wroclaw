@@ -1,5 +1,5 @@
 import SearchIcon from "@mui/icons-material/Search";
-import { useState } from "react";
+import { KeyboardEvent, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { BaseButton, ButtonType } from "../base-button";
@@ -16,6 +16,12 @@ export const SearchBar: React.FC = () => {
     setIsOpen(prevState => !prevState);
   };
 
+  const handleEnter = (event: KeyboardEvent) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+    }
+  };
+
   return (
     <>
       <Styled.SearchButtonBox>
@@ -29,7 +35,14 @@ export const SearchBar: React.FC = () => {
           {t("search.searchbarPlaceholder")}
         </BaseButton>
       </Styled.SearchButtonBox>
-      <SearchDrawer open={isOpen} onClose={handleClick} searchKey={searchKey} toResult={allResultsPage} toItem={singleResultPage} />
+      <SearchDrawer
+        open={isOpen}
+        onClose={handleClick}
+        searchKey={searchKey}
+        toResult={allResultsPage}
+        toItem={singleResultPage}
+        onKeyPress={handleEnter}
+      />
     </>
   );
 };

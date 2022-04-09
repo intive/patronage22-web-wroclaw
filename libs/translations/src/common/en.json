@@ -38,7 +38,7 @@
   "password": "Password",
   "save": "Save",
   "search": {
-    "maxCharLength": "Maximum number of characters exceeded: {{charAmount}}",
+    "maxCharLength": "Maximum number of characters entered: {{charAmount}}",
     "minCharLength": "Minimum number of characters required: {{charAmount}}",
     "noResultsInfo": "No results found..."
   },

@@ -38,7 +38,7 @@
   "password": "Hasło",
   "save": "Zapisz",
   "search": {
-    "maxCharLength": "Przekroczono maksymalną ilość znaków: {{charAmount}}",
+    "maxCharLength": "Wpisano maksymalną ilość znaków: {{charAmount}}",
     "minCharLength": "Minimalna wymagana ilość znaków: {{charAmount}}",
     "noResultsInfo": "Brak wyników..."
   },
