@@ -9,4 +9,4 @@ export const PROTECTED_ROUTES = Object.freeze([
   FeedbackRoute.EditPresentation
 ]);
 
-export const PROTECTED_PATHS = [...PROTECTED_ROUTES.values()].map(route => getAppRoute(route));
+export const PROTECTED_PATHS = PROTECTED_ROUTES.map(route => getAppRoute(route));
