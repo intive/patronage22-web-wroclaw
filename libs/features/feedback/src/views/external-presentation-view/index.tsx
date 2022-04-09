@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { Typography } from "@mui/material";
 import { Loader, LoaderType, TranslationNamespace } from "@patronage-web/shared";
-import { ExternalPresentationMock, FeedbackQuestionAnswers, LiveResultsAnswers } from "@patronage-web/shared-data";
+import { externalPresentationMock, FeedbackQuestionAnswers, liveResultsAnswers } from "@patronage-web/shared-data";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
@@ -13,9 +13,7 @@ import { LiveResultsView } from "../live-results";
 
 // TODO remove when getting data from the server will be ready
 const getAnswerById = (id: string) => {
-  const feedbackAnswer = LiveResultsAnswers.find(answer => answer.id === id);
-
-  return feedbackAnswer;
+  return liveResultsAnswers.find(answer => answer.id === id);
 };
 
 const LAST_SUBMITTED_QUESTION_ID_LOCAL_STORAGE_KEY = "lastSubmitedQuestionId";
@@ -24,11 +22,11 @@ export const ExternalPresentationView: React.FC = () => {
   const params = useParams();
   const { t } = useTranslation(TranslationNamespace.Feedback);
 
-  if (ExternalPresentationMock.id !== params.id) {
+  if (externalPresentationMock.id !== params.id) {
     return <Typography variant='h1'>{t("notFoundPresentation")}</Typography>;
   }
 
-  const { questions, timer, startTime, currentTime } = ExternalPresentationMock;
+  const { questions, timer, startTime, currentTime } = externalPresentationMock;
   const questionsCount = questions.length;
   const startQuestionIndex = Math.floor((currentTime - startTime) / timer);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(startQuestionIndex);
@@ -61,7 +59,7 @@ export const ExternalPresentationView: React.FC = () => {
 
   if (questionsCount <= currentQuestionIndex) {
     // TODO replace with getting data from the server
-    const summaryData = LiveResultsAnswers;
+    const summaryData = liveResultsAnswers;
     return <PresentationLiveSummary questions={summaryData} />;
   }
 

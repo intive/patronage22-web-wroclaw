@@ -1,6 +1,6 @@
 import { ExternalPresentation, QuestionType } from "../../types";
 
-export const ExternalPresentationMock: ExternalPresentation = {
+export const externalPresentationMock: ExternalPresentation = {
   id: "91151a02-8e93-11ec-b909-0242ac120002",
   name: "Sample presentation name",
   description: "Sample description",

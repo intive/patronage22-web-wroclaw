@@ -1,6 +1,6 @@
 import { FeedbackQuestionAnswers, QuestionType } from "../../types";
 
-export const LiveResultsAnswers: FeedbackQuestionAnswers[] = [
+export const liveResultsAnswers: FeedbackQuestionAnswers[] = [
   {
     id: "38b451fe-aa14-498e-ad33-4b452a70d21a",
     title: "How many apples?",
