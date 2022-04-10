@@ -25,8 +25,7 @@ interface SearchDrawerProps {
 }
 
 export const SearchDrawer: React.FC<SearchDrawerProps> = ({ open, onClose, searchKey, toResult, toItem, onKeyPress }) => {
-  const { t } = useTranslation(TranslationNamespace.Feedback);
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation(TranslationNamespace.Feedback);
   const navigate = useNavigate();
 
   const [currentItems, setCurrentItems] = useState<Fuse.FuseResult<PresentationSearchItem>[]>([]);
