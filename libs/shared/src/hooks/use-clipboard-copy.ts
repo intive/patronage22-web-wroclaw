@@ -5,14 +5,11 @@ import { TranslationNamespace } from "../types";
 
 export const useClipboardCopy = () => {
   const { t } = useTranslation(TranslationNamespace.Common);
-  const { showSuccess, showFail } = useNotification();
+  const { showSuccess, showError } = useNotification();
 
-  const onSuccess = () => showSuccess(t("linkCopied"));
+  const handleSuccess = () => showSuccess(t("linkCopied"));
 
-  const onFail = () => showFail(t("linkCopyingFailed"));
+  const handleFailure = () => showError(t("linkCopyingFailed"));
 
-  const copyFunction = (text: string) => {
-    navigator.clipboard.writeText(text).then(onSuccess, onFail);
-  };
-  return copyFunction;
+  return (text: string) => navigator.clipboard.writeText(text).then(handleSuccess, handleFailure);
 };

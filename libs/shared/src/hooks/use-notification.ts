@@ -18,7 +18,7 @@ export const useNotification = () => {
       ])
     );
 
-  const showFail = (message: string) =>
+  const showError = (message: string) =>
     dispatch(
       addNotification([
         {
@@ -29,5 +29,5 @@ export const useNotification = () => {
       ])
     );
 
-  return { showSuccess, showFail };
+  return { showSuccess, showError };
 };

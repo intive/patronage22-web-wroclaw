@@ -4,7 +4,6 @@ export * from "./basic-info";
 export * from "./diagram";
 export * from "./footer";
 export * from "./form";
-export * from "./google-login-button";
 export * from "./language-button";
 export * from "./layout";
 export * from "./linked-text";

@@ -1,3 +1,3 @@
 import { authSlice } from "./auth-slice";
 
-export const { loginUser, logoutUser, startLoading, stopLoading } = authSlice.actions;
+export const { login, logout, startAuth, finishAuth } = authSlice.actions;

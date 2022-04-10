@@ -1,15 +1,17 @@
+import { Google } from "@mui/icons-material";
 import {
+  BaseButton,
   BaseRoute,
+  ButtonType,
+  FirebaseAuthProvider,
   FormFieldType,
-  GoogleLoginButton,
   LinkedText,
-  SignInProvider,
-  TranslationNamespace
+  TranslationNamespace,
+  useFirebaseService
 } from "@patronage-web/shared";
 import { useTranslation } from "react-i18next";
 import { string } from "yup";
 
-import { useFirebaseService } from "../../hooks";
 import * as Styled from "./styled";
 
 const MIN_EMAIL_ADDRESS_LENGTH = 16;
@@ -56,11 +58,16 @@ export const Login: React.FC = () => {
           customButtons={{ submit: { condition: true, text: t("login.login"), disabled: true } }}
         />
         <Styled.LoginButtonBox>
-          <GoogleLoginButton
+          <BaseButton
             onClick={() => {
-              signIn(SignInProvider.Google);
+              signIn(FirebaseAuthProvider.Google);
             }}
-          />
+            type={ButtonType.Basic}
+            variant='contained'
+            endIcon={<Google />}
+          >
+            {t("login.loginWith")}
+          </BaseButton>
         </Styled.LoginButtonBox>
       </Styled.LoginFormCard>
     </Styled.LoginContainer>

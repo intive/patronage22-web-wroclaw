@@ -4,54 +4,36 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { SiteSliceName } from "../types";
 
 export interface AuthState {
-  auth: {
-    isLoading: boolean;
-    accessToken: string;
-    user: {
-      login: string;
-      isLogged: boolean;
-    };
-  };
+  isLoading: boolean;
+  accessToken: string;
+  userLogin: string;
 }
 
 const initialState: AuthState = {
-  auth: {
-    isLoading: false,
-    accessToken: "",
-    user: {
-      login: "",
-      isLogged: false
-    }
-  }
+  isLoading: false,
+  accessToken: "",
+  userLogin: ""
 };
 
-export interface LoginState {
-  accessToken: string;
-  user: {
-    login: string;
-  };
-}
+export type LoginState = Omit<AuthState, "isLoading">;
 
 export const authSlice = createSlice({
   name: SiteSliceName.Auth,
   initialState,
   reducers: {
-    loginUser: (state, action: PayloadAction<LoginState>) => {
-      const {
-        accessToken,
-        user: { login }
-      } = action.payload;
+    login: (state, action: PayloadAction<LoginState>) => {
+      const { accessToken, userLogin } = action.payload;
 
-      state.auth = { isLoading: false, accessToken, user: { login, isLogged: true } };
+      return { ...state, isLoading: false, accessToken, userLogin };
     },
-    logoutUser: state => {
-      state.auth = initialState.auth;
+    logout: () => {
+      return initialState;
     },
-    startLoading: state => {
-      state.auth = { ...state.auth, isLoading: true };
+    startAuth: state => {
+      state.isLoading = true;
     },
-    stopLoading: state => {
-      state.auth = { ...state.auth, isLoading: false };
+    finishAuth: state => {
+      state.isLoading = false;
     }
   }
 });

@@ -1,15 +1,12 @@
-import { Loader, LoaderType } from "@patronage-web/shared";
-import { userAuth } from "@patronage-web/shared-data";
+import { Loader, LoaderType, useFirebaseService } from "@patronage-web/shared";
+import { authSelector } from "@patronage-web/shared-data";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
-import { useFirebaseService } from "../../hooks";
-
+// TODO move to proper directory or apply proper logic for protected routes when will be ready
 export const AuthDetector: React.FC = ({ children }) => {
   const { checkAuth } = useFirebaseService();
-  const {
-    auth: { isLoading }
-  } = useSelector(userAuth);
+  const { isLoading } = useSelector(authSelector);
 
   useEffect(() => {
     checkAuth();
