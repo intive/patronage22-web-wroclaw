@@ -1,11 +1,20 @@
 import { common, grey } from "@mui/material/colors";
 import { createTheme } from "@mui/material/styles";
 
+import { robotoFont, robotoFontFamilyName } from "../styles";
 import { ThemeMode } from "../types";
 
 export const commonStyles = createTheme({
   shape: {
     borderRadius: 6
+  },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: `${robotoFont}`
+    }
+  },
+  typography: {
+    fontFamily: [robotoFontFamilyName].join(",")
   }
 });
 
