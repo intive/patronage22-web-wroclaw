@@ -38,12 +38,12 @@ export const Login: React.FC = () => {
             },
             {
               type: FormFieldType.Text,
-              inputType: "password",
-              disabled: true,
               name: "password",
               variant: "filled",
               description: t("password"),
+              disabled: true,
               hideEditIcon: true,
+              inputType: "password",
               appendix: <LinkedText variant='subtitle2' route={BaseRoute.Home} text={t("login.forgotPassword")} />
             }
           ]}
