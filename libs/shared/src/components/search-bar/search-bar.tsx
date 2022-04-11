@@ -12,8 +12,12 @@ export const SearchBar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation();
 
+  const handleFocus = () => {
+    setIsOpen(true);
+  };
+
   const handleClick = () => {
-    setIsOpen(prevState => !prevState);
+    setIsOpen(false);
   };
 
   return (
@@ -21,7 +25,7 @@ export const SearchBar: React.FC = () => {
       <Styled.SearchButtonBox>
         <BaseButton
           type={ButtonType.Basic}
-          onClick={handleClick}
+          onClick={handleFocus}
           startIcon={<SearchIcon />}
           disableRipple
           sx={{ justifyContent: "flex-start" }}
