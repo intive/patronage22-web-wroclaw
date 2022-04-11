@@ -2,8 +2,9 @@ import { Box } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 export const PreviousButtonStyle = {
-  fontSize: "16px",
-  borderRadius: "8px"
+  fontSize: "1rem",
+  borderRadius: "8px",
+  fontFamily: "inherit"
 };
 
 export const BackArrowIconStyle = {
