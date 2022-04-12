@@ -7,14 +7,15 @@ import { useTranslation } from "react-i18next";
 import * as yup from "yup";
 import { ObjectShape } from "yup/lib/object";
 
+import { FormFieldProps } from "../../types";
 import { BaseButton, ButtonType } from "../base-button";
-import { FormField, FormFieldProps } from "./form-field";
+import { FormField } from "./form-field";
 import * as Styled from "./styled";
 
 interface FormButton {
   condition: boolean;
-  text: string;
-  icon: ReactNode;
+  text?: string;
+  icon?: ReactNode;
 }
 
 export interface FormProps {
