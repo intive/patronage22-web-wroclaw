@@ -1,5 +1,14 @@
-import { BaseButton, ButtonType, FeedbackRoute, LocalizedLink, TranslationNamespace, useUrlParams } from "@patronage-web/shared";
+import {
+  BaseButton,
+  ButtonType,
+  BasicPagination,
+  FeedbackRoute,
+  LocalizedLink,
+  TranslationNamespace,
+  useUrlParams
+} from "@patronage-web/shared";
 import { presentationsMock } from "@patronage-web/shared-data";
+import _ from "lodash";
 import { useTranslation } from "react-i18next";
 
 import { Presentation } from "../../types";
@@ -8,21 +17,26 @@ import { PresentationTile } from "./tile";
 
 // TODO - replace with redux action when ready
 const presentationJson = JSON.stringify(presentationsMock);
+
 const presentation: Presentation[] = JSON.parse(presentationJson);
 
 export const Dashboard = () => {
   const { t } = useTranslation(TranslationNamespace.Feedback);
 
-  const url = useUrlParams();
+  const { search, size, page } = useUrlParams().params;
 
-  const { search } = url.params;
-
-  const find = () => {
+  const findPresentations = () => {
     const searchPhrase = search.toLowerCase();
-    return Object.values(presentation).filter(x => x.title.toLowerCase().includes(searchPhrase));
+    return Object.values(presentation).filter(presentation => presentation.title.toLowerCase().includes(searchPhrase));
   };
 
-  const filteredPresentations = search ? find() : presentation;
+  const filteredPresentations = search ? findPresentations() : presentation;
+
+  const itemsCount = filteredPresentations.length;
+
+  const chunk = page - 1;
+
+  const chunkedPresentations = page && itemsCount ? _.chunk(filteredPresentations, size)[chunk] : filteredPresentations;
 
   return (
     <Styled.DashContainer>
@@ -34,13 +48,14 @@ export const Dashboard = () => {
         </LocalizedLink>
       </Styled.NewPresentationButtonContainer>
 
-      <Styled.FeedbackDashboardGrid container columns={{ xs: 4, sm: 8, md: 12 }}>
-        {Object.values(filteredPresentations).map(({ id, isPublic, title, description, status }) => (
+      <Styled.FeedbackDashboardGrid container>
+        {Object.values(chunkedPresentations).map(({ id, isPublic, title, description, status }) => (
           <Styled.TileGrid key={id}>
             <PresentationTile id={id} isPublic={isPublic} title={title} description={description} status={status} />
           </Styled.TileGrid>
         ))}
       </Styled.FeedbackDashboardGrid>
+      <BasicPagination itemsCount={itemsCount} onChange={() => useUrlParams} />
     </Styled.DashContainer>
   );
 };

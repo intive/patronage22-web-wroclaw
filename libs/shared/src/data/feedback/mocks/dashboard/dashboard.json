@@ -54,5 +54,61 @@
     "title": "Presentation 8 React",
     "description": "Description 8",
     "status": "DRAFT"
+  },
+  {
+    "id": "50311cbf-dc02-440a-9704-2d500b6a018e",
+    "isPublic": false,
+    "title": "Presentation 9 JavaScript",
+    "description": "Description 9",
+    "status": "DRAFT"
+  },
+  {
+    "id": "a05db012-0d8c-4f4b-8900-0c13a5737686",
+    "isPublic": true,
+    "title": "Presentation 10 Title",
+    "description": "Description 10",
+    "status": "SHARED"
+  },
+  {
+    "id": "2b8016cd-ea88-46bd-aa18-79286a7c675e",
+    "isPublic": false,
+    "title": "Presentation 11 Title",
+    "description": "Description 11",
+    "status": "DONE"
+  },
+  {
+    "id": "8ba6475e-2388-4c09-bcd0-4541f8a8c261",
+    "isPublic": true,
+    "title": "Presentation 12 Java",
+    "description": "Description 12",
+    "status": "DRAFT"
+  },
+  {
+    "id": "a7719af8-baaf-449f-ad6b-0901323bd629",
+    "isPublic": false,
+    "title": "Presentation 13 React",
+    "description": "Description 13",
+    "status": "SHARED"
+  },
+  {
+    "id": "8cfe452b-4794-4bb9-a5fa-890e185a8ad1",
+    "isPublic": true,
+    "title": "Presentation 14 JavaScript",
+    "description": "Description 14",
+    "status": "SHARED"
+  },
+  {
+    "id": "2112a8f9-dd07-4acd-992b-fc1ad3c06250",
+    "isPublic": true,
+    "title": "Presentation 15 Java",
+    "description": "Description 15",
+    "status": "DONE"
+  },
+  {
+    "id": "59dd33a0-dd0d-4ad5-9719-ff2c70e3083b",
+    "isPublic": true,
+    "title": "Presentation 16 React",
+    "description": "Description 16",
+    "status": "DONE"
   }
 ]
