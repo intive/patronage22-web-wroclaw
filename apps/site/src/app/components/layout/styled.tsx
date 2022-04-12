@@ -1,8 +1,10 @@
+import { Box } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { ContentBox } from "@patronage-web/shared";
 
-export const LayoutWrapper = styled(ContentBox)(({ theme }) => ({
+export const PreviousPageWrapper = styled(Box)(({ theme }) => ({
   justifyContent: "flex-start",
   alignItems: "flex-start",
-  marginTop: theme.spacing(1)
+  marginTop: theme.spacing(1),
+  display: "flex",
+  width: "100%"
 }));

@@ -2,11 +2,9 @@ import { getAppRoute } from "../utils";
 import { BaseRoute, FeedbackRoute } from "./app-routes";
 
 export const PROTECTED_ROUTES = Object.freeze([
-  BaseRoute.Home,
-  FeedbackRoute.Dashboard,
-  FeedbackRoute.Presentation,
-  FeedbackRoute.AddPresentation,
-  FeedbackRoute.EditPresentation
+  getAppRoute(BaseRoute.Home),
+  getAppRoute(FeedbackRoute.Dashboard),
+  getAppRoute(FeedbackRoute.Presentation),
+  getAppRoute(FeedbackRoute.AddPresentation),
+  getAppRoute(FeedbackRoute.EditPresentation)
 ]);
-
-export const PROTECTED_PATHS = PROTECTED_ROUTES.map(route => getAppRoute(route));
