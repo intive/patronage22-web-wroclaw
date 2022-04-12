@@ -8,15 +8,14 @@ import { useParams } from "react-router-dom";
 
 import { PresentationLiveSummary } from "../../components";
 import { getRemainingTime } from "../../utils";
-import { CurrentQuestionView } from "../current-question-view";
-import { LiveResultsView } from "../live-results";
+import { CurrentQuestionView, LiveResultsView } from "../index";
 
 // TODO remove when getting data from the server will be ready
 const getAnswerById = (id: string) => {
   return liveResultsAnswers.find(answer => answer.id === id);
 };
 
-const LAST_SUBMITTED_QUESTION_ID_LOCAL_STORAGE_KEY = "lastSubmitedQuestionId";
+const LAST_SUBMITTED_QUESTION_ID_KEY = "lastSubmitedQuestionId";
 
 export const ExternalPresentationView: React.FC = () => {
   const params = useParams();
@@ -35,7 +34,7 @@ export const ExternalPresentationView: React.FC = () => {
 
   const currentQuestion = questions[currentQuestionIndex];
 
-  const localStorageLastSubmitedQuestionId = localStorage.getItem(LAST_SUBMITTED_QUESTION_ID_LOCAL_STORAGE_KEY);
+  const localStorageLastSubmitedQuestionId = localStorage.getItem(LAST_SUBMITTED_QUESTION_ID_KEY);
   const [isSubmit, setIsSubmit] = useState(currentQuestion && localStorageLastSubmitedQuestionId === currentQuestion.id);
 
   const startQuestionRemainingTime = getRemainingTime(startTime, currentTime, timer);
@@ -47,10 +46,10 @@ export const ExternalPresentationView: React.FC = () => {
     if (timeToElapse !== remainingTime) setTimeToElapse(remainingTime);
   }
 
-  const handleSubmit = (value?: Record<string, string> | undefined) => {
+  const handleSubmit = (value?: Record<string, string>) => {
     // TODO replace with sending current value to the server as a userAnswer
     console.log(value ? value.userAnswer : "");
-    localStorage.setItem(LAST_SUBMITTED_QUESTION_ID_LOCAL_STORAGE_KEY, currentQuestion.id);
+    localStorage.setItem(LAST_SUBMITTED_QUESTION_ID_KEY, currentQuestion.id);
     setIsSubmit(true);
   };
 
