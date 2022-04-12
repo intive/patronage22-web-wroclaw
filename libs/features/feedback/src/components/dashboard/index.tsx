@@ -22,7 +22,7 @@ export const Dashboard = () => {
     return Object.values(presentation).filter(x => x.title.toLowerCase().includes(searchPhrase));
   };
 
-  const searchArr = search ? find() : presentation;
+  const filteredPresentations = search ? find() : presentation;
 
   return (
     <Styled.DashContainer>
@@ -35,7 +35,7 @@ export const Dashboard = () => {
       </Styled.NewPresentationButtonContainer>
 
       <Styled.FeedbackDashboardGrid container columns={{ xs: 4, sm: 8, md: 12 }}>
-        {Object.values(searchArr).map(({ id, isPublic, title, description, status }) => (
+        {Object.values(filteredPresentations).map(({ id, isPublic, title, description, status }) => (
           <Styled.TileGrid key={id}>
             <PresentationTile id={id} isPublic={isPublic} title={title} description={description} status={status} />
           </Styled.TileGrid>
