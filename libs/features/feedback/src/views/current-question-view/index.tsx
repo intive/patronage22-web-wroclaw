@@ -1,5 +1,6 @@
 import { Timer } from "@patronage-web/shared";
 import { ExternalQuestion } from "@patronage-web/shared-data";
+import { useState } from "react";
 
 import { getAnswerField } from "./get-answer-field";
 import * as Styled from "./styled";
@@ -19,6 +20,10 @@ export const CurrentQuestionView: React.FC<CurrentQuestionViewProps> = ({
   onTimeElapsed,
   onSubmit
 }) => {
+  const [isSubmitBtnDisabled, setIsSubmitBtnDisabled] = useState(true);
+
+  const handleChange = () => setIsSubmitBtnDisabled(prev => (prev ? false : prev));
+
   return (
     <Styled.CurrentQuestionViewContainer>
       <Styled.QuestionFormCard>
@@ -28,9 +33,9 @@ export const CurrentQuestionView: React.FC<CurrentQuestionViewProps> = ({
             title={{ text: `${content}`, variant: "h5" }}
             validationSchema={{}}
             fields={getAnswerField(type, answers)}
-            customButtons={{ submit: { condition: true } }}
+            customButtons={{ submit: { condition: true, disabled: isSubmitBtnDisabled } }}
             onSubmit={onSubmit}
-            onChange={() => {}}
+            onChange={handleChange}
           />
         </Styled.QuestionFormWrapper>
       </Styled.QuestionFormCard>

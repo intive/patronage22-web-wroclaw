@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { Typography } from "@mui/material";
 import { Loader, LoaderType, TranslationNamespace } from "@patronage-web/shared";
-import { externalPresentationMock, FeedbackQuestionAnswers, liveResultsAnswers } from "@patronage-web/shared-data";
+import { externalPresentationMock, liveResultsAnswers } from "@patronage-web/shared-data";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
@@ -30,60 +30,55 @@ export const ExternalPresentationView: React.FC = () => {
   const questionsCount = questions.length;
   const startQuestionIndex = Math.floor((currentTime - startTime) / timer);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(startQuestionIndex);
-  const [currentQuestion, setCurrentQuestion] = useState(questions[startQuestionIndex]);
+
+  const isFinished = questionsCount <= currentQuestionIndex;
+
+  const currentQuestion = questions[currentQuestionIndex];
 
   const localStorageLastSubmitedQuestionId = localStorage.getItem(LAST_SUBMITTED_QUESTION_ID_LOCAL_STORAGE_KEY);
   const [isSubmit, setIsSubmit] = useState(currentQuestion && localStorageLastSubmitedQuestionId === currentQuestion.id);
 
-  const [liveResultData, setLiveResultData] = useState<FeedbackQuestionAnswers>();
-
   const startQuestionRemainingTime = getRemainingTime(startTime, currentTime, timer);
   const [timeToElapse, setTimeToElapse] = useState(startQuestionRemainingTime);
 
+  const liveResultData = isSubmit ? getAnswerById(currentQuestion.id) : undefined;
+  if (liveResultData) {
+    const remainingTime = getRemainingTime(startTime, liveResultData.current, timer);
+    if (timeToElapse !== remainingTime) setTimeToElapse(remainingTime);
+  }
+
   const handleSubmit = (value?: Record<string, string> | undefined) => {
-    // TODO add sending current value to the server as a userAnswer
-    // TODO replace with getting data from the server
-    const feedbackData = getAnswerById(currentQuestion.id);
-    setLiveResultData(feedbackData);
-    setTimeToElapse(feedbackData ? getRemainingTime(startTime, feedbackData.current, timer) : 0);
+    // TODO replace with sending current value to the server as a userAnswer
+    console.log(value ? value.userAnswer : "");
     localStorage.setItem(LAST_SUBMITTED_QUESTION_ID_LOCAL_STORAGE_KEY, currentQuestion.id);
     setIsSubmit(true);
   };
 
   const handleTimeElapsed = () => {
     setTimeToElapse(timer);
-    setCurrentQuestion(questions[currentQuestionIndex + 1]);
     setCurrentQuestionIndex(prevState => prevState + 1);
     setIsSubmit(false);
   };
 
-  if (questionsCount <= currentQuestionIndex) {
+  if (isFinished) {
     // TODO replace with getting data from the server
     const summaryData = liveResultsAnswers;
     return <PresentationLiveSummary questions={summaryData} />;
   }
 
-  if (!isSubmit)
-    return (
-      <CurrentQuestionView
-        number={currentQuestionIndex + 1}
-        question={currentQuestion}
-        timeToElapse={timeToElapse}
-        onTimeElapsed={handleTimeElapsed}
-        onSubmit={handleSubmit}
-        key={currentQuestionIndex}
-      />
-    );
+  if (isSubmit && !liveResultData) return <Loader type={LoaderType.Circular} />;
 
-  if (liveResultData)
+  if (isSubmit && liveResultData)
     return <LiveResultsView data={liveResultData} timeToElapse={timeToElapse} onTimeElapsed={handleTimeElapsed} />;
 
-  // TODO replace with getting data from the server
-  const feedbackData = getAnswerById(currentQuestion.id);
-  if (feedbackData) {
-    setLiveResultData(feedbackData);
-    setTimeToElapse(getRemainingTime(startTime, feedbackData.current, timer));
-  }
-
-  return <Loader type={LoaderType.Circular} />;
+  return (
+    <CurrentQuestionView
+      number={currentQuestionIndex + 1}
+      question={currentQuestion}
+      timeToElapse={timeToElapse}
+      onTimeElapsed={handleTimeElapsed}
+      onSubmit={handleSubmit}
+      key={currentQuestionIndex}
+    />
+  );
 };

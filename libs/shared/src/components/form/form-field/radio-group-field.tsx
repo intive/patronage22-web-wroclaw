@@ -2,14 +2,14 @@ import { FormControl, FormControlLabel, Radio, RadioGroup } from "@mui/material"
 
 import { RenderFieldProps } from "./render-field";
 
-interface RadioGroupFieldProps extends Pick<RenderFieldProps, "value" | "onChange"> {
+interface RadioGroupFieldProps extends Pick<RenderFieldProps, "name" | "onChange"> {
   options: RenderFieldProps["values"];
 }
 
-export const RadioGroupField: React.FC<RadioGroupFieldProps> = ({ value, options, onChange }) => {
+export const RadioGroupField: React.FC<RadioGroupFieldProps> = ({ name, options, onChange }) => {
   return (
     <FormControl>
-      <RadioGroup value={value} onChange={onChange}>
+      <RadioGroup name={name} onChange={onChange}>
         {options &&
           options.map((element, index) => {
             const [itemLabel, itemValue] = Object.entries(element)[0];
