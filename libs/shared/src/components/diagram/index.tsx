@@ -8,7 +8,7 @@ import { getDiagramConfig } from "./get-diagram-config";
 
 Chart.register(LinearScale, ChartDataLabels);
 
-interface DiagramProps {
+export interface DiagramProps {
   labels: string[];
   values: number[];
   title: string;

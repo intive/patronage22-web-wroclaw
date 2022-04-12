@@ -19,6 +19,7 @@
   "files": [
     "../../node_modules/@nrwl/react/typings/cssmodule.d.ts",
     "../../node_modules/@nrwl/react/typings/image.d.ts",
-    "../../tools/globals/typings/theme.d.ts"
+    "../../tools/globals/typings/theme.d.ts",
+    "../../tools/globals/typings/qr-code.d.ts"
   ]
 }

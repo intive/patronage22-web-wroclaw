@@ -5,8 +5,13 @@ export enum FeedbackSliceName {
 export interface Question {
   id: string;
   content: string;
-  answers: string[];
-  answer: string;
+  answers: Answer[];
+}
+
+export interface Answer {
+  content: string;
+  count: number;
+  answer: number;
 }
 
 export interface Presentation {
