@@ -1,18 +1,16 @@
 import { DashboardTile } from "@patronage-web/features-feedback";
-import { presentations } from "@patronage-web/shared-data";
+import { presentationsMock } from "@patronage-web/shared-data";
 import { ComponentMeta } from "@storybook/react";
 
-export const DashboardTileStory: React.FC = () => {
-  return (
-    <DashboardTile
-      id={presentations[0].id}
-      isPublic={presentations[0].isPublic}
-      title={presentations[0].title}
-      description={presentations[0].description}
-      status={presentations[0].status}
-    />
-  );
-};
+export const DashboardTileStory: React.FC = () => (
+  <DashboardTile
+    id={presentationsMock[0].id}
+    isPublic={presentationsMock[0].isPublic}
+    title={presentationsMock[0].title}
+    description={presentationsMock[0].description}
+    status={presentationsMock[0].status}
+  />
+);
 
 export default {
   title: "FeedbackDashboardTile",

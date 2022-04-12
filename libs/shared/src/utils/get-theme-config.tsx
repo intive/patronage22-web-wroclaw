@@ -19,6 +19,9 @@ export const dark = createTheme({
   dialog: {
     iconBackgroundColor: grey[600],
     iconColor: grey[200]
+  },
+  dashboard: {
+    dashboardTileBackgroundColor: "#6e6967"
   }
 });
 
@@ -32,5 +35,8 @@ export const light = createTheme({
   dialog: {
     iconBackgroundColor: grey[300],
     iconColor: grey[700]
+  },
+  dashboard: {
+    dashboardTileBackgroundColor: "#bababa"
   }
 });

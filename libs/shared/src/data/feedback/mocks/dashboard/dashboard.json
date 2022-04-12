@@ -2,14 +2,14 @@
   {
     "id": "fe6507a0-381a-402b-9513-cd232b0a7a23",
     "isPublic": true,
-    "title": "Presentation 1 Title",
+    "title": "Presentation 1 Java",
     "description": "Description 1",
     "status": "DONE"
   },
   {
     "id": "79ca8de9-2a87-41a3-b872-b97b50afd7b2",
     "isPublic": false,
-    "title": "Presentation 2 Title",
+    "title": "Presentation 2 JavaScript",
     "description": "Description 2",
     "status": "DRAFT"
   },
@@ -23,35 +23,35 @@
   {
     "id": "f2930528-7472-44e4-b815-d34ed09e1193",
     "isPublic": false,
-    "title": "Presentation 4 Title",
+    "title": "Presentation 4 React",
     "description": "Description 4",
     "status": "DONE"
   },
   {
     "id": "a8fabad5-2f5b-433a-a2e8-ee94a56e306a",
     "isPublic": true,
-    "title": "Presentation 5 Title",
+    "title": "Presentation 5 Java",
     "description": "Description 5",
     "status": "DRAFT"
   },
   {
     "id": "e50fdb9c-a052-4edf-b033-d4d3302a795e",
     "isPublic": false,
-    "title": "Presentation 6 Title",
+    "title": "Presentation 6 React",
     "description": "Description 6",
     "status": "SHARED"
   },
   {
     "id": "acfc1574-850d-4d7d-b8bd-b5db61ffb701",
     "isPublic": true,
-    "title": "Presentation 7 Title",
+    "title": "Presentation 7 JavaScript",
     "description": "Description 7",
     "status": "DRAFT"
   },
   {
     "id": "4ac276dc-d5dc-4e5f-aab2-f88cea63d1e2",
     "isPublic": true,
-    "title": "Presentation 8 Title",
+    "title": "Presentation 8 React",
     "description": "Description 8",
     "status": "DRAFT"
   }

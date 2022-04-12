@@ -8,11 +8,12 @@ export const PresentationTileContainer = styled(Box)(({ theme }) => ({
   margin: theme.spacing(1)
 }));
 
-export const PresentationCard = styled(Card)<DashboardCardProps>(props => ({
-  border: props.isPublic ? `${props.theme.spacing(0.25)} solid blue` : "",
+export const PresentationCard = styled(Card)<DashboardCardProps>(({ isPublic, theme }) => ({
+  border: isPublic ? `${theme.spacing(0.25)} solid blue` : "",
+  backgroundColor: theme.dashboard.dashboardTileBackgroundColor,
 
   "&:hover": {
-    backgroundColor: "rgba(240, 240, 240, 0.2)",
+    backgroundColor: "rgba(120, 120, 120, 0.2)",
     transform: "scale(1.1)"
   }
 }));
@@ -38,6 +39,6 @@ export const PresentationTileButtonContainer = styled(CardActions)(({ theme }) =
   }
 }));
 
-export const PresentationTileButtonBox = styled(Box)(({ theme }) => ({
+export const PresentationTileButtonBox = styled(Box)(() => ({
   display: "flex"
 }));

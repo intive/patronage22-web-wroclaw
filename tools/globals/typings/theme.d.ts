@@ -6,11 +6,17 @@ declare module "@mui/material/styles" {
       iconBackgroundColor: string;
       iconColor: string;
     };
+    dashboard: {
+      dashboardTileBackgroundColor?: string;
+    };
   }
   export interface ThemeOptions {
     dialog?: {
       iconBackgroundColor?: string;
       iconColor?: string;
+    };
+    dashboard?: {
+      dashboardTileBackgroundColor?: string;
     };
   }
 }

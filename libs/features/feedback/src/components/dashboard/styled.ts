@@ -27,6 +27,14 @@ export const TileGrid = styled(Box)(({ theme }) => ({
   }
 }));
 
+export const DashContainer = styled(Box)(() => ({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  width: "100%"
+}));
+
 export const NewPresentationButtonContainer = styled(Box)(({ theme }) => ({
-  padding: theme.spacing(2)
+  padding: theme.spacing(2),
+  width: "33%"
 }));

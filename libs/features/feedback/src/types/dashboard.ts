@@ -5,6 +5,7 @@ export enum PresentationStatus {
   Draft = "DRAFT",
   Shared = "SHARED"
 }
+
 export interface Presentation {
   id: string;
   isPublic: boolean;
@@ -12,6 +13,7 @@ export interface Presentation {
   description?: string;
   status: PresentationStatus;
 }
+
 export interface DashboardCardProps extends CardProps {
   isPublic: boolean;
 }
