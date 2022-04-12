@@ -38,13 +38,16 @@ export const SearchInput: React.FC<SearchInputProps> = ({ onChange, autoFocus, o
                 <SearchIcon />
               </InputAdornment>
             ),
-            inputProps: { maxLength: SEARCH_CONFIG.maxLength, autoComplete: "off" }
+            inputProps: { autoComplete: "off", maxLength: SEARCH_CONFIG.maxLength }
           },
           autoFocus
         }
       ]}
       validationSchema={{
-        searchInput: string().max(maxInputLength, t("search.maxCharLength", { charAmount: SEARCH_CONFIG.maxLength }))
+        searchInput: string()
+          .max(maxInputLength, t("search.maxCharLength", { charAmount: SEARCH_CONFIG.maxLength }))
+          .min(SEARCH_CONFIG.minMatch, t("search.minCharLength", { charAmount: SEARCH_CONFIG.minMatch }))
+          .ensure()
       }}
     />
   );
