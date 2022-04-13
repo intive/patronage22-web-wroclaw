@@ -3,7 +3,9 @@ import i18next from "i18next";
 import { string } from "yup";
 
 import { QUESTION_CONFIG } from "../../configs";
-import { QuestionType } from ".";
+// TODO - replace with import from shared/data/feedback/types when
+// "P2022-413 Praticipate in presentation" is ready
+import { QuestionType } from "./index";
 
 export const translateQuestionCards = (
   setQuestions: React.Dispatch<React.SetStateAction<FormProps[]>>,

@@ -55,6 +55,7 @@ export const NewPresentationView: React.FC = () => {
         .trim()
         .required(t("question.missingQuestionError"))
         .max(QUESTION_CONFIG.maxLength, t("question.maxCharLength", { charAmount: QUESTION_CONFIG.maxLength }))
+        .ensure()
     }
   };
 

@@ -127,29 +127,27 @@ export const Form: React.FC<FormProps> = ({
     }
   ];
 
-  const renderDynamicFields = (name: string, addText: string, elements: FormFieldProps[], maxAmount: number) => {
-    return (
-      <>
-        {fieldArray.map((dynamicField, dynamicFieldIndex) =>
-          elements.map(field => (
-            <Box sx={{ display: "flex" }} key={dynamicField.id}>
-              <FormField key={dynamicField.id} {...field} name={`dynamic[${dynamicFieldIndex}].${field.name}`} type={field.type} />
-              <Box>
-                <BaseButton key='remove-btn' type={ButtonType.Icon} onClick={() => remove(dynamicFieldIndex)}>
-                  <Delete />
-                </BaseButton>
-              </Box>
+  const renderDynamicFields = (name: string, addText: string, elements: FormFieldProps[], maxAmount: number) => (
+    <>
+      {fieldArray.map((dynamicField, dynamicFieldIndex) =>
+        elements.map(field => (
+          <Box sx={{ display: "flex" }} key={dynamicField.id}>
+            <FormField key={dynamicField.id} {...field} name={`dynamic[${dynamicFieldIndex}].${field.name}`} type={field.type} />
+            <Box>
+              <BaseButton key='remove-btn' type={ButtonType.Icon} onClick={() => remove(dynamicFieldIndex)}>
+                <Delete />
+              </BaseButton>
             </Box>
-          ))
-        )}
-        {addText !== "" && fieldArray.length < maxAmount && (
-          <BaseButton key='add-btn' type={ButtonType.Basic} onClick={() => append({ name })}>
-            {addText}
-          </BaseButton>
-        )}
-      </>
-    );
-  };
+          </Box>
+        ))
+      )}
+      {addText !== "" && fieldArray.length < maxAmount && (
+        <BaseButton key='add-btn' type={ButtonType.Basic} onClick={() => append({ name })}>
+          {addText}
+        </BaseButton>
+      )}
+    </>
+  );
 
   const renderFields = () => {
     if (fields) {
