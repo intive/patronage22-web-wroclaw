@@ -27,6 +27,7 @@ export const Dashboard = () => {
 
   const findPresentations = () => {
     const searchPhrase = search.toLowerCase();
+
     return Object.values(presentation).filter(presentation => presentation.title.toLowerCase().includes(searchPhrase));
   };
 
