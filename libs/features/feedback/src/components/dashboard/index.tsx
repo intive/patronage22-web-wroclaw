@@ -25,13 +25,13 @@ export const Dashboard = () => {
 
   const { search, size, page } = useUrlParams().params;
 
-  const findPresentations = () => {
+  const handleFindPresentations = () => {
     const searchPhrase = search.toLowerCase();
 
     return Object.values(presentation).filter(presentation => presentation.title.toLowerCase().includes(searchPhrase));
   };
 
-  const filteredPresentations = search ? findPresentations() : presentation;
+  const filteredPresentations = search ? handleFindPresentations() : presentation;
 
   const itemsCount = filteredPresentations.length;
 
@@ -40,7 +40,7 @@ export const Dashboard = () => {
   const chunkedPresentations = page && itemsCount ? _.chunk(filteredPresentations, size)[chunk] : filteredPresentations;
 
   return (
-    <Styled.DashContainer>
+    <Styled.FeedbackDashboardContainer>
       <Styled.NewPresentationButtonContainer>
         <LocalizedLink to={FeedbackRoute.AddPresentation}>
           <BaseButton type={ButtonType.Basic} variant='contained'>
@@ -51,12 +51,12 @@ export const Dashboard = () => {
 
       <Styled.FeedbackDashboardGrid container>
         {Object.values(chunkedPresentations).map(({ id, isPublic, title, description, status }) => (
-          <Styled.TileGrid key={id}>
+          <Styled.FeedbackTileGrid key={id}>
             <PresentationTile id={id} isPublic={isPublic} title={title} description={description} status={status} />
-          </Styled.TileGrid>
+          </Styled.FeedbackTileGrid>
         ))}
       </Styled.FeedbackDashboardGrid>
       <BasicPagination itemsCount={itemsCount} onChange={() => useUrlParams} />
-    </Styled.DashContainer>
+    </Styled.FeedbackDashboardContainer>
   );
 };

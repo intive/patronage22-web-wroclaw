@@ -5,7 +5,7 @@ export const FeedbackDashboardGrid = styled(Grid)(({ theme }) => ({
   padding: theme.spacing(2)
 }));
 
-export const TileGrid = styled(Box)(({ theme }) => ({
+export const FeedbackTileGrid = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up("xs")]: {
     width: "100%"
   },
@@ -27,7 +27,7 @@ export const TileGrid = styled(Box)(({ theme }) => ({
   }
 }));
 
-export const DashContainer = styled(Box)(() => ({
+export const FeedbackDashboardContainer = styled(Box)(() => ({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
