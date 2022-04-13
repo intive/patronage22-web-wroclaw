@@ -7,18 +7,13 @@ import { number, string } from "yup";
 import { QUESTION_CONFIG } from "../../configs";
 import * as Styled from "./styled";
 
-export const BasicPresentationInfo: React.FC = () => {
+export interface BasicPresentationInfoProps {
+  onSave: () => void;
+  onShare: () => void;
+}
+
+export const BasicPresentationInfo: React.FC<BasicPresentationInfoProps> = ({ onSave, onShare }) => {
   const { t } = useTranslation(TranslationNamespace.Feedback);
-
-  // TODO - replace with proper share action when ready
-  const handleShare = () => {
-    console.log("share");
-  };
-
-  // TODO - replace with proper save action when ready
-  const handleSave = () => {
-    console.log("save");
-  };
 
   // TODO - replace with proper delete action when ready
   const handleDelete = () => {
@@ -43,13 +38,13 @@ export const BasicPresentationInfo: React.FC = () => {
           {
             type: ButtonType.Icon,
             children: <Share />,
-            onClick: handleShare
+            onClick: onShare
           },
           {
             type: ButtonType.Basic,
             variant: "outlined",
             children: t("save"),
-            onClick: handleSave
+            onClick: onSave
           },
           {
             type: ButtonType.Basic,

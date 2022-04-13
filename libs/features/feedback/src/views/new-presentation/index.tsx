@@ -1,10 +1,20 @@
-import { BaseButton, ButtonType, FormFieldType, FormProps, TranslationNamespace } from "@patronage-web/shared";
+import {
+  BaseButton,
+  ButtonType,
+  createPath,
+  FeedbackRoute,
+  FormFieldType,
+  FormProps,
+  TranslationNamespace
+} from "@patronage-web/shared";
+import { Presentation, useAddPresentationMutation } from "@patronage-web/shared-data";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { string } from "yup";
 
-import { BasicPresentationInfo, NewQuestionCard } from "../../components";
+import { BasicPresentationInfo, NewQuestionCard, ShareDialog } from "../../components";
 import { QUESTION_CONFIG } from "../../configs";
 import * as Styled from "./styled";
 import { translateQuestionCards } from "./translate-question-cards";
@@ -18,6 +28,9 @@ export enum QuestionType {
 
 export const NewPresentationView: React.FC = () => {
   const { i18n, t } = useTranslation(TranslationNamespace.Feedback);
+  const navigate = useNavigate();
+  const [fetchAddPresentation] = useAddPresentationMutation();
+  const [openDialog, setOpenDialog] = useState(false);
 
   const QuestionTypeOptions = [
     { [t("question.questionTypeOpen")]: QuestionType.Open },
@@ -76,9 +89,31 @@ export const NewPresentationView: React.FC = () => {
     }
   };
 
+  const handleSave = async () => {
+    // TODO remove line below when component will provide proper presentation according to Presentation interface
+    const presentation = {} as Presentation;
+    try {
+      await fetchAddPresentation(presentation);
+      navigate(createPath({ route: FeedbackRoute.Dashboard, language: i18n.language }));
+      // TODO add success notification when useNotification hook will be applied
+    } catch (error) {
+      // TODO add fail notification when useNotification hook will be applied
+    }
+  };
+
+  const handleOpenDialog = () => {
+    setOpenDialog(true);
+  };
+
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+  };
+
   return (
     <Styled.NewPresentationWrapper>
-      <BasicPresentationInfo />
+      {/* TODO - replace id and title with a proper values when will be ready */}
+      <ShareDialog onClose={handleCloseDialog} open={openDialog} id='sample-id' title='sample-title' />
+      <BasicPresentationInfo onSave={handleSave} onShare={handleOpenDialog} />
       {questions.map((questionForm, questionFormIndex) => (
         <NewQuestionCard
           key={`question-card-${questionForm.id}`}
