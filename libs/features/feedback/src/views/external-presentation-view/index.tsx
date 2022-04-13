@@ -11,9 +11,7 @@ import { getRemainingTime } from "../../utils";
 import { CurrentQuestionView, LiveResultsView } from "../index";
 
 // TODO remove when getting data from the server will be ready
-const getAnswerById = (id: string) => {
-  return liveResultsAnswers.find(answer => answer.id === id);
-};
+const getAnswerById = (id: string) => liveResultsAnswers.find(answer => answer.id === id);
 
 const LAST_SUBMITTED_QUESTION_ID_KEY = "lastSubmitedQuestionId";
 

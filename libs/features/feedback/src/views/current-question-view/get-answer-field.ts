@@ -1,13 +1,12 @@
 import { FormFieldType } from "@patronage-web/shared";
 import { QuestionType } from "@patronage-web/shared-data";
 
-const reduceAnswers = (answers: string[]) => {
-  return answers.reduce<Record<string, string>[]>((acc, answer) => {
+const reduceAnswers = (answers: string[]) =>
+  answers.reduce<Record<string, string>[]>((acc, answer) => {
     acc.push({ [`${answer}`]: answer });
 
     return acc;
   }, []);
-};
 
 export const getAnswerField = (type: QuestionType, answers?: string[]) => {
   const values = answers ? reduceAnswers(answers) : [];
