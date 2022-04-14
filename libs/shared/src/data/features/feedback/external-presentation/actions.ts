@@ -1,4 +1,4 @@
 import { externalPresentationSlice } from "./external-presentation-slice";
 
-export const { setCurrentQuestionIndex, setQuestionSubmitted, setTimeToElapse, goToNextQuestion } =
+export const { countStartQuestionIndex, setQuestionSubmitted, setTimeToElapse, countTimeToElapse, goToNextQuestion } =
   externalPresentationSlice.actions;

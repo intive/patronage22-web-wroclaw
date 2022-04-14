@@ -3,6 +3,7 @@ export * from "./create-path";
 export * from "./filter-by-keys";
 export * from "./get-app-route";
 export * from "./get-domain-name";
+export * from "./get-remaining-time";
 export * from "./get-theme-config";
 export * from "./lang-fns";
 export * from "./load-i18n";
