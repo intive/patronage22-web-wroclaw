@@ -2,15 +2,13 @@
 import { Typography } from "@mui/material";
 import { Loader, LoaderType, TranslationNamespace } from "@patronage-web/shared";
 import {
-  countStartQuestionIndex,
-  countTimeToElapse,
+  calculateStartQuestionIndex,
+  calculateTimeToElapse,
   externalPresentationMock,
   goToNextQuestion,
   liveResultsAnswers,
-  selectCurrentQuestionIndex,
-  selectIsQuestionSubmit,
-  selectTimeToElapse,
-  setQuestionSubmitted
+  selectExternalPresentation,
+  submitQuestion
 } from "@patronage-web/shared-data";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
@@ -37,22 +35,21 @@ export const ExternalPresentationView: React.FC = () => {
   const { questions, timer, startTime, currentTime } = externalPresentationMock;
   const questionsCount = questions.length;
 
-  const currentQuestionIndex = useSelector(selectCurrentQuestionIndex);
-  if (currentQuestionIndex === -1) dispatch(countStartQuestionIndex({ startTime, currentTime, timer }));
+  const { currentQuestionIndex, isQuestionSubmit: isSubmit, timeToElapse } = useSelector(selectExternalPresentation);
+
+  if (currentQuestionIndex === -1) dispatch(calculateStartQuestionIndex({ startTime, currentTime, timer }));
 
   const isFinished = questionsCount <= currentQuestionIndex;
   const currentQuestion = questions[currentQuestionIndex];
-  const isSubmit = useSelector(selectIsQuestionSubmit);
-  const timeToElapse = useSelector(selectTimeToElapse);
 
   const liveResultData = isSubmit ? getAnswerById(currentQuestion.id) : undefined;
-  if (liveResultData) dispatch(countTimeToElapse({ startTime, currentTime: liveResultData.current, timer }));
+  if (liveResultData) dispatch(calculateTimeToElapse({ startTime, currentTime: liveResultData.current, timer }));
 
   const handleSubmit = (value?: Record<string, string>) => {
     // TODO replace with sending current value to the server as a userAnswer
     console.log(value ? value.userAnswer : "");
     localStorage.setItem(LAST_SUBMITTED_QUESTION_ID_KEY, currentQuestion.id);
-    dispatch(setQuestionSubmitted());
+    dispatch(submitQuestion());
   };
 
   const handleTimeElapsed = () => {
@@ -61,8 +58,10 @@ export const ExternalPresentationView: React.FC = () => {
 
   useEffect(() => {
     const localStorageLastSubmitedQuestionId = localStorage.getItem(LAST_SUBMITTED_QUESTION_ID_KEY);
-    if (currentQuestion && localStorageLastSubmitedQuestionId === currentQuestion.id) dispatch(setQuestionSubmitted());
-    dispatch(countTimeToElapse({ startTime, currentTime, timer }));
+    if (currentQuestion && localStorageLastSubmitedQuestionId === currentQuestion.id) {
+      dispatch(submitQuestion());
+    }
+    dispatch(calculateTimeToElapse({ startTime, currentTime, timer }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -70,13 +69,17 @@ export const ExternalPresentationView: React.FC = () => {
     // TODO replace with getting data from the server
     localStorage.removeItem(LAST_SUBMITTED_QUESTION_ID_KEY);
     const summaryData = liveResultsAnswers;
+
     return <PresentationLiveSummary questions={summaryData} />;
   }
 
-  if ((isSubmit && !liveResultData) || !timeToElapse) return <Loader type={LoaderType.Circular} />;
+  if ((isSubmit && !liveResultData) || !timeToElapse) {
+    return <Loader type={LoaderType.Circular} />;
+  }
 
-  if (isSubmit && liveResultData)
+  if (isSubmit && liveResultData) {
     return <LiveResultsView data={liveResultData} timeToElapse={timeToElapse} onTimeElapsed={handleTimeElapsed} />;
+  }
 
   return (
     <CurrentQuestionView

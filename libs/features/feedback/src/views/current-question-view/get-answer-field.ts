@@ -8,6 +8,8 @@ const reduceAnswers = (answers: string[]) =>
     return acc;
   }, []);
 
+const name = "userAnswer";
+
 export const getAnswerField = (type: QuestionType, answers?: string[]) => {
   const values = answers ? reduceAnswers(answers) : [];
 
@@ -15,7 +17,7 @@ export const getAnswerField = (type: QuestionType, answers?: string[]) => {
     [QuestionType.Closed]: [
       {
         type: FormFieldType.RadioGroup,
-        name: "userAnswer",
+        name,
         values,
         hideEditIcon: true
       }
@@ -23,7 +25,7 @@ export const getAnswerField = (type: QuestionType, answers?: string[]) => {
     [QuestionType.Open]: [
       {
         type: FormFieldType.Textarea,
-        name: "userAnswer",
+        name,
         hideEditIcon: true
       }
     ]

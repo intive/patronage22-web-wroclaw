@@ -20,17 +20,16 @@ export const externalPresentationSlice = createSlice({
   name: FeedbackSliceName.ExternalPresentation,
   initialState,
   reducers: {
-    countStartQuestionIndex: (state, action: PayloadAction<{ startTime: number; currentTime: number; timer: number }>) => {
+    calculateStartQuestionIndex: (state, action: PayloadAction<{ startTime: number; currentTime: number; timer: number }>) => {
       const startQuestionIndex = Math.floor((action.payload.currentTime - action.payload.startTime) / action.payload.timer);
-      if (startQuestionIndex > state.currentQuestionIndex) state.currentQuestionIndex = startQuestionIndex;
+      if (startQuestionIndex > state.currentQuestionIndex) {
+        state.currentQuestionIndex = startQuestionIndex;
+      }
     },
-    setQuestionSubmitted: state => {
+    submitQuestion: state => {
       state.isQuestionSubmit = true;
     },
-    setTimeToElapse: (state, action: PayloadAction<number>) => {
-      state.timeToElapse = action.payload;
-    },
-    countTimeToElapse: (state, action: PayloadAction<{ startTime: number; currentTime: number; timer: number }>) => {
+    calculateTimeToElapse: (state, action: PayloadAction<{ startTime: number; currentTime: number; timer: number }>) => {
       state.timeToElapse = getRemainingTime(action.payload.startTime, action.payload.currentTime, action.payload.timer);
     },
     goToNextQuestion: (state, action: PayloadAction<number>) => {
@@ -41,4 +40,4 @@ export const externalPresentationSlice = createSlice({
   }
 });
 
-export const externalPresenationReducer = externalPresentationSlice.reducer;
+export const externalPresentationReducer = externalPresentationSlice.reducer;
