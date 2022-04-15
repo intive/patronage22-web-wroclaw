@@ -3,6 +3,7 @@ export * from "./common";
 export * from "./diagram-type";
 export * from "./form-field-type";
 export * from "./http-status";
+export * from "./key-code";
 export * from "./notification-type";
 export * from "./query-params";
 export * from "./select-types";
