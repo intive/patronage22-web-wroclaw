@@ -164,6 +164,7 @@
     "url-loader": "^3.0.0"
   },
   "resolutions": {
-    "mini-css-extract-plugin": "2.4.5"
+    "mini-css-extract-plugin": "2.4.5",
+    "@types/react": "^17.0.0"
   }
 }
