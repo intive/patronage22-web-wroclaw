@@ -12,11 +12,11 @@ export const SearchBar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation();
 
-  const handleFocus = () => {
+  const handleSearchBtnClick = () => {
     setIsOpen(true);
   };
 
-  const handleClick = () => {
+  const handleSearchDrawerClick = () => {
     setIsOpen(false);
   };
 
@@ -25,7 +25,7 @@ export const SearchBar: React.FC = () => {
       <Styled.SearchButtonBox>
         <BaseButton
           type={ButtonType.Basic}
-          onClick={handleFocus}
+          onClick={handleSearchBtnClick}
           startIcon={<SearchIcon />}
           disableRipple
           sx={{ justifyContent: "flex-start" }}
@@ -33,7 +33,13 @@ export const SearchBar: React.FC = () => {
           {t("search.searchbarPlaceholder")}
         </BaseButton>
       </Styled.SearchButtonBox>
-      <SearchDrawer open={isOpen} onClose={handleClick} searchKey={searchKey} toResult={allResultsPage} toItem={singleResultPage} />
+      <SearchDrawer
+        open={isOpen}
+        onClose={handleSearchDrawerClick}
+        searchKey={searchKey}
+        toResult={allResultsPage}
+        toItem={singleResultPage}
+      />
     </>
   );
 };
