@@ -24,7 +24,7 @@ export const useGoogleSignIn = () => {
       }
 
       dispatch(login({ accessToken, userLogin: data.user.email }));
-    } catch (error) {
+    } catch {
       showError(t("login.loginFailed"));
     }
   };

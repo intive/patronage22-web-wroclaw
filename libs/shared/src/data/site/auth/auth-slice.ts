@@ -24,7 +24,7 @@ export const authSlice = createSlice({
     login: (state, action: PayloadAction<LoginState>) => {
       const { accessToken, userLogin } = action.payload;
 
-      return { ...state, isLoading: false, accessToken, userLogin };
+      return { isLoading: false, accessToken, userLogin };
     },
     logout: () => {
       return initialState;

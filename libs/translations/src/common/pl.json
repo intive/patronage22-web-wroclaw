@@ -18,17 +18,18 @@
   "linkCopied": "Skopiowano link",
   "linkCopyingFailed": "Kopiowanie linku nie powiodło się!",
   "login": {
+    "authFailed": "Nie można potwierdzić Twojej tożsamości, zaloguj się ponownie",
     "emailInvalidMessage": "Nieprawidłowy adres e-mail",
     "emailRequiredMessage": "Podaj swój adres e-mail 'example@gmail.com'",
     "forgotPassword": "Zapomniałeś/aś hasła?",
     "login": "Zaloguj się",
     "loginFailed": "Logowanie nie powiodło się",
     "loginWith": "Zaloguj się przez",
+    "logoutFail": "Wylogowanie nie powiodło się",
     "subtitle": "Zaloguj się do swojego konta",
     "title": "Witamy w aplikacji Patronage",
     "tooShortMessage": "Wpisz minimum 16 znaków"
   },
-  "logoutFail": "Wylogowanie nie powiodło się",
   "noItems": "Brak elementów do wyświetlenia",
   "notFoundPage": {
     "title": "Przepraszamy, strona, której szukasz nie istnieje"

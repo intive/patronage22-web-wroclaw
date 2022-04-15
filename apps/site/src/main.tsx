@@ -7,19 +7,19 @@ import * as ReactDOM from "react-dom";
 import { Provider as StoreProvider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 
-import { AuthDetector, Layout, Routing } from "./app";
+import { AuthGateway, Layout, Routing } from "./app";
 
 ReactDOM.render(
   <StrictMode>
     <StoreProvider store={store}>
       <ThemeProvider>
         <BrowserRouter>
-          <AuthDetector>
+          <AuthGateway>
             <Layout>
               <Routing />
               <Notifications />
             </Layout>
-          </AuthDetector>
+          </AuthGateway>
         </BrowserRouter>
       </ThemeProvider>
     </StoreProvider>

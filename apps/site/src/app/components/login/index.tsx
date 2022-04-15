@@ -14,11 +14,13 @@ import { string } from "yup";
 
 import * as Styled from "./styled";
 
-const MIN_EMAIL_ADDRESS_LENGTH = 16;
+const EMAIL_ADDRESS_MIN_LENGTH = 16;
 
 export const Login: React.FC = () => {
   const { t } = useTranslation(TranslationNamespace.Common);
   const { signIn } = useFirebaseService();
+
+  const handleGoogleSignIn = () => signIn(FirebaseAuthProvider.Google);
 
   return (
     <Styled.LoginContainer>
@@ -52,20 +54,13 @@ export const Login: React.FC = () => {
               .trim()
               .required(t("login.emailRequiredMessage"))
               .email(t("login.emailInvalidMessage"))
-              .min(MIN_EMAIL_ADDRESS_LENGTH, t("login.tooShortMessage")),
+              .min(EMAIL_ADDRESS_MIN_LENGTH, t("login.tooShortMessage")),
             password: string().trim()
           }}
           customButtons={{ submit: { condition: true, text: t("login.login"), disabled: true } }}
         />
         <Styled.LoginButtonBox>
-          <BaseButton
-            onClick={() => {
-              signIn(FirebaseAuthProvider.Google);
-            }}
-            type={ButtonType.Basic}
-            variant='contained'
-            endIcon={<Google />}
-          >
+          <BaseButton onClick={handleGoogleSignIn} type={ButtonType.Basic} variant='contained' endIcon={<Google />}>
             {t("login.loginWith")}
           </BaseButton>
         </Styled.LoginButtonBox>

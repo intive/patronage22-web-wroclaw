@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 // TODO move to proper directory or apply proper logic for protected routes when will be ready
-export const AuthDetector: React.FC = ({ children }) => {
+export const AuthGateway: React.FC = ({ children }) => {
   const { checkAuth } = useFirebaseService();
   const { isLoading } = useSelector(authSelector);
 
