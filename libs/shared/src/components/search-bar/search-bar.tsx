@@ -8,6 +8,10 @@ import { SearchDrawer } from "./search-drawer";
 import * as Styled from "./styled";
 import { useSearchConfig } from "./use-search-config";
 
+enum KeyCode {
+  Enter = "Enter"
+}
+
 export const SearchBar: React.FC = () => {
   const { searchKey, allResultsPage, singleResultPage } = useSearchConfig();
   const [isOpen, setIsOpen] = useState(false);
@@ -17,8 +21,8 @@ export const SearchBar: React.FC = () => {
     setIsOpen(prevState => !prevState);
   };
 
-  const handleEnterKey = (event: KeyboardEvent) => {
-    if (event.key === "Enter") {
+  const handleKeyPress = (event: KeyboardEvent) => {
+    if (event.key === KeyCode.Enter) {
       event.preventDefault();
     }
   };
@@ -42,7 +46,7 @@ export const SearchBar: React.FC = () => {
         searchKey={searchKey}
         toResult={allResultsPage}
         toItem={singleResultPage}
-        onKeyPress={handleEnterKey}
+        onKeyPress={handleKeyPress}
       />
     </>
   );
