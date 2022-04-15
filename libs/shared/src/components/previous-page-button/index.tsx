@@ -16,11 +16,13 @@ export const PreviousPageButton = () => {
   const previousPageMessage = t("goToPage.previous");
   const theme = useTheme();
 
+  const handleClick = () => navigate(PREVIOUS_PAGE);
+
   return (
     <Styled.PreviousPageButtonWrapper>
       <BaseButton
         type={ButtonType.Icon}
-        onClick={() => navigate(PREVIOUS_PAGE)}
+        onClick={handleClick}
         sx={{ fontFamily: "inherit", fontSize: theme.spacing(2.2), borderRadius: theme.spacing(1), pr: theme.spacing(1) }}
       >
         <Tooltip title={previousPageMessage}>
