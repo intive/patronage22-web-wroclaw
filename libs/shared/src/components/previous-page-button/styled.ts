@@ -1,10 +1,14 @@
 import { Box } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
-export const BackArrowIcon = {
-  width: "20px",
-  marginRight: "5px"
-};
+export const BackArrowIconWrapper = styled(Box)(({ theme }) => ({
+  marginRight: theme.spacing(1),
+  display: "flex",
+
+  "& svg": {
+    width: theme.spacing(2.5)
+  }
+}));
 
 export const PreviousPageButtonWrapper = styled(Box)(({ theme }) => ({
   display: "block",
@@ -13,9 +17,3 @@ export const PreviousPageButtonWrapper = styled(Box)(({ theme }) => ({
     display: "none"
   }
 }));
-
-export const PreviousPageButton = {
-  fontFamily: "inherit",
-  fontSize: "20px",
-  borderRadius: "8px"
-};

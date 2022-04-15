@@ -24,17 +24,21 @@ export interface NavbarProps extends Pick<AppBarProps, "color" | "position">, Pi
 
 export const Navbar: React.FC<NavbarProps> = ({ config, color, position, variant = "dense" }) => {
   const location = useLocation();
-  const protectedRoute = isProtectedRoute(location);
+  const isSecuredRoute = isProtectedRoute(location);
 
-  const sectionsElements: Record<NavbarSectionPosition, JSX.Element[]> = {
-    [NavbarSectionPosition.Start]: [],
-    [NavbarSectionPosition.Center]: [],
-    [NavbarSectionPosition.End]: []
+  const setAdditionalElements = (section: NavbarSectionPosition) => {
+    const elements: Record<NavbarSectionPosition, JSX.Element[]> = {
+      [NavbarSectionPosition.Start]: [],
+      [NavbarSectionPosition.Center]: [],
+      [NavbarSectionPosition.End]: []
+    };
+
+    if (isSecuredRoute) {
+      elements[NavbarSectionPosition.End].push(<LogoutButton key='logout-button' />);
+    }
+
+    return elements[section];
   };
-
-  if (protectedRoute) {
-    sectionsElements[NavbarSectionPosition.End].push(<LogoutButton key='logout-button' />);
-  }
 
   const navSectionElements = Object.values(NavbarSectionPosition).map((section, sectionIndex) => {
     const sectionItem = config[section];
@@ -44,7 +48,7 @@ export const Navbar: React.FC<NavbarProps> = ({ config, color, position, variant
         {sectionItem?.elements.map((element, elementIndex) => (
           <Styled.NavbarSectionItem key={`element-${elementIndex}`}>{element}</Styled.NavbarSectionItem>
         ))}
-        {sectionsElements[section]}
+        {setAdditionalElements(section)}
       </Styled.NavbarSectionContainer>
     );
   });
