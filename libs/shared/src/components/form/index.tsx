@@ -99,10 +99,15 @@ export const Form: React.FC<FormProps> = ({
     }
   };
 
-  const handleFormChange = () => {
+  const handleClearErrors = () => {
     i18n.on("languageChanged", () => {
       methods.clearErrors();
     });
+  };
+
+  const handleFormChange = () => {
+    handleClearErrors();
+
     if (onChange && !isEqual(methods.getValues(), currentValues)) {
       onChange(methods.getValues());
     }

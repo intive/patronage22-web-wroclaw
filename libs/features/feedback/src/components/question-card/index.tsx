@@ -15,7 +15,7 @@ export interface QuestionCardProps {
   setIsQuestionListFull: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const NewQuestionCard: React.FC<QuestionCardProps> = ({
+export const QuestionCard: React.FC<QuestionCardProps> = ({
   questionForm,
   questionFormIndex,
   questions,

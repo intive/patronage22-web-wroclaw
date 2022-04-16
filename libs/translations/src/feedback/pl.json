@@ -5,7 +5,6 @@
   },
   "description": "Opis",
   "homepage": {
-    "newPresentationButton": "Nowa prezentacja",
     "newPresentationDescription": "Czy zastanawiałeś się kiedyś, co zrobić, by Twoja prezentacja była bardziej interaktywna? Kliknij przycisk poniżej i po prostu... spraw, by tak się stało!"
   },
   "missingTitleError": "Tytuł nie może być pusty",

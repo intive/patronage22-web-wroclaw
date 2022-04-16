@@ -4,10 +4,10 @@ import { useTranslation } from "react-i18next";
 import { v4 as uuidv4 } from "uuid";
 import { string } from "yup";
 
-import { BasicPresentationInfo, NewQuestionCard } from "../../components";
+import { BasicPresentationInfo, QuestionCard } from "../../components";
 import { QUESTION_CONFIG } from "../../configs";
 import * as Styled from "./styled";
-import { translateQuestionCards } from "./translate-question-cards";
+import { updateTranslations } from "./update-translations";
 
 // TODO - replace with import from shared/data/feedback/types when
 // "P2022-413 Praticipate in presentation" is ready
@@ -64,7 +64,7 @@ export const NewPresentationView: React.FC = () => {
   const [isQuestionListFull, setIsQuestionListFull] = useState(false);
   const isLastQuestionAsked = isQuestionAsked[isQuestionAsked.length - 1];
 
-  i18n.on("languageChanged", () => translateQuestionCards(setQuestions, isQuestionAsked));
+  i18n.on("languageChanged", () => updateTranslations(setQuestions, isQuestionAsked));
 
   const handleNewQuestion = () => {
     if (questions.length < QUESTION_CONFIG.maxAmountOfQuestions) {
@@ -80,7 +80,7 @@ export const NewPresentationView: React.FC = () => {
     <Styled.NewPresentationWrapper>
       <BasicPresentationInfo />
       {questions.map((questionForm, questionFormIndex) => (
-        <NewQuestionCard
+        <QuestionCard
           key={`question-card-${questionForm.id}`}
           questionForm={questionForm}
           questionFormIndex={questionFormIndex}
