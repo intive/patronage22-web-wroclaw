@@ -21,7 +21,9 @@ export const externalPresentationSlice = createSlice({
   initialState,
   reducers: {
     calculateStartQuestionIndex: (state, action: PayloadAction<{ startTime: number; currentTime: number; timer: number }>) => {
-      const startQuestionIndex = Math.floor((action.payload.currentTime - action.payload.startTime) / action.payload.timer);
+      const { startTime, currentTime, timer } = action.payload;
+      const startQuestionIndex = Math.floor((currentTime - startTime) / timer);
+
       if (startQuestionIndex > state.currentQuestionIndex) {
         state.currentQuestionIndex = startQuestionIndex;
       }
@@ -30,7 +32,8 @@ export const externalPresentationSlice = createSlice({
       state.isQuestionSubmit = true;
     },
     calculateTimeToElapse: (state, action: PayloadAction<{ startTime: number; currentTime: number; timer: number }>) => {
-      state.timeToElapse = getRemainingTime(action.payload.startTime, action.payload.currentTime, action.payload.timer);
+      const { startTime, currentTime, timer } = action.payload;
+      state.timeToElapse = getRemainingTime(startTime, currentTime, timer);
     },
     goToNextQuestion: (state, action: PayloadAction<number>) => {
       state.timeToElapse = action.payload;

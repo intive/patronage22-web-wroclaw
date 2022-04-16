@@ -20,9 +20,10 @@ export const CurrentQuestionView: React.FC<CurrentQuestionViewProps> = ({
   onTimeElapsed,
   onSubmit
 }) => {
-  const [isSubmitBtnDisabled, setIsSubmitBtnDisabled] = useState(true);
+  const fields = getAnswerField(type, answers);
+  const [isSubmitButtonDisabled, setIsSubmitButtonDisabled] = useState(true);
 
-  const handleChange = () => setIsSubmitBtnDisabled(prev => (prev ? false : prev));
+  const handleChange = () => setIsSubmitButtonDisabled(false);
 
   return (
     <Styled.CurrentQuestionViewContainer>
@@ -32,8 +33,8 @@ export const CurrentQuestionView: React.FC<CurrentQuestionViewProps> = ({
           <Styled.QuestionForm
             title={{ text: `${content}`, variant: "h5" }}
             validationSchema={{}}
-            fields={getAnswerField(type, answers)}
-            customButtons={{ submit: { condition: true, disabled: isSubmitBtnDisabled } }}
+            fields={fields}
+            customButtons={{ submit: { condition: true, disabled: isSubmitButtonDisabled } }}
             onSubmit={onSubmit}
             onChange={handleChange}
           />

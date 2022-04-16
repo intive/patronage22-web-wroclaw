@@ -26,16 +26,15 @@ const LAST_SUBMITTED_QUESTION_ID_KEY = "lastSubmitedQuestionId";
 export const ExternalPresentationView: React.FC = () => {
   const params = useParams();
   const { t } = useTranslation(TranslationNamespace.Feedback);
+  const dispatch = useDispatch();
+  const { currentQuestionIndex, isQuestionSubmit: isSubmit, timeToElapse } = useSelector(selectExternalPresentation);
 
   if (externalPresentationMock.id !== params.id) {
     return <Typography variant='h1'>{t("notFoundPresentation")}</Typography>;
   }
 
-  const dispatch = useDispatch();
   const { questions, timer, startTime, currentTime } = externalPresentationMock;
   const questionsCount = questions.length;
-
-  const { currentQuestionIndex, isQuestionSubmit: isSubmit, timeToElapse } = useSelector(selectExternalPresentation);
 
   if (currentQuestionIndex === -1) dispatch(calculateStartQuestionIndex({ startTime, currentTime, timer }));
 
@@ -43,6 +42,7 @@ export const ExternalPresentationView: React.FC = () => {
   const currentQuestion = questions[currentQuestionIndex];
 
   const liveResultData = isSubmit ? getAnswerById(currentQuestion.id) : undefined;
+
   if (liveResultData) dispatch(calculateTimeToElapse({ startTime, currentTime: liveResultData.current, timer }));
 
   const handleSubmit = (value?: Record<string, string>) => {
@@ -57,10 +57,12 @@ export const ExternalPresentationView: React.FC = () => {
   };
 
   useEffect(() => {
-    const localStorageLastSubmitedQuestionId = localStorage.getItem(LAST_SUBMITTED_QUESTION_ID_KEY);
-    if (currentQuestion && localStorageLastSubmitedQuestionId === currentQuestion.id) {
+    const lastSubmittedQuestionId = localStorage.getItem(LAST_SUBMITTED_QUESTION_ID_KEY);
+
+    if (currentQuestion && lastSubmittedQuestionId === currentQuestion.id) {
       dispatch(submitQuestion());
     }
+
     dispatch(calculateTimeToElapse({ startTime, currentTime, timer }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
