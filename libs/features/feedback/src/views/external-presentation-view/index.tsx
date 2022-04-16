@@ -33,10 +33,12 @@ export const ExternalPresentationView: React.FC = () => {
     return <Typography variant='h1'>{t("notFoundPresentation")}</Typography>;
   }
 
+  const currentQuestionIndexInitialState = -1;
   const { questions, timer, startTime, currentTime } = externalPresentationMock;
   const questionsCount = questions.length;
 
-  if (currentQuestionIndex === -1) dispatch(calculateStartQuestionIndex({ startTime, currentTime, timer }));
+  if (currentQuestionIndex === currentQuestionIndexInitialState)
+    dispatch(calculateStartQuestionIndex({ startTime, currentTime, timer }));
 
   const isFinished = questionsCount <= currentQuestionIndex;
   const currentQuestion = questions[currentQuestionIndex];

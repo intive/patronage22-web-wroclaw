@@ -10,6 +10,12 @@ export interface ExternalPresentationState {
   timeToElapse: number | undefined;
 }
 
+interface TimeData {
+  startTime: number;
+  currentTime: number;
+  timer: number;
+}
+
 const initialState: ExternalPresentationState = {
   currentQuestionIndex: -1,
   isQuestionSubmit: false,
@@ -20,7 +26,7 @@ export const externalPresentationSlice = createSlice({
   name: FeedbackSliceName.ExternalPresentation,
   initialState,
   reducers: {
-    calculateStartQuestionIndex: (state, action: PayloadAction<{ startTime: number; currentTime: number; timer: number }>) => {
+    calculateStartQuestionIndex: (state, action: PayloadAction<TimeData>) => {
       const { startTime, currentTime, timer } = action.payload;
       const startQuestionIndex = Math.floor((currentTime - startTime) / timer);
 
@@ -31,7 +37,7 @@ export const externalPresentationSlice = createSlice({
     submitQuestion: state => {
       state.isQuestionSubmit = true;
     },
-    calculateTimeToElapse: (state, action: PayloadAction<{ startTime: number; currentTime: number; timer: number }>) => {
+    calculateTimeToElapse: (state, action: PayloadAction<TimeData>) => {
       const { startTime, currentTime, timer } = action.payload;
       state.timeToElapse = getRemainingTime(startTime, currentTime, timer);
     },
