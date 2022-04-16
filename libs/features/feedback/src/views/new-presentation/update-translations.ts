@@ -1,5 +1,6 @@
 import { FormProps } from "@patronage-web/shared";
 import i18next from "i18next";
+import { Dispatch, SetStateAction } from "react";
 import { string } from "yup";
 
 import { QUESTION_CONFIG } from "../../configs";
@@ -7,10 +8,7 @@ import { QUESTION_CONFIG } from "../../configs";
 // "P2022-413 Praticipate in presentation" is ready
 import { QuestionType } from "./index";
 
-export const translateQuestionCards = (
-  setQuestions: React.Dispatch<React.SetStateAction<FormProps[]>>,
-  isQuestionAsked: boolean[]
-) => {
+export const updateTranslations = (setQuestions: Dispatch<SetStateAction<FormProps[]>>, isQuestionAsked: boolean[]) => {
   setQuestions(prevValues =>
     prevValues.map((question, questionIndex) => ({
       ...question,

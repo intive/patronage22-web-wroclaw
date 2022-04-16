@@ -5,7 +5,6 @@
   },
   "description": "Description",
   "homepage": {
-    "newPresentationButton": "New presentation",
     "newPresentationDescription": "Have you ever wondered how to make your presentation more interactive? Click the button below and simply... make it happen!"
   },
   "missingTitleError": "Title cannot be empty",
