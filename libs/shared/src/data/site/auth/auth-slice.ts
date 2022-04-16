@@ -26,9 +26,7 @@ export const authSlice = createSlice({
 
       return { isLoading: false, accessToken, userLogin };
     },
-    logout: () => {
-      return initialState;
-    },
+    logout: () => initialState,
     startAuth: state => {
       state.isLoading = true;
     },
