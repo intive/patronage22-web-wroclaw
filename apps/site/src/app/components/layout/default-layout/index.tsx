@@ -14,6 +14,9 @@ export const navbarConfig = {
   start: {
     elements: [<AppName />],
     customStyles: elementStyles
+  },
+  end: {
+    elements: []
   }
 };
 
