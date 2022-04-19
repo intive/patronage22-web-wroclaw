@@ -2,9 +2,8 @@ import { Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 export const Timer = styled(Typography)(({ theme }) => ({
-  color: theme.palette.grey[600],
   textAlign: "center",
-  fontSize: theme.spacing(2),
-  fontWeight: theme.typography.fontWeightBold,
-  margin: theme.spacing(1)
+  fontSize: theme.spacing(8),
+  fontWeight: theme.typography.fontWeightRegular,
+  margin: theme.spacing(2)
 }));

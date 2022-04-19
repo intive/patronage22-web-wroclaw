@@ -8,13 +8,14 @@
     "newPresentationDescription": "Czy zastanawiałeś się kiedyś, co zrobić, by Twoja prezentacja była bardziej interaktywna? Kliknij przycisk poniżej i po prostu... spraw, by tak się stało!"
   },
   "missingTitleError": "Tytuł nie może być pusty",
-  "newPresentation": "Nowa prezentacja",
   "newQuestion": "Nowe pytanie",
   "presentation": {
+    "new": "Nowa prezentacja",
+    "notFound": "Nie znaleziono prezentacji",
+    "saveFail": "Nie udało się zapisać prezentacji",
     "saveSuccess": "Prezentacja zapisana pomyślnie",
-    "saveFail": "Nie udało się zapisać prezentacji"
+    "summary": "Podsumowanie prezentacji"
   },
-  "presentationSummary": "Podsumowanie prezentacji",
   "question": {
     "addField": "Dodaj odpowiedź...",
     "maxCharLength": "Przekroczono maksymalną ilość znaków ({{charAmount}})",
@@ -32,5 +33,6 @@
   },
   "setQuestionTime": "Czas na odpowiedź (sekundy)",
   "shareDialogMessage": "Gratulacje, Twoja prezentacja: {{name}} właśnie się rozpoczęła, użyj poniższego linku, aby ją udostępnić!",
-  "sharePresentation": "Udostępnij prezentację"
+  "sharePresentation": "Udostępnij prezentację",
+  "summary": "Podsumowanie"
 }

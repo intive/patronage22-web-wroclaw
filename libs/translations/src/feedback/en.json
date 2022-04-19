@@ -8,13 +8,14 @@
     "newPresentationDescription": "Have you ever wondered how to make your presentation more interactive? Click the button below and simply... make it happen!"
   },
   "missingTitleError": "Title cannot be empty",
-  "newPresentation": "New presentation",
   "newQuestion": "New question",
   "presentation": {
+    "new": "New presentation",
+    "notFound": "Presentation not found",
+    "saveFail": "Presentation saving failed",
     "saveSuccess": "Presentation saved successfully",
-    "saveFail": "Presentation saving failed"
+    "summary": "Presentation summary"
   },
-  "presentationSummary": "Presentation summary",
   "question": {
     "addField": "Add answer...",
     "maxCharLength": "Maximum number of characters exceeded ({{charAmount}})",
@@ -32,5 +33,6 @@
   },
   "setQuestionTime": "Time to answer (seconds)",
   "shareDialogMessage": "Congratulations, your presentation: {{name}} just started, use the link below to share it!",
-  "sharePresentation": "Share presentation"
+  "sharePresentation": "Share presentation",
+  "summary": "Summary"
 }

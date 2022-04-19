@@ -1,6 +1,6 @@
-export enum ParticipationQuestionType {
-  Open = "Open",
-  Closed = "Closed"
+export enum QuestionType {
+  Open = "open",
+  Closed = "closed"
 }
 
 export interface AnswerResult {
@@ -12,8 +12,30 @@ export interface AnswerResult {
 export interface FeedbackQuestionAnswers {
   id: string;
   title: string;
-  type: ParticipationQuestionType;
+  type: QuestionType;
   created: number;
   current: number;
   answers: AnswerResult[];
+}
+
+export interface ExternalPresentation {
+  id: string;
+  name: string;
+  description?: string;
+  email: string;
+  timer: number;
+  startTime: number;
+  currentTime: number;
+  link: string;
+  status: string;
+  isPublic: boolean;
+  questions: ExternalQuestion[];
+}
+
+export interface ExternalQuestion {
+  id: string;
+  content: string;
+  type: QuestionType;
+  answers?: string[];
+  answer: string;
 }

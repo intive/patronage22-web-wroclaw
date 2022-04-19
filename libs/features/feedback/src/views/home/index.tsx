@@ -12,7 +12,7 @@ export const HomeView: React.FC = () => {
       image={StarsImage}
       button={{
         variant: "contained",
-        text: t("newPresentation"),
+        text: t("presentation.new"),
         navigateTo: FeedbackRoute.AddPresentation
       }}
     />

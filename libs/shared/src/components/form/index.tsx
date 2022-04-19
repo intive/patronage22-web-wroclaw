@@ -1,6 +1,6 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Delete } from "@mui/icons-material";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, TypographyProps } from "@mui/material";
 import { isEqual } from "lodash";
 import { BaseSyntheticEvent, ReactNode, useEffect } from "react";
 import { FieldValues, FormProvider, SubmitErrorHandler, SubmitHandler, useFieldArray, useForm } from "react-hook-form";
@@ -25,7 +25,7 @@ interface FormButton {
 }
 
 export interface FormProps {
-  title?: string;
+  title?: { text: string; variant: TypographyProps["variant"] };
   id?: string;
   validationSchema: ObjectShape;
   fields: FormFieldProps[];
@@ -183,7 +183,7 @@ export const Form: React.FC<FormProps> = ({
   return (
     <FormProvider {...methods}>
       <Styled.Form className={className} onChange={handleFormChange} onSubmit={handleSubmit}>
-        {title && <Typography variant='h3'>{title}</Typography>}
+        {title && <Typography variant={title.variant}>{title.text}</Typography>}
         {renderFields()}
         {formButtons.map(
           ({ condition, text, action, icon, disabled }) =>

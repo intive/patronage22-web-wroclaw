@@ -2,6 +2,7 @@ import { TextField } from "@mui/material";
 import { FieldValues, UseFormStateReturn } from "react-hook-form";
 
 import { FormFieldProps, FormFieldType } from "../../../types";
+import { RadioGroupField } from "./radio-group-field";
 import { SelectField } from "./select-field";
 
 const DEFAULT_ROWS_NUMBER = 4;
@@ -45,7 +46,6 @@ export const renderField = ({
         InputProps={inputConfig}
         placeholder={placeholder}
         autoFocus={autoFocus}
-        value={value}
       />
     ),
     [FormFieldType.Textarea]: (
@@ -63,9 +63,10 @@ export const renderField = ({
         InputProps={inputConfig}
         placeholder={placeholder}
         autoFocus={autoFocus}
-        value={value}
+        fullWidth
       />
     ),
+    [FormFieldType.RadioGroup]: <RadioGroupField name={name} options={values} onChange={onChange} />,
     [FormFieldType.Select]: (
       <SelectField name={name} value={value} onChange={onChange} variant={variant} label={label} options={values} />
     )

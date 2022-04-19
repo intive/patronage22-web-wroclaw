@@ -47,6 +47,5 @@
     "minCharLength": "Minimum number of characters required: {{charAmount}}",
     "noResultsInfo": "No results found..."
   },
-  "submit": "Submit",
-  "timeIsUp": "Time is up!"
+  "submit": "Submit"
 }

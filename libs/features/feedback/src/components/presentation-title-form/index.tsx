@@ -9,11 +9,11 @@ export const PresentationTitleForm: React.FC = () => (
         type: FormFieldType.Text,
         name: "title",
         variant: "standard",
-        placeholder: t("newPresentation")
+        placeholder: t("presentation.new")
       }
     ]}
     validationSchema={{
-      title: string().trim().required(t("missingTitleError")).default(t("newPresentation"))
+      title: string().trim().required(t("missingTitleError")).default(t("presentation.new"))
     }}
   />
 );
