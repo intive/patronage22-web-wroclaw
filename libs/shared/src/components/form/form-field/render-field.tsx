@@ -46,6 +46,7 @@ export const renderField = ({
         InputProps={inputConfig}
         placeholder={placeholder}
         autoFocus={autoFocus}
+        value={value}
       />
     ),
     [FormFieldType.Textarea]: (
@@ -63,6 +64,7 @@ export const renderField = ({
         InputProps={inputConfig}
         placeholder={placeholder}
         autoFocus={autoFocus}
+        value={value}
         fullWidth
       />
     ),

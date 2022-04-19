@@ -48,7 +48,6 @@ export const Login: React.FC = () => {
               description: t("password"),
               disabled: true,
               hideEditIcon: true,
-
               inputConfig: {
                 disableUnderline: true
               },
