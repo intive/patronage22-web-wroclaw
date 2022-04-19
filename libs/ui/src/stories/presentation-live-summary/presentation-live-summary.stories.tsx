@@ -2,9 +2,9 @@ import { PresentationLiveSummary, PresentationLiveSummaryProps } from "@patronag
 import { FeedbackQuestionAnswers, QuestionType } from "@patronage-web/shared-data";
 import { ComponentMeta } from "@storybook/react";
 
-export const PresentationLiveSummaryStory: React.FC<PresentationLiveSummaryProps> = ({ questions }) => {
-  return <PresentationLiveSummary questions={questions} />;
-};
+export const PresentationLiveSummaryStory: React.FC<PresentationLiveSummaryProps> = ({ questions }) => (
+  <PresentationLiveSummary questions={questions} />
+);
 
 const questions: FeedbackQuestionAnswers[] = [
   {
