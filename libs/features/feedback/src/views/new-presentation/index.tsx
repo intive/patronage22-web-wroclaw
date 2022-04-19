@@ -1,10 +1,22 @@
-import { BaseButton, ButtonType, FormFieldType, FormProps, TranslationNamespace } from "@patronage-web/shared";
+import { DeleteOutlined, Share } from "@mui/icons-material";
+import {
+  BaseButton,
+  ButtonType,
+  createPath,
+  FeedbackRoute,
+  FormFieldType,
+  FormProps,
+  TranslationNamespace,
+  useNotification
+} from "@patronage-web/shared";
+import { Presentation, useAddPresentationMutation } from "@patronage-web/shared-data";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { string } from "yup";
 
-import { BasicPresentationInfo, QuestionCard } from "../../components";
+import { BasicPresentationInfo, PresentationTitleForm, QuestionCard, ShareDialog } from "../../components";
 import { QUESTION_CONFIG } from "../../configs";
 import * as Styled from "./styled";
 import { updateTranslations } from "./update-translations";
@@ -18,6 +30,10 @@ export enum QuestionType {
 
 export const NewPresentationView: React.FC = () => {
   const { i18n, t } = useTranslation(TranslationNamespace.Feedback);
+  const navigate = useNavigate();
+  const [fetchAddPresentation] = useAddPresentationMutation();
+  const { showSuccess, showError } = useNotification();
+  const [openDialog, setOpenDialog] = useState(false);
 
   const QuestionTypeOptions = [
     { [t("question.questionTypeOpen")]: QuestionType.Open },
@@ -76,8 +92,48 @@ export const NewPresentationView: React.FC = () => {
     }
   };
 
+  const handleSave = async () => {
+    try {
+      // TODO replace empty presentation when component will provide proper presentation according to Presentation interface
+      await fetchAddPresentation({} as Presentation);
+      // TODO replace when redux router will be provided
+      navigate(createPath({ route: FeedbackRoute.Dashboard, language: i18n.language }));
+      showSuccess(t("presentation.saveSuccess"));
+    } catch {
+      showError(t("presentation.saveFail"));
+    }
+  };
+
+  const handleOpenDialog = () => {
+    setOpenDialog(true);
+  };
+
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+  };
+
+  const handleDelete = () => {
+    console.log("delete");
+  };
+
   return (
     <Styled.NewPresentationWrapper>
+      {/* TODO - replace id and title with a proper values when will be ready */}
+      <ShareDialog onClose={handleCloseDialog} open={openDialog} id='mocked-presentation-id' title='mocked-presentation-title' />
+      <Styled.TitleAndButtonsWrapper>
+        <PresentationTitleForm />
+        <Styled.ButtonsWrapper>
+          <BaseButton type={ButtonType.Icon} onClick={handleOpenDialog}>
+            <Share />
+          </BaseButton>
+          <BaseButton type={ButtonType.Basic} onClick={handleSave} variant='outlined' sx={{ margin: "0 8px" }}>
+            {t("save")}
+          </BaseButton>
+          <BaseButton type={ButtonType.Icon} onClick={handleDelete}>
+            <DeleteOutlined />
+          </BaseButton>
+        </Styled.ButtonsWrapper>
+      </Styled.TitleAndButtonsWrapper>
       <BasicPresentationInfo />
       {questions.map((questionForm, questionFormIndex) => (
         <QuestionCard

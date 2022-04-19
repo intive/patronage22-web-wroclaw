@@ -8,10 +8,14 @@
     "newPresentationDescription": "Czy zastanawiałeś się kiedyś, co zrobić, by Twoja prezentacja była bardziej interaktywna? Kliknij przycisk poniżej i po prostu... spraw, by tak się stało!"
   },
   "missingTitleError": "Tytuł nie może być pusty",
-  "newPresentation": "Nowa prezentacja",
   "newQuestion": "Nowe pytanie",
-  "notFoundPresentation": "Nie znaleziono prezentacji",
-  "presentationSummary": "Podsumowanie prezentacji",
+  "presentation": {
+    "new": "Nowa prezentacja",
+    "notFound": "Nie znaleziono prezentacji",
+    "saveFail": "Nie udało się zapisać prezentacji",
+    "saveSuccess": "Prezentacja zapisana pomyślnie",
+    "summary": "Podsumowanie prezentacji"
+  },
   "question": {
     "addField": "Dodaj odpowiedź...",
     "maxCharLength": "Przekroczono maksymalną ilość znaków ({{charAmount}})",

@@ -8,10 +8,14 @@
     "newPresentationDescription": "Have you ever wondered how to make your presentation more interactive? Click the button below and simply... make it happen!"
   },
   "missingTitleError": "Title cannot be empty",
-  "newPresentation": "New presentation",
   "newQuestion": "New question",
-  "notFoundPresentation": "Presentation not found",
-  "presentationSummary": "Presentation summary",
+  "presentation": {
+    "new": "New presentation",
+    "notFound": "Presentation not found",
+    "saveFail": "Presentation saving failed",
+    "saveSuccess": "Presentation saved successfully",
+    "summary": "Presentation summary"
+  },
   "question": {
     "addField": "Add answer...",
     "maxCharLength": "Maximum number of characters exceeded ({{charAmount}})",
