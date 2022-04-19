@@ -16,15 +16,13 @@ export interface QuestionData {
 
 export const NewPresentationView: React.FC = () => {
   const { i18n, t } = useTranslation(TranslationNamespace.Feedback);
+  const questionData: QuestionData = {
+    id: uuidv4()
+  };
   const navigate = useNavigate();
   const [fetchAddPresentation] = useAddPresentationMutation();
   const { showSuccess, showError } = useNotification();
   const [openDialog, setOpenDialog] = useState(false);
-
-  const questionData: QuestionData = {
-    id: uuidv4()
-  };
-
   const [questions, setQuestions] = useState([questionData]);
   const [isQuestionListFull, setIsQuestionListFull] = useState(false);
 
@@ -32,6 +30,7 @@ export const NewPresentationView: React.FC = () => {
     if (questions.length < QUESTION_CONFIG.maxAmountOfQuestions) {
       setQuestions(prevQuestions => [...prevQuestions, { id: uuidv4() }]);
     }
+
     if (questions.length + 1 === QUESTION_CONFIG.maxAmountOfQuestions) {
       setIsQuestionListFull(true);
     }

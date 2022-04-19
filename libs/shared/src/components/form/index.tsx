@@ -69,24 +69,15 @@ export const Form: React.FC<FormProps> = ({
   });
 
   const currentValues = methods.watch();
-  const { control } = methods;
 
   const {
     append,
     remove,
     fields: fieldArray
   } = useFieldArray({
-    control,
+    control: methods.control,
     name: "dynamic"
   });
-
-  useEffect(() => {
-    if (fieldArray.length === 0) {
-      const dynamicField = fields.find(field => field.dynamics?.name);
-      append({ name: dynamicField?.dynamics?.name || "" });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const handleSubmit = (event: BaseSyntheticEvent) => {
     if (onSubmit) {
@@ -149,7 +140,7 @@ export const Form: React.FC<FormProps> = ({
           </Box>
         ))
       )}
-      {addText !== "" && fieldArray.length < maxAmount && (
+      {addText && fieldArray.length < maxAmount && (
         <BaseButton key='add-btn' type={ButtonType.Basic} onClick={() => append({ name })}>
           {addText}
         </BaseButton>
@@ -179,6 +170,14 @@ export const Form: React.FC<FormProps> = ({
       </Typography>
     );
   };
+
+  useEffect(() => {
+    if (!fieldArray.length) {
+      const dynamicField = fields.find(field => field.dynamics?.name);
+      append({ name: dynamicField?.dynamics?.name || "" });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <FormProvider {...methods}>
