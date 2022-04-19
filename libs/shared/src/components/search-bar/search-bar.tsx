@@ -1,7 +1,8 @@
 import SearchIcon from "@mui/icons-material/Search";
-import { useState } from "react";
+import { KeyboardEvent, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { KeyCode, TranslationNamespace } from "../../types";
 import { BaseButton, ButtonType } from "../base-button";
 import { SearchDrawer } from "./search-drawer";
 import * as Styled from "./styled";
@@ -10,7 +11,7 @@ import { useSearchConfig } from "./use-search-config";
 export const SearchBar: React.FC = () => {
   const { searchKey, allResultsPage, singleResultPage } = useSearchConfig();
   const [isOpen, setIsOpen] = useState(false);
-  const { t } = useTranslation();
+  const { t } = useTranslation(TranslationNamespace.Feedback);
 
   const handleSearchBtnClick = () => {
     setIsOpen(true);
@@ -18,6 +19,12 @@ export const SearchBar: React.FC = () => {
 
   const handleSearchDrawerClick = () => {
     setIsOpen(false);
+  };
+
+  const handleKeyPress = (event: KeyboardEvent) => {
+    if (event.key === KeyCode.Enter) {
+      event.preventDefault();
+    }
   };
 
   return (
@@ -39,6 +46,7 @@ export const SearchBar: React.FC = () => {
         searchKey={searchKey}
         toResult={allResultsPage}
         toItem={singleResultPage}
+        onKeyPress={handleKeyPress}
       />
     </>
   );
