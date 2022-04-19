@@ -6,5 +6,6 @@ export enum SupportedLanguage {
 export enum TranslationNamespace {
   Feedback = "feedback",
   Common = "common",
-  Ui = "ui"
+  Ui = "ui",
+  Shared = "shared"
 }

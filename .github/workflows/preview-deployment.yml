@@ -17,3 +17,6 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}}
+        env:
+          NX_FIREBASE_API_KEY: ${{ secrets.NX_FIREBASE_API_KEY }}
+          NX_FIREBASE_AUTH_DOMAIN: ${{ secrets.NX_FIREBASE_AUTH_DOMAIN }}

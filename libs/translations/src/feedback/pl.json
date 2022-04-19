@@ -10,6 +10,7 @@
   },
   "missingTitleError": "Tytuł nie może być pusty",
   "newPresentation": "Nowa prezentacja",
+  "notFoundPresentation": "Nie znaleziono prezentacji",
   "presentationSummary": "Podsumowanie prezentacji",
   "search": {
     "searchAriaLabel": "Szukaj",
@@ -17,5 +18,6 @@
     "showResultsButton": "Pokaż wszystkie wyniki..."
   },
   "shareDialogMessage": "Gratulacje, Twoja prezentacja: {{name}} właśnie się rozpoczęła, użyj poniższego linku, aby ją udostępnić!",
-  "sharePresentation": "Udostępnij prezentację"
+  "sharePresentation": "Udostępnij prezentację",
+  "summary": "Podsumowanie"
 }

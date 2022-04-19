@@ -125,7 +125,7 @@ Project is **_in progress_ **
 
   Sample:
 
-  import \* as Styled from "./style.ts"
+  import \* as Styled from "./styled";
 
   Usage:
 

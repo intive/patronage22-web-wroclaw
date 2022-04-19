@@ -1,5 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Typography } from "@mui/material";
+import { Typography, TypographyProps } from "@mui/material";
 import { isEqual } from "lodash";
 import { BaseSyntheticEvent, ReactNode } from "react";
 import { FieldValues, FormProvider, SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
@@ -16,10 +16,11 @@ interface FormButton {
   condition: boolean;
   text?: string;
   icon?: ReactNode;
+  disabled?: boolean;
 }
 
 export interface FormProps {
-  title?: string;
+  title?: { text: string; variant: TypographyProps["variant"] };
   validationSchema: ObjectShape;
   fields?: FormFieldProps[];
   initialValues?: {
@@ -84,13 +85,15 @@ export const Form: React.FC<FormProps> = ({
       condition: customButtons?.submit?.condition,
       text: customButtons?.submit?.text || t("submit"),
       action: handleSubmit,
-      icon: customButtons?.submit?.icon
+      icon: customButtons?.submit?.icon,
+      disabled: customButtons?.submit?.disabled || false
     },
     {
       condition: customButtons?.cancel?.condition,
       text: customButtons?.cancel?.text || t("cancel"),
       action: handleCancel,
-      icon: customButtons?.cancel?.icon
+      icon: customButtons?.cancel?.icon,
+      disabled: customButtons?.cancel?.disabled || false
     }
   ];
 
@@ -111,12 +114,19 @@ export const Form: React.FC<FormProps> = ({
   return (
     <FormProvider {...methods}>
       <Styled.Form className={className} onChange={handleFormChange} onSubmit={handleSubmit}>
-        {title && <Typography variant='h3'>{title}</Typography>}
+        {title && <Typography variant={title.variant}>{title.text}</Typography>}
         {renderFields()}
         {formButtons.map(
-          ({ condition, text, action, icon }) =>
+          ({ condition, text, action, icon, disabled }) =>
             condition && (
-              <BaseButton key={text} type={ButtonType.Basic} onClick={action} variant='contained' endIcon={icon}>
+              <BaseButton
+                key={text}
+                type={ButtonType.Basic}
+                onClick={action}
+                variant='contained'
+                endIcon={icon}
+                disabled={disabled}
+              >
                 {text}
               </BaseButton>
             )

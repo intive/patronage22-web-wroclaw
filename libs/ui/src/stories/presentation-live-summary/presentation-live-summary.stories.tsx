@@ -1,54 +1,66 @@
 import { PresentationLiveSummary, PresentationLiveSummaryProps } from "@patronage-web/features-feedback";
-import { Question } from "@patronage-web/shared-data";
+import { FeedbackQuestionAnswers, QuestionType } from "@patronage-web/shared-data";
 import { ComponentMeta } from "@storybook/react";
 
-export const PresentationLiveSummaryStory: React.FC<PresentationLiveSummaryProps> = ({ questions }) => {
-  return <PresentationLiveSummary questions={questions} />;
-};
+export const PresentationLiveSummaryStory: React.FC<PresentationLiveSummaryProps> = ({ questions }) => (
+  <PresentationLiveSummary questions={questions} />
+);
 
-const questions: Question[] = [
+const questions: FeedbackQuestionAnswers[] = [
   {
     id: "1",
-    content: "Best fruit:",
+    title: "Best fruit:",
+    type: QuestionType.Closed,
+    created: 1645132675,
+    current: 1645132675,
     answers: [
-      { answer: 1, content: "Apple", count: 10 },
-      { answer: 2, content: "Pineapple", count: 5 },
-      { answer: 3, content: "Orange", count: 13 },
-      { answer: 4, content: "Plum", count: 15 }
+      { answer: 1, title: "Apple", count: 10 },
+      { answer: 2, title: "Pineapple", count: 5 },
+      { answer: 3, title: "Orange", count: 13 },
+      { answer: 4, title: "Plum", count: 15 }
     ]
   },
   {
     id: "2",
-    content: "Best vegetable:",
+    title: "Best vegetable:",
+    type: QuestionType.Closed,
+    created: 1645132675,
+    current: 1645132675,
     answers: [
-      { answer: 1, content: "Carrot", count: 10 },
-      { answer: 2, content: "Salad", count: 5 },
-      { answer: 3, content: "Tomato", count: 13 },
-      { answer: 4, content: "Corn", count: 15 },
-      { answer: 5, content: "Cucumber", count: 17 }
+      { answer: 1, title: "Carrot", count: 10 },
+      { answer: 2, title: "Salad", count: 5 },
+      { answer: 3, title: "Tomato", count: 13 },
+      { answer: 4, title: "Corn", count: 15 },
+      { answer: 5, title: "Cucumber", count: 17 }
     ]
   },
   {
     id: "3",
-    content: "Best SW movie:",
+    title: "Best SW movie:",
+    type: QuestionType.Closed,
+    created: 1645132675,
+    current: 1645132675,
     answers: [
-      { answer: 1, content: "Episode I", count: 10 },
-      { answer: 2, content: "Episode II", count: 13 },
-      { answer: 3, content: "Episode III", count: 25 },
-      { answer: 4, content: "Episode IV", count: 5 },
-      { answer: 5, content: "Episode V", count: 3 },
-      { answer: 6, content: "Episode VI", count: 3 }
+      { answer: 1, title: "Episode I", count: 10 },
+      { answer: 2, title: "Episode II", count: 13 },
+      { answer: 3, title: "Episode III", count: 25 },
+      { answer: 4, title: "Episode IV", count: 5 },
+      { answer: 5, title: "Episode V", count: 3 },
+      { answer: 6, title: "Episode VI", count: 3 }
     ]
   },
   {
     id: "4",
-    content: "Best city to live:",
+    title: "Best city to live:",
+    type: QuestionType.Closed,
+    created: 1645132675,
+    current: 1645132675,
     answers: [
-      { answer: 1, content: "Wroclaw", count: 10 },
-      { answer: 2, content: "London", count: 5 },
-      { answer: 3, content: "Berlin", count: 13 },
-      { answer: 4, content: "Las Palmas", count: 15 },
-      { answer: 5, content: "Miami", count: 17 }
+      { answer: 1, title: "Wroclaw", count: 10 },
+      { answer: 2, title: "London", count: 5 },
+      { answer: 3, title: "Berlin", count: 13 },
+      { answer: 4, title: "Las Palmas", count: 15 },
+      { answer: 5, title: "Miami", count: 17 }
     ]
   }
 ];
