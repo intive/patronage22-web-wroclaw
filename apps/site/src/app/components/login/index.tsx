@@ -67,7 +67,13 @@ export const Login: React.FC = () => {
           basicButtons={{ submit: { condition: true, text: t("login.login"), disabled: true } }}
         />
         <Styled.LoginButtonBox>
-          <BaseButton onClick={handleGoogleSignIn} type={ButtonType.Basic} variant='contained' endIcon={<Google />}>
+          <BaseButton
+            onClick={handleGoogleSignIn}
+            type={ButtonType.Basic}
+            variant='contained'
+            endIcon={<Google />}
+            sx={{ width: "100%" }}
+          >
             {t("login.loginWith")}
           </BaseButton>
         </Styled.LoginButtonBox>

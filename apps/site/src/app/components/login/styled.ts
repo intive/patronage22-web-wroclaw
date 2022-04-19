@@ -63,6 +63,6 @@ export const LoginForm = styled(Form)(({ theme }) => ({
 
 export const LoginButtonBox = styled(Box)(({ theme }) => ({
   width: "100%",
-  maxWidth: theme.spacing(50),
+  maxWidth: theme.spacing(60),
   marginTop: theme.spacing(3)
 }));
