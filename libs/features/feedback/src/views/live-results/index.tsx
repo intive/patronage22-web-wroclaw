@@ -1,6 +1,7 @@
-import { Card } from "@mui/material";
 import { Diagram, DiagramType, Timer } from "@patronage-web/shared";
 import { FeedbackQuestionAnswers } from "@patronage-web/shared-data";
+
+import * as Styled from "./styled";
 
 interface LiveResultsData {
   labels: string[];
@@ -25,9 +26,11 @@ export const LiveResultsView: React.FC<LiveResultsViewProps> = ({ data: { title,
   );
 
   return (
-    <Card>
-      <Diagram title={title} type={DiagramType.Bar} {...answersData} />
+    <Styled.LiveResultsContainer>
+      <Styled.DiagramCard>
+        <Diagram title={title} type={DiagramType.Bar} {...answersData} />
+      </Styled.DiagramCard>
       <Timer timeToElapse={timeToElapse} onTimeElapsed={onTimeElapsed} />
-    </Card>
+    </Styled.LiveResultsContainer>
   );
 };

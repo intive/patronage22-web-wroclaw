@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
 
-import { TranslationNamespace } from "../../types";
 import * as Styled from "./styled";
 
 export const STOPER_CONFIG = {
@@ -11,19 +9,19 @@ export const STOPER_CONFIG = {
 export interface TimerProps {
   timeToElapse: number;
   onTimeElapsed: () => void;
+  onTimeElapsedMessage?: string;
 }
 
 /**
  * Generates a timer
  * @param {number} timeToElapse - it should be provided in seconds
  */
-export const Timer: React.FC<TimerProps> = ({ timeToElapse, onTimeElapsed }) => {
+export const Timer: React.FC<TimerProps> = ({ timeToElapse, onTimeElapsed, onTimeElapsedMessage }) => {
   const [currentSeconds, setCurrentSeconds] = useState(timeToElapse);
-  const { t } = useTranslation(TranslationNamespace.Common);
 
   const currentSecondsString = currentSeconds.toFixed().padStart(2, "0");
 
-  const message = currentSeconds > 0 ? `00:${currentSecondsString}` : t("timeIsUp");
+  const message = currentSeconds > 0 ? `00:${currentSecondsString}` : onTimeElapsedMessage || "";
 
   useEffect(() => {
     const timeStart = () => {

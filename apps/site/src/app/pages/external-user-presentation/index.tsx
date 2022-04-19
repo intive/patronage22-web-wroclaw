@@ -1,8 +1,5 @@
-const ExternalUserPresentationPage: React.FC = () => {
-  return (
-    // TODO - replace when proper data will be delivered
-    <h1>Presentation page for external user</h1>
-  );
-};
+import { ExternalPresentationView } from "@patronage-web/features-feedback";
+
+const ExternalUserPresentationPage: React.FC = () => <ExternalPresentationView />;
 
 export default ExternalUserPresentationPage;

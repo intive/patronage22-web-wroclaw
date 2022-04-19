@@ -10,6 +10,7 @@
   },
   "missingTitleError": "Title cannot be empty",
   "newPresentation": "New presentation",
+  "notFoundPresentation": "Presentation not found",
   "presentationSummary": "Presentation summary",
   "search": {
     "searchAriaLabel": "Search",
@@ -17,5 +18,6 @@
     "showResultsButton": "Show all results..."
   },
   "shareDialogMessage": "Congratulations, your presentation: {{name}} just started, use the link below to share it!",
-  "sharePresentation": "Share presentation"
+  "sharePresentation": "Share presentation",
+  "summary": "Summary"
 }
