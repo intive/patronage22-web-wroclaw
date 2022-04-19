@@ -50,6 +50,9 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
+        env:
+          NX_FIREBASE_API_KEY: ${{ secrets.NX_FIREBASE_API_KEY }}
+          NX_FIREBASE_AUTH_DOMAIN: ${{ secrets.NX_FIREBASE_AUTH_DOMAIN }}
 
       - name: Cache modules
         uses: actions/cache@v2
@@ -57,9 +60,15 @@ jobs:
         with:
           path: node_modules
           key: node_modules-${{ hashFiles('**/yarn.lock') }}
+        env:
+          NX_FIREBASE_API_KEY: ${{ secrets.NX_FIREBASE_API_KEY }}
+          NX_FIREBASE_AUTH_DOMAIN: ${{ secrets.NX_FIREBASE_AUTH_DOMAIN }}
 
       - name: Run @nrwl build check
         run: yarn build
+        env:
+          NX_FIREBASE_API_KEY: ${{ secrets.NX_FIREBASE_API_KEY }}
+          NX_FIREBASE_AUTH_DOMAIN: ${{ secrets.NX_FIREBASE_AUTH_DOMAIN }}
 
   lint:
     needs: [build, setup]
@@ -126,6 +135,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+        env:
+          NX_FIREBASE_API_KEY: ${{ secrets.NX_FIREBASE_API_KEY }}
+          NX_FIREBASE_AUTH_DOMAIN: ${{ secrets.NX_FIREBASE_AUTH_DOMAIN }}
 
       - name: Set up Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
@@ -139,3 +151,6 @@ jobs:
         run: |
           yarn e2e site-e2e --coverage
           yarn e2e features-feedback-e2e --coverage
+        env:
+          NX_FIREBASE_API_KEY: ${{ secrets.NX_FIREBASE_API_KEY }}
+          NX_FIREBASE_AUTH_DOMAIN: ${{ secrets.NX_FIREBASE_AUTH_DOMAIN }}

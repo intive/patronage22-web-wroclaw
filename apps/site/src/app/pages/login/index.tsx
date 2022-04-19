@@ -1,7 +1,7 @@
-import { GoogleLogin } from "../../components";
+import { Login } from "../../components";
 
-const Login: React.FC = () => {
-  return <GoogleLogin />;
+const LoginPage: React.FC = () => {
+  return <Login />;
 };
 
-export default Login;
+export default LoginPage;

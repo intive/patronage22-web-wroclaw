@@ -9,6 +9,7 @@ import * as Styled from "./styled";
 
 export const FormField: React.FC<FormFieldProps> = ({
   type,
+  inputType,
   name,
   variant,
   rows,
@@ -53,6 +54,7 @@ export const FormField: React.FC<FormFieldProps> = ({
       <Styled.Field>
         {renderField({
           type,
+          inputType,
           name,
           onChange: handleFieldChange,
           onClick,
