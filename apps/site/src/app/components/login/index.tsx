@@ -64,7 +64,7 @@ export const Login: React.FC = () => {
               .min(EMAIL_ADDRESS_MIN_LENGTH, t("login.tooShortMessage")),
             password: string().trim()
           }}
-          customButtons={{ submit: { condition: true, text: t("login.login"), disabled: true } }}
+          basicButtons={{ submit: { condition: true, text: t("login.login"), disabled: true } }}
         />
         <Styled.LoginButtonBox>
           <BaseButton onClick={handleGoogleSignIn} type={ButtonType.Basic} variant='contained' endIcon={<Google />}>

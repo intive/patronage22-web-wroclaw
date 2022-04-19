@@ -10,6 +10,10 @@
   "missingTitleError": "Title cannot be empty",
   "newPresentation": "New presentation",
   "newQuestion": "New question",
+  "presentation": {
+    "saveSuccess": "Presentation saved successfully",
+    "saveFail": "Presentation saving failed"
+  },
   "presentationSummary": "Presentation summary",
   "question": {
     "addField": "Add answer...",

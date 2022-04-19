@@ -1,3 +1,4 @@
+import { DeleteOutlined, Share } from "@mui/icons-material";
 import {
   BaseButton,
   ButtonType,
@@ -5,7 +6,8 @@ import {
   FeedbackRoute,
   FormFieldType,
   FormProps,
-  TranslationNamespace
+  TranslationNamespace,
+  useNotification
 } from "@patronage-web/shared";
 import { Presentation, useAddPresentationMutation } from "@patronage-web/shared-data";
 import { useState } from "react";
@@ -14,7 +16,7 @@ import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { string } from "yup";
 
-import { BasicPresentationInfo, QuestionCard, ShareDialog } from "../../components";
+import { BasicPresentationInfo, PresentationTitleForm, QuestionCard, ShareDialog } from "../../components";
 import { QUESTION_CONFIG } from "../../configs";
 import * as Styled from "./styled";
 import { updateTranslations } from "./update-translations";
@@ -30,6 +32,7 @@ export const NewPresentationView: React.FC = () => {
   const { i18n, t } = useTranslation(TranslationNamespace.Feedback);
   const navigate = useNavigate();
   const [fetchAddPresentation] = useAddPresentationMutation();
+  const { showSuccess, showError } = useNotification();
   const [openDialog, setOpenDialog] = useState(false);
 
   const QuestionTypeOptions = [
@@ -90,14 +93,14 @@ export const NewPresentationView: React.FC = () => {
   };
 
   const handleSave = async () => {
-    // TODO remove line below when component will provide proper presentation according to Presentation interface
-    const presentation = {} as Presentation;
     try {
-      await fetchAddPresentation(presentation);
+      // TODO replace empty presentation when component will provide proper presentation according to Presentation interface
+      await fetchAddPresentation({} as Presentation);
+      // TODO replace when redux router will be provided
       navigate(createPath({ route: FeedbackRoute.Dashboard, language: i18n.language }));
-      // TODO add success notification when useNotification hook will be applied
-    } catch (error) {
-      // TODO add fail notification when useNotification hook will be applied
+      showSuccess(t("presentation.saveSuccess"));
+    } catch {
+      showError(t("presentation.saveFail"));
     }
   };
 
@@ -109,11 +112,29 @@ export const NewPresentationView: React.FC = () => {
     setOpenDialog(false);
   };
 
+  const handleDelete = () => {
+    console.log("delete");
+  };
+
   return (
     <Styled.NewPresentationWrapper>
       {/* TODO - replace id and title with a proper values when will be ready */}
-      <ShareDialog onClose={handleCloseDialog} open={openDialog} id='sample-id' title='sample-title' />
-      <BasicPresentationInfo onSave={handleSave} onShare={handleOpenDialog} />
+      <ShareDialog onClose={handleCloseDialog} open={openDialog} id='mocked-presentation-id' title='mocked-presentation-title' />
+      <Styled.TitleAndButtonsWrapper>
+        <PresentationTitleForm />
+        <Styled.ButtonsWrapper>
+          <BaseButton type={ButtonType.Icon} onClick={handleOpenDialog}>
+            <Share />
+          </BaseButton>
+          <BaseButton type={ButtonType.Basic} onClick={handleSave} variant='outlined' sx={{ margin: "0 8px" }}>
+            {t("save")}
+          </BaseButton>
+          <BaseButton type={ButtonType.Icon} onClick={handleDelete}>
+            <DeleteOutlined />
+          </BaseButton>
+        </Styled.ButtonsWrapper>
+      </Styled.TitleAndButtonsWrapper>
+      <BasicPresentationInfo />
       {questions.map((questionForm, questionFormIndex) => (
         <QuestionCard
           key={`question-card-${questionForm.id}`}

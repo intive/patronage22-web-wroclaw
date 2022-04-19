@@ -10,6 +10,10 @@
   "missingTitleError": "Tytuł nie może być pusty",
   "newPresentation": "Nowa prezentacja",
   "newQuestion": "Nowe pytanie",
+  "presentation": {
+    "saveSuccess": "Prezentacja zapisana pomyślnie",
+    "saveFail": "Nie udało się zapisać prezentacji"
+  },
   "presentationSummary": "Podsumowanie prezentacji",
   "question": {
     "addField": "Dodaj odpowiedź...",
