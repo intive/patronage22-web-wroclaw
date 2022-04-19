@@ -25,6 +25,7 @@
     "login": "Login",
     "loginFailed": "Logging in failed",
     "loginWith": "Login with",
+    "logout": "Logout",
     "logoutFail": "Logout failed",
     "subtitle": "Login to your account",
     "title": "Welcome in Patronage App",

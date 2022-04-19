@@ -4,6 +4,7 @@ export * from "./filter-by-keys";
 export * from "./get-app-route";
 export * from "./get-domain-name";
 export * from "./get-theme-config";
+export * from "./is-protected-route";
 export * from "./lang-fns";
 export * from "./load-i18n";
 export * from "./trim-string";
