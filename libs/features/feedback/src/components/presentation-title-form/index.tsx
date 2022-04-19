@@ -12,6 +12,7 @@ export const PresentationTitleForm: React.FC = () => (
         placeholder: t("presentation.new")
       }
     ]}
+    initialValues={{ title: "" }}
     validationSchema={{
       title: string().trim().required(t("missingTitleError")).default(t("presentation.new"))
     }}

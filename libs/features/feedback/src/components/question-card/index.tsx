@@ -29,7 +29,8 @@ const defaultAnswer: DynamicsInterface = {
       variant: "filled",
       inputConfig: {
         disableUnderline: true
-      }
+      },
+      defaultValue: ""
     }
   ]
 };

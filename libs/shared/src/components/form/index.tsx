@@ -203,7 +203,7 @@ export const Form: React.FC<FormProps> = ({
         {customButtons && (
           <Styled.ButtonSetWrapper>
             {customButtons.map(customButtonProps => (
-              <BaseButton {...customButtonProps} key={`${uuidv4()}`} />
+              <BaseButton {...customButtonProps} key={uuidv4()} />
             ))}
           </Styled.ButtonSetWrapper>
         )}
