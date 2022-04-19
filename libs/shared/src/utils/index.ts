@@ -9,3 +9,4 @@ export * from "./lang-fns";
 export * from "./load-i18n";
 export * from "./trim-string";
 export * from "./url-params";
+export * from "./verify-auth";

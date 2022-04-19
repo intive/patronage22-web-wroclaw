@@ -19,5 +19,17 @@
         "passWithNoTests": true
       }
     }
+  },
+  "build": {
+    "configurations": {
+      "production": {
+        "fileReplacements": [
+          {
+            "replace": "libs/shared/src/environments/environment.ts",
+            "with": "libs/shared/src/environments/environment.prod.ts"
+          }
+        ]
+      }
+    }
   }
 }
