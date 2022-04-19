@@ -1,4 +1,4 @@
-import { StandardTextFieldProps } from "@mui/material";
+import { BaseTextFieldProps, StandardTextFieldProps } from "@mui/material";
 import { MouseEventHandler, ReactNode } from "react";
 import { UseControllerProps } from "react-hook-form";
 
@@ -21,6 +21,7 @@ export interface DynamicsInterface {
 
 export interface FormFieldProps extends Pick<UseControllerProps, "name" | "defaultValue"> {
   type: FormFieldType;
+  inputType?: BaseTextFieldProps["type"];
   variant?: FormTextFieldVariant;
   rows?: number;
   label?: string;

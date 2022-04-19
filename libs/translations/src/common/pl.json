@@ -19,13 +19,15 @@
   "linkCopied": "Skopiowano link",
   "linkCopyingFailed": "Kopiowanie linku nie powiodło się!",
   "login": {
+    "authFailed": "Nie można potwierdzić Twojej tożsamości, zaloguj się ponownie",
     "emailInvalidMessage": "Nieprawidłowy adres e-mail",
     "emailRequiredMessage": "Podaj swój adres e-mail 'example@gmail.com'",
     "forgotPassword": "Zapomniałeś/aś hasła?",
-    "login": "Zaloguj",
+    "login": "Zaloguj się",
+    "loginFailed": "Logowanie nie powiodło się",
     "loginWith": "Zaloguj się przez",
     "logout": "Wyloguj",
-    "notGmailMessage": "Adres e-mail musi być w domenie Google 'example@gmail.com'",
+    "logoutFail": "Wylogowanie nie powiodło się",
     "subtitle": "Zaloguj się do swojego konta",
     "title": "Witamy w aplikacji Patronage",
     "tooShortMessage": "Wpisz minimum 16 znaków"

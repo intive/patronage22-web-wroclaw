@@ -1,3 +1,4 @@
 export enum SiteSliceName {
-  Notification = "notification"
+  Notification = "notification",
+  Auth = "auth"
 }

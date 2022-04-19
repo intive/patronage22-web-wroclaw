@@ -21,6 +21,7 @@ interface FormButton {
   type?: ButtonType;
   variant?: "text" | "contained" | "outlined" | undefined;
   fieldType?: string;
+  disabled?: boolean;
 }
 
 export interface FormProps {
@@ -120,7 +121,8 @@ export const Form: React.FC<FormProps> = ({
       action: handleSubmit,
       icon: basicButtons?.submit?.icon,
       type: basicButtons?.submit?.type,
-      variant: basicButtons?.submit?.variant
+      variant: basicButtons?.submit?.variant,
+      disabled: basicButtons?.submit?.disabled || false
     },
     {
       condition: basicButtons?.cancel?.condition,
@@ -128,7 +130,8 @@ export const Form: React.FC<FormProps> = ({
       action: handleCancel,
       icon: basicButtons?.cancel?.icon,
       type: basicButtons?.cancel?.type,
-      variant: basicButtons?.cancel?.variant
+      variant: basicButtons?.cancel?.variant,
+      disabled: basicButtons?.cancel?.disabled || false
     }
   ];
 
@@ -183,9 +186,16 @@ export const Form: React.FC<FormProps> = ({
         {title && <Typography variant='h3'>{title}</Typography>}
         {renderFields()}
         {formButtons.map(
-          ({ condition, text, action, icon }) =>
+          ({ condition, text, action, icon, disabled }) =>
             condition && (
-              <BaseButton key={text} type={ButtonType.Basic} onClick={action} variant='contained' endIcon={icon}>
+              <BaseButton
+                key={text}
+                type={ButtonType.Basic}
+                onClick={action}
+                variant='contained'
+                endIcon={icon}
+                disabled={disabled}
+              >
                 {text}
               </BaseButton>
             )

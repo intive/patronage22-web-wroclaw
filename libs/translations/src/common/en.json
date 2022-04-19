@@ -19,13 +19,15 @@
   "linkCopied": "Link copied",
   "linkCopyingFailed": "Link copying failed!",
   "login": {
+    "authFailed": "Cannot confirm your identity, please login again",
     "emailInvalidMessage": "Invalid e-mail address",
     "emailRequiredMessage": "Please provide your e-mail",
     "forgotPassword": "Forgot a password?",
     "login": "Login",
-    "loginWith": "Log in with",
+    "loginFailed": "Logging in failed",
+    "loginWith": "Login with",
     "logout": "Logout",
-    "notGmailMessage": "E-mail address must be in Google domain 'example@gmail.com'",
+    "logoutFail": "Logout failed",
     "subtitle": "Login to your account",
     "title": "Welcome in Patronage App",
     "tooShortMessage": "Please provide at least 16 characters"
