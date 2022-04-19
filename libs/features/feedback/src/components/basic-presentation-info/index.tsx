@@ -31,7 +31,7 @@ export const BasicPresentationInfo: React.FC = () => {
       ]}
       validationSchema={{
         description: string(),
-        time: number().default(QUESTION_CONFIG.defaultTime)
+        time: number().positive(t("question.negativeTimeError")).default(QUESTION_CONFIG.defaultTime)
       }}
     />
   );

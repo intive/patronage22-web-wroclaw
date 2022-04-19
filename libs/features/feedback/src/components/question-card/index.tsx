@@ -1,92 +1,124 @@
 import { Delete } from "@mui/icons-material";
 import { BaseButton, ButtonType, DynamicsInterface, FormFieldType, FormProps, TranslationNamespace } from "@patronage-web/shared";
+import { QuestionType } from "@patronage-web/shared-data";
+import i18next from "i18next";
+import { Dispatch, SetStateAction, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { string } from "yup";
 
 import { QUESTION_CONFIG } from "../../configs";
+import { QuestionData } from "../../views";
 import * as Styled from "./styled";
+import { updateTranslations } from "./update-translations";
 
-export interface QuestionCardProps {
-  questionForm: FormProps;
-  questionFormIndex: number;
-  questions: FormProps[];
-  setQuestions: React.Dispatch<React.SetStateAction<FormProps[]>>;
-  isQuestionAsked: boolean[];
-  setIsQuestionAsked: React.Dispatch<React.SetStateAction<boolean[]>>;
-  setIsQuestionListFull: React.Dispatch<React.SetStateAction<boolean>>;
+export enum QuestionFormFieldNameType {
+  Question = "question",
+  Questions = "questions",
+  QuestionsType = "questionsType",
+  Answer = "answer"
 }
 
-export const QuestionCard: React.FC<QuestionCardProps> = ({
-  questionForm,
-  questionFormIndex,
-  questions,
-  setQuestions,
-  isQuestionAsked,
-  setIsQuestionAsked,
-  setIsQuestionListFull
-}) => {
-  const { t } = useTranslation(TranslationNamespace.Feedback);
-
-  const defaultAnswer: DynamicsInterface = {
-    name: "questions",
-    addButtonText: t("question.addField"),
-    maxAmount: QUESTION_CONFIG.maxAmountOfAnswers,
-    fields: [
-      {
-        type: FormFieldType.Text,
-        name: "answer",
-        variant: "filled",
-        inputConfig: {
-          disableUnderline: true
-        }
+const defaultAnswer: DynamicsInterface = {
+  name: QuestionFormFieldNameType.Questions,
+  addButtonText: i18next.t("question.addField"),
+  maxAmount: QUESTION_CONFIG.maxAmountOfAnswers,
+  fields: [
+    {
+      type: FormFieldType.Text,
+      name: QuestionFormFieldNameType.Answer,
+      variant: "filled",
+      inputConfig: {
+        disableUnderline: true
       }
-    ]
-  };
-
-  const handleRemoveQuestion = (formIndex: number) => {
-    setQuestions(prevValues => prevValues.filter((item, itemIndex) => itemIndex !== formIndex));
-    setIsQuestionAsked(isQuestionAsked.filter((item, itemIndex) => itemIndex !== formIndex));
-    if (questions.length - 1 !== QUESTION_CONFIG.maxAmountOfQuestions) {
-      setIsQuestionListFull(false);
     }
+  ]
+};
+
+const QuestionTypeOptions = [
+  { [i18next.t("question.questionTypeOpen")]: QuestionType.Open },
+  { [i18next.t("question.questionTypeClosed")]: QuestionType.Closed }
+];
+
+const defaultQuestion: FormProps = {
+  initialValues: { question: "", questionsType: QuestionType.Closed },
+  fields: [
+    {
+      type: FormFieldType.Select,
+      name: QuestionFormFieldNameType.QuestionsType,
+      label: i18next.t("question.questionType"),
+      values: QuestionTypeOptions
+    },
+    {
+      type: FormFieldType.Text,
+      name: QuestionFormFieldNameType.Question,
+      description: i18next.t("question.questionField"),
+      variant: "filled",
+      inputConfig: {
+        disableUnderline: true
+      },
+      dynamics: {
+        name: QuestionFormFieldNameType.Questions,
+        addButtonText: "",
+        fields: [],
+        maxAmount: 0
+      }
+    }
+  ],
+  validationSchema: {
+    question: string()
+      .trim()
+      .required(i18next.t("question.missingQuestionError"))
+      .max(QUESTION_CONFIG.maxLength, i18next.t("question.maxCharLength", { charAmount: QUESTION_CONFIG.maxLength }))
+      .ensure()
+  }
+};
+
+export interface QuestionCardProps {
+  id: string;
+  updateQuestionList: Dispatch<SetStateAction<QuestionData[]>>;
+  instance: number;
+}
+
+export const QuestionCard: React.FC<QuestionCardProps> = ({ id, updateQuestionList, instance }) => {
+  const { i18n, t } = useTranslation(TranslationNamespace.Feedback);
+
+  const [elements, setElements] = useState(defaultQuestion);
+  const [isQuestionAsked, setIsQuestionAsked] = useState(false);
+
+  i18n.on("languageChanged", () => updateTranslations(setElements, isQuestionAsked));
+
+  const handleRemoveQuestion = () => {
+    updateQuestionList(prevValues => prevValues.filter(item => item.id !== id));
   };
 
-  const handleContinue = (formIndex: number) => {
-    setQuestions(prevQuestions =>
-      prevQuestions.map((questionCard, questionCardIndex) =>
-        questionCardIndex === formIndex
-          ? {
-              ...questionCard,
-              fields: questionCard.fields.map(field =>
-                field.name === "question" ? { ...field, variant: "standard", description: "", dynamics: defaultAnswer } : field
-              )
-            }
-          : questionCard
+  const handleContinue = () => {
+    setElements(prevElements => ({
+      ...prevElements,
+      fields: prevElements.fields.map(field =>
+        field.name === QuestionFormFieldNameType.Question
+          ? { ...field, variant: "standard", description: "", dynamics: defaultAnswer }
+          : field
       )
-    );
-    setIsQuestionAsked(prevValues => prevValues.map((value, valueIndex) => (valueIndex === formIndex ? true : value)));
+    }));
+    setIsQuestionAsked(true);
   };
 
   return (
     <Styled.QuestionCard>
       <Styled.NewQuestionFormWrapper>
-        <Styled.QuestionNumberBox visible={isQuestionAsked[questionFormIndex]}>{questionFormIndex + 1}</Styled.QuestionNumberBox>
-        <Styled.NewQuestionForm key={`question-form-${questionForm.id}`} {...questionForm} />
+        <Styled.QuestionNumberBox visible={isQuestionAsked}>{instance + 1}</Styled.QuestionNumberBox>
+        <Styled.NewQuestionForm key={`question-form-${id}`} {...elements} id={id} />
         <Styled.DeleteQuestionBtnWrapper>
-          <BaseButton
-            key='remove-question-btn'
-            type={ButtonType.Icon}
-            onClick={() => handleRemoveQuestion(questionFormIndex)}
-            variant='contained'
-          >
+          <BaseButton key='remove-question-btn' type={ButtonType.Icon} onClick={handleRemoveQuestion} variant='contained'>
             <Delete />
           </BaseButton>
         </Styled.DeleteQuestionBtnWrapper>
       </Styled.NewQuestionFormWrapper>
-      {!isQuestionAsked[questionFormIndex] && (
+      {!isQuestionAsked && (
         <>
           <Styled.FullWidthDivider />
           <Styled.QuestionCardBtnWrapper>
-            <BaseButton key='continue-question-btn' type={ButtonType.Basic} onClick={() => handleContinue(questionFormIndex)}>
+            <BaseButton key='continue-question-btn' type={ButtonType.Basic} onClick={handleContinue}>
               {t("continue")}
             </BaseButton>
           </Styled.QuestionCardBtnWrapper>

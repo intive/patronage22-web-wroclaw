@@ -20,6 +20,7 @@
     "addField": "Add answer...",
     "maxCharLength": "Maximum number of characters exceeded ({{charAmount}})",
     "missingQuestionError": "Question cannot be empty",
+    "negativeTimeError": "Time cannot be negative",
     "questionField": "Ask question",
     "questionType": "Question type: ",
     "questionTypeClosed": "Closed",
