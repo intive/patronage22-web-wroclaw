@@ -1,5 +1,6 @@
 export enum FeedbackSliceName {
-  Presentations = "presentations"
+  Presentations = "presentations",
+  ExternalPresentation = "externalPresentation"
 }
 
 export interface Question {

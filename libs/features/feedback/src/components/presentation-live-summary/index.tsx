@@ -1,11 +1,11 @@
 import { Diagram, DiagramType, TranslationNamespace } from "@patronage-web/shared";
-import { Question } from "@patronage-web/shared-data";
+import { FeedbackQuestionAnswers } from "@patronage-web/shared-data";
 import { useTranslation } from "react-i18next";
 
 import * as Styled from "./styled";
 
 export interface PresentationLiveSummaryProps {
-  questions: Question[];
+  questions: FeedbackQuestionAnswers[];
 }
 
 interface PresentationResultsData {
@@ -17,10 +17,10 @@ export const PresentationLiveSummary: React.FC<PresentationLiveSummaryProps> = (
   const { t } = useTranslation(TranslationNamespace.Feedback);
 
   /* eslint-disable react/destructuring-assignment */
-  const results = questions.map(({ content, answers, id }) => {
+  const results = questions.map(({ title: diagramTitle, answers, id }) => {
     const diagramValues = answers.reduce<PresentationResultsData>(
       (acc, item) => {
-        acc.labels.push(item.content);
+        acc.labels.push(item.title);
         acc.values.push(item.count);
 
         return acc;
@@ -30,14 +30,14 @@ export const PresentationLiveSummary: React.FC<PresentationLiveSummaryProps> = (
 
     return (
       <Styled.DiagramContainer key={id}>
-        <Diagram title={content} type={DiagramType.Bar} {...diagramValues} />
+        <Diagram title={diagramTitle} type={DiagramType.Bar} {...diagramValues} />
       </Styled.DiagramContainer>
     );
   });
 
   return (
     <Styled.PresentationSummaryContainer>
-      <Styled.SummaryTitle variant='h6'>{t("presentationSummary")}</Styled.SummaryTitle>
+      <Styled.LiveSummaryTitle variant='h6'>{t("presentationSummary")}</Styled.LiveSummaryTitle>
       {results}
     </Styled.PresentationSummaryContainer>
   );
