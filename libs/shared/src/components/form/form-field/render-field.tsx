@@ -16,6 +16,7 @@ export interface RenderFieldProps
 
 export const renderField = ({
   type,
+  inputType,
   name,
   onChange,
   onClick,
@@ -34,6 +35,7 @@ export const renderField = ({
     [FormFieldType.Text]: (
       <TextField
         name={name}
+        type={inputType}
         onChange={onChange}
         variant={variant}
         error={!!errors}
@@ -48,6 +50,7 @@ export const renderField = ({
     [FormFieldType.Textarea]: (
       <TextField
         name={name}
+        type={inputType}
         onChange={onChange}
         variant={variant}
         multiline

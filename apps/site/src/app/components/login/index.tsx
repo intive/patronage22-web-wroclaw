@@ -1,35 +1,33 @@
 import { Google } from "@mui/icons-material";
 import {
+  BaseButton,
   BaseRoute,
-  createPath,
+  ButtonType,
+  FirebaseAuthProvider,
   FormFieldType,
   LinkedText,
-  REGEX_GMAIL_VALIDATION,
-  TranslationNamespace
+  TranslationNamespace,
+  useFirebaseService
 } from "@patronage-web/shared";
-import { BaseSyntheticEvent } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
 import { string } from "yup";
 
 import * as Styled from "./styled";
 
-const MIN_GMAIL_ADDRESS_LENGTH = 16;
+const EMAIL_ADDRESS_MIN_LENGTH = 16;
 
-export const GoogleLogin: React.FC = () => {
-  const { i18n, t } = useTranslation(TranslationNamespace.Common);
-  const navigate = useNavigate();
+export const Login: React.FC = () => {
+  const { t } = useTranslation(TranslationNamespace.Common);
+  const { signIn } = useFirebaseService();
 
-  const handleSubmit = (_data: unknown, _event?: BaseSyntheticEvent) => {
-    navigate(createPath({ route: BaseRoute.Home, language: i18n.language }));
-  };
+  const handleGoogleSignIn = () => signIn(FirebaseAuthProvider.Google);
 
   return (
-    <Styled.LoginGoogleContainer>
-      <Styled.LoginGoogleTitle variant='h5'>{t("login.title")}</Styled.LoginGoogleTitle>
-      <Styled.LoginGoogleSubtitle variant='h6'>{t("login.subtitle")}</Styled.LoginGoogleSubtitle>
-      <Styled.LoginGoogleFormCard>
-        <Styled.LoginGoogleForm
+    <Styled.LoginContainer>
+      <Styled.LoginTitle variant='h5'>{t("login.title")}</Styled.LoginTitle>
+      <Styled.LoginSubtitle variant='h6'>{t("login.subtitle")}</Styled.LoginSubtitle>
+      <Styled.LoginFormCard>
+        <Styled.LoginForm
           initialValues={{ email: "", password: "" }}
           fields={[
             {
@@ -37,6 +35,7 @@ export const GoogleLogin: React.FC = () => {
               name: "email",
               variant: "filled",
               description: "E-mail",
+              disabled: true,
               hideEditIcon: true
             },
             {
@@ -46,6 +45,7 @@ export const GoogleLogin: React.FC = () => {
               description: t("password"),
               disabled: true,
               hideEditIcon: true,
+              inputType: "password",
               appendix: <LinkedText variant='subtitle2' route={BaseRoute.Home} text={t("login.forgotPassword")} />
             }
           ]}
@@ -54,14 +54,17 @@ export const GoogleLogin: React.FC = () => {
               .trim()
               .required(t("login.emailRequiredMessage"))
               .email(t("login.emailInvalidMessage"))
-              .matches(REGEX_GMAIL_VALIDATION, t("login.notGmailMessage"))
-              .min(MIN_GMAIL_ADDRESS_LENGTH, t("login.tooShortMessage")),
+              .min(EMAIL_ADDRESS_MIN_LENGTH, t("login.tooShortMessage")),
             password: string().trim()
           }}
-          onSubmit={handleSubmit}
-          customButtons={{ submit: { condition: true, text: t("login.loginWith"), icon: <Google /> } }}
+          customButtons={{ submit: { condition: true, text: t("login.login"), disabled: true } }}
         />
-      </Styled.LoginGoogleFormCard>
-    </Styled.LoginGoogleContainer>
+        <Styled.LoginButtonBox>
+          <BaseButton onClick={handleGoogleSignIn} type={ButtonType.Basic} variant='contained' endIcon={<Google />}>
+            {t("login.loginWith")}
+          </BaseButton>
+        </Styled.LoginButtonBox>
+      </Styled.LoginFormCard>
+    </Styled.LoginContainer>
   );
 };
