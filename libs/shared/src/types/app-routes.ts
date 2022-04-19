@@ -20,7 +20,7 @@ export enum BaseRoute {
 
 export type AppRouteType = BaseRoute | FeedbackRoute;
 
-export const ROUTES: Record<AppRouteType, string | string[]> = {
+export const ROUTES: Record<AppRouteType, string | string[]> = Object.freeze({
   [BaseRoute.Home]: "/",
   [BaseRoute.NotFound]: "*",
   [BaseRoute.Login]: "/login",
@@ -29,4 +29,4 @@ export const ROUTES: Record<AppRouteType, string | string[]> = {
   [FeedbackRoute.AddPresentation]: [`/${FeatureName.Feedback}`, "/presentation", "/add"],
   [FeedbackRoute.ExternalUserPresentation]: [`/${FeatureName.ExternalFeedback}`, "/presentation", "/:id"],
   [FeedbackRoute.EditPresentation]: [`/${FeatureName.Feedback}`, "/presentation", "/edit/:id"]
-};
+});

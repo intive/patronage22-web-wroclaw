@@ -3,6 +3,6 @@ declare module "react-qr-code" {
 
   interface QRCodeProps {
     value: string;
-    size: number;
+    size?: number;
   }
 }

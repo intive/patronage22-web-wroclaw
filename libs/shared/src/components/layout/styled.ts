@@ -12,7 +12,14 @@ export const ContentBox = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  flexDirection: "column",
   flexGrow: 1,
   width: "100%",
-  maxWidth: theme.spacing(192)
+  maxWidth: theme.spacing(192),
+  padding: theme.spacing(1),
+  overflowX: "hidden",
+
+  [theme.breakpoints.down("sm")]: {
+    flexDirection: "column"
+  }
 }));

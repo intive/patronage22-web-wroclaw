@@ -10,6 +10,7 @@
   "missingTitleError": "Title cannot be empty",
   "newPresentation": "New presentation",
   "newQuestion": "New question",
+  "notFoundPresentation": "Presentation not found",
   "presentationSummary": "Presentation summary",
   "question": {
     "addField": "Add answer...",
@@ -28,5 +29,6 @@
   },
   "setQuestionTime": "Time to answer (seconds)",
   "shareDialogMessage": "Congratulations, your presentation: {{name}} just started, use the link below to share it!",
-  "sharePresentation": "Share presentation"
+  "sharePresentation": "Share presentation",
+  "summary": "Summary"
 }
