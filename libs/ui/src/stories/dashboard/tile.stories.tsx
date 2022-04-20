@@ -1,9 +1,9 @@
-import { DashboardTile } from "@patronage-web/features-feedback";
+import { PresentationTile } from "@patronage-web/features-feedback";
 import { presentationsMock } from "@patronage-web/shared-data";
 import { ComponentMeta } from "@storybook/react";
 
 export const DashboardTileStory: React.FC = () => (
-  <DashboardTile
+  <PresentationTile
     id={presentationsMock[0].id}
     isPublic={presentationsMock[0].isPublic}
     title={presentationsMock[0].title}

@@ -15,5 +15,5 @@ export interface Presentation {
 }
 
 export interface DashboardCardProps extends CardProps {
-  isPublic: boolean;
+  ispublic: string;
 }

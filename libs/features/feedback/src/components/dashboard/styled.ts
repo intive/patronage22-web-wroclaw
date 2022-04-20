@@ -27,14 +27,18 @@ export const FeedbackTileGrid = styled(Box)(({ theme }) => ({
   }
 }));
 
-export const FeedbackDashboardContainer = styled(Box)(() => ({
+export const FeedbackDashboardContainer = styled(Box)({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
   width: "100%"
-}));
+});
 
 export const NewPresentationButtonContainer = styled(Box)(({ theme }) => ({
   padding: theme.spacing(2),
-  width: "33%"
+  width: "33%",
+
+  [theme.breakpoints.down("sm")]: {
+    width: "75%"
+  }
 }));

@@ -10,14 +10,14 @@ import * as Styled from "./styled";
 
 export const PresentationTile: React.FC<DashboardTileProps> = ({ id, isPublic, title, description }) => {
   const { t } = useTranslation(TranslationNamespace.Common);
-  const [open, setOpen] = useState(false);
+  const [openDialog, setOpenDialog] = useState(false);
 
   const handleOpenDialog = () => {
-    setOpen(true);
+    setOpenDialog(true);
   };
 
   const handleCloseDialog = () => {
-    setOpen(false);
+    setOpenDialog(false);
   };
 
   // TODO - replace undefined with proper action when ready
@@ -28,7 +28,7 @@ export const PresentationTile: React.FC<DashboardTileProps> = ({ id, isPublic, t
 
   return (
     <Styled.PresentationTileContainer>
-      <Styled.PresentationCard isPublic={isPublic} raised>
+      <Styled.PresentationCard ispublic={isPublic.toString()} raised>
         <Styled.PresentationTileHeader
           title={<Typography noWrap>{title}</Typography>}
           subheader={
@@ -46,7 +46,7 @@ export const PresentationTile: React.FC<DashboardTileProps> = ({ id, isPublic, t
         <Styled.PresentationTileButtonContainer>
           <Styled.PresentationTileButtonBox>
             {dashboardTileButtons.map(({ text, action }) => (
-              <BaseButton type={ButtonType.Basic} onClick={action} variant='outlined'>
+              <BaseButton key={text} type={ButtonType.Basic} onClick={action} variant='outlined'>
                 {text}
               </BaseButton>
             ))}
@@ -59,7 +59,7 @@ export const PresentationTile: React.FC<DashboardTileProps> = ({ id, isPublic, t
         </Styled.PresentationTileButtonContainer>
       </Styled.PresentationCard>
 
-      <ShareDialog open={open} onClose={handleCloseDialog} id={id} title={title} />
+      <ShareDialog open={openDialog} onClose={handleCloseDialog} id={id} title={title} />
     </Styled.PresentationTileContainer>
   );
 };
