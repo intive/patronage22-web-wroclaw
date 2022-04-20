@@ -1,4 +1,3 @@
-import { QuestionFormFieldNameType } from "@patronage-web/features-feedback";
 import { FormProps } from "@patronage-web/shared";
 import { QuestionType } from "@patronage-web/shared-data";
 import i18next from "i18next";
@@ -6,6 +5,7 @@ import { Dispatch, SetStateAction } from "react";
 import { string } from "yup";
 
 import { QUESTION_CONFIG } from "../../configs";
+import { QuestionFormFieldNameType } from "./index";
 
 export const updateTranslations = (setElements: Dispatch<SetStateAction<FormProps>>, isQuestionAsked: boolean) => {
   setElements(prevElements => ({

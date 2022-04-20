@@ -3,7 +3,6 @@ import { Box, styled } from "@mui/material";
 export const NewPresentationWrapper = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
-  marginTop: theme.spacing(13),
   padding: theme.spacing(0, 2),
   overflowX: "hidden",
   overflowY: "auto"
