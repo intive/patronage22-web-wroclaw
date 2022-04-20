@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import { PresentationLiveSummary } from "../../components";
+import { isServerContext } from "../../utils";
 import { CurrentQuestionView, LiveResultsView } from "../index";
 
 // TODO remove when getting data from the server will be ready
@@ -61,7 +62,7 @@ export const ExternalPresentationView: React.FC = () => {
   useEffect(() => {
     const lastSubmittedQuestionId = localStorage.getItem(LAST_SUBMITTED_QUESTION_ID_KEY);
 
-    if (currentQuestion && lastSubmittedQuestionId === currentQuestion.id) {
+    if (!isServerContext() && currentQuestion && lastSubmittedQuestionId === currentQuestion.id) {
       dispatch(submitQuestion());
     }
 
