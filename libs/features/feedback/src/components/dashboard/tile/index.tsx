@@ -20,7 +20,7 @@ export const PresentationTile: React.FC<DashboardTileProps> = ({ id, isPublic, t
     setOpenDialog(false);
   };
 
-  const isShareDisabled = status === PresentationStatus.Shared;
+  const isShareDisabled = status === PresentationStatus.Shared || status === PresentationStatus.Done;
   const isEndDisabled = status === PresentationStatus.Done || status === PresentationStatus.Draft;
   const isEditDisabled = status === PresentationStatus.Shared;
 
