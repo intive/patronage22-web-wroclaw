@@ -4,7 +4,7 @@ import { BaseButton, ButtonType, FeedbackRoute, LocalizedLink, TranslationNamesp
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { Presentation as DashboardTileProps } from "../../../types";
+import { Presentation as DashboardTileProps, PresentationStatus } from "../../../types";
 import { ShareDialog } from "../../share-dialog";
 import * as Styled from "./styled";
 
@@ -20,10 +20,14 @@ export const PresentationTile: React.FC<DashboardTileProps> = ({ id, isPublic, t
     setOpenDialog(false);
   };
 
+  const isShareDisabled = status === PresentationStatus.Shared;
+  const isEndDisabled = status === PresentationStatus.Done || status === PresentationStatus.Draft;
+  const isEditDisabled = status === PresentationStatus.Shared;
+
   // TODO - replace undefined with proper action when ready
   const dashboardTileButtons = [
-    { text: t("share"), action: handleOpenDialog },
-    { text: t("end"), action: undefined }
+    { text: t("share"), action: handleOpenDialog, disabled: isShareDisabled },
+    { text: t("end"), action: undefined, disabled: isEndDisabled }
   ];
 
   return (
@@ -45,13 +49,13 @@ export const PresentationTile: React.FC<DashboardTileProps> = ({ id, isPublic, t
 
         <Styled.PresentationTileButtonContainer>
           <Styled.PresentationTileButtonBox>
-            {dashboardTileButtons.map(({ text, action }) => (
-              <BaseButton key={text} type={ButtonType.Basic} onClick={action} variant='outlined'>
+            {dashboardTileButtons.map(({ text, action, disabled }) => (
+              <BaseButton key={text} type={ButtonType.Basic} onClick={action} variant='outlined' disabled={disabled}>
                 {text}
               </BaseButton>
             ))}
             <LocalizedLink to={FeedbackRoute.EditPresentation} routerParams={{ id }}>
-              <BaseButton type={ButtonType.Basic} variant='outlined'>
+              <BaseButton type={ButtonType.Basic} variant='outlined' disabled={isEditDisabled}>
                 {t("edit")}
               </BaseButton>
             </LocalizedLink>
