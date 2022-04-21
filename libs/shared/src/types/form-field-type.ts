@@ -13,6 +13,13 @@ export enum FormFieldType {
 
 export type FormTextFieldVariant = "standard" | "filled" | "outlined";
 
+export interface DynamicsInterface {
+  name: string;
+  fields: FormFieldProps[];
+  addButtonText: string;
+  maxAmount: number;
+}
+
 export interface FormFieldProps extends Pick<UseControllerProps, "name" | "defaultValue"> {
   type: FormFieldType;
   inputType?: BaseTextFieldProps["type"];
@@ -31,5 +38,6 @@ export interface FormFieldProps extends Pick<UseControllerProps, "name" | "defau
   selectItems?: SelectItem[];
   appendix?: ReactNode;
   hideEditIcon?: boolean;
+  dynamics?: DynamicsInterface;
   values?: Record<string, unknown>[];
 }

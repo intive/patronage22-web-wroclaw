@@ -40,7 +40,8 @@ export const SearchResultsBtnBox = styled(Box)(({ theme }) => ({
 
   "& .MuiButton-root": {
     borderRadius: 0,
-    backgroundColor: alpha(theme.palette.primary.dark, 0.1)
+    backgroundColor: alpha(theme.palette.primary.dark, 0.1),
+    width: "100%"
   }
 }));
 

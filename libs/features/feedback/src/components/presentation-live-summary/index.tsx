@@ -37,7 +37,7 @@ export const PresentationLiveSummary: React.FC<PresentationLiveSummaryProps> = (
 
   return (
     <Styled.PresentationSummaryContainer>
-      <Styled.LiveSummaryTitle variant='h6'>{t("presentationSummary")}</Styled.LiveSummaryTitle>
+      <Styled.LiveSummaryTitle variant='h6'>{t("presentation.summary")}</Styled.LiveSummaryTitle>
       {results}
     </Styled.PresentationSummaryContainer>
   );

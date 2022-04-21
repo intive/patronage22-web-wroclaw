@@ -30,7 +30,7 @@ export const ExternalPresentationView: React.FC = () => {
   const { currentQuestionIndex, isQuestionSubmit: isSubmit, timeToElapse } = useSelector(selectExternalPresentation);
 
   if (externalPresentationMock.id !== params.id) {
-    return <Typography variant='h1'>{t("notFoundPresentation")}</Typography>;
+    return <Typography variant='h1'>{t("presentation.notFound")}</Typography>;
   }
 
   const currentQuestionIndexInitialState = -1;

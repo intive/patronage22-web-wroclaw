@@ -49,6 +49,11 @@ export const LoginForm = styled(Form)(({ theme }) => ({
     marginTop: theme.spacing(3)
   },
 
+  "& .MuiFilledInput-root": {
+    borderRadius: theme.shape.borderRadius,
+    margin: theme.spacing(1)
+  },
+
   "& a": {
     display: "inline-block",
     color: theme.palette.info.main,
@@ -58,6 +63,6 @@ export const LoginForm = styled(Form)(({ theme }) => ({
 
 export const LoginButtonBox = styled(Box)(({ theme }) => ({
   width: "100%",
-  maxWidth: theme.spacing(50),
+  maxWidth: theme.spacing(60),
   marginTop: theme.spacing(3)
 }));

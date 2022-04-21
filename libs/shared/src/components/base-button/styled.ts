@@ -5,7 +5,6 @@ export const BasicButton = styled(Button)(({ theme }) => ({
   fontSize: "inherit",
   textTransform: "none",
   borderColor: theme.palette.primary.dark,
-  width: "100%",
 
   "&:hover": {
     borderColor: theme.palette.primary.light

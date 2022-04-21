@@ -33,7 +33,7 @@ export const ShareDialog: React.FC<ShareDialogProps> = ({ open, onClose, id, tit
   };
 
   return (
-    <Styled.BasicShareDialog open={open} onClose={onClose}>
+    <Styled.BasicShareDialog open={open} onClose={onClose} disableScrollLock>
       <Styled.IconBox>
         <Styled.ShareIcon />
       </Styled.IconBox>

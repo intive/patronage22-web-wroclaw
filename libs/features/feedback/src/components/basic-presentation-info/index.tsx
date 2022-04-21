@@ -1,22 +1,15 @@
-import { FormFieldType, TranslationNamespace } from "@patronage-web/shared";
-import React from "react";
+import { Form, FormFieldType, TranslationNamespace } from "@patronage-web/shared";
 import { useTranslation } from "react-i18next";
-import { string } from "yup";
+import { number, string } from "yup";
 
-import * as Styled from "./styled";
+import { QUESTION_CONFIG } from "../../configs";
 
 export const BasicPresentationInfo: React.FC = () => {
   const { t } = useTranslation(TranslationNamespace.Feedback);
 
   return (
-    <Styled.BasicPresentationInfo
+    <Form
       fields={[
-        {
-          type: FormFieldType.Text,
-          name: "title",
-          variant: "standard",
-          placeholder: t("newPresentation")
-        },
         {
           type: FormFieldType.Textarea,
           name: "description",
@@ -24,11 +17,21 @@ export const BasicPresentationInfo: React.FC = () => {
           placeholder: t("description"),
           rows: 2,
           inputConfig: { disableUnderline: true }
+        },
+        {
+          type: FormFieldType.Text,
+          name: "time",
+          variant: "standard",
+          label: t("setQuestionTime"),
+          inputConfig: {
+            type: "number"
+          },
+          defaultValue: QUESTION_CONFIG.defaultTime
         }
       ]}
       validationSchema={{
-        title: string().trim().required(t("missingTitleError")),
-        description: string()
+        description: string(),
+        time: number().positive(t("question.negativeTimeError")).default(QUESTION_CONFIG.defaultTime)
       }}
     />
   );

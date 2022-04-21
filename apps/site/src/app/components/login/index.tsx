@@ -35,6 +35,9 @@ export const Login: React.FC = () => {
               name: "email",
               variant: "filled",
               description: "E-mail",
+              inputConfig: {
+                disableUnderline: true
+              },
               disabled: true,
               hideEditIcon: true
             },
@@ -45,6 +48,9 @@ export const Login: React.FC = () => {
               description: t("password"),
               disabled: true,
               hideEditIcon: true,
+              inputConfig: {
+                disableUnderline: true
+              },
               inputType: "password",
               appendix: <LinkedText variant='subtitle2' route={BaseRoute.Home} text={t("login.forgotPassword")} />
             }
@@ -57,10 +63,16 @@ export const Login: React.FC = () => {
               .min(EMAIL_ADDRESS_MIN_LENGTH, t("login.tooShortMessage")),
             password: string().trim()
           }}
-          customButtons={{ submit: { condition: true, text: t("login.login"), disabled: true } }}
+          basicButtons={{ submit: { condition: true, text: t("login.login"), disabled: true } }}
         />
         <Styled.LoginButtonBox>
-          <BaseButton onClick={handleGoogleSignIn} type={ButtonType.Basic} variant='contained' endIcon={<Google />}>
+          <BaseButton
+            onClick={handleGoogleSignIn}
+            type={ButtonType.Basic}
+            variant='contained'
+            endIcon={<Google />}
+            sx={{ width: "100%" }}
+          >
             {t("login.loginWith")}
           </BaseButton>
         </Styled.LoginButtonBox>

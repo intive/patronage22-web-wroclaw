@@ -5,6 +5,7 @@ export const Field = styled(Box)({
   display: "inline-flex",
   justifyContent: "flex-start",
   alignItems: "center",
+  width: "100%",
 
   "& #editIcon": {
     visibility: "hidden"
