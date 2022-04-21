@@ -10,18 +10,18 @@ export const startNavbarSectionStyles = {
   }
 };
 
-export const navbarConfig: LayoutProps["navbarConfig"] = {
-  start: {
-    elements: [<Typography>Patronage 2022</Typography>],
-    customStyles: startNavbarSectionStyles
-  },
-  end: {
-    elements: [<ThemeSelector />]
-  }
-};
-
 export const Layout: React.FC = ({ children }) => {
   const { userLogin } = useSelector(authSelector);
+
+  const navbarConfig: LayoutProps["navbarConfig"] = {
+    start: {
+      elements: [<Typography>Patronage 2022</Typography>],
+      customStyles: startNavbarSectionStyles
+    },
+    end: {
+      elements: [<ThemeSelector />]
+    }
+  };
 
   if (userLogin) {
     navbarConfig.center = {
