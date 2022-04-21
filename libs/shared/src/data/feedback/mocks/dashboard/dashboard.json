@@ -8,7 +8,7 @@
   },
   {
     "id": "fe6507a0-381a-402b-9513-cd232b0a7a23",
-    "isPublic": true,
+    "isPublic": false,
     "title": "Presentation 1 Java",
     "description": "Description 1",
     "status": "DONE"
@@ -106,14 +106,14 @@
   },
   {
     "id": "2112a8f9-dd07-4acd-992b-fc1ad3c06250",
-    "isPublic": true,
+    "isPublic": false,
     "title": "Presentation 15 Java",
     "description": "Description 15",
     "status": "DONE"
   },
   {
     "id": "59dd33a0-dd0d-4ad5-9719-ff2c70e3083b",
-    "isPublic": true,
+    "isPublic": false,
     "title": "Presentation 16 React",
     "description": "Description 16",
     "status": "DONE"
