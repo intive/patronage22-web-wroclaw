@@ -24,9 +24,9 @@ export const BasicPresentationInfo: React.FC = () => {
           variant: "standard",
           label: t("setQuestionTime"),
           inputConfig: {
-            type: "number",
-            defaultValue: QUESTION_CONFIG.defaultTime
-          }
+            type: "number"
+          },
+          defaultValue: QUESTION_CONFIG.defaultTime
         }
       ]}
       validationSchema={{
