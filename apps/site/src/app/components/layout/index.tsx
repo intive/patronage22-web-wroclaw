@@ -1,4 +1,4 @@
-import { Layout as FeedbackLayout } from "@patronage-web/features-feedback";
+import { ExternalLayout as ExternalFeedbackLayout, Layout as FeedbackLayout } from "@patronage-web/features-feedback";
 import { ContentBox, FeatureName, PreviousPageButton, useFeatureName } from "@patronage-web/shared";
 
 import { Layout as DefaultLayout } from "./default-layout";
@@ -14,8 +14,7 @@ export const Layout: React.FC = ({ children }) => {
         <ContentBox>{children}</ContentBox>
       </FeedbackLayout>
     ),
-    // TODO replace with proper external layout when will be ready
-    [FeatureName.ExternalFeedback]: <FeedbackLayout>{children}</FeedbackLayout>,
+    [FeatureName.ExternalFeedback]: <ExternalFeedbackLayout>{children}</ExternalFeedbackLayout>,
     [FeatureName.Default]: <DefaultLayout>{children}</DefaultLayout>
   };
 

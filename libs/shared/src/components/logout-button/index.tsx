@@ -1,23 +1,17 @@
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
 
-import { BaseRoute, TranslationNamespace } from "../../types";
-import { createPath } from "../../utils";
+import { useFirebaseService } from "../../services";
+import { TranslationNamespace } from "../../types";
 import { BaseButton, ButtonType } from "../base-button";
 import * as Styled from "./styled";
 
 export const LogoutButton = () => {
-  const { t, i18n } = useTranslation(TranslationNamespace.Common);
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    // TODO replace logic when login functionality will be ready
-    navigate(createPath({ route: BaseRoute.Login, language: i18n.language }));
-  };
+  const { t } = useTranslation(TranslationNamespace.Common);
+  const { signOut } = useFirebaseService();
 
   return (
     <Styled.LogoutButtonWrapper>
-      <BaseButton type={ButtonType.Basic} onClick={handleLogout}>
+      <BaseButton type={ButtonType.Basic} onClick={signOut}>
         {t("login.logout")}
       </BaseButton>
     </Styled.LogoutButtonWrapper>
