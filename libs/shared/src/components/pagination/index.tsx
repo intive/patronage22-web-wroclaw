@@ -64,12 +64,10 @@ export const BasicPagination: React.FC<BasicPaginationProps> = ({ itemsCount, in
 
   const handleSizeChange = (value: string) => {
     updateParams({ size: value });
-    onChange(page, Number(value));
   };
 
   const handlePageChange = (_event: ChangeEvent<unknown>, currentPage: number) => {
     updateParams({ page: `${currentPage}` });
-    onChange(currentPage, size);
   };
 
   useEffect(() => {
@@ -78,7 +76,8 @@ export const BasicPagination: React.FC<BasicPaginationProps> = ({ itemsCount, in
     } else {
       onChange(page, size);
     }
-  }, [isPageCorrect, isSizeCorrect, onChange, page, updateParams, size]);
+    // eslint-disable-next-line
+  }, [isPageCorrect, isSizeCorrect, page, size]);
 
   return (
     <Styled.PaginationBox>
