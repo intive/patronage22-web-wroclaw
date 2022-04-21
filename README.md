@@ -1,3 +1,8 @@
+![ci-build workflow](https://github.com/intive/patronage22-web-wroclaw/actions/workflows/ci-build.yml/badge.svg)
+![preview deployment workflow](https://github.com/intive/patronage22-web-wroclaw/actions/workflows/preview-deployment.yml/badge.svg)
+![production deployment workflow](https://github.com/intive/patronage22-web-wroclaw/actions/workflows/prod-deployment.yml/badge.svg)
+![project pipeline workflow](https://github.com/intive/patronage22-web-wroclaw/actions/workflows/integration.yml/badge.svg)
+
 <h1 style="color:#007ac9;border-bottom:none;text-align:center;">Intive Patronage 2022</h1>
 <h2 style="text-align:center;border-bottom:none">Wrocław JavaScript Project</h2>
 
@@ -15,45 +20,88 @@
 
 ## General Information
 
-- Provide general information about your project here.
-- What problem does it (intend to) solve?
-- What is the purpose of your project?
-- etc...
+<p align="center">
+<img alt="apps favicon" src="./apps/site/src/favicon.ico" width="200">
+</p>
+
+<h1 align="center">
+Patronage Site
+</h1>
+
+- An app based on [Mentimeter](https://www.mentimeter.com)
+- It let's you make your presentation more fun and interactive
+- Simply log in, create a form, share and watch what happens
+- Every participant with a link can answer the questions and see live results
 
 ## Technologies Used
 
-- links to libs like React/nx/ts etc... with logos?
+- [Nx](https://nx.dev) <img alt="nx logo" src="https://ultimatecourses.com/assets/category/nx-6c132a35ad2a671dd3cf042dbbc4e1d941a3c52971b01c9e332b4300dba07df4.svg" height="30">
+- [React](https://reactjs.org) <img alt="react logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png" height="30">
+- [TypeScript](https://www.typescriptlang.org) <img alt="typescript logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png" height="30">
+- [MUI](https://mui.com) <img alt="mui logo" src="https://mui.com/static/logo.png" height="30">
+- [styled components](https://styled-components.com) <img alt="styled components logo" src="https://styled-components.com/atom.png" height="30">
+- [Redux Toolkit](https://redux-toolkit.js.org) <img alt="redux logo" src="https://raw.githubusercontent.com/reduxjs/redux/master/logo/logo.png" height="30">
+- [i18next](https://www.i18next.com) <img alt="i18next logo" src="https://avatars.githubusercontent.com/u/8546082?s=280&v=4" height="30">
+- [Firebase](https://firebase.google.com) <img alt="firebase logo" src="https://cdn.worldvectorlogo.com/logos/firebase-1.svg" height="30">
+- [Storybook](https://storybook.js.org) <img alt="storybook logo" src="https://iconape.com/wp-content/files/qa/371510/svg/371510.svg" height="30">
+- [Cypress](https://go.cypress.io/get-started?utm_adgroup=128583766023&utm_keyword=cypress&utm_source=google&utm_medium=cpc&utm_campaign=15310628554&utm_term=cypress&hsa_acc=8898574980&hsa_cam=15310628554&hsa_grp=128583766023&hsa_ad=562833928007&hsa_src=g&hsa_tgt=kwd-109225769&hsa_kw=cypress&hsa_mt=p&hsa_net=adwords&hsa_ver=3&gclid=Cj0KCQjw3v6SBhCsARIsACyrRAkB_R9rBQt8-gMUoIKAWwxMZZJpT6VI--Jehq9-KN-pwlsTPEopHFkaAsZ7EALw_wcB) <img alt="cypress logo" src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Cypress.png" height="30">
+- [Prettier](https://prettier.io) <img alt="prettier logo" src="https://seeklogo.com/images/P/prettier-logo-D5C5197E37-seeklogo.com.png" height="30">
+- [ESLint](https://eslint.org) <img alt="eslint logo" src="https://seeklogo.com/images/E/eslint-logo-DDFB6EBCF6-seeklogo.com.png" height="30">
 
+### Other
+- [React Router](https://reactrouter.com)
+- [React Hook Form](https://react-hook-form.com)
+- [React QR Code](https://github.com/rosskhanas/react-qr-code)
+- [Yup](https://github.com/jquense/yup)
+- [Lodash](https://lodash.com)
+- [Chart.js](https://www.chartjs.org)
+- [Fuze.js](https://fusejs.io)
 ## Features
 
-List the ready features here:
-
-- Awesome feature 1
-- Awesome feature 2
-- Awesome feature 3
+- Log in with Google Account
+- Create form with open and closed questions
+- Share link with saved form
+- Fill the form
+- See live results of shared form
+- Search saved form
+- Switch beetween dark and light mode
+- Change language :poland: :uk:/:us:/:australia:
 
 ## Screenshots
 
-![Example screenshot](./img/screenshot.png)
-
-<!-- If you have screenshots you'd like to share, include them here. -->
+![login page screenshot](./img/login-page-screenshot.png)
+![homepage screenshot](./img/homepage-screenshot.png)
+![new presentation 1 screenshot](./img/new-presentation-screenshot.png)
+![new presentation 2 screenshot](./img/new-presentation-screenshot-2.png)
+![new presentation 3 screenshot](./img/new-presentation-screenshot-3.png)
+![share presentation screenshot](./img/share-presentation-screenshot.png)
+![answer closed question screenshot](./img/answer-closed-screenshot.png)
+![answer open question screenshot](./img/answer-open-screenshot.png)
+![summary of one question screenshot](./img/summary-one-screenshot.png)
+![summary final screenshot](./img/summary-final-screenshot.png)
+![search screenshot](./img/search-screenshot.png)
+![dashboard screenshot](./img/dashboard-screenshot.png)
+![dashboard share screenshot](./img/dashboard-share-screenshot.png)
+![notfound pl screenshot](./img/page-not-found-pl-screenshot.png)
+![notfound screenshot](./img/page-not-found-dark-screenshot.png)
 
 ## Setup
 
-What are the project requirements/dependencies? Where are they listed?
-
-Proceed to describe how to install / setup one's local environment / get started with the project.
+Run `yarn` to install all dependencies needed for this project. They are listed in `package.json` file.
 
 ## Usage
 
-How does one go about using it?
-Provide various use cases and code examples here.
+`yarn start` - to run the app
 
-`write-your-code-here`
+`yarn storybook ui:storybook` - to run storybook
+
+`yarn e2e site-e2e` - to run e2e tests
+
+The server is running on port 4000
 
 ## Project Status
 
-Project is **_in progress_ **
+Project is done but with room for improvement :tada:
 
 ======================================================
 
@@ -144,21 +192,41 @@ Project is **_in progress_ **
 
 ## Room for Improvement
 
-Include areas you believe need improvement / could be improved. Also add TODOs for future development.
-
 Room for improvement:
 
-- Improvement to be done 1
-- Improvement to be done 2
+- Pay more attention to naming
+- Write less complicated code
 
 To do:
 
-- Feature to be added 1
-- Feature to be added 2
+- Functionality of editing, deleting and properly saving forms
+- Add react-first-router
+- Create homepage
+- ...
 
 ## Contributors
 
-All Intive Patronage participants nicks or sth :)
+[@Adys23](https://github.com/Adys23)
+
+[@aniasgit](https://github.com/aniasgit)
+
+[@krysia1](https://github.com/krysia1)
+
+[@malmon305](https://github.com/malmon305)
+
+[@pawelwojdas](https://github.com/pawelwojdas)
+
+[@piotrrawski](https://github.com/piotrrawski)
+
+[@Reden4005](https://github.com/Reden4005)
+
+### Team Leaders
+
+[@FabianHoffmannIntive](https://github.com/FabianHoffmannIntive)
+
+[@kacperChlon](https://github.com/kacperChlon)
+
+[@piotrpalus](https://github.com/piotrpalus)
 
 ## Contact
 
