@@ -6,6 +6,7 @@ export * from "./get-domain-name";
 export * from "./get-remaining-time";
 export * from "./get-theme-config";
 export * from "./is-protected-route";
+export * from "./is-server-context";
 export * from "./lang-fns";
 export * from "./load-i18n";
 export * from "./trim-string";

@@ -1,1 +1,1 @@
-export * from "./is-server-context";
+export * from ".";
