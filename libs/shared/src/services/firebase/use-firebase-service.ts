@@ -1,15 +1,16 @@
 import { onAuthStateChanged } from "firebase/auth";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import { finishAuth, login, logout, startAuth, userData as mockedUserData } from "../../data";
 import { useNotification } from "../../hooks";
-import { BaseRoute, FirebaseAuthProvider, TranslationNamespace } from "../../types";
+import { BaseRoute, FirebaseAuthProvider, ROUTES, TranslationNamespace } from "../../types";
 import { createPath, verifyAuth } from "../../utils";
 import { firebaseAuth, useSignInProvider } from "./index";
 
 export const useFirebaseService = () => {
+  const location = useLocation();
   const dispatch = useDispatch();
   const { i18n, t } = useTranslation(TranslationNamespace.Common);
   const navigate = useNavigate();
@@ -26,6 +27,12 @@ export const useFirebaseService = () => {
   const handleLogoutRedirect = () => {
     // TODO replace logic when login functionality will be ready
     navigate(createPath({ route: BaseRoute.Login, language: i18n.language }));
+  };
+
+  const handleRedirectLoggedUser = () => {
+    if (location.pathname === ROUTES.login) {
+      handleLoginSuccess();
+    }
   };
 
   const signIn = async (providerName: FirebaseAuthProvider) => {
@@ -53,6 +60,7 @@ export const useFirebaseService = () => {
     try {
       if (!isAuthorized) {
         dispatch(login(mockedUserData));
+        handleRedirectLoggedUser();
         return;
       }
 
@@ -64,6 +72,7 @@ export const useFirebaseService = () => {
         if (!user?.email || !accessToken) return;
 
         dispatch(login({ accessToken, userLogin: user.email }));
+        handleRedirectLoggedUser();
       });
     } catch {
       showError(t("login.authFailed"));
