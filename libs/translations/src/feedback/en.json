@@ -9,6 +9,9 @@
   },
   "missingTitleError": "Title cannot be empty",
   "newQuestion": "New question",
+  "pagination": {
+    "presentations": "Presentations per page"
+  },
   "presentation": {
     "new": "New presentation",
     "notFound": "Presentation not found",

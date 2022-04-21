@@ -8,7 +8,7 @@ import { Presentation as DashboardTileProps } from "../../../types";
 import { ShareDialog } from "../../share-dialog";
 import * as Styled from "./styled";
 
-export const PresentationTile: React.FC<DashboardTileProps> = ({ id, isPublic, title, description }) => {
+export const PresentationTile: React.FC<DashboardTileProps> = ({ id, isPublic, title, description, status }) => {
   const { t } = useTranslation(TranslationNamespace.Common);
   const [openDialog, setOpenDialog] = useState(false);
 

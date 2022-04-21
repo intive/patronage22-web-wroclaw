@@ -9,7 +9,8 @@ export const NewPresentationWrapper = styled(Box)(({ theme }) => ({
 }));
 
 export const NewQuestionBtnWrapper = styled(Box)(({ theme }) => ({
-  padding: theme.spacing(3, 2)
+  padding: theme.spacing(3, 2),
+  width: "40%"
 }));
 
 export const TitleAndButtonsWrapper = styled(Box)(({ theme }) => ({
