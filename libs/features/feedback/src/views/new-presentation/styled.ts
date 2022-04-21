@@ -10,9 +10,9 @@ export const NewPresentationWrapper = styled(Box)(({ theme }) => ({
 
 export const NewQuestionBtnWrapper = styled(Box)(({ theme }) => ({
   padding: theme.spacing(3, 2),
-  width: "50%",
+  width: "40%",
 
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("md")]: {
     width: "80%"
   }
 }));
@@ -20,7 +20,7 @@ export const NewQuestionBtnWrapper = styled(Box)(({ theme }) => ({
 export const TitleAndButtonsWrapper = styled(Box)(({ theme }) => ({
   display: "flex",
 
-  [theme.breakpoints.down("md")]: {
+  [theme.breakpoints.down("sm")]: {
     flexDirection: "column"
   }
 }));
