@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { Typography } from "@mui/material";
-import { Loader, LoaderType, TranslationNamespace } from "@patronage-web/shared";
+import { isServerContext, Loader, LoaderType, TranslationNamespace } from "@patronage-web/shared";
 import {
   calculateStartQuestionIndex,
   calculateTimeToElapse,
@@ -61,7 +61,9 @@ export const ExternalPresentationView: React.FC = () => {
   useEffect(() => {
     const lastSubmittedQuestionId = localStorage.getItem(LAST_SUBMITTED_QUESTION_ID_KEY);
 
-    if (currentQuestion && lastSubmittedQuestionId === currentQuestion.id) {
+    const isCurrentQuestionSubmitted = lastSubmittedQuestionId === currentQuestion?.id;
+
+    if (!isServerContext() && isCurrentQuestionSubmitted) {
       dispatch(submitQuestion());
     }
 
