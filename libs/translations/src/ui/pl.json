@@ -1,3 +1,6 @@
 {
-  "hello": "Witaj"
+  "hello": "Witaj",
+  "sampleMessage": "Przykładowa wiadomość",
+  "sampleText": "Przykładowy tekst",
+  "sharePresentation": "Udostępnij prezentację"
 }

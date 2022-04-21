@@ -3,20 +3,16 @@ import { ComponentMeta } from "@storybook/react";
 import { string } from "yup";
 import { ObjectShape } from "yup/lib/object";
 
-export const FormStory: React.FC<FormProps> = ({ validationSchema, fields, onSubmit, onError, showSubmitButton }) => (
-  <Form
-    validationSchema={validationSchema}
-    fields={fields}
-    onSubmit={onSubmit}
-    onError={onError}
-    showSubmitButton={showSubmitButton}
-  />
+export const FormStory: React.FC<FormProps> = ({ validationSchema, fields, onSubmit, onError, customButtons }) => (
+  <Form validationSchema={validationSchema} fields={fields} onSubmit={onSubmit} onError={onError} customButtons={customButtons} />
 );
 
+const customButtons: FormProps["customButtons"] = { submit: { condition: true } };
+
 const fields: FormFieldProps[] = [
-  { fieldType: FormFieldType.Text, name: "field1", variant: "filled" },
-  { fieldType: FormFieldType.Textarea, name: "field2", variant: "outlined" },
-  { fieldType: FormFieldType.Text, name: "email", variant: "standard", label: "E-mail" }
+  { type: FormFieldType.Text, name: "field1", variant: "filled" },
+  { type: FormFieldType.Textarea, name: "field2", variant: "outlined" },
+  { type: FormFieldType.Text, name: "email", variant: "standard", label: "E-mail" }
 ];
 
 const validationSchema: ObjectShape = {
@@ -38,11 +34,11 @@ export default {
   component: FormStory,
   args: {
     validationSchema,
-    fields
+    fields,
+    customButtons
   },
   argTypes: {
     onSubmit: { type: "function", defaultValue: onSubmit },
-    onError: { type: "function", defaultValue: onError },
-    showSubmitButton: { type: "boolean", defaultValue: true }
+    onError: { type: "function", defaultValue: onError }
   }
 } as ComponentMeta<typeof FormStory>;

@@ -1,15 +1,42 @@
 {
-  "missingTitleError": "Tytuł nie może być pusty",
-  "newPresentation": "Nowa prezentacja",
-  "description": "Opis",
   "breadcrumb": {
     "breadcrumb": "nawigacja",
     "save": "Zapisz"
   },
-
+  "description": "Opis",
+  "homepage": {
+    "newPresentationDescription": "Czy zastanawiałeś się kiedyś, co zrobić, by Twoja prezentacja była bardziej interaktywna? Kliknij przycisk poniżej i po prostu... spraw, by tak się stało!"
+  },
+  "missingTitleError": "Tytuł nie może być pusty",
+  "newQuestion": "Nowe pytanie",
+  "pagination": {
+    "presentations": "Prezentacji na stronie"
+  },
+  "presentation": {
+    "new": "Nowa prezentacja",
+    "notFound": "Nie znaleziono prezentacji",
+    "saveFail": "Nie udało się zapisać prezentacji",
+    "saveSuccess": "Prezentacja zapisana pomyślnie",
+    "summary": "Podsumowanie prezentacji"
+  },
+  "question": {
+    "addField": "Dodaj odpowiedź...",
+    "maxCharLength": "Przekroczono maksymalną ilość znaków ({{charAmount}})",
+    "missingQuestionError": "Pole z pytaniem nie może być puste",
+    "negativeTimeError": "Czas nie może być ujemny",
+    "questionField": "Zadaj pytanie",
+    "questionType": "Typ pytania: ",
+    "questionTypeClosed": "Zamknięte",
+    "questionTypeOpen": "Otwarte"
+  },
+  "saveQuestion": "Zapisz pytanie",
   "search": {
+    "searchAriaLabel": "Szukaj",
     "searchbarPlaceholder": "Szukaj prezentacji",
-    "showResultsButton": "Pokaż wszystkie wyniki...",
-    "searchAriaLabel": "Szukaj"
-  }
+    "showResultsButton": "Pokaż wszystkie wyniki..."
+  },
+  "setQuestionTime": "Czas na odpowiedź (sekundy)",
+  "shareDialogMessage": "Gratulacje, Twoja prezentacja: {{name}} właśnie się rozpoczęła, użyj poniższego linku, aby ją udostępnić!",
+  "sharePresentation": "Udostępnij prezentację",
+  "summary": "Podsumowanie"
 }

@@ -1,8 +1,10 @@
+/* eslint-disable global-require */
+
 import i18n from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import { initReactI18next } from "react-i18next";
 
-import { SupportedLanguage, TranslationNamespace } from "../types/translations";
+import { SupportedLanguage, TranslationNamespace } from "../types";
 
 interface I18nOptions {
   env: string | "development";
@@ -29,7 +31,7 @@ export const loadI18n = ({ env, ns }: I18nOptions) => {
     .init({
       fallbackLng: "en",
       supportedLngs: [SupportedLanguage.En, SupportedLanguage.Pl],
-      load: "currentOnly",
+      load: "languageOnly",
       debug: env === "development",
 
       resources: translationResources,

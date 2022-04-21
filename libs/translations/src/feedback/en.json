@@ -1,14 +1,42 @@
 {
-  "missingTitleError": "Title cannot be empty",
-  "newPresentation": "New presentation",
-  "description": "Description",
   "breadcrumb": {
     "breadcrumb": "breadcrumb",
     "save": "Save"
   },
+  "description": "Description",
+  "homepage": {
+    "newPresentationDescription": "Have you ever wondered how to make your presentation more interactive? Click the button below and simply... make it happen!"
+  },
+  "missingTitleError": "Title cannot be empty",
+  "newQuestion": "New question",
+  "pagination": {
+    "presentations": "Presentations per page"
+  },
+  "presentation": {
+    "new": "New presentation",
+    "notFound": "Presentation not found",
+    "saveFail": "Presentation saving failed",
+    "saveSuccess": "Presentation saved successfully",
+    "summary": "Presentation summary"
+  },
+  "question": {
+    "addField": "Add answer...",
+    "maxCharLength": "Maximum number of characters exceeded ({{charAmount}})",
+    "missingQuestionError": "Question cannot be empty",
+    "negativeTimeError": "Time cannot be negative",
+    "questionField": "Ask question",
+    "questionType": "Question type: ",
+    "questionTypeClosed": "Closed",
+    "questionTypeOpen": "Open"
+  },
+  "saveQuestion": "Save question",
   "search": {
+    "searchAriaLabel": "Search",
     "searchbarPlaceholder": "Search presentations",
-    "showResultsButton": "Show all results...",
-    "searchAriaLabel": "Search"
-  }
+    "showResultsButton": "Show all results..."
+  },
+  "setQuestionTime": "Time to answer (seconds)",
+  "shareDialogMessage": "Congratulations, your presentation: {{name}} just started, use the link below to share it!",
+  "sharePresentation": "Share presentation",
+  "summary": "Summary"
 }

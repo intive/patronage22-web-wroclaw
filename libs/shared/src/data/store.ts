@@ -1,13 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import { sampleReducer } from "./features";
-import { FeedbackSliceName } from "./features/feedback/types";
+import { externalPresentationReducer, FeedbackSliceName, presentationsMiddleware, presentationsReducer } from "./features";
 import { logger } from "./middlewares/logger";
+import { authReducer, notificationReducer, SiteSliceName } from "./site";
 
 export const store = configureStore({
   reducer: {
-    // TODO - remove when proper reducers will be ready
-    [FeedbackSliceName.Sample]: sampleReducer
+    [FeedbackSliceName.Presentations]: presentationsReducer,
+    [FeedbackSliceName.ExternalPresentation]: externalPresentationReducer,
+    [SiteSliceName.Notification]: notificationReducer,
+    [SiteSliceName.Auth]: authReducer
   },
-  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(logger)
+  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(presentationsMiddleware).concat(logger)
 });

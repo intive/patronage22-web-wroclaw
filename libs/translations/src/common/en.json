@@ -1,27 +1,55 @@
 {
-  "homepage": {
-    "newPresentationDescription": "Placeholder text for ActionCard to create new presentation on Homepage",
-    "newPresentationButton": "New presentation"
-  },
-  "save": "Save",
-  "submit": "Submit",
   "cancel": "Cancel",
-  "noData": "No data available",
-  "notFoundPage": {
-    "title": "We are sorry, the page you're looking for doesn't exist"
-  },
-  "intive": {
-    "name": "Intive",
-    "wroclaw": "Wroclaw",
-    "address": "Pilsudskiego 69, 50-019 Wroclaw",
-    "phone": "+48 71 769 59 00"
-  },
+  "continue": "Continue",
+  "copyLink": "Copy link",
+  "edit": "Edit",
+  "end": "End",
   "featureNames": {
     "feedback": "Survey Maker",
     "feedback-external": "Survey Participant"
   },
+  "goToPage": {
+    "previous": "Previous page"
+  },
+  "intive": {
+    "address": "Pilsudskiego 69, 50-019 Wroclaw",
+    "name": "Intive",
+    "phone": "+48 71 769 59 00",
+    "wroclaw": "Wroclaw"
+  },
+
+  "linkCopied": "Link copied",
+  "linkCopyingFailed": "Link copying failed!",
+  "login": {
+    "authFailed": "Cannot confirm your identity, please login again",
+    "emailInvalidMessage": "Invalid e-mail address",
+    "emailRequiredMessage": "Please provide your e-mail",
+    "forgotPassword": "Forgot a password?",
+    "login": "Login",
+    "loginFailed": "Logging in failed",
+    "loginWith": "Login with",
+    "logout": "Logout",
+    "logoutFail": "Logout failed",
+    "subtitle": "Login to your account",
+    "title": "Welcome in Patronage App",
+    "tooShortMessage": "Please provide at least 16 characters"
+  },
+  "noItems": "No items available",
+  "notFoundPage": {
+    "title": "We are sorry, the page you're looking for doesn't exist"
+  },
+  "pagination": {
+    "itemsPerPage": "Items per page",
+    "outOf": "out of"
+  },
+  "password": "Password",
+  "save": "Save",
   "search": {
-    "noResultsInfo": "No results found...",
-    "tooShortPhrase": "Please enter at least {{charAmount}} characters"
-  }
+    "maxCharLength": "Maximum number of characters entered: {{charAmount}}",
+    "minCharLength": "Minimum number of characters required: {{charAmount}}",
+    "noResultsInfo": "No results found..."
+  },
+  "share": "Share",
+  "submit": "Submit",
+  "timeIsUp": "Time is up!"
 }

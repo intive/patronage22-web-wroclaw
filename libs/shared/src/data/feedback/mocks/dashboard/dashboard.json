@@ -1,0 +1,121 @@
+[
+  {
+    "id": "91151a02-8e93-11ec-b909-0242ac120002",
+    "isPublic": false,
+    "title": "Sample presentation name",
+    "description": "Sample description",
+    "status": "DRAFT"
+  },
+  {
+    "id": "fe6507a0-381a-402b-9513-cd232b0a7a23",
+    "isPublic": false,
+    "title": "Presentation 1 Java",
+    "description": "Description 1",
+    "status": "DONE"
+  },
+  {
+    "id": "79ca8de9-2a87-41a3-b872-b97b50afd7b2",
+    "isPublic": false,
+    "title": "Presentation 2 JavaScript",
+    "description": "Description 2",
+    "status": "DRAFT"
+  },
+  {
+    "id": "4455b691-0d09-4da9-a7ab-9644831d4e50",
+    "isPublic": true,
+    "title": "Presentation 3 Title",
+    "description": "Description 3",
+    "status": "SHARED"
+  },
+  {
+    "id": "f2930528-7472-44e4-b815-d34ed09e1193",
+    "isPublic": false,
+    "title": "Presentation 4 React",
+    "description": "Description 4",
+    "status": "DONE"
+  },
+  {
+    "id": "a8fabad5-2f5b-433a-a2e8-ee94a56e306a",
+    "isPublic": false,
+    "title": "Presentation 5 Java",
+    "description": "Description 5",
+    "status": "DRAFT"
+  },
+  {
+    "id": "e50fdb9c-a052-4edf-b033-d4d3302a795e",
+    "isPublic": true,
+    "title": "Presentation 6 React",
+    "description": "Description 6",
+    "status": "SHARED"
+  },
+  {
+    "id": "acfc1574-850d-4d7d-b8bd-b5db61ffb701",
+    "isPublic": false,
+    "title": "Presentation 7 JavaScript",
+    "description": "Description 7",
+    "status": "DRAFT"
+  },
+  {
+    "id": "4ac276dc-d5dc-4e5f-aab2-f88cea63d1e2",
+    "isPublic": false,
+    "title": "Presentation 8 React",
+    "description": "Description 8",
+    "status": "DRAFT"
+  },
+  {
+    "id": "50311cbf-dc02-440a-9704-2d500b6a018e",
+    "isPublic": false,
+    "title": "Presentation 9 JavaScript",
+    "description": "Description 9",
+    "status": "DRAFT"
+  },
+  {
+    "id": "a05db012-0d8c-4f4b-8900-0c13a5737686",
+    "isPublic": true,
+    "title": "Presentation 10 Title",
+    "description": "Description 10",
+    "status": "SHARED"
+  },
+  {
+    "id": "2b8016cd-ea88-46bd-aa18-79286a7c675e",
+    "isPublic": false,
+    "title": "Presentation 11 Title",
+    "description": "Description 11",
+    "status": "DONE"
+  },
+  {
+    "id": "8ba6475e-2388-4c09-bcd0-4541f8a8c261",
+    "isPublic": false,
+    "title": "Presentation 12 Java",
+    "description": "Description 12",
+    "status": "DRAFT"
+  },
+  {
+    "id": "a7719af8-baaf-449f-ad6b-0901323bd629",
+    "isPublic": true,
+    "title": "Presentation 13 React",
+    "description": "Description 13",
+    "status": "SHARED"
+  },
+  {
+    "id": "8cfe452b-4794-4bb9-a5fa-890e185a8ad1",
+    "isPublic": true,
+    "title": "Presentation 14 JavaScript",
+    "description": "Description 14",
+    "status": "SHARED"
+  },
+  {
+    "id": "2112a8f9-dd07-4acd-992b-fc1ad3c06250",
+    "isPublic": false,
+    "title": "Presentation 15 Java",
+    "description": "Description 15",
+    "status": "DONE"
+  },
+  {
+    "id": "59dd33a0-dd0d-4ad5-9719-ff2c70e3083b",
+    "isPublic": false,
+    "title": "Presentation 16 React",
+    "description": "Description 16",
+    "status": "DONE"
+  }
+]

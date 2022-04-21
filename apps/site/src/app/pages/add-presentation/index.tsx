@@ -1,8 +1,4 @@
-const AddPresentationPage: React.FC = () => {
-  return (
-    // TODO - replace when proper data will be delivered
-    <h1>Add presentation page</h1>
-  );
-};
+import { NewPresentationView as NewPresentationFeedbackView } from "@patronage-web/features-feedback";
 
+const AddPresentationPage: React.FC = () => <NewPresentationFeedbackView />;
 export default AddPresentationPage;
