@@ -10,8 +10,8 @@
           "extractLicenses": true,
           "fileReplacements": [
             {
-              "replace": "apps/site/src/environments/environment.ts",
-              "with": "apps/site/src/environments/environment.prod.ts"
+              "replace": "libs/shared/src/environments/environment.ts",
+              "with": "libs/shared/src/environments/environment.prod.ts"
             }
           ],
           "namedChunks": false,
