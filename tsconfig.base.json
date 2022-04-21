@@ -27,6 +27,7 @@
       "@patronage-web/shared-data": ["libs/shared/src/data/index.ts"],
       "@patronage-web/site": ["apps/site/src/app/index.ts"],
       "@patronage-web/translations": ["libs/translations/src/index.ts"],
+      "@patronage-web/shared-environments": ["libs/shared/src/environments/environment"],
       "@patronage-web/ui": ["libs/ui/src/index.ts"],
       "path": ["./node_modules/path-browserify"]
     }

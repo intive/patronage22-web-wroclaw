@@ -1,6 +1,5 @@
 import { loadI18n, TranslationNamespace } from "@patronage-web/shared";
-// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
-import { environment } from "libs/shared/src/environments/environment";
+import { environment } from "@patronage-web/shared-environments";
 
 loadI18n({
   env: environment.NODE_ENV,
