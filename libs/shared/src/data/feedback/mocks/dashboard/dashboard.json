@@ -1,10 +1,10 @@
 [
   {
     "id": "91151a02-8e93-11ec-b909-0242ac120002",
-    "isPublic": true,
+    "isPublic": false,
     "title": "Sample presentation name",
     "description": "Sample description",
-    "status": "SHARED"
+    "status": "DRAFT"
   },
   {
     "id": "fe6507a0-381a-402b-9513-cd232b0a7a23",
