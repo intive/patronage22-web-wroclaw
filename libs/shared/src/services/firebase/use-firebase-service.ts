@@ -23,6 +23,11 @@ export const useFirebaseService = () => {
     navigate(createPath({ route: BaseRoute.Home, language: i18n.language }));
   };
 
+  const handleLogoutRedirect = () => {
+    // TODO replace logic when login functionality will be ready
+    navigate(createPath({ route: BaseRoute.Login, language: i18n.language }));
+  };
+
   const signIn = async (providerName: FirebaseAuthProvider) => {
     try {
       dispatch(startAuth());
@@ -71,11 +76,13 @@ export const useFirebaseService = () => {
     try {
       if (!isAuthorized) {
         dispatch(logout());
+        handleLogoutRedirect();
         return;
       }
 
       await firebaseAuth.signOut();
       dispatch(logout());
+      handleLogoutRedirect();
     } catch {
       showError(t("login.logoutFail"));
     } finally {
