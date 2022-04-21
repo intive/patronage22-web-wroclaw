@@ -48,7 +48,7 @@ export const Dashboard = () => {
       <Styled.NewPresentationButtonContainer>
         <LocalizedLink to={FeedbackRoute.AddPresentation}>
           <BaseButton type={ButtonType.Basic} variant='contained'>
-            {t("homepage.newPresentationButton")}
+            {t("presentation.new")}
           </BaseButton>
         </LocalizedLink>
       </Styled.NewPresentationButtonContainer>
@@ -60,7 +60,7 @@ export const Dashboard = () => {
           </Styled.FeedbackTileGrid>
         ))}
       </Styled.FeedbackDashboardGrid>
-      <BasicPagination itemsCount={itemsCount} onChange={handlePagination} />
+      <BasicPagination itemsCount={itemsCount} onChange={handlePagination} itemsPerPageLabel={t("pagination.presentations")} />
     </Styled.FeedbackDashboardContainer>
   );
 };

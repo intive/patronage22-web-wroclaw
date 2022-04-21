@@ -49,6 +49,7 @@ Patronage Site
 - [ESLint](https://eslint.org) <img alt="eslint logo" src="https://seeklogo.com/images/E/eslint-logo-DDFB6EBCF6-seeklogo.com.png" height="30">
 
 ### Other
+
 - [React Router](https://reactrouter.com)
 - [React Hook Form](https://react-hook-form.com)
 - [React QR Code](https://github.com/rosskhanas/react-qr-code)
@@ -56,6 +57,7 @@ Patronage Site
 - [Lodash](https://lodash.com)
 - [Chart.js](https://www.chartjs.org)
 - [Fuze.js](https://fusejs.io)
+
 ## Features
 
 - Log in with Google Account

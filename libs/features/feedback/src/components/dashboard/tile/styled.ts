@@ -10,10 +10,10 @@ export const PresentationTileContainer = styled(Box)(({ theme }) => ({
 
 export const PresentationCard = styled(Card)<DashboardCardProps>(({ ispublic, theme }) => ({
   border: ispublic === "true" ? `${theme.spacing(0.25)} solid blue` : "",
-  backgroundColor: theme.dashboard.dashboardTileBackgroundColor,
+  backgroundColor: theme.palette.background.default,
 
   "&:hover": {
-    backgroundColor: "rgba(120, 120, 120, 0.2)",
+    backgroundColor: theme.palette.background.paper,
     transform: "scale(1.1)"
   }
 }));

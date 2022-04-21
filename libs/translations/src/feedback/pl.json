@@ -9,6 +9,9 @@
   },
   "missingTitleError": "Tytuł nie może być pusty",
   "newQuestion": "Nowe pytanie",
+  "pagination": {
+    "presentations": "Prezentacji na stronie"
+  },
   "presentation": {
     "new": "Nowa prezentacja",
     "notFound": "Nie znaleziono prezentacji",
