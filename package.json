@@ -75,7 +75,7 @@
     "browserslist": "^4.19.1",
     "chart.js": "^3.7.1",
     "chartjs-plugin-datalabels": "^2.0.0",
-    "commitizen": "^4.2.4",
+    "commitizen": "^4.3.0",
     "core-js": "^3.6.5",
     "firebase": "^9.6.10",
     "fuse.js": "^6.5.3",
